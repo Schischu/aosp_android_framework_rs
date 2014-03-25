@@ -530,6 +530,9 @@ extern RsdCpuScriptImpl * rsdIntrinsic_Histogram(RsdCpuReferenceImpl *ctx,
 extern RsdCpuScriptImpl * rsdIntrinsic_LoopFilter(RsdCpuReferenceImpl *ctx,
                                                   const Script *s, const Element *e);
 
+extern RsdCpuScriptImpl * rsdIntrinsic_IntraPred(RsdCpuReferenceImpl *ctx,
+                                                 const Script *s, const Element *e);
+
 RsdCpuReference::CpuScript * RsdCpuReferenceImpl::createIntrinsic(const Script *s,
                                     RsScriptIntrinsicID iid, Element *e) {
 
@@ -571,12 +574,13 @@ RsdCpuReference::CpuScript * RsdCpuReferenceImpl::createIntrinsic(const Script *
     case RS_SCRIPT_INTRINSIC_ID_LOOP_FILTER:
         i = rsdIntrinsic_LoopFilter(this, s, e);
         break;
+    case RS_SCRIPT_INTRINSIC_ID_INTRA_PRED:
+        i = rsdIntrinsic_IntraPred(this, s, e);
+        break;
 #endif
-
     default:
         rsAssert(0);
     }
-
     return i;
 }
 

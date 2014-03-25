@@ -1404,6 +1404,20 @@ class ScriptIntrinsic : public Script {
 };
 
 /**
+ * Intrinsic for VP9IntraPrediction
+ */
+class ScriptIntrinsicVP9IntraPred : public ScriptIntrinsic {
+ private:
+    ScriptIntrinsicVP9IntraPred(sp<RS> rs, sp<const Element> e);
+ public:
+    static sp<ScriptIntrinsicVP9IntraPred> create(sp<RS> rs, sp<const Element> e);
+
+    void forEach(sp<Allocation> asize);
+    void setParamBuffer(sp<Allocation> param);
+    void setTileInfo(int blockCount);
+};
+
+/**
  * Intrinsic for converting RGB to RGBA by using a 3D lookup table. The incoming
  * r,g,b values are use as normalized x,y,z coordinates into a 3D
  * allocation. The 8 nearest values are sampled and linearly interpolated. The

@@ -33,7 +33,13 @@ LOCAL_SRC_FILES:= \
 	rsCpuIntrinsicLoopFilter.cpp \
 	rsCpuIntrinsicLUT.cpp \
 	rsCpuIntrinsicYuvToRGB.cpp \
-	convolve/convolve.c
+	convolve/convolve.c \
+        rsCpuIntrinsicIntraPred.cpp \
+        intra/vp9_intra.c \
+        intra/vp9_blockd.c \
+        intra/vp9_common_data.c \
+        intra/vp9_reconintra.c \
+        intra/vp9_idct.c
 
 LOCAL_CFLAGS_arm64 += -DARCH_ARM_HAVE_NEON
 LOCAL_CFLAGS_64 += -DFAKE_ARM64_BUILD
@@ -67,7 +73,20 @@ ifeq ($(ARCH_ARM_HAVE_VFP),true)
     convolve/convolve_neon.c\
     vp9_loopfilter_16_neon.S \
     vp9_loopfilter_neon.S \
-    vp9_mb_lpf_neon.S
+    vp9_mb_lpf_neon.S \
+    intra/vp9_reconintra_neon.s \
+    intra/vp9_short_idct16x16_1_add_neon.s \
+    intra/vp9_short_idct16x16_add_neon.s \
+    intra/vp9_short_idct32x32_1_add_neon.s \
+    intra/vp9_short_idct32x32_add_neon.s \
+    intra/vp9_short_idct4x4_1_add_neon.s \
+    intra/vp9_short_idct4x4_add_neon.s \
+    intra/vp9_short_idct8x8_1_add_neon.s \
+    intra/vp9_short_idct8x8_add_neon.s \
+    intra/vp9_short_iht4x4_add_neon.s \
+    intra/vp9_short_iht8x8_add_neon.s \
+    intra/vp9_save_reg_neon.s \
+    intra/vp9_idct16x16_neon.c
     LOCAL_ASFLAGS_arm := -mfpu=neon
 endif
 
