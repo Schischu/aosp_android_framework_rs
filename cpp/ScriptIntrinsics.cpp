@@ -32,6 +32,41 @@ ScriptIntrinsic::~ScriptIntrinsic() {
 
 }
 
+sp<ScriptIntrinsicVP9IntraPred> ScriptIntrinsicVP9IntraPred::create(sp<RS> rs, sp<const Element> e) {
+    if (e->isCompatible(Element::U8(rs)) == false) {
+        rs->throwError(RS_ERROR_INVALID_ELEMENT, "Element not supported for intrinsic");
+        return NULL;
+    }
+    return new ScriptIntrinsicVP9IntraPred(rs, e);
+}
+
+ScriptIntrinsicVP9IntraPred::ScriptIntrinsicVP9IntraPred(sp<RS> rs, sp<const Element> e)
+    : ScriptIntrinsic(rs, RS_SCRIPT_INTRINSIC_ID_INTRA_PRED, e) {
+}
+
+void ScriptIntrinsicVP9IntraPred::forEach(sp<Allocation> asize) {
+    if (asize->getType()->getElement()->isCompatible(mElement) == false) {
+        mRS->throwError(RS_ERROR_INVALID_ELEMENT, "IntraPred forEach element mismatch");
+        return;
+    }
+    Script::forEach(0, asize, NULL, NULL, 0);
+}
+
+void ScriptIntrinsicVP9IntraPred::setParamBuffer(sp<Allocation> param) {
+    sp<const Type> t = param->getType();
+    if (!t->getElement()->isCompatible(mElement)) {
+        mRS->throwError(RS_ERROR_INVALID_ELEMENT, "setParamBuffer element does not match");
+        return;
+    }
+    Script::setVar(0, param);
+}
+
+void ScriptIntrinsicVP9IntraPred::setTileInfo(int blockCount) {
+    FieldPacker fp(4);
+    fp.add(blockCount);
+    Script::setVar(1, fp.getData(), fp.getLength());
+}
+
 sp<ScriptIntrinsic3DLUT> ScriptIntrinsic3DLUT::create(sp<RS> rs, sp<const Element> e) {
     if (e->isCompatible(Element::U8_4(rs)) == false) {
         rs->throwError(RS_ERROR_INVALID_ELEMENT, "Element not supported for intrinsic");
