@@ -377,7 +377,7 @@ extern "C" void vp9_lpf_horizontal_4_dual_neon(uint8_t *s, int pitch,
                                                const uint8_t *thresh1);
 
 
-#if defined(ARCH_ARM_HAVE_VFP)
+#if defined(ARCH_ARM_HAVE_VFP) && !defined(__aarch64__)
 
 #define vp9_lpf_vertical_16 vp9_lpf_vertical_16_neon
 #define vp9_lpf_vertical_16_dual vp9_lpf_vertical_16_dual_neon
