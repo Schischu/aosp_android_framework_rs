@@ -422,7 +422,7 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
         return false;
     }
 
-#if defined(__i386__)
+#if defined(__i386__) || defined(__x86_64__)
     // x86 devices will use an optimized library.
      core_lib = bcc::RSInfo::LibCLCoreX86Path;
 #endif
