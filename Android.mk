@@ -40,8 +40,12 @@ LOCAL_SHARED_LIBRARIES += libRS libRSCpuRef
 LOCAL_SHARED_LIBRARIES += liblog libcutils libutils libEGL libGLESv1_CM libGLESv2
 LOCAL_SHARED_LIBRARIES += libui libgui libsync
 
-# FIXME for 64-bit
+ifeq ($(TARGET_ARCH), x86_64)
+# for 64-bit
+LOCAL_SHARED_LIBRARIES += libbcc libbcinfo libLLVM
+else
 LOCAL_SHARED_LIBRARIES_32 += libbcc libbcinfo libLLVM
+endif
 
 LOCAL_C_INCLUDES += frameworks/compile/libbcc/include
 LOCAL_C_INCLUDES += frameworks/rs/cpu_ref/linkloader/include

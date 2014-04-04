@@ -71,6 +71,9 @@ ifeq ($(ARCH_ARM_HAVE_VFP),true)
     LOCAL_ASFLAGS_arm := -mfpu=neon
 endif
 
+ifeq ($(TARGET_ARCH), x86_64)
+LOCAL_SHARED_LIBRARIES += libbcc libbcinfo
+endif
 LOCAL_SHARED_LIBRARIES += libRS libcutils libutils liblog libsync
 
 # these are not supported in 64-bit yet

@@ -65,8 +65,11 @@ endif
 # Build the base version of the library
 include $(CLEAR_VARS)
 
+ifneq ($(TARGET_ARCH), x86_64)
 # FIXME for 64-bit
 LOCAL_32_BIT_ONLY := true
+endif
+
 
 LOCAL_MODULE := libclcore.bc
 LOCAL_SRC_FILES := $(clcore_files)
@@ -76,8 +79,10 @@ include $(LOCAL_PATH)/build_bc_lib.mk
 # Build a debug version of the library
 include $(CLEAR_VARS)
 
+ifneq ($(TARGET_ARCH), x86_64)
 # FIXME for 64-bit
 LOCAL_32_BIT_ONLY := true
+endif
 
 LOCAL_MODULE := libclcore_debug.bc
 rs_debug_runtime := 1
@@ -89,8 +94,10 @@ include $(LOCAL_PATH)/build_bc_lib.mk
 ifeq ($(TARGET_ARCH),$(filter $(TARGET_ARCH),x86 x86_64))
 include $(CLEAR_VARS)
 
+ifneq ($(TARGET_ARCH), x86_64)
 # FIXME for 64-bit
 LOCAL_32_BIT_ONLY := true
+endif
 
 LOCAL_MODULE := libclcore_x86.bc
 LOCAL_SRC_FILES := $(clcore_x86_files)
