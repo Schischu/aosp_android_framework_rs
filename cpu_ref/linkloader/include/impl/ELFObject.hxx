@@ -149,7 +149,7 @@ relocateARM(void *(*find_sym)(void *context, char const *name),
       T = 1;
     }
 
-    word_t reltype = rel->getType();
+    xword_t reltype = rel->getType();
     switch (reltype) {
     default:
       rsl_assert(0 && "Not implemented relocation type.");
@@ -378,7 +378,7 @@ relocateAARCH64(void *(*find_sym)(void *context, char const *name),
     Inst_t S = (Inst_t)(int64_t)sym->getAddress(EM_ARM);
 
     // TODO: add other relocations when we know what ones are used.
-    word_t reltype = rel->getType();
+    xword_t reltype = rel->getType();
     switch (reltype) {
     default:
       rsl_assert(0 && "Unimplemented relocation type.");

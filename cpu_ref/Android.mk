@@ -1,7 +1,7 @@
 
 LOCAL_PATH:=$(call my-dir)
 
-rs_base_CFLAGS := -Werror -Wall -Wno-unused-parameter -Wno-unused-variable
+rs_base_CFLAGS := -Werror -Wall -Wno-unused-parameter -Wno-unused-variable -fno-exceptions
 ifeq ($(TARGET_BUILD_PDK), true)
   rs_base_CFLAGS += -D__RS_PDK__
 endif
@@ -35,8 +35,7 @@ LOCAL_SRC_FILES:= \
 	rsCpuIntrinsicYuvToRGB.cpp \
 	convolve/convolve.c
 
-LOCAL_CFLAGS_arm64 += -DARCH_ARM_HAVE_NEON
-LOCAL_CFLAGS_64 += -DFAKE_ARM64_BUILD
+#LOCAL_CFLAGS_arm64 += -DARCH_ARM_HAVE_NEON
 LOCAL_ASFLAGS_arm64 += -no-integrated-as
 
 #LOCAL_SRC_FILES_arm64 += \
@@ -71,10 +70,10 @@ ifeq ($(ARCH_ARM_HAVE_VFP),true)
     LOCAL_ASFLAGS_arm := -mfpu=neon
 endif
 
-LOCAL_SHARED_LIBRARIES += libRS libcutils libutils liblog libsync
+LOCAL_SHARED_LIBRARIES += libRS libcutils libutils liblog libsync libcxx
 
 # these are not supported in 64-bit yet
-LOCAL_SHARED_LIBRARIES_32 += libbcc libbcinfo
+LOCAL_SHARED_LIBRARIES += libbcc libbcinfo
 
 
 LOCAL_C_INCLUDES += frameworks/compile/libbcc/include
