@@ -1,7 +1,7 @@
 
 LOCAL_PATH:=$(call my-dir)
 
-rs_base_CFLAGS := -Werror -Wall -Wno-unused-parameter -Wno-unused-variable
+rs_base_CFLAGS := -Werror -Wall -Wno-unused-parameter -Wno-unused-variable -fno-exceptions
 ifeq ($(TARGET_BUILD_PDK), true)
   rs_base_CFLAGS += -D__RS_PDK__
 endif
@@ -36,7 +36,7 @@ LOCAL_SRC_FILES:= \
 	driver/rsdVertexArray.cpp
 
 
-LOCAL_SHARED_LIBRARIES += libRS libRSCpuRef
+LOCAL_SHARED_LIBRARIES += libRS libRSCpuRef libcxx
 LOCAL_SHARED_LIBRARIES += liblog libcutils libutils libEGL libGLESv1_CM libGLESv2
 LOCAL_SHARED_LIBRARIES += libui libgui libsync
 
@@ -45,8 +45,10 @@ LOCAL_SHARED_LIBRARIES_32 += libbcc libbcinfo libLLVM
 
 LOCAL_C_INCLUDES += frameworks/compile/libbcc/include
 LOCAL_C_INCLUDES += frameworks/rs/cpu_ref/linkloader/include
+LOCAL_C_INCLUDES += external/libcxx/include
 
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
+LOCAL_CPPFLAGS += -fno-exceptions
 
 LOCAL_CFLAGS_64 += -DFAKE_ARM64_BUILD=1
 
@@ -157,7 +159,7 @@ LOCAL_SRC_FILES:= \
 	rsThreadIO.cpp \
 	rsType.cpp
 
-LOCAL_SHARED_LIBRARIES += liblog libcutils libutils libEGL libGLESv1_CM libGLESv2
+LOCAL_SHARED_LIBRARIES += liblog libcutils libutils libEGL libGLESv1_CM libGLESv2 libcxx
 LOCAL_SHARED_LIBRARIES += libgui libsync libdl libui
 LOCAL_SHARED_LIBRARIES += libft2 libpng libz
 
@@ -167,11 +169,13 @@ LOCAL_SHARED_LIBRARIES_32 += libbcc libbcinfo libLLVM
 
 LOCAL_C_INCLUDES += external/freetype/include
 LOCAL_C_INCLUDES += frameworks/compile/libbcc/include
+LOCAL_C_INCLUDES += external/libcxx/include
 
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
 
 # FIXME for 64-bit
 LOCAL_CFLAGS_64 += -DFAKE_ARM64_BUILD=1
+LOCAL_CPPFLAGS += -fno-exceptions
 
 LOCAL_LDLIBS := -lpthread -ldl
 LOCAL_MODULE_TAGS := optional
@@ -218,6 +222,7 @@ LOCAL_GENERATED_SOURCES += $(GEN)
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
 LOCAL_CFLAGS += -DANDROID_RS_SERIALIZE
 LOCAL_CFLAGS += -fPIC
+LOCAL_CPPFLAGS += -fno-exceptions
 
 LOCAL_SRC_FILES:= \
 	rsAdapter.cpp \
@@ -292,10 +297,12 @@ LOCAL_SRC_FILES := $(rsloader_SRC_FILES)
 LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
 
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
+LOCAL_CPPFLAGS += -fno-exceptions
 
 LOCAL_C_INCLUDES := \
   $(LOCAL_PATH)/cpu_ref/linkloader \
   $(LOCAL_PATH)/cpu_ref/linkloader/include \
+  external/libcxx/include \
   $(LOCAL_C_INCLUDES)
 
 include $(LLVM_ROOT_PATH)/llvm-device-build.mk
@@ -321,10 +328,12 @@ LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
 
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
 LOCAL_CFLAGS += -D__HOST__
+LOCAL_CPPFLAGS += -fno-exceptions
 
 LOCAL_C_INCLUDES := \
   $(LOCAL_PATH)/cpu_ref/linkloader \
   $(LOCAL_PATH)/cpu_ref/linkloader/include \
+  external/libcxx/include \
   $(LOCAL_C_INCLUDES)
 
 include $(LLVM_ROOT_PATH)/llvm-host-build.mk

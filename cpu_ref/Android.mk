@@ -1,7 +1,7 @@
 
 LOCAL_PATH:=$(call my-dir)
 
-rs_base_CFLAGS := -Werror -Wall -Wno-unused-parameter -Wno-unused-variable
+rs_base_CFLAGS := -Werror -Wall -Wno-unused-parameter -Wno-unused-variable -fno-exceptions
 ifeq ($(TARGET_BUILD_PDK), true)
   rs_base_CFLAGS += -D__RS_PDK__
 endif
@@ -71,7 +71,7 @@ ifeq ($(ARCH_ARM_HAVE_VFP),true)
     LOCAL_ASFLAGS_arm := -mfpu=neon
 endif
 
-LOCAL_SHARED_LIBRARIES += libRS libcutils libutils liblog libsync
+LOCAL_SHARED_LIBRARIES += libRS libcutils libutils liblog libsync libcxx
 
 # these are not supported in 64-bit yet
 LOCAL_SHARED_LIBRARIES_32 += libbcc libbcinfo
