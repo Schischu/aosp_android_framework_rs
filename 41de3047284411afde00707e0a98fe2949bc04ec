@@ -1,0 +1,9 @@
+Code-Review+1: Ian Rogers <irogers@google.com>
+Code-Review+1: Xiao-Feng Li <xiao-feng.li@intel.com>
+Code-Review+2: Dave Allison <dallison@google.com>
+Verified+1: Dave Allison <dallison@google.com>
+Submitted-by: Tim Murray <timmurray@google.com>
+Submitted-at: Wed, 16 Apr 2014 18:12:04 +0000
+Reviewed-on: https://android-review.googlesource.com/88661
+Project: platform/frameworks/rs
+Branch: refs/heads/master
