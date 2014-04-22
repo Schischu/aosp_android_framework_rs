@@ -73,12 +73,12 @@ bool MemChunk::allocate(size_t size) {
 #if USE_FIXED_ADDR_MEM_CHUNK
     buf = (unsigned char *)mmap((void *)StartAddr, size,
                                 PROT_READ | PROT_WRITE,
-                                MAP_PRIVATE | MAP_ANON | MAP_32BIT,
+                                MAP_PRIVATE | MAP_ANON,
                                 -1, 0);
 #else
     buf = (unsigned char *)mmap(0, size,
                                 PROT_READ | PROT_WRITE,
-                                MAP_PRIVATE | MAP_ANON | MAP_32BIT,
+                                MAP_PRIVATE | MAP_ANON,
                                 -1, 0);
 #endif
   }
