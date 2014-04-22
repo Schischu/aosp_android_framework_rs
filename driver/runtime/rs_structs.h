@@ -25,7 +25,11 @@ typedef enum {
 } rs_allocation_mipmap_control;
 
 typedef struct Allocation {
+#ifdef __LP64__
+    char __pad[56];
+#else
     char __pad[32];
+#endif
     struct {
         void * drv;
         struct {
@@ -81,8 +85,13 @@ typedef struct Allocation {
  *
  *****************************************************************************/
 typedef struct ProgramStore {
+#ifdef __LP64__
+    char __pad[64];
+#else
     char __pad[40];
+#endif
     struct {
+        void * drv;
         struct {
             bool ditherEnable;
             bool colorRWriteEnable;
@@ -115,7 +124,11 @@ typedef struct ProgramStore {
  *
  *****************************************************************************/
 typedef struct ProgramRaster {
+#ifdef __LP64__
+    char __pad[64];
+#else
     char __pad[36];
+#endif
     struct {
         void * drv;
         struct {
@@ -143,7 +156,11 @@ typedef struct ProgramRaster {
  *
  *****************************************************************************/
 typedef struct Sampler {
+#ifdef __LP64__
+    char __pad[56];
+#else
     char __pad[32];
+#endif
     struct {
         void *drv;
         struct {
@@ -175,7 +192,11 @@ typedef struct Sampler {
  *
  *****************************************************************************/
 typedef struct Element {
+#ifdef __LP64__
+    char __pad[56];
+#else
     char __pad[32];
+#endif
     struct {
         void *drv;
         struct {
@@ -213,7 +234,11 @@ typedef struct Element {
  *
  *****************************************************************************/
 typedef struct Type {
+#ifdef __LP64__
+    char __pad[56];
+#else
     char __pad[32];
+#endif
     struct {
         void *drv;
         struct {
@@ -249,7 +274,11 @@ typedef struct Type {
  *
  *****************************************************************************/
 typedef struct Mesh {
+#ifdef __LP64__
+    char __pad[56];
+#else
     char __pad[32];
+#endif
     struct {
         void *drv;
         struct {

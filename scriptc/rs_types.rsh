@@ -108,84 +108,84 @@ typedef uint64_t ulong;
 /**
  * Typedef for unsigned int
  */
-typedef uint32_t size_t;
+typedef long unsigned int size_t;
 /**
  * Typedef for int (use for 32-bit integers)
  */
-typedef int32_t ssize_t;
+typedef long int ssize_t;
 
 /**
  * \brief Opaque handle to a RenderScript element.
  *
  * See: android.renderscript.Element
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_element;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void *)))) rs_element;
 /**
  * \brief Opaque handle to a RenderScript type.
  *
  * See: android.renderscript.Type
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_type;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) rs_type;
 /**
  * \brief Opaque handle to a RenderScript allocation.
  *
  * See: android.renderscript.Allocation
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_allocation;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) rs_allocation;
 /**
  * \brief Opaque handle to a RenderScript sampler object.
  *
  * See: android.renderscript.Sampler
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_sampler;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) rs_sampler;
 /**
  * \brief Opaque handle to a RenderScript script object.
  *
  * See: android.renderscript.ScriptC
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_script;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) rs_script;
 /**
  * \brief Opaque handle to a RenderScript mesh object.
  *
  * See: android.renderscript.Mesh
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_mesh;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) rs_mesh;
 /**
  * \brief Opaque handle to a RenderScript Path object.
  *
  * See: android.renderscript.Path
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_path;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) rs_path;
 /**
  * \brief Opaque handle to a RenderScript ProgramFragment object.
  *
  * See: android.renderscript.ProgramFragment
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_program_fragment;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) rs_program_fragment;
 /**
  * \brief Opaque handle to a RenderScript ProgramVertex object.
  *
  * See: android.renderscript.ProgramVertex
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_program_vertex;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) rs_program_vertex;
 /**
  * \brief Opaque handle to a RenderScript ProgramRaster object.
  *
  * See: android.renderscript.ProgramRaster
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_program_raster;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) rs_program_raster;
 /**
  * \brief Opaque handle to a RenderScript ProgramStore object.
  *
  * See: android.renderscript.ProgramStore
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_program_store;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) rs_program_store;
 /**
  * \brief Opaque handle to a RenderScript font object.
  *
  * See: android.renderscript.Font
  */
-typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_font;
+typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) rs_font;
 
 /**
  * Vector version of the basic float type.
