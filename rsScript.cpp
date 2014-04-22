@@ -73,7 +73,7 @@ void Script::getVar(uint32_t slot, const void *val, size_t len) {
 }
 
 void Script::setVar(uint32_t slot, const void *val, size_t len, Element *e,
-                    const size_t *dims, size_t dimLen) {
+                    const int *dims, size_t dimLen) {
     if (slot >= mHal.info.exportedVariableCount) {
         ALOGE("Script::setVar unable to set allocation, invalid slot index: "
               "%u >= %zu", slot, mHal.info.exportedVariableCount);
@@ -252,7 +252,7 @@ void rsi_ScriptGetVarV(Context *rsc, RsScript vs, uint32_t slot, void *data, siz
 
 void rsi_ScriptSetVarVE(Context *rsc, RsScript vs, uint32_t slot,
                         const void *data, size_t len, RsElement ve,
-                        const size_t *dims, size_t dimLen) {
+                        const int *dims, size_t dimLen) {
     Script *s = static_cast<Script *>(vs);
     Element *e = static_cast<Element *>(ve);
     s->setVar(slot, data, len, e, dims, dimLen);

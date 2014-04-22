@@ -936,7 +936,7 @@ void RsdCpuScriptImpl::setGlobalVar(uint32_t slot, const void *data, size_t data
 
 #ifndef FAKE_ARM64_BUILD
 #ifndef RS_COMPATIBILITY_LIB
-    int32_t *destPtr = reinterpret_cast<int32_t *>(
+    int64_t *destPtr = reinterpret_cast<int64_t *>(
                           mExecutable->getExportVarAddrs()[slot]);
 #else
     int32_t *destPtr = reinterpret_cast<int32_t *>(mFieldAddress[slot]);
@@ -958,7 +958,7 @@ void RsdCpuScriptImpl::getGlobalVar(uint32_t slot, void *data, size_t dataLength
 
 #ifndef FAKE_ARM64_BUILD
 #ifndef RS_COMPATIBILITY_LIB
-    int32_t *srcPtr = reinterpret_cast<int32_t *>(
+    int64_t *srcPtr = reinterpret_cast<int64_t *>(
                           mExecutable->getExportVarAddrs()[slot]);
 #else
     int32_t *srcPtr = reinterpret_cast<int32_t *>(mFieldAddress[slot]);
@@ -976,11 +976,11 @@ void RsdCpuScriptImpl::getGlobalVar(uint32_t slot, void *data, size_t dataLength
 
 void RsdCpuScriptImpl::setGlobalVarWithElemDims(uint32_t slot, const void *data, size_t dataLength,
                                                 const Element *elem,
-                                                const size_t *dims, size_t dimLength) {
+                                                const int *dims, size_t dimLength) {
 
 #ifndef FAKE_ARM64_BUILD
 #ifndef RS_COMPATIBILITY_LIB
-    int32_t *destPtr = reinterpret_cast<int32_t *>(
+    int64_t *destPtr = reinterpret_cast<int64_t *>(
         mExecutable->getExportVarAddrs()[slot]);
 #else
     int32_t *destPtr = reinterpret_cast<int32_t *>(mFieldAddress[slot]);
@@ -1003,14 +1003,14 @@ void RsdCpuScriptImpl::setGlobalVarWithElemDims(uint32_t slot, const void *data,
         // First do the increment loop.
         size_t stride = elem->getSizeBytes();
         const char *cVal = reinterpret_cast<const char *>(data);
-        for (size_t i = 0; i < dims[0]; i++) {
+        for (int i = 0; i < dims[0]; i++) {
             elem->incRefs(cVal);
             cVal += stride;
         }
 
         // Decrement loop comes after (to prevent race conditions).
         char *oldVal = reinterpret_cast<char *>(destPtr);
-        for (size_t i = 0; i < dims[0]; i++) {
+        for (int i = 0; i < dims[0]; i++) {
             elem->decRefs(oldVal);
             oldVal += stride;
         }
@@ -1026,7 +1026,7 @@ void RsdCpuScriptImpl::setGlobalBind(uint32_t slot, Allocation *data) {
 
 #ifndef FAKE_ARM64_BUILD
 #ifndef RS_COMPATIBILITY_LIB
-    int32_t *destPtr = reinterpret_cast<int32_t *>(
+    int64_t *destPtr = reinterpret_cast<int64_t *>(
                           mExecutable->getExportVarAddrs()[slot]);
 #else
     int32_t *destPtr = reinterpret_cast<int32_t *>(mFieldAddress[slot]);
@@ -1059,7 +1059,7 @@ void RsdCpuScriptImpl::setGlobalObj(uint32_t slot, ObjectBase *data) {
 
 #ifndef FAKE_ARM64_BUILD
 #ifndef RS_COMPATIBILITY_LIB
-    int32_t *destPtr = reinterpret_cast<int32_t *>(
+    int64_t *destPtr = reinterpret_cast<int64_t *>(
                           mExecutable->getExportVarAddrs()[slot]);
 #else
     int32_t *destPtr = reinterpret_cast<int32_t *>(mFieldAddress[slot]);
