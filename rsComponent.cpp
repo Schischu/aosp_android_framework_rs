@@ -127,8 +127,13 @@ void Component::set(RsDataType dt, RsDataKind dk, bool norm, uint32_t vecSize) {
         rsAssert(mVectorSize == 1);
         rsAssert(mNormalized == false);
         rsAssert(mKind == RS_KIND_USER);
+#ifdef __LP64__
+        mBits = 64;
+        mTypeBits = 64;
+#else
         mBits = 32;
         mTypeBits = 32;
+#endif
         return;
 
     case RS_TYPE_FLOAT_16:

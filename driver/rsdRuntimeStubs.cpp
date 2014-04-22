@@ -74,7 +74,7 @@ typedef uint64_t ulong;
 
 #ifdef RS_COMPATIBILITY_LIB
 #define OPAQUETYPE(t) \
-    typedef struct { const int* const p; } __attribute__((packed, aligned(4))) t;
+    typedef struct { const int* const p; } __attribute__((packed, aligned(sizeof(void*)))) t;
 
 OPAQUETYPE(rs_element)
 OPAQUETYPE(rs_type)
@@ -1204,8 +1204,13 @@ static RsdCpuReference::CpuSymbol gSyms[] = {
     { "_Z9rsForEach9rs_script13rs_allocationS0_PKvjPK14rs_script_call", (void *)&SC_ForEach_SAAULS, true },
 
     // time
+#ifdef __LP64__
+    { "_Z6rsTimePl", (void *)&SC_Time, true },
+    { "_Z11rsLocaltimeP5rs_tmPKl", (void *)&SC_LocalTime, true },
+#else
     { "_Z6rsTimePi", (void *)&SC_Time, true },
     { "_Z11rsLocaltimeP5rs_tmPKi", (void *)&SC_LocalTime, true },
+#endif
     { "_Z14rsUptimeMillisv", (void*)&SC_UptimeMillis, true },
     { "_Z13rsUptimeNanosv", (void*)&SC_UptimeNanos, true },
     { "_Z7rsGetDtv", (void*)&SC_GetDt, false },
