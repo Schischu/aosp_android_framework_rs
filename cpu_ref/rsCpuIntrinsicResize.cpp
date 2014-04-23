@@ -71,8 +71,30 @@ extern "C" void rsdIntrinsicConvolve3x3_K(void *dst, const void *y0, const void 
                                           const void *y2, const short *coef, uint32_t count);
 
 static float4 cubicInterpolate(float4 p0,float4 p1,float4 p2,float4 p3, float x) {
-    return p1 + 0.5f * x * (p2 - p0 + x * (2.f * p0 - 5.f * p1 + 4.f * p2 - p3
-            + x * (3.f * (p1 - p2) + p3 - p0)));
+    float4 q7, q8, q9;
+
+    q9 = p1 - p2;
+    q8 = p3 - p0;
+    q8 += q9 * 3.f;
+    q8 = q8 * x;
+
+    q9 = p0 * 2.f;
+    q9 -= p1 * 5.f;
+    q9 += p2 * 4.f;
+    q9 = q9 - p3;
+    q9 = q9 + q8;
+
+    q7 = p2 - p0;
+    q7 += q9 * x;
+    q7 = q7 * x;
+    q7 = q7 * 0.5f;
+    q7 = q7 + p1;
+    return q7;
+#if 0
+    return p1 + 0.5f * x * (p2 - p0 + 
+                            (x * ((2.f * p0) - (5.f * p1) + (4.f * p2) - p3 + 
+                                  (x * (3.f * (p1 - p2) + p3 - p0)))));
+#endif
 }
 
 static float2 cubicInterpolate(float2 p0,float2 p1,float2 p2,float2 p3, float x) {
@@ -179,6 +201,17 @@ static uchar OneBiCubic(const uchar *yp0, const uchar *yp1, const uchar *yp2, co
     return (uchar)p;
 }
 
+extern "C" void rsdIntrinsicResizeB4_K(void *dst, const void *y0, const void *y1,
+                                       const void *y2, const void *y3,
+                                       uint32_t x1, uint32_t xmax, uint32_t count, float scale, float yf);
+extern "C" void rsdIntrinsicResizeB2_K(void *dst, const void *y0, const void *y1,
+                                       const void *y2, const void *y3,
+                                       uint32_t x1, uint32_t xmax, uint32_t count, float scale, float yf);
+extern "C" void rsdIntrinsicResizeB1_K(void *dst, const void *y0, const void *y1,
+                                       const void *y2, const void *y3,
+                                       uint32_t x1, uint32_t xmax, uint32_t count, float scale, float yf);
+
+
 void RsdCpuScriptIntrinsicResize::kernelU4(const RsForEachStubParamStruct *p,
                                                 uint32_t xstart, uint32_t xend,
                                                 uint32_t instep, uint32_t outstep) {
@@ -210,6 +243,24 @@ void RsdCpuScriptIntrinsicResize::kernelU4(const RsForEachStubParamStruct *p,
     uchar4 *out = ((uchar4 *)p->out) + xstart;
     uint32_t x1 = xstart;
     uint32_t x2 = xend;
+
+    /*
+    while((x1 < 2) && (x1 < x2)) {
+        float xf = x1 * cp->scaleX;
+        *out = OneBiCubic(yp0, yp1, yp2, yp3, xf, yf, srcWidth);
+        out++;
+        x1++;
+    }
+    */
+
+    if (x2 > x1) {
+        uint32_t len = x2 - x1;
+        //ALOGE("out %p  y %p %p %p %p  %i %i %i  %f %f", out, yp0, yp1, yp2, yp3, x1, srcWidth -1, len, cp->scaleX, yf);
+        rsdIntrinsicResizeB4_K(out, yp0, yp1, yp2, yp3, x1, srcWidth -1, len, cp->scaleX, yf);
+        //rsdIntrinsicResizeB4_K(out, yp0, yp1, yp2, yp3, 50, srcWidth -1, 1, cp->scaleX, yf); return;
+        out += len;
+        x1 += len;
+    }
 
     while(x1 < x2) {
         float xf = x1 * cp->scaleX;

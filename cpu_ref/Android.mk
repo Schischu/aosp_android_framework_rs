@@ -58,6 +58,7 @@ ifeq ($(ARCH_ARM_HAVE_VFP),true)
     rsCpuIntrinsics_neon_Blur.S \
     rsCpuIntrinsics_neon_Convolve.S \
     rsCpuIntrinsics_neon_ColorMatrix.S \
+    rsCpuIntrinsics_neon_Resize.S \
     rsCpuIntrinsics_neon_YuvToRGB.S \
     vp9_loopfilter_16_neon.S \
     vp9_loopfilter_neon.S \
