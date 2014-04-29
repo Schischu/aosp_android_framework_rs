@@ -912,28 +912,40 @@ define <3 x float> @_Z10half_recipDv3_f(<3 x float> %v) nounwind readnone {
 ;;;;;;;;;              half_RSQRT              ;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-define float @_Z10half_rsqrtf(float %v) {
-  %1 = insertelement <2 x float> undef, float %v, i32 0
-  %2 = tail call <2 x float> @llvm.arm.neon.vrsqrte.v2f32(<2 x float> %1) nounwind readnone
-  %3 = extractelement <2 x float> %2, i32 0
-  ret float %3
-}
-
 define <2 x float> @_Z10half_rsqrtDv2_f(<2 x float> %v) nounwind readnone {
   %1 = tail call <2 x float> @llvm.arm.neon.vrsqrte.v2f32(<2 x float> %v) nounwind readnone
-  ret <2 x float> %1
-}
-
-define <3 x float> @_Z10half_rsqrtDv3_f(<3 x float> %v) nounwind readnone {
-  %1 = shufflevector <3 x float> %v, <3 x float> undef, <4 x i32> <i32 0, i32 1, i32 2, i32 3>
-  %2 = tail call <4 x float> @llvm.arm.neon.vrsqrte.v4f32(<4 x float> %1) nounwind readnone
-  %3 = shufflevector <4 x float> %2, <4 x float> undef, <3 x i32> <i32 0, i32 1, i32 2>
-  ret <3 x float> %3
+  %2 = fmul <2 x float> %1, %v
+  %3 = tail call <2 x float> @llvm.arm.neon.vrsqrts.v2f32(<2 x float> %2, <2 x float> %1) nounwind readnone
+  %4 = fmul <2 x float> %1, %3
+  %5 = fmul <2 x float> %4, %v
+  %6 = tail call <2 x float> @llvm.arm.neon.vrsqrts.v2f32(<2 x float> %5, <2 x float> %4) nounwind readnone
+  %7 = fmul <2 x float> %6, %4
+  ret <2 x float> %7
 }
 
 define <4 x float> @_Z10half_rsqrtDv4_f(<4 x float> %v) nounwind readnone {
   %1 = tail call <4 x float> @llvm.arm.neon.vrsqrte.v4f32(<4 x float> %v) nounwind readnone
-  ret <4 x float> %1
+  %2 = fmul <4 x float> %1, %v
+  %3 = tail call <4 x float> @llvm.arm.neon.vrsqrts.v4f32(<4 x float> %2, <4 x float> %1) nounwind readnone
+  %4 = fmul <4 x float> %1, %3
+  %5 = fmul <4 x float> %4, %v
+  %6 = tail call <4 x float> @llvm.arm.neon.vrsqrts.v4f32(<4 x float> %5, <4 x float> %4) nounwind readnone
+  %7 = fmul <4 x float> %6, %4
+  ret <4 x float> %7
+}
+
+define float @_Z10half_rsqrtf(float %v) {
+  %1 = insertelement <2 x float> undef, float %v, i32 0
+  %2 = tail call <2 x float> @_Z10half_rsqrtDv2_f(<2 x float> %1) nounwind readnone
+  %3 = extractelement <2 x float> %2, i32 0
+  ret float %3
+}
+
+define <3 x float> @_Z10half_rsqrtDv3_f(<3 x float> %v) nounwind readnone {
+  %1 = shufflevector <3 x float> %v, <3 x float> undef, <4 x i32> <i32 0, i32 1, i32 2, i32 3>
+  %2 = tail call <4 x float> @_Z10half_rsqrtDv4_f(<4 x float> %1) nounwind readnone
+  %3 = shufflevector <4 x float> %2, <4 x float> undef, <3 x i32> <i32 0, i32 1, i32 2>
+  ret <3 x float> %3
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
