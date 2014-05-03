@@ -783,14 +783,14 @@ static void One(const RsForEachStubParamStruct *p, void *out,
     } else {
         switch(vsin) {
         case 3:
-            f = convert_float4(((const uchar4 *)py)[0]);
+            f = __builtin_convertvector(((const uchar4 *)py)[0], float4);
             break;
         case 2:
-            f = convert_float4(((const uchar4 *)py)[0]);
+            f = __builtin_convertvector(((const uchar4 *)py)[0], float4);
             f.w = 0.f;
             break;
         case 1:
-            f.xy = convert_float2(((const uchar2 *)py)[0]);
+            f.xy = __builtin_convertvector(((const uchar2 *)py)[0], float2);
             break;
         case 0:
             f.x = (float)(((const uchar *)py)[0]);
@@ -847,10 +847,10 @@ static void One(const RsForEachStubParamStruct *p, void *out,
         switch(vsout) {
         case 3:
         case 2:
-            ((uchar4 *)out)[0] = convert_uchar4(sum);
+            ((uchar4 *)out)[0] = __builtin_convertvector(sum, uchar4);
             break;
         case 1:
-            ((uchar2 *)out)[0] = convert_uchar2(sum.xy);
+            ((uchar2 *)out)[0] = __builtin_convertvector(sum.xy, uchar2);
             break;
         case 0:
             ((uchar *)out)[0] = sum.x;

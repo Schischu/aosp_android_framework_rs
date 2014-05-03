@@ -76,8 +76,8 @@ void RsdCpuScriptIntrinsic3DLUT::kernel(const RsForEachStubParamStruct *p,
         static_cast<int>(cp->mLUT->mHal.drvState.lod[0].dimZ - 1),
         -1
     };
-    const float4 m = (float4)(1.f / 255.f) * convert_float4(dims);
-    const int4 coordMul = convert_int4(m * (float4)0x8000);
+    const float4 m = (float4)(1.f / 255.f) * __builtin_convertvector(dims, float4);
+    const int4 coordMul = __builtin_convertvector(m * (float4)0x8000, int4);
     const size_t stride_y = cp->mLUT->mHal.drvState.lod[0].stride;
     const size_t stride_z = stride_y * cp->mLUT->mHal.drvState.lod[0].dimY;
 
@@ -100,7 +100,7 @@ void RsdCpuScriptIntrinsic3DLUT::kernel(const RsForEachStubParamStruct *p,
         }
 #endif
 
-        int4 baseCoord = convert_int4(*in) * coordMul;
+        int4 baseCoord = __builtin_convertvector(*in, int4) * coordMul;
         int4 coord1 = baseCoord >> (int4)15;
         //int4 coord2 = min(coord1 + 1, gDims - 1);
 
@@ -114,14 +114,14 @@ void RsdCpuScriptIntrinsic3DLUT::kernel(const RsForEachStubParamStruct *p,
         const uchar4 *pt_01 = (const uchar4 *)&bp2[stride_z];
         const uchar4 *pt_11 = (const uchar4 *)&bp2[stride_y + stride_z];
 
-        uint4 v000 = convert_uint4(pt_00[0]);
-        uint4 v100 = convert_uint4(pt_00[1]);
-        uint4 v010 = convert_uint4(pt_10[0]);
-        uint4 v110 = convert_uint4(pt_10[1]);
-        uint4 v001 = convert_uint4(pt_01[0]);
-        uint4 v101 = convert_uint4(pt_01[1]);
-        uint4 v011 = convert_uint4(pt_11[0]);
-        uint4 v111 = convert_uint4(pt_11[1]);
+        uint4 v000 = __builtin_convertvector(pt_00[0], uint4);
+        uint4 v100 = __builtin_convertvector(pt_00[1], uint4);
+        uint4 v010 = __builtin_convertvector(pt_10[0], uint4);
+        uint4 v110 = __builtin_convertvector(pt_10[1], uint4);
+        uint4 v001 = __builtin_convertvector(pt_01[0], uint4);
+        uint4 v101 = __builtin_convertvector(pt_01[1], uint4);
+        uint4 v011 = __builtin_convertvector(pt_11[0], uint4);
+        uint4 v111 = __builtin_convertvector(pt_11[1], uint4);
 
         uint4 yz00 = ((v000 * weight1.x) + (v100 * weight2.x)) >> (int4)7;
         uint4 yz10 = ((v010 * weight1.x) + (v110 * weight2.x)) >> (int4)7;
@@ -134,7 +134,7 @@ void RsdCpuScriptIntrinsic3DLUT::kernel(const RsForEachStubParamStruct *p,
         uint4 v = ((z0 * weight1.z) + (z1 * weight2.z)) >> (int4)15;
         uint4 v2 = (v + 0x7f) >> (int4)8;
 
-        uchar4 ret = convert_uchar4(v2);
+        uchar4 ret = __builtin_convertvector(v2, uchar4);
         ret.w = in->w;
 
         #if 0

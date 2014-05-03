@@ -95,19 +95,18 @@ static void ConvolveOneU4(const RsForEachStubParamStruct *p, uint32_t x, uchar4 
     uint32_t x1 = rsMax((int32_t)x-1, 0);
     uint32_t x2 = rsMin((int32_t)x+1, (int32_t)p->dimX-1);
 
-    float4 px = convert_float4(py0[x1]) * coeff[0] +
-                convert_float4(py0[x]) * coeff[1] +
-                convert_float4(py0[x2]) * coeff[2] +
-                convert_float4(py1[x1]) * coeff[3] +
-                convert_float4(py1[x]) * coeff[4] +
-                convert_float4(py1[x2]) * coeff[5] +
-                convert_float4(py2[x1]) * coeff[6] +
-                convert_float4(py2[x]) * coeff[7] +
-                convert_float4(py2[x2]) * coeff[8];
+    float4 px = __builtin_convertvector(py0[x1], float4) * coeff[0] +
+                __builtin_convertvector(py0[x], float4) * coeff[1] +
+                __builtin_convertvector(py0[x2], float4) * coeff[2] +
+                __builtin_convertvector(py1[x1], float4) * coeff[3] +
+                __builtin_convertvector(py1[x], float4) * coeff[4] +
+                __builtin_convertvector(py1[x2], float4) * coeff[5] +
+                __builtin_convertvector(py2[x1], float4) * coeff[6] +
+                __builtin_convertvector(py2[x], float4) * coeff[7] +
+                __builtin_convertvector(py2[x2], float4) * coeff[8];
 
     px = clamp(px, 0.f, 255.f);
-    uchar4 o = {(uchar)px.x, (uchar)px.y, (uchar)px.z, (uchar)px.w};
-    *out = o;
+    *out = __builtin_convertvector(px, uchar4);
 }
 
 static void ConvolveOneU2(const RsForEachStubParamStruct *p, uint32_t x, uchar2 *out,
@@ -117,18 +116,18 @@ static void ConvolveOneU2(const RsForEachStubParamStruct *p, uint32_t x, uchar2 
     uint32_t x1 = rsMax((int32_t)x-1, 0);
     uint32_t x2 = rsMin((int32_t)x+1, (int32_t)p->dimX-1);
 
-    float2 px = convert_float2(py0[x1]) * coeff[0] +
-                convert_float2(py0[x]) * coeff[1] +
-                convert_float2(py0[x2]) * coeff[2] +
-                convert_float2(py1[x1]) * coeff[3] +
-                convert_float2(py1[x]) * coeff[4] +
-                convert_float2(py1[x2]) * coeff[5] +
-                convert_float2(py2[x1]) * coeff[6] +
-                convert_float2(py2[x]) * coeff[7] +
-                convert_float2(py2[x2]) * coeff[8];
+    float2 px = __builtin_convertvector(py0[x1], float2) * coeff[0] +
+                __builtin_convertvector(py0[x], float2) * coeff[1] +
+                __builtin_convertvector(py0[x2], float2) * coeff[2] +
+                __builtin_convertvector(py1[x1], float2) * coeff[3] +
+                __builtin_convertvector(py1[x], float2) * coeff[4] +
+                __builtin_convertvector(py1[x2], float2) * coeff[5] +
+                __builtin_convertvector(py2[x1], float2) * coeff[6] +
+                __builtin_convertvector(py2[x], float2) * coeff[7] +
+                __builtin_convertvector(py2[x2], float2) * coeff[8];
 
     px = clamp(px, 0.f, 255.f);
-    *out = convert_uchar2(px);
+    *out = __builtin_convertvector(px, uchar2);
 }
 
 static void ConvolveOneU1(const RsForEachStubParamStruct *p, uint32_t x, uchar *out,

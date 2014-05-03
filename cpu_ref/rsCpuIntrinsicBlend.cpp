@@ -154,10 +154,10 @@ void RsdCpuScriptIntrinsicBlend::kernel(const RsForEachStubParamStruct *p,
         }
     #endif
         for (;x1 < x2; x1++, out++, in++) {
-            short4 in_s = convert_short4(*in);
-            short4 out_s = convert_short4(*out);
+            short4 in_s = __builtin_convertvector(*in, short4);
+            short4 out_s = __builtin_convertvector(*out, short4);
             in_s = in_s + ((out_s * (short4)(255 - in_s.w)) >> (short4)8);
-            *out = convert_uchar4(in_s);
+            *out = __builtin_convertvector(in_s, uchar4);
         }
         break;
     case BLEND_DST_OVER:
@@ -173,10 +173,10 @@ void RsdCpuScriptIntrinsicBlend::kernel(const RsForEachStubParamStruct *p,
         }
      #endif
         for (;x1 < x2; x1++, out++, in++) {
-            short4 in_s = convert_short4(*in);
-            short4 out_s = convert_short4(*out);
+            short4 in_s = __builtin_convertvector(*in, short4);
+            short4 out_s = __builtin_convertvector(*out, short4);
             in_s = out_s + ((in_s * (short4)(255 - out_s.w)) >> (short4)8);
-            *out = convert_uchar4(in_s);
+            *out = __builtin_convertvector(in_s, uchar4);
         }
         break;
     case BLEND_SRC_IN:
@@ -192,9 +192,9 @@ void RsdCpuScriptIntrinsicBlend::kernel(const RsForEachStubParamStruct *p,
         }
     #endif
         for (;x1 < x2; x1++, out++, in++) {
-            short4 in_s = convert_short4(*in);
+            short4 in_s = __builtin_convertvector(*in, short4);
             in_s = (in_s * out->w) >> (short4)8;
-            *out = convert_uchar4(in_s);
+            *out = __builtin_convertvector(in_s, uchar4);
         }
         break;
     case BLEND_DST_IN:
@@ -210,9 +210,9 @@ void RsdCpuScriptIntrinsicBlend::kernel(const RsForEachStubParamStruct *p,
         }
      #endif
         for (;x1 < x2; x1++, out++, in++) {
-            short4 out_s = convert_short4(*out);
+            short4 out_s = __builtin_convertvector(*out, short4);
             out_s = (out_s * in->w) >> (short4)8;
-            *out = convert_uchar4(out_s);
+            *out = __builtin_convertvector(out_s, uchar4);
         }
         break;
     case BLEND_SRC_OUT:
@@ -228,9 +228,9 @@ void RsdCpuScriptIntrinsicBlend::kernel(const RsForEachStubParamStruct *p,
         }
     #endif
         for (;x1 < x2; x1++, out++, in++) {
-            short4 in_s = convert_short4(*in);
+            short4 in_s = __builtin_convertvector(*in, short4);
             in_s = (in_s * (short4)(255 - out->w)) >> (short4)8;
-            *out = convert_uchar4(in_s);
+            *out = __builtin_convertvector(in_s, uchar4);
         }
         break;
     case BLEND_DST_OUT:
@@ -246,9 +246,9 @@ void RsdCpuScriptIntrinsicBlend::kernel(const RsForEachStubParamStruct *p,
         }
     #endif
         for (;x1 < x2; x1++, out++, in++) {
-            short4 out_s = convert_short4(*out);
+            short4 out_s = __builtin_convertvector(*out, short4);
             out_s = (out_s * (short4)(255 - in->w)) >> (short4)8;
-            *out = convert_uchar4(out_s);
+            *out = __builtin_convertvector(out_s, uchar4);
         }
         break;
     case BLEND_SRC_ATOP:
@@ -264,11 +264,11 @@ void RsdCpuScriptIntrinsicBlend::kernel(const RsForEachStubParamStruct *p,
         }
     #endif
         for (;x1 < x2; x1++, out++, in++) {
-            short4 in_s = convert_short4(*in);
-            short4 out_s = convert_short4(*out);
+            short4 in_s = __builtin_convertvector(*in, short4);
+            short4 out_s = __builtin_convertvector(*out, short4);
             out_s.xyz = ((in_s.xyz * out_s.w) +
               (out_s.xyz * ((short3)255 - (short3)in_s.w))) >> (short3)8;
-            *out = convert_uchar4(out_s);
+            *out = __builtin_convertvector(out_s, uchar4);
         }
         break;
     case BLEND_DST_ATOP:
@@ -284,11 +284,11 @@ void RsdCpuScriptIntrinsicBlend::kernel(const RsForEachStubParamStruct *p,
         }
      #endif
         for (;x1 < x2; x1++, out++, in++) {
-            short4 in_s = convert_short4(*in);
-            short4 out_s = convert_short4(*out);
+            short4 in_s = __builtin_convertvector(*in, short4);
+            short4 out_s = __builtin_convertvector(*out, short4);
             out_s.xyz = ((out_s.xyz * in_s.w) +
               (in_s.xyz * ((short3)255 - (short3)out_s.w))) >> (short3)8;
-            *out = convert_uchar4(out_s);
+            *out = __builtin_convertvector(out_s, uchar4);
         }
         break;
     case BLEND_XOR:
@@ -328,8 +328,9 @@ void RsdCpuScriptIntrinsicBlend::kernel(const RsForEachStubParamStruct *p,
         }
     #endif
         for (;x1 < x2; x1++, out++, in++) {
-          *out = convert_uchar4((convert_short4(*in) * convert_short4(*out))
-                                >> (short4)8);
+          *out = __builtin_convertvector((__builtin_convertvector(*in, short4) *
+                                          __builtin_convertvector(*out, short4))
+                                         >> (short4)8, uchar4);
         }
         break;
     case BLEND_SCREEN:

@@ -95,29 +95,29 @@ static uchar4 OneBiCubic(const uchar4 *yp0, const uchar4 *yp1, const uchar4 *yp2
     int xs2 = rsMin(maxx, startx + 2);
     int xs3 = rsMin(maxx, startx + 3);
 
-    float4 p0  = cubicInterpolate(convert_float4(yp0[xs0]),
-                                  convert_float4(yp0[xs1]),
-                                  convert_float4(yp0[xs2]),
-                                  convert_float4(yp0[xs3]), xf);
+    float4 p0  = cubicInterpolate(__builtin_convertvector(yp0[xs0], float4),
+                                  __builtin_convertvector(yp0[xs1], float4),
+                                  __builtin_convertvector(yp0[xs2], float4),
+                                  __builtin_convertvector(yp0[xs3], float4), xf);
 
-    float4 p1  = cubicInterpolate(convert_float4(yp1[xs0]),
-                                  convert_float4(yp1[xs1]),
-                                  convert_float4(yp1[xs2]),
-                                  convert_float4(yp1[xs3]), xf);
+    float4 p1  = cubicInterpolate(__builtin_convertvector(yp1[xs0], float4),
+                                  __builtin_convertvector(yp1[xs1], float4),
+                                  __builtin_convertvector(yp1[xs2], float4),
+                                  __builtin_convertvector(yp1[xs3], float4), xf);
 
-    float4 p2  = cubicInterpolate(convert_float4(yp2[xs0]),
-                                  convert_float4(yp2[xs1]),
-                                  convert_float4(yp2[xs2]),
-                                  convert_float4(yp2[xs3]), xf);
+    float4 p2  = cubicInterpolate(__builtin_convertvector(yp2[xs0], float4),
+                                  __builtin_convertvector(yp2[xs1], float4),
+                                  __builtin_convertvector(yp2[xs2], float4),
+                                  __builtin_convertvector(yp2[xs3], float4), xf);
 
-    float4 p3  = cubicInterpolate(convert_float4(yp3[xs0]),
-                                  convert_float4(yp3[xs1]),
-                                  convert_float4(yp3[xs2]),
-                                  convert_float4(yp3[xs3]), xf);
+    float4 p3  = cubicInterpolate(__builtin_convertvector(yp3[xs0], float4),
+                                  __builtin_convertvector(yp3[xs1], float4),
+                                  __builtin_convertvector(yp3[xs2], float4),
+                                  __builtin_convertvector(yp3[xs3], float4), xf);
 
     float4 p  = cubicInterpolate(p0, p1, p2, p3, yf);
     p = clamp(p, 0.f, 255.f);
-    return convert_uchar4(p);
+    return __builtin_convertvector(p, uchar4);
 }
 
 static uchar2 OneBiCubic(const uchar2 *yp0, const uchar2 *yp1, const uchar2 *yp2, const uchar2 *yp3,
@@ -130,29 +130,29 @@ static uchar2 OneBiCubic(const uchar2 *yp0, const uchar2 *yp1, const uchar2 *yp2
     int xs2 = rsMin(maxx, startx + 2);
     int xs3 = rsMin(maxx, startx + 3);
 
-    float2 p0  = cubicInterpolate(convert_float2(yp0[xs0]),
-                                  convert_float2(yp0[xs1]),
-                                  convert_float2(yp0[xs2]),
-                                  convert_float2(yp0[xs3]), xf);
+    float2 p0  = cubicInterpolate(__builtin_convertvector(yp0[xs0], float2),
+                                  __builtin_convertvector(yp0[xs1], float2),
+                                  __builtin_convertvector(yp0[xs2], float2),
+                                  __builtin_convertvector(yp0[xs3], float2), xf);
 
-    float2 p1  = cubicInterpolate(convert_float2(yp1[xs0]),
-                                  convert_float2(yp1[xs1]),
-                                  convert_float2(yp1[xs2]),
-                                  convert_float2(yp1[xs3]), xf);
+    float2 p1  = cubicInterpolate(__builtin_convertvector(yp1[xs0], float2),
+                                  __builtin_convertvector(yp1[xs1], float2),
+                                  __builtin_convertvector(yp1[xs2], float2),
+                                  __builtin_convertvector(yp1[xs3], float2), xf);
 
-    float2 p2  = cubicInterpolate(convert_float2(yp2[xs0]),
-                                  convert_float2(yp2[xs1]),
-                                  convert_float2(yp2[xs2]),
-                                  convert_float2(yp2[xs3]), xf);
+    float2 p2  = cubicInterpolate(__builtin_convertvector(yp2[xs0], float2),
+                                  __builtin_convertvector(yp2[xs1], float2),
+                                  __builtin_convertvector(yp2[xs2], float2),
+                                  __builtin_convertvector(yp2[xs3], float2), xf);
 
-    float2 p3  = cubicInterpolate(convert_float2(yp3[xs0]),
-                                  convert_float2(yp3[xs1]),
-                                  convert_float2(yp3[xs2]),
-                                  convert_float2(yp3[xs3]), xf);
+    float2 p3  = cubicInterpolate(__builtin_convertvector(yp3[xs0], float2),
+                                  __builtin_convertvector(yp3[xs1], float2),
+                                  __builtin_convertvector(yp3[xs2], float2),
+                                  __builtin_convertvector(yp3[xs3], float2), xf);
 
     float2 p  = cubicInterpolate(p0, p1, p2, p3, yf);
     p = clamp(p, 0.f, 255.f);
-    return convert_uchar2(p);
+    return __builtin_convertvector(p, uchar2);
 }
 
 static uchar OneBiCubic(const uchar *yp0, const uchar *yp1, const uchar *yp2, const uchar *yp3,

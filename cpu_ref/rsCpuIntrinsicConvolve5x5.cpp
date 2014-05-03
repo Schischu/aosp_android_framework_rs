@@ -96,37 +96,37 @@ static void OneU4(const RsForEachStubParamStruct *p, uint32_t x, uchar4 *out,
     uint32_t x3 = rsMin((int32_t)x+1, (int32_t)(p->dimX-1));
     uint32_t x4 = rsMin((int32_t)x+2, (int32_t)(p->dimX-1));
 
-    float4 px = convert_float4(py0[x0]) * coeff[0] +
-                convert_float4(py0[x1]) * coeff[1] +
-                convert_float4(py0[x2]) * coeff[2] +
-                convert_float4(py0[x3]) * coeff[3] +
-                convert_float4(py0[x4]) * coeff[4] +
+    float4 px = __builtin_convertvector(py0[x0], float4) * coeff[0] +
+                __builtin_convertvector(py0[x1], float4) * coeff[1] +
+                __builtin_convertvector(py0[x2], float4) * coeff[2] +
+                __builtin_convertvector(py0[x3], float4) * coeff[3] +
+                __builtin_convertvector(py0[x4], float4) * coeff[4] +
 
-                convert_float4(py1[x0]) * coeff[5] +
-                convert_float4(py1[x1]) * coeff[6] +
-                convert_float4(py1[x2]) * coeff[7] +
-                convert_float4(py1[x3]) * coeff[8] +
-                convert_float4(py1[x4]) * coeff[9] +
+                __builtin_convertvector(py1[x0], float4) * coeff[5] +
+                __builtin_convertvector(py1[x1], float4) * coeff[6] +
+                __builtin_convertvector(py1[x2], float4) * coeff[7] +
+                __builtin_convertvector(py1[x3], float4) * coeff[8] +
+                __builtin_convertvector(py1[x4], float4) * coeff[9] +
 
-                convert_float4(py2[x0]) * coeff[10] +
-                convert_float4(py2[x1]) * coeff[11] +
-                convert_float4(py2[x2]) * coeff[12] +
-                convert_float4(py2[x3]) * coeff[13] +
-                convert_float4(py2[x4]) * coeff[14] +
+                __builtin_convertvector(py2[x0], float4) * coeff[10] +
+                __builtin_convertvector(py2[x1], float4) * coeff[11] +
+                __builtin_convertvector(py2[x2], float4) * coeff[12] +
+                __builtin_convertvector(py2[x3], float4) * coeff[13] +
+                __builtin_convertvector(py2[x4], float4) * coeff[14] +
 
-                convert_float4(py3[x0]) * coeff[15] +
-                convert_float4(py3[x1]) * coeff[16] +
-                convert_float4(py3[x2]) * coeff[17] +
-                convert_float4(py3[x3]) * coeff[18] +
-                convert_float4(py3[x4]) * coeff[19] +
+                __builtin_convertvector(py3[x0], float4) * coeff[15] +
+                __builtin_convertvector(py3[x1], float4) * coeff[16] +
+                __builtin_convertvector(py3[x2], float4) * coeff[17] +
+                __builtin_convertvector(py3[x3], float4) * coeff[18] +
+                __builtin_convertvector(py3[x4], float4) * coeff[19] +
 
-                convert_float4(py4[x0]) * coeff[20] +
-                convert_float4(py4[x1]) * coeff[21] +
-                convert_float4(py4[x2]) * coeff[22] +
-                convert_float4(py4[x3]) * coeff[23] +
-                convert_float4(py4[x4]) * coeff[24];
+                __builtin_convertvector(py4[x0], float4) * coeff[20] +
+                __builtin_convertvector(py4[x1], float4) * coeff[21] +
+                __builtin_convertvector(py4[x2], float4) * coeff[22] +
+                __builtin_convertvector(py4[x3], float4) * coeff[23] +
+                __builtin_convertvector(py4[x4], float4) * coeff[24];
     px = clamp(px, 0.f, 255.f);
-    *out = convert_uchar4(px);
+    *out = __builtin_convertvector(px, uchar4);
 }
 
 static void OneU2(const RsForEachStubParamStruct *p, uint32_t x, uchar2 *out,
@@ -139,37 +139,37 @@ static void OneU2(const RsForEachStubParamStruct *p, uint32_t x, uchar2 *out,
     uint32_t x3 = rsMin((int32_t)x+1, (int32_t)(p->dimX-1));
     uint32_t x4 = rsMin((int32_t)x+2, (int32_t)(p->dimX-1));
 
-    float2 px = convert_float2(py0[x0]) * coeff[0] +
-                convert_float2(py0[x1]) * coeff[1] +
-                convert_float2(py0[x2]) * coeff[2] +
-                convert_float2(py0[x3]) * coeff[3] +
-                convert_float2(py0[x4]) * coeff[4] +
+    float2 px = __builtin_convertvector(py0[x0], float2) * coeff[0] +
+                __builtin_convertvector(py0[x1], float2) * coeff[1] +
+                __builtin_convertvector(py0[x2], float2) * coeff[2] +
+                __builtin_convertvector(py0[x3], float2) * coeff[3] +
+                __builtin_convertvector(py0[x4], float2) * coeff[4] +
 
-                convert_float2(py1[x0]) * coeff[5] +
-                convert_float2(py1[x1]) * coeff[6] +
-                convert_float2(py1[x2]) * coeff[7] +
-                convert_float2(py1[x3]) * coeff[8] +
-                convert_float2(py1[x4]) * coeff[9] +
+                __builtin_convertvector(py1[x0], float2) * coeff[5] +
+                __builtin_convertvector(py1[x1], float2) * coeff[6] +
+                __builtin_convertvector(py1[x2], float2) * coeff[7] +
+                __builtin_convertvector(py1[x3], float2) * coeff[8] +
+                __builtin_convertvector(py1[x4], float2) * coeff[9] +
 
-                convert_float2(py2[x0]) * coeff[10] +
-                convert_float2(py2[x1]) * coeff[11] +
-                convert_float2(py2[x2]) * coeff[12] +
-                convert_float2(py2[x3]) * coeff[13] +
-                convert_float2(py2[x4]) * coeff[14] +
+                __builtin_convertvector(py2[x0], float2) * coeff[10] +
+                __builtin_convertvector(py2[x1], float2) * coeff[11] +
+                __builtin_convertvector(py2[x2], float2) * coeff[12] +
+                __builtin_convertvector(py2[x3], float2) * coeff[13] +
+                __builtin_convertvector(py2[x4], float2) * coeff[14] +
 
-                convert_float2(py3[x0]) * coeff[15] +
-                convert_float2(py3[x1]) * coeff[16] +
-                convert_float2(py3[x2]) * coeff[17] +
-                convert_float2(py3[x3]) * coeff[18] +
-                convert_float2(py3[x4]) * coeff[19] +
+                __builtin_convertvector(py3[x0], float2) * coeff[15] +
+                __builtin_convertvector(py3[x1], float2) * coeff[16] +
+                __builtin_convertvector(py3[x2], float2) * coeff[17] +
+                __builtin_convertvector(py3[x3], float2) * coeff[18] +
+                __builtin_convertvector(py3[x4], float2) * coeff[19] +
 
-                convert_float2(py4[x0]) * coeff[20] +
-                convert_float2(py4[x1]) * coeff[21] +
-                convert_float2(py4[x2]) * coeff[22] +
-                convert_float2(py4[x3]) * coeff[23] +
-                convert_float2(py4[x4]) * coeff[24];
+                __builtin_convertvector(py4[x0], float2) * coeff[20] +
+                __builtin_convertvector(py4[x1], float2) * coeff[21] +
+                __builtin_convertvector(py4[x2], float2) * coeff[22] +
+                __builtin_convertvector(py4[x3], float2) * coeff[23] +
+                __builtin_convertvector(py4[x4], float2) * coeff[24];
     px = clamp(px, 0.f, 255.f);
-    *out = convert_uchar2(px);
+    *out = __builtin_convertvector(px, uchar2);
 }
 
 static void OneU1(const RsForEachStubParamStruct *p, uint32_t x, uchar *out,

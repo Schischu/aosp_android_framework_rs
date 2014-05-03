@@ -123,7 +123,7 @@ static void OneVU4(const RsForEachStubParamStruct *p, float4 *out, int32_t x, in
         int validY = rsMax((y + r), 0);
         validY = rsMin(validY, (int)(p->dimY - 1));
         const uchar4 *pvy = (const uchar4 *)&pi[validY * iStride];
-        float4 pf = convert_float4(pvy[0]);
+        float4 pf = __builtin_convertvector(pvy[0], float4);
         blurredPixel += pf * gPtr[0];
         gPtr++;
     }
@@ -179,7 +179,7 @@ static void OneVFU4(float4 *out,
         const float* gp = gPtr;
 
         for (int r = 0; r < ct; r++) {
-            float4 pf = convert_float4(((const uchar4 *)pi)[0]);
+            float4 pf = __builtin_convertvector(((const uchar4 *)pi)[0], float4);
             blurredPixel += pf * gp[0];
             pi += iStride;
             gp++;
@@ -255,7 +255,7 @@ static void OneHU4(const RsForEachStubParamStruct *p, uchar4 *out, int32_t x,
         gPtr++;
     }
 
-    out->xyzw = convert_uchar4(blurredPixel);
+    out->xyzw = __builtin_convertvector(blurredPixel, uchar4);
 }
 
 static void OneHU1(const RsForEachStubParamStruct *p, uchar *out, int32_t x,
