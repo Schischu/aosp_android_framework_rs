@@ -53,20 +53,17 @@ enum IntrinsicEnums {
 };
 
 #define CVT_FUNC_2(typeout, typein)                             \
-static inline typeout##2 __attribute__((const, overloadable))   \
+extern typeout##2 __attribute__((const, overloadable))   \
     convert_##typeout##2(typein##2 i) {                         \
-        typeout##2 f = {(typeout)i.x, (typeout)i.y};            \
-        return f;                                               \
+        return __builtin_convertvector(i, typeout##2);          \
     }                                                           \
-static inline typeout##3 __attribute__((const, overloadable))   \
+extern typeout##3 __attribute__((const, overloadable))   \
     convert_##typeout##3(typein##3 i) {                         \
-        typeout##3 f = {(typeout)i.x, (typeout)i.y, (typeout)i.z}; \
-        return f;                                               \
+        return __builtin_convertvector(i, typeout##3);          \
     }                                                           \
-static inline typeout##4 __attribute__((const, overloadable))   \
+extern typeout##4 __attribute__((const, overloadable))   \
     convert_##typeout##4(typein##4 i) {                         \
-        typeout##4 f = {(typeout)i.x, (typeout)i.y, (typeout)i.z, (typeout)i.w}; \
-        return f;                                               \
+        return __builtin_convertvector(i, typeout##4);          \
     }
 #define CVT_FUNC(type)  CVT_FUNC_2(type, uchar)     \
                         CVT_FUNC_2(type, char)      \
@@ -74,14 +71,21 @@ static inline typeout##4 __attribute__((const, overloadable))   \
                         CVT_FUNC_2(type, short)     \
                         CVT_FUNC_2(type, uint)      \
                         CVT_FUNC_2(type, int)       \
-                        CVT_FUNC_2(type, float)
+                        CVT_FUNC_2(type, ulong)     \
+                        CVT_FUNC_2(type, long)      \
+                        CVT_FUNC_2(type, float)     \
+                        CVT_FUNC_2(type, double)
+
 CVT_FUNC(char)
 CVT_FUNC(uchar)
 CVT_FUNC(short)
 CVT_FUNC(ushort)
 CVT_FUNC(int)
 CVT_FUNC(uint)
+CVT_FUNC(long)
+CVT_FUNC(ulong)
 CVT_FUNC(float)
+CVT_FUNC(double)
 
 
 static inline int4 clamp(int4 amount, int low, int high) {
