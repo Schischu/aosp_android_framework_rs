@@ -236,6 +236,8 @@ static void GetCpuInfo() {
     gArchUseSIMD = !!strstr(cpuinfo, " neon");
 #elif defined(ARCH_X86_HAVE_SSSE3)
     gArchUseSIMD = !!strstr(cpuinfo, " ssse3");
+#elif defined (ARCH_ARM64_USE_INTRINSICS)
+    gArchUseSIMD = true;
 #endif
 }
 #endif // ARCH_ARM_HAVE_VFP || ARCH_X86_HAVE_SSSE3
