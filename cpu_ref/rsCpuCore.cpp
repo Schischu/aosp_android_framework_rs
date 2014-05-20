@@ -57,7 +57,11 @@ static pthread_key_t gThreadTLSKey = 0;
 static uint32_t gThreadTLSKeyCount = 0;
 static pthread_mutex_t gInitMutex = PTHREAD_MUTEX_INITIALIZER;
 
+#ifdef ARCH_ARM64_USE_INTRINSICS
+bool android::renderscript::gArchUseSIMD = true;
+#else
 bool android::renderscript::gArchUseSIMD = false;
+#endif
 
 RsdCpuReference::~RsdCpuReference() {
 }
