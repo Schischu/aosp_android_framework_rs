@@ -57,7 +57,11 @@ static pthread_key_t gThreadTLSKey = 0;
 static uint32_t gThreadTLSKeyCount = 0;
 static pthread_mutex_t gInitMutex = PTHREAD_MUTEX_INITIALIZER;
 
+#ifdef ARCH_ARM64_USE_INTRINSICS
+bool android::renderscript::gArchUseSIMD = true;
+#else
 bool android::renderscript::gArchUseSIMD = false;
+#endif
 
 RsdCpuReference::~RsdCpuReference() {
 }
@@ -204,7 +208,8 @@ void RsdCpuReferenceImpl::unlockMutex() {
     pthread_mutex_unlock(&gInitMutex);
 }
 
-#if defined(ARCH_ARM_HAVE_VFP) || defined(ARCH_X86_HAVE_SSSE3)
+// never called on ARM64
+#if defined(ARCH_ARM_HAVE_VFP) || defined(ARCH_X86_HAVE_SSSE3) || !defined(ARCH_ARM64_USE_INTRINSICS)
 static int
 read_file(const char*  pathname, char*  buffer, size_t  buffsize)
 {
@@ -238,7 +243,7 @@ static void GetCpuInfo() {
     gArchUseSIMD = !!strstr(cpuinfo, " ssse3");
 #endif
 }
-#endif // ARCH_ARM_HAVE_VFP || ARCH_X86_HAVE_SSSE3
+#endif // ARCH_ARM_HAVE_VFP || ARCH_X86_HAVE_SSSE3 || !ARCH_ARM64_USE_INTRINSICS
 
 bool RsdCpuReferenceImpl::init(uint32_t version_major, uint32_t version_minor,
                                sym_lookup_t lfn, script_lookup_t slfn) {
@@ -265,7 +270,7 @@ bool RsdCpuReferenceImpl::init(uint32_t version_major, uint32_t version_minor,
         ALOGE("pthread_setspecific %i", status);
     }
 
-#if defined(ARCH_ARM_HAVE_VFP) || defined(ARCH_X86_HAVE_SSSE3)
+#if defined(ARCH_ARM_HAVE_VFP) || defined(ARCH_X86_HAVE_SSSE3) || !defined(ARCH_ARM64_USE_INTRINSICS)
     GetCpuInfo();
 #endif
 
