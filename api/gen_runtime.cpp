@@ -1483,7 +1483,8 @@ void Permutation::writeJavaInputAllocationDefinition(ofstream& file, const strin
         }
     } else {
         file << "createRandomAllocation(mRS, Element.DataType." << dataType << ", " << vectorSize
-             << ", " << seed << ", false)";  // TODO set to false only for native
+            // TODO  << ", " << seed << ", " << (mTest == "limited" ? "false" : "true") << ")";
+             << ", " << seed << ", " << "false" << ")";
     }
     file << ";\n";
 }
