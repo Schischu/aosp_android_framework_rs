@@ -72,6 +72,9 @@ typedef struct {
     uint32_t zEnd;
     uint32_t arrayStart;
     uint32_t arrayEnd;
+    
+    // Multi-input data.
+    const Allocation ** ains;
 } MTLaunchStruct;
 
 
@@ -98,6 +101,9 @@ public:
 
     void launchThreads(const Allocation * ain, Allocation * aout,
                        const RsScriptCall *sc, MTLaunchStruct *mtls);
+
+    void launchThreads(const Allocation** ains, uint32_t inLen, Allocation* aout,
+                       const RsScriptCall* sc, MTLaunchStruct* mtls); 
 
     virtual CpuScript * createScript(const ScriptC *s,
                                      char const *resName, char const *cacheDir,

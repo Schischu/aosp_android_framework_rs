@@ -48,6 +48,11 @@ class FBOCache;
 typedef void *(*RsHalSymbolLookupFunc)(void *usrptr, char const *symbolName);
 
 typedef struct {
+  uint32_t eStride;
+  uint32_t yStride;
+} StridePair;
+
+typedef struct {
     const void *in;
     void *out;
     const void *usr;
@@ -58,6 +63,10 @@ typedef struct {
     uint32_t lod;
     RsAllocationCubemapFace face;
     uint32_t ar[16];
+
+    const void **ins;
+    uint32_t *eStrideIns;
+
     uint32_t lid;
 
     uint32_t dimX;
@@ -72,6 +81,9 @@ typedef struct {
     uint32_t yStrideIn;
     uint32_t yStrideOut;
     uint32_t slot;
+
+    const uint8_t** ptrIns;
+    StridePair* inStrides;
 } RsForEachStubParamStruct;
 
 /**
@@ -140,6 +152,15 @@ typedef struct {
                              ObjectBase *data);
 
         void (*destroy)(const Context *rsc, Script *s);
+        void (*invokeForEachMulti)(const Context *rsc,
+                                   Script *s,
+                                   uint32_t slot,
+                                   const Allocation ** ains,
+                                   size_t inLen,
+                                   Allocation * aout,
+                                   const void * usr,
+                                   size_t usrLen,
+                                   const RsScriptCall *sc);
     } script;
 
     struct {
@@ -305,4 +326,3 @@ bool rsdHalInit(RsContext, uint32_t version_major, uint32_t version_minor);
 #endif
 
 #endif
-

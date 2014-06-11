@@ -888,6 +888,134 @@ void RsdCpuScriptImpl::forEachMtlsSetup(const Allocation * ain, Allocation * aou
     }
 }
 
+void RsdCpuScriptImpl::forEachMtlsSetup(const Allocation ** ains, uint32_t inLen,
+                                        Allocation * aout,
+                                        const void * usr, uint32_t usrLen,
+                                        const RsScriptCall *sc,
+                                        MTLaunchStruct *mtls) {
+
+    memset(mtls, 0, sizeof(MTLaunchStruct));
+
+    // possible for this to occur if IO_OUTPUT/IO_INPUT with no bound surface
+    if (ains != NULL) {
+        for (int index = inLen; --index >= 0;) {
+            const Allocation* ain = ains[index * 2];
+
+            if (ain != NULL && (const uint8_t *)ain->mHal.drvState.lod[0].mallocPtr == NULL) {
+                mCtx->getContext()->setError(RS_ERROR_BAD_SCRIPT, "rsForEach called with null in allocations");
+                return;
+            }
+        }
+    }
+
+    if (aout && (const uint8_t *)aout->mHal.drvState.lod[0].mallocPtr == NULL) {
+        mCtx->getContext()->setError(RS_ERROR_BAD_SCRIPT, "rsForEach called with null out allocations");
+        return;
+    }
+
+    if (ains) {
+        const Allocation* ain = ains[0];
+
+        // Should we check to make sure all inputs have the same dimensions here?
+
+        mtls->fep.dimX = ain->getType()->getDimX();
+        mtls->fep.dimY = ain->getType()->getDimY();
+        mtls->fep.dimZ = ain->getType()->getDimZ();
+
+    } else if (aout) {
+        mtls->fep.dimX = aout->getType()->getDimX();
+        mtls->fep.dimY = aout->getType()->getDimY();
+        mtls->fep.dimZ = aout->getType()->getDimZ();
+
+    } else {
+        mCtx->getContext()->setError(RS_ERROR_BAD_SCRIPT, "rsForEach called with null allocations");
+        return;
+    }
+
+    if (!sc || (sc->xEnd == 0)) {
+        mtls->xEnd = mtls->fep.dimX;
+    } else {
+        rsAssert(sc->xStart < mtls->fep.dimX);
+        rsAssert(sc->xEnd <= mtls->fep.dimX);
+        rsAssert(sc->xStart < sc->xEnd);
+        mtls->xStart = rsMin(mtls->fep.dimX, sc->xStart);
+        mtls->xEnd = rsMin(mtls->fep.dimX, sc->xEnd);
+        if (mtls->xStart >= mtls->xEnd) return;
+    }
+
+    if (!sc || (sc->yEnd == 0)) {
+        mtls->yEnd = mtls->fep.dimY;
+    } else {
+        rsAssert(sc->yStart < mtls->fep.dimY);
+        rsAssert(sc->yEnd <= mtls->fep.dimY);
+        rsAssert(sc->yStart < sc->yEnd);
+        mtls->yStart = rsMin(mtls->fep.dimY, sc->yStart);
+        mtls->yEnd = rsMin(mtls->fep.dimY, sc->yEnd);
+        if (mtls->yStart >= mtls->yEnd) return;
+    }
+
+    if (!sc || (sc->zEnd == 0)) {
+        mtls->zEnd = mtls->fep.dimZ;
+    } else {
+        rsAssert(sc->zStart < mtls->fep.dimZ);
+        rsAssert(sc->zEnd <= mtls->fep.dimZ);
+        rsAssert(sc->zStart < sc->zEnd);
+        mtls->zStart = rsMin(mtls->fep.dimZ, sc->zStart);
+        mtls->zEnd = rsMin(mtls->fep.dimZ, sc->zEnd);
+        if (mtls->zStart >= mtls->zEnd) return;
+    }
+
+    mtls->xEnd     = rsMax((uint32_t)1, mtls->xEnd);
+    mtls->yEnd     = rsMax((uint32_t)1, mtls->yEnd);
+    mtls->zEnd     = rsMax((uint32_t)1, mtls->zEnd);
+    mtls->arrayEnd = rsMax((uint32_t)1, mtls->arrayEnd);
+
+    rsAssert(!ains || (ains[0]->getType()->getDimZ() == 0));
+
+    mtls->rsc        = mCtx;
+    mtls->ains       = ains;
+    mtls->aout       = aout;
+    mtls->fep.usr    = usr;
+    mtls->fep.usrLen = usrLen;
+    mtls->mSliceSize = 1;
+    mtls->mSliceNum  = 0;
+
+    mtls->fep.ptrIns    = NULL;
+    mtls->fep.eStrideIn = 0;
+    mtls->isThreadable  = mIsThreadable;
+
+    if (ains) {
+        mtls->fep.ptrIns    = new const uint8_t*[inLen];
+        mtls->fep.inStrides = new StridePair[inLen];
+
+        for (int index = inLen; --index >= 0;) {
+            /*
+             * The ains array is walked this way (index * 2) due to its origin
+             * as an array of Java longs.  As such, each of the pointers we are
+             * interested in are stored in the bottom 32-bits of the 64-bit
+             * long value.
+             */
+            const Allocation *ain = ains[index * 2];
+
+            mtls->fep.ptrIns[index] =
+              (const uint8_t*)ain->mHal.drvState.lod[0].mallocPtr;
+
+            mtls->fep.inStrides[index].eStride =
+              ain->getType()->getElementSizeBytes();
+            mtls->fep.inStrides[index].yStride =
+              ain->mHal.drvState.lod[0].stride;
+        }
+    }
+
+    mtls->fep.ptrOut = NULL;
+    mtls->fep.eStrideOut = 0;
+    if (aout) {
+        mtls->fep.ptrOut     = (uint8_t *)aout->mHal.drvState.lod[0].mallocPtr;
+        mtls->fep.eStrideOut = aout->getType()->getElementSizeBytes();
+        mtls->fep.yStrideOut = aout->mHal.drvState.lod[0].stride;
+    }
+}
+
 
 void RsdCpuScriptImpl::invokeForEach(uint32_t slot,
                                      const Allocation * ain,
@@ -902,6 +1030,24 @@ void RsdCpuScriptImpl::invokeForEach(uint32_t slot,
 
     RsdCpuScriptImpl * oldTLS = mCtx->setTLS(this);
     mCtx->launchThreads(ain, aout, sc, &mtls);
+    mCtx->setTLS(oldTLS);
+}
+
+void RsdCpuScriptImpl::invokeForEachMulti(uint32_t slot,
+                                          const Allocation ** ains,
+                                          uint32_t inLen,
+                                          Allocation * aout,
+                                          const void * usr,
+                                          uint32_t usrLen,
+                                          const RsScriptCall *sc) {
+
+    MTLaunchStruct mtls;
+
+    forEachMtlsSetup(ains, inLen, aout, usr, usrLen, sc, &mtls);
+    forEachKernelSetup(slot, &mtls);
+
+    RsdCpuScriptImpl * oldTLS = mCtx->setTLS(this);
+    mCtx->launchThreads(ains, inLen, aout, sc, &mtls);
     mCtx->setTLS(oldTLS);
 }
 
