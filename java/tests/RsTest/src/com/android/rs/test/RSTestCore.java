@@ -94,6 +94,7 @@ public class RSTestCore {
         unitTests.add(new UT_program_raster(this, mRes, mCtx));
         unitTests.add(new UT_mesh(this, mRes, mCtx));*/
         unitTests.add(new UT_fp_mad(this, mRes, mCtx));
+        unitTests.add(new UT_foreach_multi(this, mRes, mCtx));
 
         /*
         unitTests.add(new UnitTest(null, "<Pass>", 1));
