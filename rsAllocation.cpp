@@ -531,6 +531,15 @@ void Allocation::ioReceive(const Context *rsc) {
 #endif
 }
 
+bool Allocation::hasSameDims(const Allocation *other) const {
+    const Type *type0 = this->getType(),
+               *type1 = other->getType();
+
+    return (type0->getDimX() == type1->getDimX()) &&
+           (type0->getDimY() == type1->getDimY()) &&
+           (type0->getDimZ() == type1->getDimZ());
+}
+
 
 /////////////////
 //
