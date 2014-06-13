@@ -436,9 +436,11 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
     switch (prec) {
     case bcinfo::RS_FP_Imprecise:
     case bcinfo::RS_FP_Relaxed:
-#if defined(ARCH_ARM_HAVE_NEON)
-        // NEON-capable devices can use an accelerated math library for all
-        // reduced precision scripts.
+#if defined(ARCH_ARM_HAVE_NEON) && !defined(ARCH_ARM64_HAVE_NEON)
+        // NEON-capable ARMv7a devices can use an accelerated math library 
+        // for all reduced precision scripts.
+        // ARMv8 does not use NEON, as ASIMD can be used with all precision
+        // levels.
         core_lib = bcc::RSInfo::LibCLCoreNEONPath;
 #endif
         break;
