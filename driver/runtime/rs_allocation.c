@@ -104,8 +104,10 @@ uint8_t*
 rsOffset(rs_allocation a, uint32_t sizeOf, uint32_t x, uint32_t y,
          uint32_t z) {
     Allocation_t *alloc = (Allocation_t *)a.p;
+    //uint8_t *p = (uint8_t *)a.r;
+    //const uint32_t stride = (uint32_t)a.v2;
     uint8_t *p = (uint8_t *)alloc->mHal.drvState.lod[0].mallocPtr;
-    const uint32_t stride = alloc->mHal.drvState.lod[0].stride;
+    const uint32_t stride = (uint32_t)alloc->mHal.drvState.lod[0].stride;
     const uint32_t dimY = alloc->mHal.drvState.lod[0].dimY;
     uint8_t *dp = &p[(sizeOf * x) + (y * stride) +
                      (z * stride * dimY)];

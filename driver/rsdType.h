@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-#ifndef RSD_SAMPLER_H
-#define RSD_SAMPLER_H
+#ifndef RSD_TYPE_H
+#define RSD_TYPE_H
 
 #include <rs_hal.h>
 
 
-bool rsdSamplerInit(const android::renderscript::Context *rsc,
-                    const android::renderscript::Sampler *);
+bool rsdTypeInit(const android::renderscript::Context *rsc,
+                 const android::renderscript::Type *);
 
-void rsdSamplerDestroy(const android::renderscript::Context *rsc,
-                       const android::renderscript::Sampler *);
+void rsdTypeDestroy(const android::renderscript::Context *rsc,
+                    const android::renderscript::Type *);
 
-void rsdSamplerUpdateCachedObject(const android::renderscript::Context *rsc,
-                                  const android::renderscript::Sampler *,
-                                  android::renderscript::rs_sampler *obj);
+void rsdTypeUpdateCachedObject(const android::renderscript::Context *rsc,
+                               const android::renderscript::Type *,
+                               android::renderscript::rs_type *obj);
 
-#endif // RSD_SAMPLER_H
+#endif // RSD_TYPE_H

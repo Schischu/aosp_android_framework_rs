@@ -139,8 +139,13 @@ uint32_t rsrToClientBlocking(Context *, int cmdID, const void *data, int len);
 //
 //////////////////////////////////////////////////////////////////////////////
 
-void rsrSetObject(const Context *, ObjectBase **dst, ObjectBase * src);
-void rsrClearObject(const Context *, ObjectBase **dst);
+void rsrSetObject(const Context *, rs_allocation *dst, Allocation * src);
+void rsrSetObject(const Context *, rs_sampler *dst, Sampler * src);
+void rsrSetObject(const Context *, rs_script *dst, Script * src);
+void rsrSetObject(const Context *, rs_script_group *dst, ScriptGroup * src);
+void rsrSetObject(const Context *, void *dst, ObjectBase * src);
+
+void rsrClearObject(const Context *, void *dst);
 bool rsrIsObject(const Context *, const ObjectBase *src);
 
 void rsrAllocationIncRefs(const Context *, const Allocation *, void *ptr,

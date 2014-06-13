@@ -134,26 +134,57 @@ float rsrGetDt(Context *rsc, const Script *sc) {
 //
 //////////////////////////////////////////////////////////////////////////////
 
-void rsrSetObject(const Context *rsc, ObjectBase **dst, ObjectBase * src) {
-    //ALOGE("rsiSetObject  %p,%p  %p", vdst, *vdst, vsrc);
+static void SetObjectRef(const Context *rsc, const ObjectBase *dst, const ObjectBase *src) {
     if (src) {
         CHECK_OBJ(src);
         src->incSysRef();
     }
-    if (dst[0]) {
-        CHECK_OBJ(dst[0]);
-        dst[0]->decSysRef();
+    if (dst) {
+        CHECK_OBJ(dst);
+        dst->decSysRef();
     }
-    *dst = src;
 }
 
-void rsrClearObject(const Context *rsc, ObjectBase **dst) {
+void rsrSetObject(const Context *rsc, rs_allocation *dst, Allocation * src) {
+    ALOGE("rsiSetObject (Allocation) %p,%p  %p", dst, dst->p, src);
+    SetObjectRef(rsc, dst->p, src);
+    rsc->mHal.funcs.allocation.updateCachedObject(rsc, src, dst);
+}
+
+void rsrSetObject(const Context *rsc, rs_sampler *dst, Sampler * src) {
+    ALOGE("rsiSetObject (Sampler) %p,%p  %p", dst, dst->p, src);
+    SetObjectRef(rsc, dst->p, src);
+    rsc->mHal.funcs.sampler.updateCachedObject(rsc, src, dst);
+}
+
+void rsrSetObject(const Context *rsc, rs_script *dst, Script *src) {
+    ALOGE("rsiSetObject (Script) %p,%p  %p", dst, dst->p, src);
+    SetObjectRef(rsc, dst->p, src);
+    rsc->mHal.funcs.script.updateCachedObject(rsc, src, dst);
+}
+
+void rsrSetObject(const Context *rsc, rs_script_group *dst, ScriptGroup *src) {
+    ALOGE("rsiSetObject (ScriptGroup) %p,%p  %p", dst->p, dst, src);
+    SetObjectRef(rsc, dst->p, src);
+    rsc->mHal.funcs.scriptgroup.updateCachedObject(rsc, src, dst);
+}
+
+void rsrSetObject(const Context *rsc, void *dst, ObjectBase *src) {
+    ObjectBase **odest = (ObjectBase **)dst;
+    ALOGE("rsiSetObject (base) %p,%p  %p", dst, *odest, src);
+    SetObjectRef(rsc, (ObjectBase *)dst, src);
+    odest[0] = src;
+}
+
+
+void rsrClearObject(const Context *rsc, void *dst) {
+    ObjectBase **odst = (ObjectBase **)dst;
     //ALOGE("rsiClearObject  %p,%p", vdst, *vdst);
-    if (dst[0]) {
-        CHECK_OBJ(dst[0]);
-        dst[0]->decSysRef();
+    if (odst[0]) {
+        CHECK_OBJ(odst[0]);
+        odst[0]->decSysRef();
     }
-    *dst = NULL;
+    *odst = NULL;
 }
 
 bool rsrIsObject(const Context *rsc, const ObjectBase *src) {

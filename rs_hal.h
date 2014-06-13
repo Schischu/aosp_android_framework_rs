@@ -45,6 +45,30 @@ class Mesh;
 class Sampler;
 class FBOCache;
 
+//#ifndef __LP64__
+//#define RS_BASE_OBJ(_t_) typedef struct { const _t_* p; } __attribute__((packed, aligned(4)))
+//#else
+#define RS_BASE_OBJ(_t_) typedef struct { const _t_* p; const void* r; const void* v1; const void* v2; }
+//#endif
+
+RS_BASE_OBJ(Element) rs_element;
+RS_BASE_OBJ(Type) rs_type;
+RS_BASE_OBJ(Allocation) rs_allocation;
+RS_BASE_OBJ(Sampler) rs_sampler;
+RS_BASE_OBJ(Script) rs_script;
+RS_BASE_OBJ(ScriptGroup) rs_script_group;
+
+#ifndef __LP64__
+typedef struct { const int* p; } __attribute__((packed, aligned(4))) rs_mesh;
+typedef struct { const int* p; } __attribute__((packed, aligned(4))) rs_path;
+typedef struct { const int* p; } __attribute__((packed, aligned(4))) rs_program_fragment;
+typedef struct { const int* p; } __attribute__((packed, aligned(4))) rs_program_vertex;
+typedef struct { const int* p; } __attribute__((packed, aligned(4))) rs_program_raster;
+typedef struct { const int* p; } __attribute__((packed, aligned(4))) rs_program_store;
+typedef struct { const int* p; } __attribute__((packed, aligned(4))) rs_font;
+#endif // __LP64__
+
+
 typedef void *(*RsHalSymbolLookupFunc)(void *usrptr, char const *symbolName);
 
 typedef struct {
@@ -140,6 +164,7 @@ typedef struct {
                              ObjectBase *data);
 
         void (*destroy)(const Context *rsc, Script *s);
+        void (*updateCachedObject)(const Context *rsc, const Script *, rs_script *obj);
     } script;
 
     struct {
@@ -221,6 +246,8 @@ typedef struct {
                               const void *data, uint32_t elementOff, size_t sizeBytes);
 
         void (*generateMipmaps)(const Context *rsc, const Allocation *alloc);
+
+        void (*updateCachedObject)(const Context *rsc, const Allocation *alloc, rs_allocation *obj);
     } allocation;
 
     struct {
@@ -269,6 +296,7 @@ typedef struct {
     struct {
         bool (*init)(const Context *rsc, const Sampler *m);
         void (*destroy)(const Context *rsc, const Sampler *m);
+        void (*updateCachedObject)(const Context *rsc, const Sampler *s, rs_sampler *obj);
     } sampler;
 
     struct {
@@ -285,7 +313,20 @@ typedef struct {
                           const ScriptKernelID *kid, Allocation *);
         void (*execute)(const Context *rsc, const ScriptGroup *sg);
         void (*destroy)(const Context *rsc, const ScriptGroup *sg);
+        void (*updateCachedObject)(const Context *rsc, const ScriptGroup *sg, rs_script_group *obj);
     } scriptgroup;
+
+    struct {
+        bool (*init)(const Context *rsc, const Type *m);
+        void (*destroy)(const Context *rsc, const Type *m);
+        void (*updateCachedObject)(const Context *rsc, const Type *s, rs_type *obj);
+    } type;
+
+    struct {
+        bool (*init)(const Context *rsc, const Element *m);
+        void (*destroy)(const Context *rsc, const Element *m);
+        void (*updateCachedObject)(const Context *rsc, const Element *s, rs_element *obj);
+    } element;
 
     void (*finish)(const Context *rsc);
 } RsdHalFunctions;
