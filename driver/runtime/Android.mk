@@ -84,14 +84,16 @@ LOCAL_SRC_FILES_64 := $(clcore_files_64)
 include $(LOCAL_PATH)/build_bc_lib.mk
 rs_debug_runtime :=
 
-# Build an optimized version of the library for x86 platforms (all have SSE2/3).
+# Coerce the triple for the x86 runtime.
+# This prevents calling convention issues at the expense of some optimized perf
 ifeq ($(TARGET_ARCH),$(filter $(TARGET_ARCH),x86 x86_64))
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := libclcore_x86.bc
-LOCAL_SRC_FILES := $(clcore_x86_files)
-LOCAL_SRC_FILES_32 := $(clcore_base_files_32)
-LOCAL_SRC_FILES_64 := $(clcore_base_files_64)
+BCC_RS_TRIPLE := armv7-none-linux-gnueabi
+LOCAL_SRC_FILES := $(clcore_files)
+LOCAL_SRC_FILES_32 := $(clcore_files_32)
+LOCAL_SRC_FILES_64 := $(clcore_files_64)
 
 include $(LOCAL_PATH)/build_bc_lib.mk
 endif
