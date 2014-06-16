@@ -294,6 +294,9 @@ void Type::decRefs(const void *ptr, size_t ct, size_t startOff) const {
     }
 }
 
+void Type::callUpdateCacheObject(const Context *rsc, void *dstObj) const {
+    rsc->mHal.funcs.type.updateCachedObject(rsc, this, (rs_type *)dstObj);
+}
 
 //////////////////////////////////////////////////
 //

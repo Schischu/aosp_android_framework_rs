@@ -37,11 +37,11 @@ ObjectBase::ObjectBase(Context *rsc) {
 
     rsAssert(rsc);
     add();
-    //ALOGV("ObjectBase %p con", this);
+    ALOGE("ObjectBase %p con", this);
 }
 
 ObjectBase::~ObjectBase() {
-    //ALOGV("~ObjectBase %p  ref %i,%i", this, mUserRefCount, mSysRefCount);
+    ALOGE("~ObjectBase %p  ref %i,%i", this, mUserRefCount, mSysRefCount);
 #if RS_OBJECT_DEBUG
     mDH->dump();
     delete mDH;
@@ -76,12 +76,12 @@ void ObjectBase::dumpLOGV(const char *op) const {
 
 void ObjectBase::incUserRef() const {
     __sync_fetch_and_add(&mUserRefCount, 1);
-    //ALOGV("ObjectBase %p incU ref %i, %i", this, mUserRefCount, mSysRefCount);
+    ALOGE("ObjectBase %p incU ref %i, %i", this, mUserRefCount, mSysRefCount);
 }
 
 void ObjectBase::incSysRef() const {
     __sync_fetch_and_add(&mSysRefCount, 1);
-    //ALOGV("ObjectBase %p incS ref %i, %i", this, mUserRefCount, mSysRefCount);
+    ALOGE("ObjectBase %p incS ref %i, %i", this, mUserRefCount, mSysRefCount);
 }
 
 void ObjectBase::preDestroy() const {
@@ -143,7 +143,7 @@ bool ObjectBase::zeroUserRef() const {
 }
 
 bool ObjectBase::decSysRef() const {
-    //ALOGV("ObjectBase %p decS ref %i, %i", this, mUserRefCount, mSysRefCount);
+    ALOGE("ObjectBase %p decS ref %i, %i", this, mUserRefCount, mSysRefCount);
     rsAssert(mSysRefCount > 0);
     if ((__sync_fetch_and_sub(&mSysRefCount, 1) <= 1)) {
         __sync_synchronize();
@@ -284,3 +284,10 @@ bool ObjectBase::isValid(const Context *rsc, const ObjectBase *obj) {
     asyncUnlock();
     return false;
 }
+
+void ObjectBase::callUpdateCacheObject(const Context *rsc, void *dstObj) const {
+    ALOGE("ObjectBase::callUpdateCacheObject %p  %p", this, dstObj);
+    *((const void **)dstObj) = this;
+    //rsAssert(0);
+}
+

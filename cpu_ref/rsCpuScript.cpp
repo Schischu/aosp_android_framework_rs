@@ -508,7 +508,7 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
 
     for (size_t i = 0; i < ME.getExportForEachSignatureCount(); i++) {
         char* name = new char[strlen(ME.getExportForEachNameList()[i]) + 1];
-        mExportedForEachFuncList.push_back(std::make_pair(name, 
+        mExportedForEachFuncList.push_back(std::make_pair(name,
                                                           ME.getExportForEachSignatureList()[i]));
     }
 
@@ -1044,11 +1044,6 @@ void RsdCpuScriptImpl::setGlobalObj(uint32_t slot, ObjectBase *data) {
     //rsAssert(script->mFieldIsObject[slot]);
     //ALOGE("setGlobalObj %p %p %i %p", dc, script, slot, data);
 
-    //if (mIntrinsicID) {
-        //mIntrinsicFuncs.setVarObj(dc, script, drv->mIntrinsicData, slot, alloc);
-        //return;
-    //}
-
 #ifndef RS_COMPATIBILITY_LIB
     int32_t *destPtr = reinterpret_cast<int32_t *>(
                           mExecutable->getExportVarAddrs()[slot]);
@@ -1105,7 +1100,7 @@ RsdCpuScriptImpl::~RsdCpuScriptImpl() {
     if (mBoundAllocs) {
         delete[] mBoundAllocs;
     }
-    
+
     for (size_t i = 0; i < mExportedForEachFuncList.size(); i++) {
         delete[] mExportedForEachFuncList[i].first;
     }

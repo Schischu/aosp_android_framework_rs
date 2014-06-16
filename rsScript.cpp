@@ -84,7 +84,7 @@ void Script::setVar(uint32_t slot, const void *val, size_t len, Element *e,
 }
 
 void Script::setVarObj(uint32_t slot, ObjectBase *val) {
-    //ALOGE("setVarObj %i %p", slot, val);
+    ALOGE("setVarObj %i %p", slot, val);
     if (slot >= mHal.info.exportedVariableCount) {
         ALOGE("Script::setVarObj unable to set allocation, invalid slot index: "
               "%u >= %zu", slot, mHal.info.exportedVariableCount);
@@ -93,6 +93,10 @@ void Script::setVarObj(uint32_t slot, ObjectBase *val) {
     mHasObjectSlots = true;
     //ALOGE("setvarobj  %i %p", slot, val);
     mRSC->mHal.funcs.script.setGlobalObj(mRSC, this, slot, val);
+}
+
+void Script::callUpdateCacheObject(const Context *rsc, void *dstObj) const {
+    rsc->mHal.funcs.script.updateCachedObject(rsc, this, (rs_script *)dstObj);
 }
 
 bool Script::freeChildren() {
