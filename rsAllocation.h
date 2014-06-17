@@ -151,6 +151,7 @@ public:
 
     void incRefs(const void *ptr, size_t ct, size_t startOff = 0) const;
     void decRefs(const void *ptr, size_t ct, size_t startOff = 0) const;
+    virtual void callUpdateCacheObject(const Context *rsc, void *dstObj) const;
     virtual bool freeChildren();
 
     void sendDirty(const Context *rsc) const;
@@ -165,6 +166,7 @@ public:
 
     void * getPointer(const Context *rsc, uint32_t lod, RsAllocationCubemapFace face,
                       uint32_t z, uint32_t array, size_t *stride);
+
 
 protected:
     Vector<const Program *> mToDirtyList;

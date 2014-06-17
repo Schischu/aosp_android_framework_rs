@@ -146,3 +146,20 @@ Allocation * rsdScriptGetAllocationForPointer(const android::renderscript::Conte
     return cs->getAllocationForPointer(ptr);
 }
 
+void rsdScriptUpdateCachedObject(const Context *rsc,
+                                 const Script *script,
+                                 rs_script *obj)
+{
+    obj->p = script;
+#ifdef __LP64__
+    obj->r = NULL;
+    if (script != NULL) {
+        obj->v1 = script->mHal.drv;
+    } else {
+        obj->v1 = NULL;
+    }
+    obj->v2 = NULL;
+#endif
+}
+
+

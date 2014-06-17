@@ -33,26 +33,21 @@ using namespace android;
 using namespace android::renderscript;
 
 
-bool rsdSamplerInit(const Context *, const Sampler *s) {
+bool rsdTypeInit(const Context *, const Type *t) {
     return true;
 }
 
-void rsdSamplerDestroy(const android::renderscript::Context *rsc,
-                       const android::renderscript::Sampler *s) {
+void rsdTypeDestroy(const Context *rsc, const Type *t) {
 }
 
-void rsdSamplerUpdateCachedObject(const Context *rsc,
-                                  const Sampler *alloc,
-                                  rs_sampler *obj)
+void rsdTypeUpdateCachedObject(const Context *rsc,
+                               const Type *t,
+                               rs_type *obj)
 {
-    obj->p = alloc;
+    obj->p = t;
 #ifdef __LP64__
     obj->r = NULL;
-    if (alloc != NULL) {
-        obj->v1 = alloc->mHal.drv;
-    } else {
-        obj->v1 = NULL;
-    }
+    obj->v1 = NULL;
     obj->v2 = NULL;
 #endif
 }
