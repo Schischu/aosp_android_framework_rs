@@ -19,6 +19,8 @@
 #include "rsdCore.h"
 #include "rsdAllocation.h"
 #include "rsdBcc.h"
+#include "rsdElement.h"
+#include "rsdType.h"
 #ifndef RS_COMPATIBILITY_LIB
     #include "MemChunk.h"
     #include "rsdGL.h"
@@ -79,7 +81,8 @@ static RsdHalFunctions FunctionTable = {
         rsdScriptSetGlobalVarWithElemDims,
         rsdScriptSetGlobalBind,
         rsdScriptSetGlobalObj,
-        rsdScriptDestroy
+        rsdScriptDestroy,
+        rsdScriptUpdateCachedObject
     },
 
     {
@@ -105,7 +108,8 @@ static RsdHalFunctions FunctionTable = {
         rsdAllocationData3D_alloc,
         rsdAllocationElementData1D,
         rsdAllocationElementData2D,
-        rsdAllocationGenerateMipmaps
+        rsdAllocationGenerateMipmaps,
+        rsdAllocationUpdateCachedObject
     },
 
 
@@ -148,7 +152,8 @@ static RsdHalFunctions FunctionTable = {
 
     {
         rsdSamplerInit,
-        rsdSamplerDestroy
+        rsdSamplerDestroy,
+        rsdSamplerUpdateCachedObject
     },
 
     {
@@ -162,7 +167,20 @@ static RsdHalFunctions FunctionTable = {
         rsdScriptGroupSetInput,
         rsdScriptGroupSetOutput,
         rsdScriptGroupExecute,
-        rsdScriptGroupDestroy
+        rsdScriptGroupDestroy,
+        NULL
+    },
+
+    {
+        rsdTypeInit,
+        rsdTypeDestroy,
+        rsdTypeUpdateCachedObject
+    },
+
+    {
+        rsdElementInit,
+        rsdElementDestroy,
+        rsdElementUpdateCachedObject
     },
 
     NULL // finish
