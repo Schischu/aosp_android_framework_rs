@@ -284,3 +284,9 @@ bool ObjectBase::isValid(const Context *rsc, const ObjectBase *obj) {
     asyncUnlock();
     return false;
 }
+
+void ObjectBase::callUpdateCacheObject(const Context *rsc, void *dstObj) const {
+    //ALOGE("ObjectBase::callUpdateCacheObject %p  %p", this, dstObj);
+    *((const void **)dstObj) = this;
+}
+
