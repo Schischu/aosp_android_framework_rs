@@ -276,10 +276,14 @@ static bool compileBitcode(const char *cacheDir,
         args.push_back(bcFilename.string());
 
         const char **cargs = new const char *[args.size() + 1];
+        std::string cmdLine;
         for (uint32_t i = 0; i < args.size(); i++) {
             cargs[i] = args[i].c_str();
+            cmdLine.append(args[i]);
+            cmdLine.append(" ");
         }
         cargs[args.size()] = NULL;
+        ALOGV("BCC command line: %s", cmdLine.c_str());
 
         execv(BCC_EXE_PATH, (char *const *)cargs);
 
@@ -427,6 +431,7 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
     bcinfo::MetadataExtractor ME((const char *) bitcode, bitcodeSize);
     if (!ME.extract()) {
         ALOGE("Could not extract metadata from bitcode");
+        mCtx->unlockMutex();
         return false;
     }
 
@@ -445,14 +450,17 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
         bool built = compileBitcode(cacheDir, resName, (const char *)bitcode,
                                     bitcodeSize, core_lib, useRSDebugContext,
                                     bccPluginName);
-        if (built) {
-            exec = bcc::RSCompilerDriver::loadScript(cacheDir, resName,
-                    (const char *)bitcode, bitcodeSize, mResolver);
+        if (!built) {
+            ALOGE("bcc: FAILS to compile code for '%s'", resName);
+            mCtx->unlockMutex();
+            return false;
         }
+        exec = bcc::RSCompilerDriver::loadScript(cacheDir, resName,
+                (const char *)bitcode, bitcodeSize, mResolver);
     }
 
     if (exec == NULL) {
-        ALOGE("bcc: FAILS to prepare executable for '%s'", resName);
+        ALOGE("bcc: FAILS to load executable for '%s'", resName);
         mCtx->unlockMutex();
         return false;
     }
