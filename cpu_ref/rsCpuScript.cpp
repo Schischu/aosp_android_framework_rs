@@ -216,29 +216,60 @@ static bool is_force_recompile() {
 
 const static char *BCC_EXE_PATH = "/system/bin/bcc";
 
-static bool compileBitcode(const char *cacheDir,
-                           const char *resName,
+void setCompileArguments(std::vector<const char*>* args, const android::String8& bcFileName,
+                         const char* cacheDir, const char* resName, const char* core_lib,
+                         bool useRSDebugContext, const char* bccPluginName) {
+    rsAssert(cacheDir && resName && core_lib);
+    args->push_back(BCC_EXE_PATH);
+    args->push_back("-o");
+    args->push_back(resName);
+    args->push_back("-output_path");
+    args->push_back(cacheDir);
+    args->push_back("-bclib");
+    args->push_back(core_lib);
+    args->push_back("-mtriple");
+    args->push_back(DEFAULT_TARGET_TRIPLE_STRING);
+
+    // Execute the bcc compiler.
+    if (useRSDebugContext) {
+        args->push_back("-rs-debug-ctx");
+    } else {
+        // Only load additional libraries for compiles that don't use
+        // the debug context.
+        if (bccPluginName && strlen(bccPluginName) > 0) {
+            args->push_back("-load");
+            args->push_back(bccPluginName);
+        }
+    }
+
+    args->push_back(bcFileName.string());
+    args->push_back(NULL);
+    /*
+    const char **cargs = new const char *[args->size() + 1];
+    for (uint32_t i = 0; i < args->size(); i++) {
+        cargs[i] = args[i].c_str();
+    }
+    cargs[args->size()] = NULL;
+    */
+}
+
+static bool compileBitcode(const android::String8& bcFileName,
                            const char *bitcode,
                            size_t bitcodeSize,
-                           const char *core_lib,
-                           bool useRSDebugContext,
-                           const char *bccPluginName) {
-    rsAssert(cacheDir && resName && bitcode && bitcodeSize && core_lib);
+                           const char** compileArguments,
+                           const std::string& compileCommandLine) {
+    rsAssert(bitcode && bitcodeSize);
 
-    android::String8 bcFilename(cacheDir);
-    bcFilename.append("/");
-    bcFilename.append(resName);
-    bcFilename.append(".bc");
-    FILE *bcfile = fopen(bcFilename.string(), "w");
+    FILE *bcfile = fopen(bcFileName.string(), "w");
     if (!bcfile) {
-        ALOGE("Could not write to %s", bcFilename.string());
+        ALOGE("Could not write to %s", bcFileName.string());
         return false;
     }
     size_t nwritten = fwrite(bitcode, 1, bitcodeSize, bcfile);
     fclose(bcfile);
     if (nwritten != bitcodeSize) {
         ALOGE("Could not write %zu bytes to %s", bitcodeSize,
-              bcFilename.string());
+              bcFileName.string());
         return false;
     }
 
@@ -250,40 +281,9 @@ static bool compileBitcode(const char *cacheDir,
         return false;
     }
     case 0: {  // Child process
-        std::vector<std::string> args;
-        args.push_back(BCC_EXE_PATH);
-        args.push_back("-o");
-        args.push_back(resName);
-        args.push_back("-output_path");
-        args.push_back(cacheDir);
-        args.push_back("-bclib");
-        args.push_back(core_lib);
-        args.push_back("-mtriple");
-        args.push_back(DEFAULT_TARGET_TRIPLE_STRING);
+        ALOGV("Invoking BCC with: %s", compileCommandLine.c_str());
+        execv(BCC_EXE_PATH, (char* const*)compileArguments);
 
-        // Execute the bcc compiler.
-        if (useRSDebugContext) {
-            args.push_back("-rs-debug-ctx");
-        } else {
-            // Only load additional libraries for compiles that don't use
-            // the debug context.
-            if (bccPluginName && strlen(bccPluginName) > 0) {
-                args.push_back("-load");
-                args.push_back(bccPluginName);
-            }
-        }
-
-        args.push_back(bcFilename.string());
-
-        const char **cargs = new const char *[args.size() + 1];
-        for (uint32_t i = 0; i < args.size(); i++) {
-            cargs[i] = args[i].c_str();
-        }
-        cargs[args.size()] = NULL;
-
-        execv(BCC_EXE_PATH, (char *const *)cargs);
-
-        delete [] cargs;
         ALOGE("execv() failed: %s", strerror(errno));
         abort();
         return false;
@@ -318,13 +318,9 @@ namespace renderscript {
 #define MAKE_STR_HELPER(S) #S
 #define MAKE_STR(S) MAKE_STR_HELPER(S)
 #define EXPORT_VAR_STR "exportVarCount: "
-#define EXPORT_VAR_STR_LEN strlen(EXPORT_VAR_STR)
 #define EXPORT_FUNC_STR "exportFuncCount: "
-#define EXPORT_FUNC_STR_LEN strlen(EXPORT_FUNC_STR)
 #define EXPORT_FOREACH_STR "exportForEachCount: "
-#define EXPORT_FOREACH_STR_LEN strlen(EXPORT_FOREACH_STR)
 #define OBJECT_SLOT_STR "objectSlotCount: "
-#define OBJECT_SLOT_STR_LEN strlen(OBJECT_SLOT_STR)
 
 // Copy up to a newline or size chars from str -> s, updating str
 // Returns s when successful and NULL when '\0' is finally reached.
@@ -424,30 +420,46 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
         setupCompilerCallback(mCompilerDriver);
     }
 
-    bcinfo::MetadataExtractor ME((const char *) bitcode, bitcodeSize);
-    if (!ME.extract()) {
+    bcinfo::MetadataExtractor bitCodeMetaData((const char *) bitcode, bitcodeSize);
+    if (!bitCodeMetaData.extract()) {
         ALOGE("Could not extract metadata from bitcode");
         return false;
     }
 
-    const char* core_lib = findCoreLib(ME, (const char*)bitcode, bitcodeSize);
+    const char* core_lib = findCoreLib(bitCodeMetaData, (const char*)bitcode, bitcodeSize);
 
     if (mCtx->getContext()->getContextType() == RS_CONTEXT_TYPE_DEBUG) {
         mCompilerDriver->setDebugContext(true);
         useRSDebugContext = true;
-        // Skip the cache lookup
-    } else if (!is_force_recompile()) {
-        // New cache infrastructure goes here
-
     }
 
+    android::String8 bcFileName(cacheDir);
+    bcFileName.append("/");
+    bcFileName.append(resName);
+    bcFileName.append(".bc");
+
+    std::vector<const char*> compileArguments;
+    setCompileArguments(&compileArguments, bcFileName, cacheDir, resName, core_lib,
+                        useRSDebugContext, bccPluginName);
+    // The last argument of compileArguments ia a NULL, so remove 1 from the size.
+    std::string compileCommandLine =
+                bcc::getCommandLine(compileArguments.size() - 1, compileArguments.data());
+
+    if (!is_force_recompile()) {
+        // Load the compiled script that's in the cache, if any.
+        exec = bcc::RSCompilerDriver::loadScript(cacheDir, resName, (const char*)bitcode,
+                                                 bitcodeSize, compileCommandLine.c_str(),
+                                                 mResolver);
+    }
+
+    // If we can't, it's either not there or out of date.  We compile the bit code and try loading
+    // again.
     if (exec == NULL) {
-        bool built = compileBitcode(cacheDir, resName, (const char *)bitcode,
-                                    bitcodeSize, core_lib, useRSDebugContext,
-                                    bccPluginName);
-        if (built) {
-            exec = bcc::RSCompilerDriver::loadScript(cacheDir, resName,
-                    (const char *)bitcode, bitcodeSize, mResolver);
+        if (compileBitcode(bcFileName, (const char*)bitcode, bitcodeSize,
+                           compileArguments.data(), compileCommandLine)) {
+            exec = bcc::RSCompilerDriver::loadScript(cacheDir, resName, (const char*)bitcode,
+                                                     bitcodeSize, compileCommandLine.c_str(),
+                                                     mResolver);
         }
     }
 
@@ -472,15 +484,15 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
         reinterpret_cast<void (*)()>(exec->getSymbolAddress(".rs.dtor"));
 
 
-    if (ME.getExportVarCount()) {
-        mBoundAllocs = new Allocation *[ME.getExportVarCount()];
-        memset(mBoundAllocs, 0, sizeof(void *) * ME.getExportVarCount());
+    if (bitCodeMetaData.getExportVarCount()) {
+        mBoundAllocs = new Allocation *[bitCodeMetaData.getExportVarCount()];
+        memset(mBoundAllocs, 0, sizeof(void *) * bitCodeMetaData.getExportVarCount());
     }
 
-    for (size_t i = 0; i < ME.getExportForEachSignatureCount(); i++) {
-        char* name = new char[strlen(ME.getExportForEachNameList()[i]) + 1];
-        mExportedForEachFuncList.push_back(std::make_pair(name,
-                                                          ME.getExportForEachSignatureList()[i]));
+    for (size_t i = 0; i < bitCodeMetaData.getExportForEachSignatureCount(); i++) {
+        char* name = new char[strlen(bitCodeMetaData.getExportForEachNameList()[i]) + 1];
+        mExportedForEachFuncList.push_back(
+                    std::make_pair(name, bitCodeMetaData.getExportForEachSignatureList()[i]));
     }
 
 #else  // RS_COMPATIBILITY_LIB is defined
