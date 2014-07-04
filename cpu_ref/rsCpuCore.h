@@ -170,6 +170,9 @@ protected:
     script_lookup_t mScriptLookupFn;
 
     ScriptTLSStruct mTlsStruct;
+#ifdef ARCH_X86
+    volatile int mMainCpuId;
+#endif
 
 #ifndef RS_COMPATIBILITY_LIB
     bcc::RSLinkRuntimeCallback mLinkRuntimeCallback;

@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <sched.h>
 
 #if !defined(RS_SERVER) && !defined(RS_COMPATIBILITY_LIB)
 #include <cutils/properties.h>
@@ -126,16 +127,56 @@ RsdCpuReferenceImpl::RsdCpuReferenceImpl(Context *rsc) {
 
 void * RsdCpuReferenceImpl::helperThreadProc(void *vrsc) {
     RsdCpuReferenceImpl *dc = (RsdCpuReferenceImpl *)vrsc;
+    int status;
 
     uint32_t idx = __sync_fetch_and_add(&dc->mWorkers.mLaunchCount, 1);
 
     //ALOGV("RS helperThread starting %p idx=%i", dc, idx);
 
+#ifdef ARCH_X86
+
+    int offset = dc->mMainCpuId;
+    if(offset>=0)
+    {
+      cpu_set_t cpuset;
+      status = sched_getaffinity(0, sizeof(cpu_set_t), &cpuset);
+      if(status!=0)
+      {
+        char * err = strerror(errno);
+        ALOGE("get affinity failed %s", err);
+      }else
+      {
+        //To find (idx+1)th avaliable cpu id starting from main cpu id.
+        //Usually we don't need %d since main cpu id is lowest. Using
+        //this to avoid infinite loop in some corner cases such as cpu
+        //affinity is changed during rs initialization.
+        int n = sizeof(cpuset)*8;
+        int cpuid = offset;
+        for(uint32_t i=0;i<idx+1; i++)
+        {
+          cpuid = (cpuid+1)%n;
+          while(!CPU_ISSET(cpuid, &cpuset))
+            cpuid = (cpuid+1)%n;
+        }
+
+        CPU_ZERO(&cpuset);
+        CPU_SET(cpuid, &cpuset);
+
+        status = sched_setaffinity(0, sizeof(cpu_set_t), &cpuset);
+        if(status!=0)
+        {
+          char * err = strerror(errno);
+          ALOGE("set affinity failed %s", err);
+        }else
+          ALOGD("set affinity to cpu %d", cpuid);
+      }
+    }
+#endif
     dc->mWorkers.mLaunchSignals[idx].init();
     dc->mWorkers.mNativeThreadId[idx] = gettid();
 
     memset(&dc->mTlsStruct, 0, sizeof(dc->mTlsStruct));
-    int status = pthread_setspecific(gThreadTLSKey, &dc->mTlsStruct);
+    status = pthread_setspecific(gThreadTLSKey, &dc->mTlsStruct);
     if (status) {
         ALOGE("pthread_setspecific %i", status);
     }
@@ -193,6 +234,7 @@ void RsdCpuReferenceImpl::launchThreads(WorkerCallback_t cbk, void *data) {
     while (__sync_fetch_and_or(&mWorkers.mRunningCount, 0) != 0) {
         mWorkers.mCompleteSignal.wait();
     }
+
 }
 
 
@@ -289,6 +331,23 @@ bool RsdCpuReferenceImpl::init(uint32_t version_major, uint32_t version_minor,
 
     mWorkers.mRunningCount = mWorkers.mCount;
     mWorkers.mLaunchCount = 0;
+#ifdef ARCH_X86
+    //find smallest cpuid for master thread
+    cpu_set_t cpuset;
+    status = sched_getaffinity(0, sizeof(cpu_set_t), &cpuset);
+    if(status!=0)
+    {
+      char * err = strerror(errno);
+      ALOGE("get affinity failed %s", err);
+      mMainCpuId = -1;
+    }else
+    {
+      int cpuid = 0;
+      while(!CPU_ISSET(cpuid, &cpuset))
+        cpuid++;
+      mMainCpuId = cpuid;
+    }
+#endif
     __sync_synchronize();
 
     pthread_attr_t threadAttr;
@@ -306,6 +365,23 @@ bool RsdCpuReferenceImpl::init(uint32_t version_major, uint32_t version_minor,
             break;
         }
     }
+#ifdef ARCH_X86
+    if(mMainCpuId>=0)
+    {
+      cpu_set_t cpuset;
+      CPU_ZERO(&cpuset);
+      CPU_SET(mMainCpuId, &cpuset);
+      status = sched_setaffinity(0, sizeof(cpu_set_t), &cpuset);
+      if(status!=0)
+      {
+        char * err = strerror(errno);
+        ALOGE("set affinity failed %s", err);
+      }else
+      {
+        ALOGD("set affinity to cpu %d", mMainCpuId);
+      }
+    }
+#endif
     while (__sync_fetch_and_or(&mWorkers.mRunningCount, 0) != 0) {
         usleep(100);
     }
