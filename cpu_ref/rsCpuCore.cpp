@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <sched.h>
 
 #if !defined(RS_SERVER) && !defined(RS_COMPATIBILITY_LIB)
 #include <cutils/properties.h>
@@ -126,29 +127,41 @@ RsdCpuReferenceImpl::RsdCpuReferenceImpl(Context *rsc) {
 
 void * RsdCpuReferenceImpl::helperThreadProc(void *vrsc) {
     RsdCpuReferenceImpl *dc = (RsdCpuReferenceImpl *)vrsc;
+    int status;
 
     uint32_t idx = __sync_fetch_and_add(&dc->mWorkers.mLaunchCount, 1);
 
     //ALOGV("RS helperThread starting %p idx=%i", dc, idx);
+    cpu_set_t * pset = &(dc->mCpuSet);
+
+    if(CPU_COUNT(pset) > (int)(idx + 1)) {
+        //To find (idx+1)th available cpu id starting from main cpu id.
+        int cpuid = -1;
+        for(uint32_t i = 0; i < idx + 2; i++) {
+          cpuid++;
+          while(!CPU_ISSET(cpuid, pset))
+            cpuid++;
+        }
+        cpu_set_t cpuset;
+        CPU_ZERO(&cpuset);
+        CPU_SET(cpuid, &cpuset);
+        status = sched_setaffinity(0, sizeof(cpu_set_t), &cpuset);
+        if(status != 0) {
+            char * err = strerror(errno);
+            ALOGE("set affinity failed %s", err);
+        }else {
+            //ALOGD("set affinity to cpu %d", cpuid);
+        }
+    }
 
     dc->mWorkers.mLaunchSignals[idx].init();
     dc->mWorkers.mNativeThreadId[idx] = gettid();
 
     memset(&dc->mTlsStruct, 0, sizeof(dc->mTlsStruct));
-    int status = pthread_setspecific(gThreadTLSKey, &dc->mTlsStruct);
+    status = pthread_setspecific(gThreadTLSKey, &dc->mTlsStruct);
     if (status) {
         ALOGE("pthread_setspecific %i", status);
     }
-
-#if 0
-    typedef struct {uint64_t bits[1024 / 64]; } cpu_set_t;
-    cpu_set_t cpuset;
-    memset(&cpuset, 0, sizeof(cpuset));
-    cpuset.bits[idx / 64] |= 1ULL << (idx % 64);
-    int ret = syscall(241, rsc->mWorkers.mNativeThreadId[idx],
-              sizeof(cpuset), &cpuset);
-    ALOGE("SETAFFINITY ret = %i %s", ret, EGLUtils::strerror(ret));
-#endif
 
     while (!dc->mExit) {
         dc->mWorkers.mLaunchSignals[idx].wait();
@@ -289,6 +302,14 @@ bool RsdCpuReferenceImpl::init(uint32_t version_major, uint32_t version_minor,
 
     mWorkers.mRunningCount = mWorkers.mCount;
     mWorkers.mLaunchCount = 0;
+
+    status = sched_getaffinity(0, sizeof(cpu_set_t), &mCpuSet);
+    if(status != 0) {
+        char * err = strerror(errno);
+        ALOGE("get affinity failed %s", err);
+        CPU_ZERO(&mCpuSet);
+    }
+
     __sync_synchronize();
 
     pthread_attr_t threadAttr;
@@ -306,6 +327,24 @@ bool RsdCpuReferenceImpl::init(uint32_t version_major, uint32_t version_minor,
             break;
         }
     }
+
+    //find smallest cpuid for master thread
+    if(CPU_COUNT(&mCpuSet) > 0) {
+        cpu_set_t cpuset;
+        int cpuid = 0;
+        while(!CPU_ISSET(cpuid, &mCpuSet))
+            cpuid++;
+        CPU_ZERO(&cpuset);
+        CPU_SET(cpuid, &cpuset);
+        status = sched_setaffinity(0, sizeof(cpu_set_t), &cpuset);
+        if(status != 0) {
+            char * err = strerror(errno);
+            ALOGE("set affinity failed %s", err);
+        }else {
+            //ALOGD("set affinity to cpu %d", cpuid);
+        }
+    }
+
     while (__sync_fetch_and_or(&mWorkers.mRunningCount, 0) != 0) {
         usleep(100);
     }

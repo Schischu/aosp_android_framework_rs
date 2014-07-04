@@ -24,6 +24,7 @@
 #include "rsScriptC.h"
 
 #include <string>
+#include <sched.h>
 
 namespace bcc {
     class BCCContext;
@@ -168,6 +169,8 @@ protected:
     bool mExit;
     sym_lookup_t mSymLookupFn;
     script_lookup_t mScriptLookupFn;
+
+    cpu_set_t mCpuSet;
 
     ScriptTLSStruct mTlsStruct;
 
