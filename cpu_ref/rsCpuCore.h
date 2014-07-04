@@ -145,6 +145,12 @@ public:
     }
 #endif
     virtual bool getInForEach() { return mInForEach; }
+#ifdef ARCH_X86
+    int getMainCpuId()
+    {
+      return mMainCpuId;
+    }
+#endif
 
 protected:
     Context *mRSC;
@@ -170,6 +176,9 @@ protected:
     script_lookup_t mScriptLookupFn;
 
     ScriptTLSStruct mTlsStruct;
+#ifdef ARCH_X86
+    int mMainCpuId;
+#endif
 
 #ifndef RS_COMPATIBILITY_LIB
     bcc::RSLinkRuntimeCallback mLinkRuntimeCallback;
