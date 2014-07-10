@@ -57,134 +57,108 @@ static void SetPriority(const Context *rsc, int32_t priority);
 #endif
 
 
-static RsdHalFunctions FunctionTable = {
-    NATIVE_FUNC(rsdGLInit),
-    NATIVE_FUNC(rsdGLShutdown),
-    NATIVE_FUNC(rsdGLSetSurface),
-    NATIVE_FUNC(rsdGLSwap),
+void setupFunctionTable (RsdHalFunctions* FunctionTable) {
+    FunctionTable->initGraphics = NATIVE_FUNC(rsdGLInit);
+    FunctionTable->shutdownGraphics = NATIVE_FUNC(rsdGLShutdown);
+    FunctionTable->setSurface = NATIVE_FUNC(rsdGLSetSurface);
+    FunctionTable->swap = NATIVE_FUNC(rsdGLSwap);
+    FunctionTable->shutdownDriver = Shutdown;
+    FunctionTable->getVersion = NULL;
+    FunctionTable->setPriority = SetPriority;
+    FunctionTable->allocRuntimeMem = rsdAllocRuntimeMem;
+    FunctionTable->freeRuntimeMem = rsdFreeRuntimeMem;
 
-    Shutdown,
-    NULL,
-    SetPriority,
-    rsdAllocRuntimeMem,
-    rsdFreeRuntimeMem,
-    {
-        rsdScriptInit,
-        rsdInitIntrinsic,
-        rsdScriptInvokeFunction,
-        rsdScriptInvokeRoot,
-        rsdScriptInvokeForEach,
-        rsdScriptInvokeInit,
-        rsdScriptInvokeFreeChildren,
-        rsdScriptSetGlobalVar,
-        rsdScriptGetGlobalVar,
-        rsdScriptSetGlobalVarWithElemDims,
-        rsdScriptSetGlobalBind,
-        rsdScriptSetGlobalObj,
-        rsdScriptDestroy,
-        rsdScriptInvokeForEachMulti,
-        rsdScriptUpdateCachedObject
-    },
+    FunctionTable->script.init = rsdScriptInit;
+    FunctionTable->script.initIntrinsic = rsdInitIntrinsic;
+    FunctionTable->script.invokeFunction = rsdScriptInvokeFunction;
+    FunctionTable->script.invokeRoot = rsdScriptInvokeRoot;
+    FunctionTable->script.invokeForEach = rsdScriptInvokeForEach;
+    FunctionTable->script.invokeInit = rsdScriptInvokeInit;
+    FunctionTable->script.invokeFreeChildren = rsdScriptInvokeFreeChildren;
+    FunctionTable->script.setGlobalVar = rsdScriptSetGlobalVar;
+    FunctionTable->script.getGlobalVar = rsdScriptGetGlobalVar;
+    FunctionTable->script.setGlobalVarWithElemDims = rsdScriptSetGlobalVarWithElemDims;
+    FunctionTable->script.setGlobalBind = rsdScriptSetGlobalBind;
+    FunctionTable->script.setGlobalObj = rsdScriptSetGlobalObj;
+    FunctionTable->script.destroy = rsdScriptDestroy;
+    FunctionTable->script.invokeForEachMulti = rsdScriptInvokeForEachMulti;
+    FunctionTable->script.updateCachedObject = rsdScriptUpdateCachedObject;
 
-    {
-        rsdAllocationInit,
-        rsdAllocationDestroy,
-        rsdAllocationGrallocBits,
-        rsdAllocationResize,
-        rsdAllocationSyncAll,
-        rsdAllocationMarkDirty,
-        NATIVE_FUNC(rsdAllocationSetSurface),
-        NATIVE_FUNC(rsdAllocationIoSend),
-        NATIVE_FUNC(rsdAllocationIoReceive),
-        rsdAllocationData1D,
-        rsdAllocationData2D,
-        rsdAllocationData3D,
-        rsdAllocationRead1D,
-        rsdAllocationRead2D,
-        rsdAllocationRead3D,
-        rsdAllocationLock1D,
-        rsdAllocationUnlock1D,
-        rsdAllocationData1D_alloc,
-        rsdAllocationData2D_alloc,
-        rsdAllocationData3D_alloc,
-        rsdAllocationElementData1D,
-        rsdAllocationElementData2D,
-        rsdAllocationGenerateMipmaps,
-        rsdAllocationUpdateCachedObject
-    },
+    FunctionTable->allocation.init = rsdAllocationInit;
+    FunctionTable->allocation.destroy = rsdAllocationDestroy;
+    FunctionTable->allocation.grallocBits = rsdAllocationGrallocBits;
+    FunctionTable->allocation.resize = rsdAllocationResize;
+    FunctionTable->allocation.syncAll = rsdAllocationSyncAll;
+    FunctionTable->allocation.markDirty = rsdAllocationMarkDirty;
+    FunctionTable->allocation.setSurface = NATIVE_FUNC(rsdAllocationSetSurface);
+    FunctionTable->allocation.ioSend = NATIVE_FUNC(rsdAllocationIoSend);
+    FunctionTable->allocation.ioReceive = NATIVE_FUNC(rsdAllocationIoReceive);
+    FunctionTable->allocation.data1D = rsdAllocationData1D;
+    FunctionTable->allocation.data2D = rsdAllocationData2D;
+    FunctionTable->allocation.data3D = rsdAllocationData3D;
+    FunctionTable->allocation.read1D = rsdAllocationRead1D;
+    FunctionTable->allocation.read2D = rsdAllocationRead2D;
+    FunctionTable->allocation.read3D = rsdAllocationRead3D;
+    FunctionTable->allocation.lock1D = rsdAllocationLock1D;
+    FunctionTable->allocation.unlock1D = rsdAllocationUnlock1D;
+    FunctionTable->allocation.allocData1D = rsdAllocationData1D_alloc;
+    FunctionTable->allocation.allocData2D = rsdAllocationData2D_alloc;
+    FunctionTable->allocation.allocData3D = rsdAllocationData3D_alloc;
+    FunctionTable->allocation.elementData1D = rsdAllocationElementData1D;
+    FunctionTable->allocation.elementData2D = rsdAllocationElementData2D;
+    FunctionTable->allocation.generateMipmaps = rsdAllocationGenerateMipmaps;
+    FunctionTable->allocation.updateCachedObject = rsdAllocationUpdateCachedObject;
+
+    FunctionTable->store.init = NATIVE_FUNC(rsdProgramStoreInit);
+    FunctionTable->store.setActive = NATIVE_FUNC(rsdProgramStoreSetActive);
+    FunctionTable->store.destroy = NATIVE_FUNC(rsdProgramStoreDestroy);
+
+    FunctionTable->raster.init = NATIVE_FUNC(rsdProgramRasterInit);
+    FunctionTable->raster.setActive = NATIVE_FUNC(rsdProgramRasterSetActive);
+    FunctionTable->raster.destroy = NATIVE_FUNC(rsdProgramRasterDestroy);
+
+    FunctionTable->vertex.init = NATIVE_FUNC(rsdProgramVertexInit);
+    FunctionTable->vertex.setActive = NATIVE_FUNC(rsdProgramVertexSetActive);
+    FunctionTable->vertex.destroy = NATIVE_FUNC(rsdProgramVertexDestroy);
+
+    FunctionTable->fragment.init = NATIVE_FUNC(rsdProgramFragmentInit);
+    FunctionTable->fragment.setActive = NATIVE_FUNC(rsdProgramFragmentSetActive);
+    FunctionTable->fragment.destroy = NATIVE_FUNC(rsdProgramFragmentDestroy);
+
+    FunctionTable->mesh.init = NATIVE_FUNC(rsdMeshInit);
+    FunctionTable->mesh.draw = NATIVE_FUNC(rsdMeshDraw);
+    FunctionTable->mesh.destroy = NATIVE_FUNC(rsdMeshDestroy);
+
+    FunctionTable->path.initStatic = NATIVE_FUNC(rsdPathInitStatic);
+    FunctionTable->path.initDynamic = NATIVE_FUNC(rsdPathInitDynamic);
+    FunctionTable->path.draw = NATIVE_FUNC(rsdPathDraw);
+    FunctionTable->path.destroy = NATIVE_FUNC(rsdPathDestroy);
+
+    FunctionTable->sampler.init = rsdSamplerInit;
+    FunctionTable->sampler.destroy = rsdSamplerDestroy;
+    FunctionTable->sampler.updateCachedObject = rsdSamplerUpdateCachedObject;
 
 
-    {
-        NATIVE_FUNC(rsdProgramStoreInit),
-        NATIVE_FUNC(rsdProgramStoreSetActive),
-        NATIVE_FUNC(rsdProgramStoreDestroy)
-    },
+    FunctionTable->framebuffer.init = NATIVE_FUNC(rsdFrameBufferInit);
+    FunctionTable->framebuffer.setActive = NATIVE_FUNC(rsdFrameBufferSetActive);
+    FunctionTable->framebuffer.destroy = NATIVE_FUNC(rsdFrameBufferDestroy);
 
-    {
-        NATIVE_FUNC(rsdProgramRasterInit),
-        NATIVE_FUNC(rsdProgramRasterSetActive),
-        NATIVE_FUNC(rsdProgramRasterDestroy)
-    },
+    FunctionTable->scriptgroup.init = rsdScriptGroupInit;
+    FunctionTable->scriptgroup.setInput = rsdScriptGroupSetInput;
+    FunctionTable->scriptgroup.setOutput = rsdScriptGroupSetOutput;
+    FunctionTable->scriptgroup.execute = rsdScriptGroupExecute;
+    FunctionTable->scriptgroup.destroy = rsdScriptGroupDestroy;
+    FunctionTable->scriptgroup.updateCachedObject = NULL;
 
-    {
-        NATIVE_FUNC(rsdProgramVertexInit),
-        NATIVE_FUNC(rsdProgramVertexSetActive),
-        NATIVE_FUNC(rsdProgramVertexDestroy)
-    },
+    FunctionTable->type.init = rsdTypeInit; 
+    FunctionTable->type.destroy = rsdTypeDestroy;
+    FunctionTable->type.updateCachedObject = rsdTypeUpdateCachedObject;
 
-    {
-        NATIVE_FUNC(rsdProgramFragmentInit),
-        NATIVE_FUNC(rsdProgramFragmentSetActive),
-        NATIVE_FUNC(rsdProgramFragmentDestroy)
-    },
+    FunctionTable->element.init = rsdElementInit;
+    FunctionTable->element.destroy = rsdElementDestroy;
+    FunctionTable->element.updateCachedObject = rsdElementUpdateCachedObject;
 
-    {
-        NATIVE_FUNC(rsdMeshInit),
-        NATIVE_FUNC(rsdMeshDraw),
-        NATIVE_FUNC(rsdMeshDestroy)
-    },
-
-    {
-        NATIVE_FUNC(rsdPathInitStatic),
-        NATIVE_FUNC(rsdPathInitDynamic),
-        NATIVE_FUNC(rsdPathDraw),
-        NATIVE_FUNC(rsdPathDestroy)
-    },
-
-    {
-        rsdSamplerInit,
-        rsdSamplerDestroy,
-        rsdSamplerUpdateCachedObject
-    },
-
-    {
-        NATIVE_FUNC(rsdFrameBufferInit),
-        NATIVE_FUNC(rsdFrameBufferSetActive),
-        NATIVE_FUNC(rsdFrameBufferDestroy)
-    },
-
-    {
-        rsdScriptGroupInit,
-        rsdScriptGroupSetInput,
-        rsdScriptGroupSetOutput,
-        rsdScriptGroupExecute,
-        rsdScriptGroupDestroy,
-        NULL
-    },
-
-    {
-        rsdTypeInit,
-        rsdTypeDestroy,
-        rsdTypeUpdateCachedObject
-    },
-
-    {
-        rsdElementInit,
-        rsdElementDestroy,
-        rsdElementUpdateCachedObject
-    },
-
-    NULL // finish
+    FunctionTable->finish = NULL;
 };
 
 extern const RsdCpuReference::CpuSymbol * rsdLookupRuntimeStub(Context * pContext, char const* name);
@@ -196,7 +170,7 @@ static RsdCpuReference::CpuScript * LookupScript(Context *, const Script *s) {
 extern "C" bool rsdHalInit(RsContext c, uint32_t version_major,
                            uint32_t version_minor) {
     Context *rsc = (Context*) c;
-    rsc->mHal.funcs = FunctionTable;
+    setupFunctionTable(&rsc->mHal.funcs);
 
     RsdHal *dc = (RsdHal *)calloc(1, sizeof(RsdHal));
     if (!dc) {
