@@ -25,7 +25,6 @@ LOCAL_SRC_FILES:= \
 	driver/rsdAllocation.cpp \
 	driver/rsdBcc.cpp \
 	driver/rsdCore.cpp \
-	driver/rsdElement.cpp \
 	driver/rsdFrameBuffer.cpp \
 	driver/rsdFrameBufferObj.cpp \
 	driver/rsdGL.cpp \
@@ -40,7 +39,6 @@ LOCAL_SRC_FILES:= \
 	driver/rsdScriptGroup.cpp \
 	driver/rsdShader.cpp \
 	driver/rsdShaderCache.cpp \
-	driver/rsdType.cpp \
 	driver/rsdVertexArray.cpp
 
 

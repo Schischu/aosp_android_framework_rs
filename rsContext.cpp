@@ -890,7 +890,7 @@ void rsi_ContextDestroyWorker(Context *rsc) {
 }
 
 void rsi_ContextDestroy(Context *rsc) {
-    //ALOGE("%p rsContextDestroy", rsc);
+    //ALOGV("%p rsContextDestroy", rsc);
     rsContextDestroyWorker(rsc);
     delete rsc;
     //ALOGV("%p rsContextDestroy done", rsc);

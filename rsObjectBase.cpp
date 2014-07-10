@@ -41,7 +41,7 @@ ObjectBase::ObjectBase(Context *rsc) {
 }
 
 ObjectBase::~ObjectBase() {
-    //ALOGE("~ObjectBase %p  ref %i,%i", this, mUserRefCount, mSysRefCount);
+    //ALOGV("~ObjectBase %p  ref %i,%i", this, mUserRefCount, mSysRefCount);
 #if RS_OBJECT_DEBUG
     mDH->dump();
     delete mDH;
@@ -178,6 +178,7 @@ void ObjectBase::add() const {
 
     rsAssert(!mNext);
     rsAssert(!mPrev);
+    //ALOGV("calling add  rsc %p", mRSC);
     mNext = mRSC->mObjHead;
     if (mRSC->mObjHead) {
         mRSC->mObjHead->mPrev = this;
@@ -188,6 +189,7 @@ void ObjectBase::add() const {
 }
 
 void ObjectBase::remove() const {
+    //ALOGV("calling remove  rsc %p", mRSC);
     if (!mRSC) {
         rsAssert(!mPrev);
         rsAssert(!mNext);
@@ -282,9 +284,3 @@ bool ObjectBase::isValid(const Context *rsc, const ObjectBase *obj) {
     asyncUnlock();
     return false;
 }
-
-void ObjectBase::callUpdateCacheObject(const Context *rsc, void *dstObj) const {
-    //ALOGE("ObjectBase::callUpdateCacheObject %p  %p", this, dstObj);
-    *((const void **)dstObj) = this;
-}
-
