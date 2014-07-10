@@ -135,13 +135,21 @@ private:
 
 public:
   xword_t getSymTabIndex() const {
+#if defined(__mips__)
+#define ELF64_R_SYM(i)    ((i)&0xffffffffL)
+#else
 #define ELF64_R_SYM(i)    ((i)>>32)
+#endif
     return ELF64_R_SYM(this->r_info);
 #undef ELF64_R_SYM
   }
 
   xword_t getType() const {
+#if defined(__mips__)
+#define ELF64_R_TYPE(i)   ((i)>>32)
+#else
 #define ELF64_R_TYPE(i)   ((i)&0xffffffffL)
+#endif
     return ELF64_R_TYPE(this->r_info);
 #undef ELF64_R_TYPE
   }
