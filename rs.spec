@@ -295,15 +295,6 @@ ScriptForEach {
     param const RsScriptCall * sc
 }
 
-ScriptForEachMulti {
-    param RsScript s
-    param uint32_t slot
-    param RsAllocation * ains
-    param RsAllocation aout
-    param const void * usr
-    param const RsScriptCall * sc
-}
-
 ScriptSetVarI {
     param RsScript s
     param uint32_t slot
@@ -417,3 +408,4 @@ AllocationIoSend {
 AllocationIoReceive {
     param RsAllocation alloc
     }
+

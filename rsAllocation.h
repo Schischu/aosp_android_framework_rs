@@ -166,8 +166,6 @@ public:
     void * getPointer(const Context *rsc, uint32_t lod, RsAllocationCubemapFace face,
                       uint32_t z, uint32_t array, size_t *stride);
 
-    bool hasSameDims(const Allocation *Other) const;
-
 protected:
     Vector<const Program *> mToDirtyList;
     ObjectBaseRef<const Type> mType;
@@ -204,3 +202,4 @@ private:
 }
 }
 #endif
+

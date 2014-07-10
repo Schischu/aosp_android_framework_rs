@@ -113,15 +113,6 @@ typedef struct {
                              ObjectBase *data);
 
         void (*destroy)(const Context *rsc, Script *s);
-        void (*invokeForEachMulti)(const Context *rsc,
-                                   Script *s,
-                                   uint32_t slot,
-                                   const Allocation ** ains,
-                                   size_t inLen,
-                                   Allocation * aout,
-                                   const void * usr,
-                                   size_t usrLen,
-                                   const RsScriptCall *sc);
     } script;
 
     struct {
@@ -287,3 +278,4 @@ bool rsdHalInit(RsContext, uint32_t version_major, uint32_t version_minor);
 #endif
 
 #endif
+

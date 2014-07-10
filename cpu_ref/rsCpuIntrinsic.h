@@ -36,15 +36,6 @@ public:
                        const void * usr,
                        uint32_t usrLen,
                        const RsScriptCall *sc);
-
-    virtual void invokeForEachMulti(uint32_t slot,
-                       const Allocation ** ain,
-                       size_t inLen,
-                       Allocation * aout,
-                       const void * usr,
-                       uint32_t usrLen,
-                       const RsScriptCall *sc);
-
     virtual void forEachKernelSetup(uint32_t slot, MTLaunchStruct *mtls);
     virtual void invokeInit();
     virtual void invokeFreeChildren();

@@ -79,8 +79,7 @@ static RsdHalFunctions FunctionTable = {
         rsdScriptSetGlobalVarWithElemDims,
         rsdScriptSetGlobalBind,
         rsdScriptSetGlobalObj,
-        rsdScriptDestroy,
-        rsdScriptInvokeForEachMulti
+        rsdScriptDestroy
     },
 
     {

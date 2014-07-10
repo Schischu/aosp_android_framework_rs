@@ -35,11 +35,6 @@ namespace android {
 namespace renderscript {
 
 typedef struct {
-  uint32_t eStride;
-  uint32_t yStride;
-} StridePair;
-
-typedef struct {
     const void *in;
     void *out;
     const void *usr;
@@ -50,10 +45,6 @@ typedef struct {
     uint32_t lod;
     RsAllocationCubemapFace face;
     uint32_t ar[16];
-
-    const void **ins;
-    uint32_t *eStrideIns;
-
     uint32_t lid;
 
     uint32_t dimX;
@@ -68,9 +59,6 @@ typedef struct {
     uint32_t yStrideIn;
     uint32_t yStrideOut;
     uint32_t slot;
-
-    const uint8_t** ptrIns;
-    StridePair* inStrides;
 } RsForEachStubParamStruct;
 
 extern bool gArchUseSIMD;
@@ -111,9 +99,6 @@ typedef struct {
     uint32_t zEnd;
     uint32_t arrayStart;
     uint32_t arrayEnd;
-
-    // Multi-input data.
-    const Allocation ** ains;
 } MTLaunchStruct;
 
 
@@ -140,9 +125,6 @@ public:
 
     void launchThreads(const Allocation * ain, Allocation * aout,
                        const RsScriptCall *sc, MTLaunchStruct *mtls);
-
-    void launchThreads(const Allocation** ains, uint32_t inLen, Allocation* aout,
-                       const RsScriptCall* sc, MTLaunchStruct* mtls);
 
     virtual CpuScript * createScript(const ScriptC *s,
                                      char const *resName, char const *cacheDir,
