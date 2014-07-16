@@ -40,27 +40,26 @@ struct StridePair {
 };
 
 struct RsExpandKernelDriverInfo {
-    const void *usr;
-    uint32_t usrLen;
+    const uint8_t **inPtrs;
+    uint32_t inLen;
+
+    uint8_t *outPtr;
+
+    StridePair *inStrides;
+    StridePair  outStride;
 
     uint32_t dimX;
     uint32_t dimY;
     uint32_t dimZ;
 
-    const uint8_t *ptrIn;
-    uint8_t *ptrOut;
-    uint32_t eStrideIn;
-    uint32_t eStrideOut;
-    uint32_t yStrideIn;
-    uint32_t yStrideOut;
     uint32_t slot;
 
-    const uint8_t** ptrIns;
-    StridePair* inStrides;
+    const void *usr;
+    uint32_t usrLen;
 
     ~RsExpandKernelDriverInfo() {
-        if (ptrIns != NULL) {
-            delete[] ptrIns;
+        if (inPtrs != NULL) {
+            delete[] inPtrs;
         }
 
         if (inStrides != NULL) {
@@ -72,14 +71,12 @@ struct RsExpandKernelDriverInfo {
 struct RsExpandKernelParams {
 
     // Used by kernels
-    const void *in;
+    const void **ins;
+    uint32_t *inEStrides;
     void *out;
     uint32_t y;
     uint32_t z;
     uint32_t lid;
-
-    const void **ins;
-    uint32_t *eStrideIns;
 
     // Used by ScriptGroup and user kernels.
     const void *usr;
@@ -170,9 +167,6 @@ public:
     uint32_t getThreadCount() const {
         return mWorkers.mCount + 1;
     }
-
-    void launchThreads(const Allocation * ain, Allocation * aout,
-                       const RsScriptCall *sc, MTLaunchStruct *mtls);
 
     void launchThreads(const Allocation** ains, uint32_t inLen, Allocation* aout,
                        const RsScriptCall* sc, MTLaunchStruct* mtls);

@@ -30,31 +30,26 @@ public:
 
     virtual void invokeFunction(uint32_t slot, const void *params, size_t paramLength);
     virtual int invokeRoot();
-    virtual void invokeForEach(uint32_t slot,
-                       const Allocation * ain,
-                       Allocation * aout,
-                       const void * usr,
-                       uint32_t usrLen,
-                       const RsScriptCall *sc);
 
-    virtual void invokeForEachMulti(uint32_t slot,
-                       const Allocation ** ain,
-                       uint32_t inLen,
-                       Allocation * aout,
-                       const void * usr,
-                       uint32_t usrLen,
-                       const RsScriptCall *sc);
+    virtual void invokeForEach(uint32_t slot,
+                               const Allocation ** ain,
+                               uint32_t inLen,
+                               Allocation * aout,
+                               const void * usr,
+                               uint32_t usrLen,
+                               const RsScriptCall *sc);
 
     virtual void forEachKernelSetup(uint32_t slot, MTLaunchStruct *mtls);
     virtual void invokeInit();
     virtual void invokeFreeChildren();
 
-    virtual void preLaunch(uint32_t slot, const Allocation * ain,
-                           Allocation * aout, const void * usr,
+    virtual void preLaunch(uint32_t slot, const Allocation ** ains,
+                           uint32_t inLen, Allocation * aout, const void * usr,
                            uint32_t usrLen, const RsScriptCall *sc);
-    virtual void postLaunch(uint32_t slot, const Allocation * ain,
-                            Allocation * aout, const void * usr,
-                            uint32_t usrLen, const RsScriptCall *sc);
+    virtual void postLaunch(uint32_t slot, const Allocation ** ains,
+                            uint32_t inLen, Allocation * aout,
+                            const void * usr, uint32_t usrLen,
+                            const RsScriptCall *sc);
 
     virtual void setGlobalVar(uint32_t slot, const void *data, size_t dataLength);
     virtual void setGlobalVarWithElemDims(uint32_t slot, const void *data, size_t dataLength,

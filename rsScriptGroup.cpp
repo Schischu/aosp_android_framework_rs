@@ -323,7 +323,13 @@ void ScriptGroup::execute(Context *rsc) {
                 }
             }
 
-            n->mScript->runForEach(rsc, k->mSlot, ain, aout, NULL, 0);
+            if (ain == NULL) {
+                n->mScript->runForEach(rsc, k->mSlot, NULL, 0, aout, NULL, 0);
+
+            } else {
+                const Allocation *ains[1] = {ain};
+                n->mScript->runForEach(rsc, k->mSlot, ains, 1, aout, NULL, 0);
+            }
         }
 
     }
@@ -386,4 +392,3 @@ void rsi_ScriptGroupExecute(Context *rsc, RsScriptGroup sg) {
 
 }
 }
-
