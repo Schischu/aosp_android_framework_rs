@@ -1416,6 +1416,68 @@ extern ulong4 _Z3maxDv4_yS_(ulong4 v1, ulong4 v2) {
     return r;
 }
 
+#define THUNK_NATIVE_F1(fn) \
+    float __attribute__((overloadable)) native_##fn(float v) { return fn(v);} \
+    float2 __attribute__((overloadable)) native_##fn(float2 v) { return fn(v);} \
+    float3 __attribute__((overloadable)) native_##fn(float3 v) { return fn(v);} \
+    float4 __attribute__((overloadable)) native_##fn(float4 v) { return fn(v);}
+
+#define THUNK_NATIVE_F2(fn) \
+    float __attribute__((overloadable)) native_##fn(float v1, float v2) { return fn(v1, v2);} \
+    float2 __attribute__((overloadable)) native_##fn(float2 v1, float2 v2) { return fn(v1, v2);} \
+    float3 __attribute__((overloadable)) native_##fn(float3 v1, float3 v2) { return fn(v1, v2);} \
+    float4 __attribute__((overloadable)) native_##fn(float4 v1, float4 v2) { return fn(v1, v2);}
+
+#define THUNK_NATIVE_F2P(fn) \
+    float __attribute__((overloadable)) native_##fn(float v1, float *v2) { return fn(v1, v2);} \
+    float2 __attribute__((overloadable)) native_##fn(float2 v1, float2 *v2) { return fn(v1, v2);} \
+    float3 __attribute__((overloadable)) native_##fn(float3 v1, float3 *v2) { return fn(v1, v2);} \
+    float4 __attribute__((overloadable)) native_##fn(float4 v1, float4 *v2) { return fn(v1, v2);}
+
+#define THUNK_NATIVE_FI2(fn) \
+    float __attribute__((overloadable)) native_##fn(float v1, int v2) { return fn(v1, v2);} \
+    float2 __attribute__((overloadable)) native_##fn(float2 v1, int2 v2) { return fn(v1, v2);} \
+    float3 __attribute__((overloadable)) native_##fn(float3 v1, int3 v2) { return fn(v1, v2);} \
+    float4 __attribute__((overloadable)) native_##fn(float4 v1, int4 v2) { return fn(v1, v2);}
+
+THUNK_NATIVE_F1(acos)
+THUNK_NATIVE_F1(acosh)
+THUNK_NATIVE_F1(acospi)
+THUNK_NATIVE_F1(asin)
+THUNK_NATIVE_F1(asinh)
+THUNK_NATIVE_F1(asinpi)
+THUNK_NATIVE_F1(atan)
+THUNK_NATIVE_F2(atan2)
+THUNK_NATIVE_F1(atanh)
+THUNK_NATIVE_F1(atanpi)
+THUNK_NATIVE_F2(atan2pi)
+THUNK_NATIVE_F1(cbrt)
+THUNK_NATIVE_F1(cos)
+THUNK_NATIVE_F1(cosh)
+THUNK_NATIVE_F1(cospi)
+THUNK_NATIVE_F2(distance)
+THUNK_NATIVE_F1(expm1)
+THUNK_NATIVE_F2(hypot)
+THUNK_NATIVE_F1(length)
+THUNK_NATIVE_F1(log1p)
+THUNK_NATIVE_F1(normalize)
+THUNK_NATIVE_FI2(rootn)
+THUNK_NATIVE_F1(rsqrt)
+THUNK_NATIVE_F1(sqrt)
+THUNK_NATIVE_F1(sin)
+THUNK_NATIVE_F2P(sincos)
+THUNK_NATIVE_F1(sinh)
+THUNK_NATIVE_F1(sinpi)
+THUNK_NATIVE_F1(tan)
+THUNK_NATIVE_F1(tanh)
+THUNK_NATIVE_F1(tanpi)
+
+
+
+
+
+
+
 
 #undef FN_FUNC_FN
 #undef IN_FUNC_FN
