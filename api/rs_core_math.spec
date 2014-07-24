@@ -489,6 +489,7 @@ arg: float#1
 comment:
  Return the integer exponent of a value
 version: 9
+test: custom
 end:
 
 start:
