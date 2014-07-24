@@ -57,6 +57,9 @@
 #define M_SQRT1_2   0.707106781186547524400844362104849039f     /* 1/sqrt(2) */
 
 #include "stdbool.h"
+
+typedef __fp16 half;
+
 /**
  * 8 bit integer type
  */
@@ -197,6 +200,22 @@ typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_pr
  */
 typedef struct { const int* const p; } __attribute__((packed, aligned(4))) rs_font;
 #endif // __LP64__
+
+/**
+ * Vector version of the basic half type. Provides two half fields packed
+ * into a single 32 bit field with 32 bit alignment.
+ */
+typedef half half2 __attribute__((ext_vector_type(2)));
+/**
+ * Vector version of the basic half type. Provides three half fields packed
+ * into a single 64 bit field with 64 bit alignment.
+ */
+typedef half half3 __attribute__((ext_vector_type(3)));
+/**
+ * Vector version of the basic half type. Provides four half fields packed
+ * into a single 64 bit field with 64 bit alignment.
+ */
+typedef half half4 __attribute__((ext_vector_type(4)));
 
 /**
  * Vector version of the basic float type.
