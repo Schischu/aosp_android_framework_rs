@@ -126,11 +126,11 @@ void CpuScriptGroupImpl::scriptGroupRoot(const RsExpandKernelParams *kparams,
 
 
 void CpuScriptGroupImpl::execute() {
-    Vector<Allocation *> ins;
-    Vector<bool> inExts;
-    Vector<Allocation *> outs;
-    Vector<bool> outExts;
-    Vector<const ScriptKernelID *> kernels;
+    std::vector<Allocation *> ins;
+    std::vector<bool> inExts;
+    std::vector<Allocation *> outs;
+    std::vector<bool> outExts;
+    std::vector<const ScriptKernelID *> kernels;
     bool fieldDep = false;
 
     for (size_t ct=0; ct < mSG->mNodes.size(); ct++) {
@@ -197,11 +197,11 @@ void CpuScriptGroupImpl::execute() {
 
             if ((k->mHasKernelOutput == (aout != NULL)) &&
                 (k->mHasKernelInput == (ain != NULL))) {
-                ins.add(ain);
-                inExts.add(inExt);
-                outs.add(aout);
-                outExts.add(outExt);
-                kernels.add(k);
+                ins.push_back(ain);
+                inExts.push_back(inExt);
+                outs.push_back(aout);
+                outExts.push_back(outExt);
+                kernels.push_back(k);
             }
         }
 
@@ -239,9 +239,9 @@ void CpuScriptGroupImpl::execute() {
         }
     } else {
         ScriptList sl;
-        sl.ins = ins.array();
-        sl.outs = outs.array();
-        sl.kernels = kernels.array();
+        sl.ins = ins.data();
+        sl.outs = outs.data();
+        sl.kernels = kernels.data();
         sl.count = kernels.size();
 
         uint32_t inLen;
@@ -256,25 +256,41 @@ void CpuScriptGroupImpl::execute() {
             ains  = const_cast<const Allocation**>(&ins[0]);
         }
 
-        Vector<const void *> usrPtrs;
-        Vector<const void *> fnPtrs;
-        Vector<uint32_t> sigs;
+        std::vector<const void *> usrPtrs;
+        std::vector<const void *> fnPtrs;
+        std::vector<uint32_t> sigs;
         for (size_t ct=0; ct < kernels.size(); ct++) {
             Script *s = kernels[ct]->mScript;
             RsdCpuScriptImpl *si = (RsdCpuScriptImpl *)mCtx->lookupScript(s);
 
             si->forEachKernelSetup(kernels[ct]->mSlot, &mtls);
-            fnPtrs.add((void *)mtls.kernel);
-            usrPtrs.add(mtls.fep.usr);
-            sigs.add(mtls.fep.usrLen);
+            fnPtrs.push_back((void *)mtls.kernel);
+            usrPtrs.push_back(mtls.fep.usr);
+            sigs.push_back(mtls.fep.usrLen);
             si->preLaunch(kernels[ct]->mSlot, ains, inLen, outs[ct],
                           mtls.fep.usr, mtls.fep.usrLen, NULL);
         }
-        sl.sigs = sigs.array();
-        sl.usrPtrs = usrPtrs.array();
-        sl.fnPtrs = fnPtrs.array();
-        sl.inExts = inExts.array();
-        sl.outExts = outExts.array();
+
+        sl.sigs    = sigs.data();
+        sl.usrPtrs = usrPtrs.data();
+        sl.fnPtrs  = fnPtrs.data();
+
+//        sl.inExts  = (bool*)inExts.data();
+//        sl.outExts = (bool*)outExts.data();
+
+        bool *tmpInExts  = new bool[inExts.size()];
+        bool *tmpOutExts = new bool[outExts.size()];
+
+        for (int index = inExts.size(); --index > 0;) {
+            tmpInExts[index] = inExts[index];
+        }
+
+        for (int index = outExts.size(); --index > 0;) {
+            tmpOutExts[index] = outExts[index];
+        }
+
+        sl.inExts  = tmpInExts;
+        sl.outExts = tmpOutExts;
 
         Script *s = kernels[0]->mScript;
         RsdCpuScriptImpl *si = (RsdCpuScriptImpl *)mCtx->lookupScript(s);

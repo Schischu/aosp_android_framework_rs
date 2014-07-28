@@ -1,7 +1,7 @@
 
 LOCAL_PATH:=$(call my-dir)
 
-rs_base_CFLAGS := -Werror -Wall -Wno-unused-parameter -Wno-unused-variable -fno-exceptions
+rs_base_CFLAGS := -Werror -Wall -Wno-unused-parameter -Wno-unused-variable -fno-exceptions  -std=c++11
 ifeq ($(TARGET_BUILD_PDK), true)
   rs_base_CFLAGS += -D__RS_PDK__
 endif
@@ -91,7 +91,7 @@ include external/libcxx/libcxx.mk
 endif
 include frameworks/compile/libbcc/libbcc-targets.mk
 
-LOCAL_CFLAGS += $(rs_base_CFLAGS) -std=c++11
+LOCAL_CFLAGS += $(rs_base_CFLAGS)
 
 LOCAL_MODULE_TAGS := optional
 
