@@ -101,6 +101,7 @@ public class ImageProcessingActivity extends Activity
         USAGE_IO ("Usage io"),
         ARTISTIC_1("Artistic 1"),
         HISTOGRAM ("Histogram"),
+        MANDELBROT_HALF ("Mandelbrot fp16"),
         MANDELBROT_DOUBLE ("Mandelbrot fp64"),
         RESIZE_BICUBIC_SCRIPT ("Resize BiCubic Script"),
         RESIZE_BICUBIC_INTRINSIC ("Resize BiCubic Intrinsic"),
@@ -324,7 +325,7 @@ public class ImageProcessingActivity extends Activity
             mTest = new Convolve5x5(true);
             break;
         case MANDELBROT_FLOAT:
-            mTest = new Mandelbrot(false);
+            mTest = new Mandelbrot(32);
             break;
         case INTRINSICS_BLEND:
             mTest = new Blend();
@@ -365,8 +366,11 @@ public class ImageProcessingActivity extends Activity
         case HISTOGRAM:
             mTest = new Histogram();
             break;
+        case MANDELBROT_HALF:
+            mTest = new Mandelbrot(16);
+            break;
         case MANDELBROT_DOUBLE:
-            mTest = new Mandelbrot(true);
+            mTest = new Mandelbrot(64);
             break;
         case RESIZE_BICUBIC_SCRIPT:
             mTest = new Resize(false);

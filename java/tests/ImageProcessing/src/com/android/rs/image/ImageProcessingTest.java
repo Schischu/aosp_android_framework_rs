@@ -398,7 +398,14 @@ public class ImageProcessingTest extends ActivityInstrumentationTestCase2<ImageP
         runTest(ta, TestName.HISTOGRAM.name());
     }
 
-    // Test case 41: Mandelbrot fp64
+    // Test case 41: Mandelbrot fp16
+    @LargeTest
+    public void testMandelbrotfp16() {
+        TestAction ta = new TestAction(TestName.MANDELBROT_HALF);
+        runTest(ta, TestName.MANDELBROT_HALF.name());
+    }
+
+    // Test case 42: Mandelbrot fp64
     @LargeTest
     public void testMandelbrotfp64() {
         TestAction ta = new TestAction(TestName.MANDELBROT_DOUBLE);

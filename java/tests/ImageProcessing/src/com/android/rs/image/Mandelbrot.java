@@ -30,10 +30,10 @@ import android.widget.TextView;
 
 public class Mandelbrot extends TestBase {
     private ScriptC_mandelbrot mScript;
-    private boolean mUseDouble = false;
+    private int mFloatWidth = 32;
 
-    public Mandelbrot(boolean useDouble) {
-        mUseDouble = useDouble;
+    public Mandelbrot(int bitwidth) {
+        mFloatWidth = bitwidth;
     }
 
     public boolean onBar1Setup(SeekBar b, TextView t) {
@@ -95,8 +95,10 @@ public class Mandelbrot extends TestBase {
     }
 
     public void runTest() {
-        if (mUseDouble) {
+        if (mFloatWidth == 64) {
             mScript.forEach_rootD(mOutPixelsAllocation);
+        } else if (mFloatWidth == 16) {
+            mScript.forEach_rootH(mOutPixelsAllocation);
         } else {
             mScript.forEach_root(mOutPixelsAllocation);
         }
