@@ -760,9 +760,9 @@ void RsdCpuScriptImpl::populateScript(Script *script) {
     script->mHal.info.exportedForeachFuncList = &mExportedForEachFuncList[0];
     script->mHal.info.exportedPragmaCount = mExecutable->getPragmaKeys().size();
     script->mHal.info.exportedPragmaKeyList =
-        const_cast<const char**>(mExecutable->getPragmaKeys().array());
+        const_cast<const char**>(&mExecutable->getPragmaKeys().front());
     script->mHal.info.exportedPragmaValueList =
-        const_cast<const char**>(mExecutable->getPragmaValues().array());
+        const_cast<const char**>(&mExecutable->getPragmaValues().front());
 
     if (mRootExpand) {
         script->mHal.info.root = mRootExpand;
