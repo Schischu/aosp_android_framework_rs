@@ -109,7 +109,7 @@ class Sampler;
     /**
      * Returns the current error handler function for this context.
      *
-     * @return pointer to current error handler function or NULL if not set
+     * @return pointer to current error handler function or nullptr if not set
      */
     ErrorHandlerFunc_t getErrorHandler() { return mErrorFunc; }
 
@@ -124,7 +124,7 @@ class Sampler;
     /**
      * Returns the current message handler function for this context.
      *
-     * @return pointer to current message handler function or NULL if not set
+     * @return pointer to current message handler function or nullptr if not set
      */
     MessageHandlerFunc_t getMessageHandler() { return mMessageFunc; }
 
@@ -562,11 +562,11 @@ public:
 
     /**
      * Get the backing pointer for a USAGE_SHARED allocation.
-     * @param[in] stride optional parameter. when non-NULL, will contain
+     * @param[in] stride optional parameter. when non-nullptr, will contain
      *   stride in bytes of a 2D Allocation
      * @return pointer to data
      */
-    void * getPointer(size_t *stride = NULL);
+    void * getPointer(size_t *stride = nullptr);
 };
 
  /**
@@ -1168,7 +1168,7 @@ public:
     */
 
     void add(sp<BaseObj> obj) {
-        if (obj != NULL) {
+        if (obj != nullptr) {
             add((uint32_t) (uintptr_t) obj->getID());
         } else {
             add((uint32_t) 0);
@@ -1338,7 +1338,7 @@ protected:
 
 
     void invoke(uint32_t slot) const {
-        invoke(slot, NULL, 0);
+        invoke(slot, nullptr, 0);
     }
     void setVar(uint32_t index, float v) const {
         setVar(index, &v, sizeof(v));

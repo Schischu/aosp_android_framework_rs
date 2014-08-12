@@ -87,7 +87,7 @@ time_t rsrTime(Context *rsc, time_t *timer) {
 
 tm* rsrLocalTime(Context *rsc, tm *local, time_t *timer) {
     if (!local) {
-      return NULL;
+      return nullptr;
     }
 
     // The native localtime function is not thread-safe, so we
@@ -150,7 +150,7 @@ void rsrSetObject(const Context *rsc, void *dst, ObjectBase *src) {
     ObjectBase **odst = (ObjectBase **)dst;
     //ALOGE("rsrSetObject (base) %p,%p  %p", dst, *odst, src);
     SetObjectRef(rsc, odst[0], src);
-    if (src != NULL) {
+    if (src != nullptr) {
         src->callUpdateCacheObject(rsc, dst);
     }
 }
@@ -163,11 +163,11 @@ void rsrClearObject(const Context *rsc, void *dst) {
         CHECK_OBJ(odst[0]);
         odst[0]->decSysRef();
     }
-    *odst = NULL;
+    *odst = nullptr;
 }
 
 bool rsrIsObject(const Context *rsc, const ObjectBase *src) {
-    return src != NULL;
+    return src != nullptr;
 }
 
 
@@ -205,8 +205,8 @@ void rsrForEach(Context *rsc,
                 const void *usr, uint32_t usrBytes,
                 const RsScriptCall *call) {
 
-    if (in == NULL) {
-        target->runForEach(rsc, /* root slot */ 0, NULL, 0, out, usr,
+    if (in == nullptr) {
+        target->runForEach(rsc, /* root slot */ 0, nullptr, 0, out, usr,
                            usrBytes, call);
 
     } else {
