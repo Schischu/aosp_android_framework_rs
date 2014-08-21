@@ -2014,7 +2014,6 @@ class ScriptIntrinsicVP9LoopFilter : public ScriptIntrinsic {
     RsSamplerValue mMag;
     RsSamplerValue mWrapS;
     RsSamplerValue mWrapT;
-    RsSamplerValue mWrapR;
     float mAniso;
 
  public:

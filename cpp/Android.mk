@@ -14,7 +14,10 @@ include $(CLEAR_VARS)
 
 include frameworks/compile/slang/rs_version.mk
 local_cflags_for_rs_cpp += $(RS_VERSION_DEFINE)
-local_cflags_for_rs_cpp += -Wno-unused-parameter -std=c++11
+local_cflags_for_rs_cpp += -Werror -Wall -Wno-unused-parameter -Wno-unused-variable -fno-exceptions -std=c++11
+
+# Disable this warning until we can remove our use of stlport.
+local_cflags_for_rs_cpp += -Wno-implicit-exception-spec-mismatch
 
 LOCAL_SRC_FILES := $(rs_cpp_SRC_FILES)
 
@@ -36,7 +39,7 @@ LOCAL_MODULE:= libRScpp
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_C_INCLUDES += frameworks/rs
-LOCAL_C_INCLUDES += external/stlport/stlport bionic/ bionic/libstdc++/include
+LOCAL_C_INCLUDES += external/stlport/stlport bionic/
 LOCAL_C_INCLUDES += $(intermediates)
 
 include $(BUILD_SHARED_LIBRARY)
