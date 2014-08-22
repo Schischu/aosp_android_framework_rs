@@ -1349,6 +1349,9 @@ protected:
     void setVar(uint32_t index, int32_t v) const {
         setVar(index, &v, sizeof(v));
     }
+    void setVar(uint32_t index, uint32_t v) const {
+        setVar(index, &v, sizeof(v));
+    }
     void setVar(uint32_t index, int64_t v) const {
         setVar(index, &v, sizeof(v));
     }
@@ -1720,7 +1723,7 @@ class ScriptIntrinsicHistogram : public ScriptIntrinsic {
      *
      * @return ScriptIntrinsicHistogram
      */
-    static sp<ScriptIntrinsicHistogram> create(sp<RS> rs);
+    static sp<ScriptIntrinsicHistogram> create(sp<RS> rs, sp<const Element> e);
     /**
      * Set the output of the histogram.  32 bit integer types are
      * supported.
