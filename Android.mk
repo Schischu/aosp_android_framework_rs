@@ -44,7 +44,7 @@ LOCAL_SRC_FILES:= \
 	driver/rsdVertexArray.cpp
 
 
-LOCAL_SHARED_LIBRARIES += libRS libRSCpuRef libc++
+LOCAL_SHARED_LIBRARIES += libRS libRSCpuRef
 LOCAL_SHARED_LIBRARIES += liblog libcutils libutils libEGL libGLESv1_CM libGLESv2
 LOCAL_SHARED_LIBRARIES += libui libgui libsync
 
@@ -52,13 +52,13 @@ LOCAL_SHARED_LIBRARIES += libbcc libbcinfo libLLVM
 
 LOCAL_C_INCLUDES += frameworks/compile/libbcc/include
 LOCAL_C_INCLUDES += frameworks/rs/cpu_ref/linkloader/include
-LOCAL_C_INCLUDES += external/libcxx/include
 
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
 LOCAL_CPPFLAGS += -fno-exceptions
 
 LOCAL_MODULE_TAGS := optional
 
+include external/libcxx/libcxx.mk
 include $(BUILD_SHARED_LIBRARY)
 
 # Build rsg-generator ====================
@@ -165,7 +165,7 @@ LOCAL_SRC_FILES:= \
 	rsThreadIO.cpp \
 	rsType.cpp
 
-LOCAL_SHARED_LIBRARIES += liblog libcutils libutils libEGL libGLESv1_CM libGLESv2 libc++
+LOCAL_SHARED_LIBRARIES += liblog libcutils libutils libEGL libGLESv1_CM libGLESv2
 LOCAL_SHARED_LIBRARIES += libgui libsync libdl libui
 LOCAL_SHARED_LIBRARIES += libft2 libpng libz
 
@@ -173,7 +173,6 @@ LOCAL_SHARED_LIBRARIES += libbcc libbcinfo libLLVM
 
 LOCAL_C_INCLUDES += external/freetype/include
 LOCAL_C_INCLUDES += frameworks/compile/libbcc/include
-LOCAL_C_INCLUDES += external/libcxx/include
 
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
 # TODO: external/freetype still uses the register keyword
@@ -184,6 +183,7 @@ LOCAL_CPPFLAGS += -fno-exceptions
 
 LOCAL_MODULE_TAGS := optional
 
+include external/libcxx/libcxx.mk
 include $(BUILD_SHARED_LIBRARY)
 
 # Now build a host version for serialization
@@ -305,10 +305,10 @@ LOCAL_CPPFLAGS += -fno-exceptions
 LOCAL_C_INCLUDES := \
   $(LOCAL_PATH)/cpu_ref/linkloader \
   $(LOCAL_PATH)/cpu_ref/linkloader/include \
-  external/libcxx/include \
   $(LOCAL_C_INCLUDES)
 
 include $(LLVM_ROOT_PATH)/llvm-device-build.mk
+include external/libcxx/libcxx.mk
 include $(BUILD_STATIC_LIBRARY)
 
 #=============================================================================
@@ -345,11 +345,11 @@ else
 LOCAL_C_INCLUDES := \
   $(LOCAL_PATH)/cpu_ref/linkloader \
   $(LOCAL_PATH)/cpu_ref/linkloader/include \
-  external/libcxx/include \
   $(LOCAL_C_INCLUDES)
 endif
 
 include $(LLVM_ROOT_PATH)/llvm-host-build.mk
+include external/libcxx/libcxx.mk
 include $(BUILD_HOST_STATIC_LIBRARY)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))

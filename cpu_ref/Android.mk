@@ -77,7 +77,7 @@ ifeq ($(ARCH_X86_HAVE_SSSE3),true)
     rsCpuIntrinsics_x86.cpp
 endif
 
-LOCAL_SHARED_LIBRARIES += libRS libcutils libutils liblog libsync libc++
+LOCAL_SHARED_LIBRARIES += libRS libcutils libutils liblog libsync
 
 # these are not supported in 64-bit yet
 LOCAL_SHARED_LIBRARIES += libbcc libbcinfo
