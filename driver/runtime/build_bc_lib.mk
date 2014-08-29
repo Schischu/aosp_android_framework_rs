@@ -17,7 +17,13 @@
 ifndef BCC_RS_TRIPLE
 ifdef TARGET_2ND_ARCH
 LOCAL_2ND_ARCH_VAR_PREFIX := $(TARGET_2ND_ARCH_VAR_PREFIX)
+# Build 32-bit library, then 64-bit library
+BCC_RS_TRIPLE := armv7-none-linux-gnueabi
 include $(LOCAL_PATH)/build_bc_lib_internal.mk
+BCC_RS_TRIPLE := aarch64-linux-android
+else
+# Build 32-bit library only
+BCC_RS_TRIPLE := armv7-none-linux-gnueabi
 endif
 endif
 
