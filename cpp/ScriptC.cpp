@@ -28,3 +28,15 @@ ScriptC::ScriptC(sp<RS> rs,
                                       rs->mCacheDir.c_str(), rs->mCacheDir.length(), (const char *)codeTxt, codeLength);
 }
 
+ScriptC::ScriptC(sp<RS> rs,
+                 const void *codeTxt32, size_t codeLength32,
+                 const void *codeTxt64, size_t codeLength64,
+                 const char *cachedName, size_t cachedNameLength,
+                 const char *cacheDir, size_t cacheDirLength)
+: Script(NULL, rs) {
+    int pt_size = sizeof(void *);
+    mID = RS::dispatch->ScriptCCreate(rs->getContext(), cachedName, cachedNameLength,
+                                      rs->mCacheDir.c_str(), rs->mCacheDir.length(),
+                                      (const char *) (pt_size == 4 ? codeTxt32 : codeTxt64),
+                                      (pt_size == 4 ? codeLength32 : codeLength64));
+}

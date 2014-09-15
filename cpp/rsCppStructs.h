@@ -1390,7 +1390,11 @@ protected:
             const void *codeTxt, size_t codeLength,
             const char *cachedName, size_t cachedNameLength,
             const char *cacheDir, size_t cacheDirLength);
-
+    ScriptC(sp<RS> rs,
+            const void *codeTxt32, size_t codeLength32,
+            const void *codeTxt64, size_t codeLength64,
+            const char *cachedName, size_t cachedNameLength,
+            const char *cacheDir, size_t cacheDirLength);
 };
 
 /**
