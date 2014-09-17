@@ -145,8 +145,38 @@ getMaxNumStubs(ELFObjectTy const *obj) const {
     }
 
   case EM_386:
+    {
+      std::set<uint32_t> sym_index_set;
+
+      for (size_t i = 0; i < size(); ++i) {
+        ELFRelocTy *rel = table[i];
+
+        switch (rel->getType()) {
+        case R_386_PC32:
+          sym_index_set.insert(rel->getSymTabIndex());
+          break;
+        }
+      }
+
+      return sym_index_set.size();
+    }
+
   case EM_X86_64:
-    return 0;
+    {
+      std::set<uint32_t> sym_index_set;
+
+      for (size_t i = 0; i < size(); ++i) {
+        ELFRelocTy *rel = table[i];
+
+        switch (rel->getType()) {
+        case R_X86_64_PC32:
+          sym_index_set.insert(rel->getSymTabIndex());
+          break;
+        }
+      }
+
+      return sym_index_set.size();
+    }
 
   default:
     rsl_assert(0 && "Only support ARM, MIPS, X86, and X86_64 relocation.");
