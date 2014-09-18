@@ -38,7 +38,7 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_C_INCLUDES += frameworks/rs
 LOCAL_C_INCLUDES += $(intermediates)
 
-include external/stlport/libstlport.mk
+include external/libcxx/libcxx.mk
 include $(BUILD_SHARED_LIBRARY)
 
 
