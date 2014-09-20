@@ -1207,11 +1207,7 @@ relocate(void *(*find_sym)(void *context, char const *name), void *context) {
     switch (idx) {
     default:
       if ((*shtab)[idx]->getType() == SHT_NOBITS) {
-        // FIXME(logan): This is a workaround for .lcomm directives
-        // bug of LLVM ARM MC code generator.  Remove this when the
-        // LLVM bug is fixed.
-
-        size_t align = 16;
+        size_t align = (size_t)sym->getValue();
         SHNCommonDataSize += (size_t)sym->getSize() + align;
       }
       break;
