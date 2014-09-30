@@ -57,13 +57,11 @@ public class IPControls extends Activity {
     private ArrayAdapter<String> mTestListAdapter;
     private ArrayList<String> mTestList = new ArrayList<String>();
 
-    private boolean mSettings[] = {true, true, true, false, false, false};
-    // Not supported in compatibility library version
-    //private static final int SETTING_USE_IO = 0;
-    private static final int SETTING_ANIMATE = 1;
-    private static final int SETTING_DISPLAY = 2;
-    private static final int SETTING_LONG_RUN = 3;
-    private static final int SETTING_PAUSE = 4;
+    private boolean mSettings[] = {true, true, false, false};
+    private static final int SETTING_ANIMATE = 0;
+    private static final int SETTING_DISPLAY = 1;
+    private static final int SETTING_LONG_RUN = 2;
+    private static final int SETTING_PAUSE = 3;
 
     private float mResults[];
 

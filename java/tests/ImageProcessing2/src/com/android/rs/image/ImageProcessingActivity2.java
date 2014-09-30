@@ -85,6 +85,8 @@ public class ImageProcessingActivity2 extends Activity
     // called to display a result.
     private int mShowsPending;
 
+    private boolean mTestNameChanged = true;
+    private String mTestName;
 
 
     /////////////////////////////////////////////////////////////////////////
@@ -263,6 +265,10 @@ public class ImageProcessingActivity2 extends Activity
             long t2 = java.lang.System.currentTimeMillis();
             r.totalTime += (t2 - t) / 1000.f;
             t = t2;
+
+            // Even if we are not displaying as we go, show the final output
+            mOutDisplayAllocation1.copyTo(mBitmapOut1);
+            mOutDisplayAllocation2.copyTo(mBitmapOut2);
             return r;
         }
 
@@ -296,6 +302,10 @@ public class ImageProcessingActivity2 extends Activity
         private Handler mHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
+                if (mTestNameChanged) {
+                    getActionBar().setTitle("IP-Compat test: " + mTestName);
+                }
+
                 if (mDisplayedBitmap == 0) {
                     mDisplayView.setImageBitmap(mBitmapOut1);
                 } else {
@@ -446,6 +456,10 @@ public class ImageProcessingActivity2 extends Activity
 
     TestBase changeTest(IPTestList.TestName t, boolean setupUI) {
         TestBase tb = IPTestList.newTest(t);
+
+        mTestNameChanged = true;
+        mTestName = t.toString();
+        mProcessor.mHandler.sendMessage(Message.obtain());
 
         tb.createBaseTest(this);
         if (setupUI) {
