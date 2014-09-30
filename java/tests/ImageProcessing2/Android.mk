@@ -31,6 +31,8 @@ LOCAL_RENDERSCRIPT_COMPATIBILITY := 18
 LOCAL_RENDERSCRIPT_INCLUDES_OVERRIDE := $(TOPDIR)external/clang/lib/Headers \
                                         $(TOPDIR)frameworks/rs/scriptc
 
+FORCE_BUILD_RS_COMPAT := true
+
 LOCAL_RENDERSCRIPT_FLAGS := -rs-package-name=android.support.v8.renderscript
 LOCAL_JNI_SHARED_LIBRARIES := librsjni
 LOCAL_32_BIT_ONLY := true
