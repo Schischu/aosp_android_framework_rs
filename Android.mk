@@ -54,6 +54,8 @@ LOCAL_C_INCLUDES += frameworks/compile/libbcc/include
 LOCAL_C_INCLUDES += frameworks/rs/cpu_ref/linkloader/include
 LOCAL_C_INCLUDES += external/libcxx/include
 
+include external/libcxx/libcxx.mk
+
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
 LOCAL_CPPFLAGS += -fno-exceptions
 
@@ -175,6 +177,8 @@ LOCAL_C_INCLUDES += external/freetype/include
 LOCAL_C_INCLUDES += frameworks/compile/libbcc/include
 LOCAL_C_INCLUDES += external/libcxx/include
 
+include external/libcxx/libcxx.mk
+
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
 # TODO: external/freetype still uses the register keyword
 # Bug: 17163086
@@ -224,6 +228,8 @@ $(GEN): $(intermediates)/%.cpp : $(LOCAL_PATH)/%.cpp.rsg
 	$(transform-generated-source)
 
 LOCAL_GENERATED_SOURCES += $(GEN)
+
+include external/libcxx/libcxx.mk
 
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
 LOCAL_CFLAGS += -DANDROID_RS_SERIALIZE
