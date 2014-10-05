@@ -300,8 +300,6 @@ LOCAL_SRC_FILES := $(rsloader_SRC_FILES)
 
 LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
 
-LOCAL_CXX_STL := libc++
-
 LOCAL_CFLAGS += $(rs_base_CFLAGS)
 LOCAL_CPPFLAGS += -fno-exceptions
 
