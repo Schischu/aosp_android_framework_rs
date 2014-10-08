@@ -96,7 +96,7 @@ struct LoopFilterMask {
     unsigned short int_4x4_uv;
     unsigned char lfl_y[64];
     unsigned char lfl_uv[16];
-};
+}__attribute__((aligned(8)));
 
 // Need to align this structure so when it is declared and
 // passed it can be loaded into vector registers.
