@@ -33,6 +33,7 @@ typedef void * RsAdapter1D;
 typedef void * RsAdapter2D;
 typedef void * RsAllocation;
 typedef void * RsAnimation;
+typedef void * RsClosure;
 typedef void * RsContext;
 typedef void * RsDevice;
 typedef void * RsElement;
@@ -44,6 +45,7 @@ typedef void * RsScriptKernelID;
 typedef void * RsScriptFieldID;
 typedef void * RsScriptMethodID;
 typedef void * RsScriptGroup;
+typedef void * RsScriptGroup2;
 typedef void * RsMesh;
 typedef void * RsPath;
 typedef void * RsType;
@@ -344,7 +346,9 @@ enum RsA3DClassID {
     RS_A3D_CLASS_ID_SCRIPT_KERNEL_ID,
     RS_A3D_CLASS_ID_SCRIPT_FIELD_ID,
     RS_A3D_CLASS_ID_SCRIPT_METHOD_ID,
-    RS_A3D_CLASS_ID_SCRIPT_GROUP
+    RS_A3D_CLASS_ID_SCRIPT_GROUP,
+    RS_A3D_CLASS_ID_CLOSURE,
+    RS_A3D_CLASS_ID_SCRIPT_GROUP2
 };
 
 enum RsCullMode {
@@ -412,7 +416,3 @@ enum RsContextFlags {
 #endif
 
 #endif // RENDER_SCRIPT_DEFINES_H
-
-
-
-
