@@ -34,6 +34,7 @@
 #endif
 #include "rsdSampler.h"
 #include "rsdScriptGroup.h"
+#include "rsdScriptGroup2.h"
 
 #include <malloc.h>
 #include "rsContext.h"
@@ -170,6 +171,11 @@ static RsdHalFunctions FunctionTable = {
         rsdScriptGroupExecute,
         rsdScriptGroupDestroy,
         nullptr
+    },
+
+    {
+        rsdScriptGroup2Init,
+        rsdScriptGroup2Execute
     },
 
     {

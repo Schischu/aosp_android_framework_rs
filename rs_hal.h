@@ -24,6 +24,7 @@ struct ANativeWindow;
 namespace android {
 namespace renderscript {
 
+class Closure;
 class Context;
 class ObjectBase;
 class Element;
@@ -35,6 +36,7 @@ class ScriptFieldID;
 class ScriptMethodID;
 class ScriptC;
 class ScriptGroup;
+class ScriptGroup2;
 class Path;
 class Program;
 class ProgramStore;
@@ -309,6 +311,11 @@ typedef struct {
         void (*destroy)(const Context *rsc, const ScriptGroup *sg);
         void (*updateCachedObject)(const Context *rsc, const ScriptGroup *sg, rs_script_group *obj);
     } scriptgroup;
+
+    struct {
+        bool (*init)(const Context *rsc, ScriptGroup2 *group);
+        void (*execute)(const Context *rsc, const ScriptGroup2 *group);
+    } scriptgroup2;
 
     struct {
         bool (*init)(const Context *rsc, const Type *m);

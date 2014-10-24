@@ -46,6 +46,7 @@ namespace renderscript {
 class ScriptC;
 class Script;
 class ScriptGroup;
+class ScriptGroup2;
 class ScriptKernelID;
 
 
@@ -105,6 +106,12 @@ public:
         virtual ~CpuScriptGroup() {};
     };
 
+    class CpuScriptGroup2 {
+     public:
+      virtual void execute() = 0;
+      virtual ~CpuScriptGroup2() {}
+    };
+
     static Context * getTlsContext();
     static const Script * getTlsScript();
     static pthread_key_t getThreadTLSKey();
@@ -125,6 +132,7 @@ public:
                                      uint32_t flags) = 0;
     virtual CpuScript * createIntrinsic(const Script *s, RsScriptIntrinsicID iid, Element *e) = 0;
     virtual CpuScriptGroup * createScriptGroup(const ScriptGroup *sg) = 0;
+    virtual CpuScriptGroup2 * createScriptGroup2(const ScriptGroup2 *sg) = 0;
     virtual bool getInForEach() = 0;
 
 #ifndef RS_COMPATIBILITY_LIB

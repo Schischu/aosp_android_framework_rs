@@ -1,0 +1,73 @@
+package com.android.rs.closure;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.renderscript.*;
+import android.view.View;
+
+public class ClosureTest extends Activity {
+  RenderScript mRS;
+  Allocation mInputAllocation;
+  Allocation mOutputAllocation;
+  // Allocation mInPixelsAllocation;
+  // Allocation mOutPixelsAllocation;
+  ScriptC_increment mScript;
+  // ScriptC_doubble mScript2;
+  // ScriptIntrinsicBlur mScriptBlur;
+
+  int[] mArray;
+
+  /*
+   *Bitmap mBitmap; Bitmap mBitmapOut;
+   *
+   * ImageView mDisplayView;
+   */
+
+  private static final String TAG = "MainActivity";
+  private static final int ARRAY_SIZE = 128;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+
+    mArray = new int[ARRAY_SIZE * 4];
+
+    for (int i = 0; i < ARRAY_SIZE * 4; i++) {
+      mArray[i] = i;
+    }
+
+    mRS = RenderScript.create(this);
+    mInputAllocation = Allocation.createSized(mRS, Element.I32_4(mRS), ARRAY_SIZE);
+    mOutputAllocation = Allocation.createSized(mRS, Element.I32_4(mRS), ARRAY_SIZE);
+    /*
+     *mInPixelsAllocation = Allocation.createFromBitmapResource( mRS, getResources(),
+     * R.drawable.img1600x1067); mBitmapOut =
+     * Bitmap.createBitmap(mInPixelsAllocation.getType().getX(),
+     * mInPixelsAllocation.getType().getY(), Bitmap.Config.ARGB_8888); mOutPixelsAllocation =
+     * Allocation.createFromBitmap(mRS, mBitmapOut); mDisplayView = (ImageView)
+     * findViewById(R.id.imageView1); mDisplayView.setImageBitmap(mBitmapOut);
+     */
+
+    mScript = new ScriptC_increment(mRS);
+    // mScript2 = new ScriptC_doubble(mRS);
+    // mScriptBlur = ScriptIntrinsicBlur.create(mRS, Element.U8_4(mRS));
+    // mScriptBlur.setRadius(20.0f);
+  }
+
+  void runTest(View view) {
+    mScript.forEach_increment(mInputAllocation, mOutputAllocation);
+
+    
+    
+      
+    
+    
+    /*
+    Closure c = new Closure(mScript.getKernelID_increment(), mInputAllocation);
+    c.setReturn(mOutputAllocation);
+    c.evalSync();
+    */
+  }
+
+}
