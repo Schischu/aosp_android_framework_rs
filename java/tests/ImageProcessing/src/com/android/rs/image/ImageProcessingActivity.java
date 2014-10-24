@@ -78,6 +78,7 @@ public class ImageProcessingActivity extends Activity
         VIGNETTE_APPROXIMATE_RELAXED ("Vignette Approximate Relaxed"),
         GROUP_TEST_EMULATED ("Group Test (emulated)"),
         GROUP_TEST_NATIVE ("Group Test (native)"),
+        GROUP_TEST_NATIVE2 ("Group Test (native2)"),
         CONVOLVE_3X3 ("Convolve 3x3"),
         INTRINSICS_CONVOLVE_3X3 ("Intrinsics Convolve 3x3"),
         COLOR_MATRIX ("ColorMatrix"),
@@ -289,10 +290,13 @@ public class ImageProcessingActivity extends Activity
             mTest = new Vignette(true, true);
             break;
         case GROUP_TEST_EMULATED:
-            mTest = new GroupTest(false);
+            mTest = new GroupTest(GroupTest.EMULATED);
             break;
         case GROUP_TEST_NATIVE:
-            mTest = new GroupTest(true);
+            mTest = new GroupTest(GroupTest.NATIVE1);
+            break;
+        case GROUP_TEST_NATIVE2:
+            mTest = new GroupTest(GroupTest.NATIVE2);
             break;
         case CONVOLVE_3X3:
             mTest = new Convolve3x3(false);

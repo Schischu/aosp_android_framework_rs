@@ -17,6 +17,7 @@
 #include "rsCpuCore.h"
 #include "rsCpuScript.h"
 #include "rsCpuScriptGroup.h"
+#include "rsCpuScriptGroup2.h"
 
 #include <malloc.h>
 #include "rsContext.h"
@@ -666,5 +667,17 @@ RsdCpuReference::CpuScriptGroup * RsdCpuReferenceImpl::createScriptGroup(const S
         delete sgi;
         return nullptr;
     }
+    return sgi;
+}
+
+RsdCpuReference::CpuScriptGroup2 * RsdCpuReferenceImpl::createScriptGroup2(
+    const ScriptGroup2 *sg) {
+    CpuScriptGroup2Impl *sgi = new CpuScriptGroup2Impl(this, sg);
+    /*
+    if (!sgi->init()) {
+        delete sgi;
+        return nullptr;
+    }
+    */
     return sgi;
 }
