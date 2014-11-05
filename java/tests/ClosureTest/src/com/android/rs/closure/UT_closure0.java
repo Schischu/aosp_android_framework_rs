@@ -62,7 +62,11 @@ public class UT_closure0 extends UnitTest {
         Type.createX(pRS, Element.I32_4(pRS), ARRAY_SIZE),
         new Object[]{c0.getReturn()}, map);
 
-    ScriptGroup2 group = builder.create(c1.getReturn());
+    Closure c2 = builder.addKernel(s_double.getKernelID_doubble(),
+        Type.createX(pRS, Element.I32_4(pRS), ARRAY_SIZE),
+        new Object[]{c1.getReturn()}, map);
+
+    ScriptGroup2 group = builder.create(c2.getReturn());
 
     int[] a = new int[ARRAY_SIZE * 4];
     ((Allocation)group.execute(input)[0]).copyTo(a);
@@ -72,8 +76,8 @@ public class UT_closure0 extends UnitTest {
 
     boolean failed = false;
     for (int i = 0; i < ARRAY_SIZE * 4; i++) {
-      if (a[i] != (i+1) * 2) {
-        Log.e(TAG, "a["+i+"]="+a[i]+", should be "+ ((i+1) * 2));
+      if (a[i] != (i+1) * 4) {
+        Log.e(TAG, "a["+i+"]="+a[i]+", should be "+ ((i+1) * 4));
         failed = true;
       }
     }

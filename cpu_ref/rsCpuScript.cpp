@@ -34,6 +34,7 @@
     #include <bcc/Renderscript/RSCompilerDriver.h>
     #include <bcc/Renderscript/RSExecutable.h>
     #include <bcc/Renderscript/RSInfo.h>
+    #include <bcc/Source.h>
     #include <bcinfo/MetadataExtractor.h>
     #include <cutils/properties.h>
 
@@ -396,6 +397,7 @@ RsdCpuScriptImpl::RsdCpuScriptImpl(RsdCpuReferenceImpl *ctx, const Script *s) {
     mBoundAllocs = nullptr;
     mIntrinsicData = nullptr;
     mIsThreadable = true;
+    mSource = nullptr;
 }
 
 
@@ -491,6 +493,21 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
             return false;
         }
     }
+
+    // Keep source around in case for kernel fusion
+    // Need to make a copy of bitcode or materialize the module
+    // right now before the Java VM GCs the bitcode buffer.
+    // TODO(yangni): Further clean this up.
+    mBitcode = new char[bitcodeSize];
+    if (mBitcode == nullptr) {
+      ALOGE("out of memory for bitcode buffer");
+      exit(-1);
+    }
+    mBitcodeSize = bitcodeSize;
+    memcpy(mBitcode, bitcode, bitcodeSize);
+    mSource = bcc::Source::CreateFromBuffer(
+        *bcc::BCCContext::GetOrCreateGlobalContext(),
+        resName, (const char*)mBitcode, bitcodeSize);
 
     mExecutable->setThreadable(mIsThreadable);
     if (!mExecutable->syncInfo()) {
@@ -1171,6 +1188,10 @@ void RsdCpuScriptImpl::setGlobalObj(uint32_t slot, ObjectBase *data) {
 }
 
 RsdCpuScriptImpl::~RsdCpuScriptImpl() {
+    if (mSource != nullptr) {
+        delete mSource;
+    }
+    delete[] mBitcode;
 #ifndef RS_COMPATIBILITY_LIB
     if (mExecutable) {
         std::vector<void *>::const_iterator var_addr_iter =

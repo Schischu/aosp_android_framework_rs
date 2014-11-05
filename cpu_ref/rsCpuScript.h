@@ -33,6 +33,7 @@ namespace bcc {
     class BCCContext;
     class RSCompilerDriver;
     class RSExecutable;
+    class Source;
 }
 
 namespace bcinfo {
@@ -156,6 +157,14 @@ protected:
     Allocation **mBoundAllocs;
     void * mIntrinsicData;
     bool mIsThreadable;
+
+ public:
+    const bcc::Source* getSource() const { return mSource; }
+
+ private:
+    bcc::Source* mSource;
+  char* mBitcode;
+  size_t mBitcodeSize;
 };
 
 Allocation * rsdScriptGetAllocationForPointer(
