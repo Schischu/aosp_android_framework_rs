@@ -122,6 +122,12 @@ typedef int64_t ssize_t;
 #define RS_BASE_OBJ typedef struct { const long* const p; const long* const r; const long* const v1; const long* const v2; }
 #endif
 
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 0))
+typedef __fp16 half;
+#endif
+
+
 /**
  * \brief Opaque handle to a RenderScript element.
  *
@@ -490,6 +496,9 @@ typedef enum {
  */
 typedef enum {
     RS_TYPE_NONE             = 0,
+#if (defined(RS_VERSION) && (RS_VERSION >= 0))
+    RS_TYPE_FLOAT_16         = 1,
+#endif
     RS_TYPE_FLOAT_32         = 2,
     RS_TYPE_FLOAT_64         = 3,
     RS_TYPE_SIGNED_8         = 4,
