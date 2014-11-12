@@ -101,58 +101,73 @@ typedef struct {
 } rs_tm;
 #endif
 
+#ifndef __LP64__
+typedef android::renderscript::rs_script     RS_TY_SCRIPT;
+typedef android::renderscript::rs_allocation RS_TY_ALLOC;
+#define RS_GET_OBJ_PTR(T1, T2) static inline T2* rsGetObjPtr(T1 a) { return (T2*)(a.p); }
+#else
+typedef android::renderscript::rs_script*     RS_TY_SCRIPT;
+typedef android::renderscript::rs_allocation* RS_TY_ALLOC;
+#define RS_GET_OBJ_PTR(T1, T2) static inline T2* rsGetObjPtr(T1 a) { return (T2*)(a->p); }
+#endif
+
+#ifndef RS_COMPATIBILITY_LIB
+RS_GET_OBJ_PTR(RS_TY_SCRIPT, Script)
+#endif
+RS_GET_OBJ_PTR(RS_TY_ALLOC, Allocation)
+
+#undef RS_GET_OBJ_PTR
+
 //////////////////////////////////////////////////////////////////////////////
 // Allocation
 //////////////////////////////////////////////////////////////////////////////
 
-
-static void SC_AllocationSyncAll2(android::renderscript::rs_allocation a, RsAllocationUsageType source) {
+static void SC_AllocationSyncAll2(RS_TY_ALLOC a, RsAllocationUsageType source) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrAllocationSyncAll(rsc, (Allocation*)a.p, source);
+    rsrAllocationSyncAll(rsc, rsGetObjPtr(a), source);
 }
 
-static void SC_AllocationSyncAll(android::renderscript::rs_allocation a) {
+static void SC_AllocationSyncAll(RS_TY_ALLOC a) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrAllocationSyncAll(rsc, (Allocation*)a.p, RS_ALLOCATION_USAGE_SCRIPT);
+    rsrAllocationSyncAll(rsc, rsGetObjPtr(a), RS_ALLOCATION_USAGE_SCRIPT);
 }
 
 #ifndef RS_COMPATIBILITY_LIB
 
-static void SC_AllocationCopy1DRange(android::renderscript::rs_allocation dstAlloc,
+static void SC_AllocationCopy1DRange(RS_TY_ALLOC dstAlloc,
                                      uint32_t dstOff,
                                      uint32_t dstMip,
                                      uint32_t count,
-                                     android::renderscript::rs_allocation srcAlloc,
+                                     RS_TY_ALLOC srcAlloc,
                                      uint32_t srcOff, uint32_t srcMip) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrAllocationCopy1DRange(rsc, (Allocation*)dstAlloc.p, dstOff, dstMip, count,
-                             (Allocation*)srcAlloc.p, srcOff, srcMip);
+    rsrAllocationCopy1DRange(rsc, rsGetObjPtr(dstAlloc), dstOff, dstMip, count,
+                             rsGetObjPtr(srcAlloc), srcOff, srcMip);
 }
 
-static void SC_AllocationCopy2DRange(android::renderscript::rs_allocation dstAlloc,
+static void SC_AllocationCopy2DRange(RS_TY_ALLOC dstAlloc,
                                      uint32_t dstXoff, uint32_t dstYoff,
                                      uint32_t dstMip, uint32_t dstFace,
                                      uint32_t width, uint32_t height,
-                                     android::renderscript::rs_allocation srcAlloc,
+                                     RS_TY_ALLOC srcAlloc,
                                      uint32_t srcXoff, uint32_t srcYoff,
                                      uint32_t srcMip, uint32_t srcFace) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrAllocationCopy2DRange(rsc, (Allocation*)dstAlloc.p,
+    rsrAllocationCopy2DRange(rsc, rsGetObjPtr(dstAlloc),
                              dstXoff, dstYoff, dstMip, dstFace,
-                             width, height,
-                             (Allocation*)srcAlloc.p,
+                             width, height, rsGetObjPtr(srcAlloc),
                              srcXoff, srcYoff, srcMip, srcFace);
 }
 
-static void SC_AllocationIoSend(android::renderscript::rs_allocation alloc) {
+static void SC_AllocationIoSend(RS_TY_ALLOC alloc) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrAllocationIoSend(rsc, (Allocation*)alloc.p);
+    rsrAllocationIoSend(rsc, rsGetObjPtr(alloc));
 }
 
 
-static void SC_AllocationIoReceive(android::renderscript::rs_allocation alloc) {
+static void SC_AllocationIoReceive(RS_TY_ALLOC alloc) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrAllocationIoReceive(rsc, (Allocation*)alloc.p);
+    rsrAllocationIoReceive(rsc, rsGetObjPtr(alloc));
 }
 
 #else
@@ -486,7 +501,7 @@ static void SC_SetObject(rs_object_base *dst, rs_object_base  src) {
 
 #ifdef __LP64__
 static void SC_SetObject_ByRef(rs_object_base *dst, rs_object_base *src) {
-    //    ALOGE("SC_SetObject2: dst = %p, src = %p", dst, src->p);
+    //    ALOGE("SC_SetObject_ByRef: dst = %p, src = %p", dst, src->p);
     Context *rsc = RsdCpuReference::getTlsContext();
     rsrSetObject(rsc, dst, (ObjectBase*)src->p);
 }
@@ -557,104 +572,34 @@ static const android::renderscript::rs_allocation SC_GetAllocation(const void *p
 #endif
 
 #ifndef RS_COMPATIBILITY_LIB
-#ifndef __LP64__
-static void SC_ForEach_SAA(android::renderscript::rs_script target,
-                            android::renderscript::rs_allocation in,
-                            android::renderscript::rs_allocation out) {
+static void SC_ForEach_SAA(RS_TY_SCRIPT target, RS_TY_ALLOC in, RS_TY_ALLOC out) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target.p, (Allocation*)in.p, (Allocation*)out.p,
-               nullptr, 0, nullptr);
+    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out), nullptr, 0, nullptr);
 }
-#else
-static void SC_ForEach_SAA(android::renderscript::rs_script *target,
-                            android::renderscript::rs_allocation *in,
-                            android::renderscript::rs_allocation *out) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target->p, (Allocation*)in->p, (Allocation*)out->p, NULL, 0, NULL);
-}
-#endif
 
-#ifndef __LP64__
-static void SC_ForEach_SAAU(android::renderscript::rs_script target,
-                            android::renderscript::rs_allocation in,
-                            android::renderscript::rs_allocation out,
-                            const void *usr) {
+static void SC_ForEach_SAAU(RS_TY_SCRIPT target, RS_TY_ALLOC in,
+                            RS_TY_ALLOC out, const void *usr) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target.p, (Allocation*)in.p, (Allocation*)out.p,
-               usr, 0, nullptr);
+    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out), usr, 0, nullptr);
 }
-#else
-static void SC_ForEach_SAAU(android::renderscript::rs_script *target,
-                            android::renderscript::rs_allocation *in,
-                            android::renderscript::rs_allocation *out,
-                            const void *usr) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target->p, (Allocation*)in->p, (Allocation*)out->p, usr, 0, NULL);
-}
-#endif
 
-#ifndef __LP64__
-static void SC_ForEach_SAAUS(android::renderscript::rs_script target,
-                             android::renderscript::rs_allocation in,
-                             android::renderscript::rs_allocation out,
-                             const void *usr,
-                             const RsScriptCall *call) {
+static void SC_ForEach_SAAUS(RS_TY_SCRIPT target, RS_TY_ALLOC in,
+                             RS_TY_ALLOC out, const void *usr, const RsScriptCall *call) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target.p, (Allocation*)in.p, (Allocation*)out.p, usr, 0, call);
+    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out), usr, 0, call);
 }
-#else
-static void SC_ForEach_SAAUS(android::renderscript::rs_script *target,
-                             android::renderscript::rs_allocation *in,
-                             android::renderscript::rs_allocation *out,
-                             const void *usr,
-                             const RsScriptCall *call) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target->p, (Allocation*)in->p, (Allocation*)out->p, usr, 0, call);
-}
-#endif
 
-#ifndef __LP64__
-static void SC_ForEach_SAAUL(android::renderscript::rs_script target,
-                             android::renderscript::rs_allocation in,
-                             android::renderscript::rs_allocation out,
-                             const void *usr,
-                             uint32_t usrLen) {
+static void SC_ForEach_SAAUL(RS_TY_SCRIPT target, RS_TY_ALLOC in,
+                             RS_TY_ALLOC out, const void *usr, uint32_t usrLen) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target.p, (Allocation*)in.p, (Allocation*)out.p,
-               usr, usrLen, nullptr);
+    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out), usr, usrLen, nullptr);
 }
-#else
-static void SC_ForEach_SAAUL(android::renderscript::rs_script *target,
-                             android::renderscript::rs_allocation *in,
-                             android::renderscript::rs_allocation *out,
-                             const void *usr,
-                             uint32_t usrLen) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target->p, (Allocation*)in->p, (Allocation*)out->p, usr, usrLen, NULL);
-}
-#endif
 
-#ifndef __LP64__
-static void SC_ForEach_SAAULS(android::renderscript::rs_script target,
-                              android::renderscript::rs_allocation in,
-                              android::renderscript::rs_allocation out,
-                              const void *usr,
-                              uint32_t usrLen,
-                              const RsScriptCall *call) {
+static void SC_ForEach_SAAULS(RS_TY_SCRIPT target, RS_TY_ALLOC in, RS_TY_ALLOC out,
+                              const void *usr, uint32_t usrLen, const RsScriptCall *call) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target.p, (Allocation*)in.p, (Allocation*)out.p, usr, usrLen, call);
+    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out), usr, usrLen, call);
 }
-#else
-static void SC_ForEach_SAAULS(android::renderscript::rs_script *target,
-                              android::renderscript::rs_allocation *in,
-                              android::renderscript::rs_allocation *out,
-                              const void *usr,
-                              uint32_t usrLen,
-                              const RsScriptCall *call) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target->p, (Allocation*)in->p, (Allocation*)out->p, usr, usrLen, call);
-}
-#endif
 #endif
 
 
@@ -833,71 +778,71 @@ static void * ElementAt3D(Allocation *a, RsDataType dt, uint32_t vecSize, uint32
     return &p[(eSize * x) + (y * stride)];
 }
 
-static const void * SC_GetElementAt1D(android::renderscript::rs_allocation a, uint32_t x) {
-    return ElementAt1D((Allocation*)a.p, RS_TYPE_UNSIGNED_8, 0, x);
+static const void * SC_GetElementAt1D(RS_TY_ALLOC a, uint32_t x) {
+    return ElementAt1D(rsGetObjPtr(a), RS_TYPE_UNSIGNED_8, 0, x);
 }
-static const void * SC_GetElementAt2D(android::renderscript::rs_allocation a, uint32_t x, uint32_t y) {
-    return ElementAt2D((Allocation*)a.p, RS_TYPE_UNSIGNED_8, 0, x, y);
+static const void * SC_GetElementAt2D(RS_TY_ALLOC a, uint32_t x, uint32_t y) {
+    return ElementAt2D(rsGetObjPtr(a), RS_TYPE_UNSIGNED_8, 0, x, y);
 }
-static const void * SC_GetElementAt3D(android::renderscript::rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
-    return ElementAt3D((Allocation*)a.p, RS_TYPE_UNSIGNED_8, 0, x, y, z);
-}
-
-static void SC_SetElementAt1D(android::renderscript::rs_allocation a, const void *ptr, uint32_t x) {
-    const Type *t = ((Allocation*)a.p)->getType();
-    const Element *e = t->getElement();
-    void *tmp = ElementAt1D((Allocation*)a.p, RS_TYPE_UNSIGNED_8, 0, x);
-    if (tmp != nullptr) {
-        memcpy(tmp, ptr, e->getSizeBytes());
-    }
-}
-static void SC_SetElementAt2D(android::renderscript::rs_allocation a, const void *ptr, uint32_t x, uint32_t y) {
-    const Type *t = ((Allocation*)a.p)->getType();
-    const Element *e = t->getElement();
-    void *tmp = ElementAt2D((Allocation*)a.p, RS_TYPE_UNSIGNED_8, 0, x, y);
-    if (tmp != nullptr) {
-        memcpy(tmp, ptr, e->getSizeBytes());
-    }
-}
-static void SC_SetElementAt3D(android::renderscript::rs_allocation a, const void *ptr, uint32_t x, uint32_t y, uint32_t z) {
-    const Type *t = ((Allocation*)a.p)->getType();
-    const Element *e = t->getElement();
-    void *tmp = ElementAt3D((Allocation*)a.p, RS_TYPE_UNSIGNED_8, 0, x, y, z);
-    if (tmp != nullptr) {
-        memcpy(tmp, ptr, e->getSizeBytes());
-    }
+static const void * SC_GetElementAt3D(RS_TY_ALLOC a, uint32_t x, uint32_t y, uint32_t z) {
+    return ElementAt3D(rsGetObjPtr(a), RS_TYPE_UNSIGNED_8, 0, x, y, z);
 }
 
-#define ELEMENT_AT(T, DT, VS)                                               \
-    static void SC_SetElementAt1_##T(android::renderscript::rs_allocation a, const T *val, uint32_t x) { \
-        void *r = ElementAt1D((Allocation*)a.p, DT, VS, x);             \
+static void SC_SetElementAt1D(RS_TY_ALLOC a, const void *ptr, uint32_t x) {
+    const Type *t = rsGetObjPtr(a)->getType();
+    const Element *e = t->getElement();
+    void *tmp = ElementAt1D(rsGetObjPtr(a), RS_TYPE_UNSIGNED_8, 0, x);
+    if (tmp != nullptr) {
+        memcpy(tmp, ptr, e->getSizeBytes());
+    }
+}
+static void SC_SetElementAt2D(RS_TY_ALLOC a, const void *ptr, uint32_t x, uint32_t y) {
+    const Type *t = rsGetObjPtr(a)->getType();
+    const Element *e = t->getElement();
+    void *tmp = ElementAt2D(rsGetObjPtr(a), RS_TYPE_UNSIGNED_8, 0, x, y);
+    if (tmp != nullptr) {
+        memcpy(tmp, ptr, e->getSizeBytes());
+    }
+}
+static void SC_SetElementAt3D(RS_TY_ALLOC a, const void *ptr, uint32_t x, uint32_t y, uint32_t z) {
+    const Type *t = rsGetObjPtr(a)->getType();
+    const Element *e = t->getElement();
+    void *tmp = ElementAt3D(rsGetObjPtr(a), RS_TYPE_UNSIGNED_8, 0, x, y, z);
+    if (tmp != nullptr) {
+        memcpy(tmp, ptr, e->getSizeBytes());
+    }
+}
+
+#define ELEMENT_AT(T, DT, VS)                                           \
+    static void SC_SetElementAt1_##T(RS_TY_ALLOC a, const T *val, uint32_t x) { \
+        void *r = ElementAt1D(rsGetObjPtr(a), DT, VS, x);               \
         if (r != nullptr) ((T *)r)[0] = *val;                           \
         else ALOGE("Error from %s", __PRETTY_FUNCTION__);               \
     }                                                                   \
-    static void SC_SetElementAt2_##T(android::renderscript::rs_allocation a, const T * val, uint32_t x, uint32_t y) { \
-        void *r = ElementAt2D((Allocation*)a.p, DT, VS, x, y);          \
+    static void SC_SetElementAt2_##T(RS_TY_ALLOC a, const T * val, uint32_t x, uint32_t y) { \
+        void *r = ElementAt2D(rsGetObjPtr(a), DT, VS, x, y);            \
         if (r != nullptr) ((T *)r)[0] = *val;                           \
         else ALOGE("Error from %s", __PRETTY_FUNCTION__);               \
     }                                                                   \
-    static void SC_SetElementAt3_##T(android::renderscript::rs_allocation a, const T * val, uint32_t x, uint32_t y, uint32_t z) { \
-        void *r = ElementAt3D((Allocation*)a.p, DT, VS, x, y, z);       \
+    static void SC_SetElementAt3_##T(RS_TY_ALLOC a, const T * val, uint32_t x, uint32_t y, uint32_t z) { \
+        void *r = ElementAt3D(rsGetObjPtr(a), DT, VS, x, y, z);         \
         if (r != nullptr) ((T *)r)[0] = *val;                           \
         else ALOGE("Error from %s", __PRETTY_FUNCTION__);               \
     }                                                                   \
-    static void SC_GetElementAt1_##T(android::renderscript::rs_allocation a, T *val, uint32_t x) {                  \
-        void *r = ElementAt1D((Allocation*)a.p, DT, VS, x);             \
+    static void SC_GetElementAt1_##T(RS_TY_ALLOC a, T *val, uint32_t x) { \
+        void *r = ElementAt1D(rsGetObjPtr(a), DT, VS, x);               \
         if (r != nullptr) *val = ((T *)r)[0];                           \
         else ALOGE("Error from %s", __PRETTY_FUNCTION__);               \
     }                                                                   \
-    static void SC_GetElementAt2_##T(android::renderscript::rs_allocation a, T *val, uint32_t x, uint32_t y) {      \
-        void *r = ElementAt2D((Allocation*)a.p, DT, VS, x, y);           \
-        if (r != nullptr) *val = ((T *)r)[0];                            \
-        else ALOGE("Error from %s", __PRETTY_FUNCTION__);                \
-    }                                                                    \
-    static void SC_GetElementAt3_##T(android::renderscript::rs_allocation a, T *val, uint32_t x, uint32_t y, uint32_t z) { \
-        void *r = ElementAt3D((Allocation*)a.p, DT, VS, x, y, z);        \
-        if (r != nullptr) *val = ((T *)r)[0];                            \
-        else ALOGE("Error from %s", __PRETTY_FUNCTION__);                \
+    static void SC_GetElementAt2_##T(RS_TY_ALLOC a, T *val, uint32_t x, uint32_t y) { \
+        void *r = ElementAt2D(rsGetObjPtr(a), DT, VS, x, y);            \
+        if (r != nullptr) *val = ((T *)r)[0];                           \
+        else ALOGE("Error from %s", __PRETTY_FUNCTION__);               \
+    }                                                                   \
+    static void SC_GetElementAt3_##T(RS_TY_ALLOC a, T *val, uint32_t x, uint32_t y, uint32_t z) { \
+        void *r = ElementAt3D(rsGetObjPtr(a), DT, VS, x, y, z);         \
+        if (r != nullptr) *val = ((T *)r)[0];                           \
+        else ALOGE("Error from %s", __PRETTY_FUNCTION__);               \
     }
 
 ELEMENT_AT(char, RS_TYPE_SIGNED_8, 1)
