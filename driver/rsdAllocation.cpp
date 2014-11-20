@@ -27,6 +27,7 @@
 
 #ifdef RS_COMPATIBILITY_LIB
 #include "rsCompatibilityLib.h"
+#include <dlfcn.h>
 #else
 #include "rsdFrameBufferObj.h"
 #include "gui/GLConsumer.h"
@@ -47,6 +48,10 @@
 using namespace android;
 using namespace android::renderscript;
 
+#ifdef RS_COMPATIBILITY_LIB
+typedef void (*sAllocationReleaseSurfFnPtr) (const Context *rsc, Allocation *alloc);
+static sAllocationReleaseSurfFnPtr sAllocationReleaseSurf;
+#endif
 
 #ifndef RS_COMPATIBILITY_LIB
 const static GLenum gFaceOrder[] = {
@@ -522,6 +527,27 @@ void rsdAllocationDestroy(const Context *rsc, Allocation *alloc) {
             drv->wndSurface = nullptr;
             native_window_api_disconnect(nw, NATIVE_WINDOW_API_CPU);
             nw->decStrong(nullptr);
+        }
+    }
+#else
+    if ((alloc->mHal.state.usageFlags & RS_ALLOCATION_USAGE_IO_OUTPUT) &&
+        (alloc->mHal.state.usageFlags & RS_ALLOCATION_USAGE_SCRIPT)) {
+        if (sAllocationReleaseSurf) {
+            sAllocationReleaseSurf(rsc, alloc);
+        } else {
+            //If the function ptr not set, init it
+            void* handle = NULL;
+            handle = dlopen("libRSSupportIO.so", RTLD_LAZY | RTLD_LOCAL);
+            if (handle == NULL) {
+                ALOGE("couldn't dlopen libRSSupportIO, %s", dlerror());
+                return;
+            }
+            sAllocationReleaseSurf = (sAllocationReleaseSurfFnPtr)dlsym(handle, "rsdAllocationReleaseSurf");
+            if (sAllocationReleaseSurf == NULL) {
+                ALOGE("Couldn't initialize sAllocationReleaseSurf");
+                return;
+            }
+            sAllocationReleaseSurf(rsc, alloc);
         }
     }
 #endif
