@@ -94,7 +94,7 @@ static RsdHalFunctions FunctionTable = {
         rsdAllocationSyncAll,
         rsdAllocationMarkDirty,
         NATIVE_FUNC(rsdAllocationSetSurface),
-        NATIVE_FUNC(rsdAllocationIoSend),
+        rsdAllocationIoSend,
         NATIVE_FUNC(rsdAllocationIoReceive),
         rsdAllocationData1D,
         rsdAllocationData2D,

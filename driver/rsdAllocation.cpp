@@ -27,6 +27,8 @@
 
 #ifdef RS_COMPATIBILITY_LIB
 #include "rsCompatibilityLib.h"
+#include <dlfcn.h>
+#include <android/log.h>
 #else
 #include "rsdFrameBufferObj.h"
 #include "gui/GLConsumer.h"
@@ -47,6 +49,12 @@
 using namespace android;
 using namespace android::renderscript;
 
+#ifdef RS_COMPATIBILITY_LIB
+typedef void (*sAllocationReleaseSurfFnPtr) (const Context *rsc, Allocation *alloc);
+typedef void (*sAllocationIoSendFnPtr) (const Context *rsc, Allocation *alloc);
+static sAllocationReleaseSurfFnPtr sAllocationReleaseSurf;
+static sAllocationIoSendFnPtr sAllocationIoSend;
+#endif
 
 #ifndef RS_COMPATIBILITY_LIB
 const static GLenum gFaceOrder[] = {
@@ -380,7 +388,28 @@ bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
 
     uint8_t * ptr = nullptr;
     if (alloc->mHal.state.usageFlags & RS_ALLOCATION_USAGE_IO_OUTPUT) {
-
+#ifdef RS_COMPATIBILITY_LIB
+        void* handleIO = NULL;
+        handleIO = dlopen("libRSSupportIO.so", RTLD_LAZY | RTLD_LOCAL);
+        if (handleIO == NULL) {
+            ALOGE("Couldn't load libRSSupportIO.so");
+            return false;
+        }
+        if (sAllocationReleaseSurf==NULL) {
+            sAllocationReleaseSurf = (sAllocationReleaseSurfFnPtr)dlsym(handleIO, "rsdAllocationReleaseSurf");
+            if (sAllocationReleaseSurf==NULL) {
+                ALOGE("Failed to initialize sAllocationReleaseSurf");
+                return false;
+            }
+        }
+        if (sAllocationIoSend==NULL) {
+            sAllocationIoSend = (sAllocationIoSendFnPtr)dlsym(handleIO, "rsdAllocationIoSendSup");
+            if (sAllocationIoSend==NULL) {
+                ALOGE("Failed to initialize sAllocationIoSend");
+                return false;
+            }
+        }
+#endif
     } else if (alloc->mHal.state.usageFlags & RS_ALLOCATION_USAGE_IO_INPUT) {
         // Allocation is allocated when the surface is created
         // in getSurface
@@ -523,6 +552,11 @@ void rsdAllocationDestroy(const Context *rsc, Allocation *alloc) {
             native_window_api_disconnect(nw, NATIVE_WINDOW_API_CPU);
             nw->decStrong(nullptr);
         }
+    }
+#else
+    if ((alloc->mHal.state.usageFlags & RS_ALLOCATION_USAGE_IO_OUTPUT) &&
+        (alloc->mHal.state.usageFlags & RS_ALLOCATION_USAGE_SCRIPT)) {
+        sAllocationReleaseSurf(rsc, alloc);
     }
 #endif
 
@@ -779,6 +813,8 @@ void rsdAllocationIoSend(const Context *rsc, Allocation *alloc) {
         rsc->setError(RS_ERROR_DRIVER, "Sent IO buffer with no attached surface.");
         return;
     }
+#else
+    sAllocationIoSend(rsc, alloc);
 #endif
 }
 
