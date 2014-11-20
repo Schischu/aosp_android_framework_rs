@@ -18,6 +18,7 @@
 #define ANDROID_RSDISPATCH_H
 
 #include "rsInternalDefines.h"
+#include "jni.h"
 
 typedef const void* (*AllocationGetTypeFnPtr)(RsContext con, RsAllocation va);
 typedef void (*TypeGetNativeDataFnPtr)(RsContext, RsType, uintptr_t *typeData, uint32_t typeDataSize);
@@ -161,4 +162,15 @@ struct dispatchTable {
 };
 
 bool loadSymbols(void* handle, dispatchTable& dispatchTab);
+
+//USAGE_IO for RS Support lib
+typedef void (*sAllocationIoSendFnPtr) (RsContext, RsAllocation, bool, dispatchTable);
+typedef void (*sAllocationSetSurfaceFnPtr) (JNIEnv *, jobject, RsContext, RsAllocation, RsNativeWindow, bool, dispatchTable);
+struct ioSuppDT {
+    //USAGE_IO_OUTPUT
+    sAllocationIoSendFnPtr sAllocationIoSend;
+    sAllocationSetSurfaceFnPtr sAllocationSetSurface;
+};
+
+bool loadIOSuppSyms(void* handleIO, ioSuppDT& ioDispatch);
 #endif

@@ -357,3 +357,16 @@ bool loadSymbols(void* handle, dispatchTable& dispatchTab) {
     return true;
 }
 
+bool loadIOSuppSyms(void* handleIO, ioSuppDT& ioDispatch){
+    ioDispatch.sAllocationIoSend = (sAllocationIoSendFnPtr)dlsym(handleIO, "AllocationIoSend");
+    if (ioDispatch.sAllocationIoSend == NULL) {
+        LOG_API("Couldn't initialize ioDispatch.sAllocationIoSend");
+        return false;
+    }
+    ioDispatch.sAllocationSetSurface = (sAllocationSetSurfaceFnPtr)dlsym(handleIO, "AllocationSetSurface");
+    if (ioDispatch.sAllocationSetSurface == NULL) {
+        LOG_API("Couldn't initialize ioDispatch.sAllocationSetSurface");
+        return false;
+    }
+    return true;
+}
