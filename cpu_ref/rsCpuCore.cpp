@@ -63,11 +63,9 @@ RsdCpuReference::~RsdCpuReference() {
 
 RsdCpuReference * RsdCpuReference::create(Context *rsc, uint32_t version_major,
         uint32_t version_minor, sym_lookup_t lfn, script_lookup_t slfn
-#ifndef RS_COMPATIBILITY_LIB
         , bcc::RSLinkRuntimeCallback pLinkRuntimeCallback,
         RSSelectRTCallback pSelectRTCallback,
         const char *pBccPluginName
-#endif
         ) {
 
     RsdCpuReferenceImpl *cpu = new RsdCpuReferenceImpl(rsc);
@@ -79,13 +77,11 @@ RsdCpuReference * RsdCpuReference::create(Context *rsc, uint32_t version_major,
         return nullptr;
     }
 
-#ifndef RS_COMPATIBILITY_LIB
     cpu->setLinkRuntimeCallback(pLinkRuntimeCallback);
     cpu->setSelectRTCallback(pSelectRTCallback);
     if (pBccPluginName) {
         cpu->setBccPluginName(pBccPluginName);
     }
-#endif
 
     return cpu;
 }
@@ -115,11 +111,9 @@ RsdCpuReferenceImpl::RsdCpuReferenceImpl(Context *rsc) {
     memset(&mWorkers, 0, sizeof(mWorkers));
     memset(&mTlsStruct, 0, sizeof(mTlsStruct));
     mExit = false;
-#ifndef RS_COMPATIBILITY_LIB
     mLinkRuntimeCallback = nullptr;
     mSelectRTCallback = nullptr;
     mSetupCompilerCallback = nullptr;
-#endif
 }
 
 
@@ -586,9 +580,7 @@ RsdCpuReference::CpuScript * RsdCpuReferenceImpl::createScript(const ScriptC *s,
 
     RsdCpuScriptImpl *i = new RsdCpuScriptImpl(this, s);
     if (!i->init(resName, cacheDir, bitcode, bitcodeSize, flags
-#ifndef RS_COMPATIBILITY_LIB
         , getBccPluginName()
-#endif
         )) {
         delete i;
         return nullptr;
