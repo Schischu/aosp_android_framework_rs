@@ -112,7 +112,6 @@ static float SC_frac(float v) {
     return fmin(v - i, 0x1.fffffep-1f);
 }
 
-#ifdef RS_COMPATIBILITY_LIB
 EXPORT_F32_FN_F32(acosf)
 EXPORT_F32_FN_F32(acoshf)
 EXPORT_F32_FN_F32(asinf)
@@ -138,7 +137,7 @@ EXPORT_F32_FN_F32_F32(fminf)
 EXPORT_F32_FN_F32_F32(fmodf)
 float SC_frexpf(float v, int* ptr) {return frexpf(v, ptr);}
 EXPORT_F32_FN_F32_F32(hypotf)
-EXPORT_F32_FN_F32(ilogbf)
+int SC_ilogbf(float v) {return ilogbf(v); }
 float SC_ldexpf(float v, int i) {return ldexpf(v, i);}
 EXPORT_F32_FN_F32(lgammaf)
 float SC_lgammaf_r(float v, int* ptr) {return lgammaf_r(v, ptr);}
@@ -213,7 +212,6 @@ void __attribute__((overloadable)) rsMatrixTranspose(rs_matrix3x3 *m) {
 void __attribute__((overloadable)) rsMatrixTranspose(rs_matrix2x2 *m) {
     SC_MatrixTranspose_2x2((Matrix2x2 *) m);
 }
-#endif
 
 //////////////////////////////////////////////////////////////////////////////
 // Class implementation
