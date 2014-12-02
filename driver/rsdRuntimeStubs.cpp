@@ -72,7 +72,6 @@ typedef uint32_t uint;
 typedef uint64_t ulong;
 #endif
 
-#ifdef RS_COMPATIBILITY_LIB
 #define OPAQUETYPE(t) \
     typedef struct { const int* const p; } __attribute__((packed, aligned(4))) t;
 
@@ -99,7 +98,6 @@ typedef struct {
     int tm_yday;    ///< day of the year
     int tm_isdst;   ///< daylight savings time
 } rs_tm;
-#endif
 
 //////////////////////////////////////////////////////////////////////////////
 // Allocation
@@ -118,22 +116,22 @@ static void SC_AllocationSyncAll(android::renderscript::rs_allocation a) {
 
 #ifndef RS_COMPATIBILITY_LIB
 
-static void SC_AllocationCopy1DRange(android::renderscript::rs_allocation dstAlloc,
+static void SC_AllocationCopy1DRange(::rs_allocation dstAlloc,
                                      uint32_t dstOff,
                                      uint32_t dstMip,
                                      uint32_t count,
-                                     android::renderscript::rs_allocation srcAlloc,
+                                     ::rs_allocation srcAlloc,
                                      uint32_t srcOff, uint32_t srcMip) {
     Context *rsc = RsdCpuReference::getTlsContext();
     rsrAllocationCopy1DRange(rsc, (Allocation*)dstAlloc.p, dstOff, dstMip, count,
                              (Allocation*)srcAlloc.p, srcOff, srcMip);
 }
 
-static void SC_AllocationCopy2DRange(android::renderscript::rs_allocation dstAlloc,
+static void SC_AllocationCopy2DRange(::rs_allocation dstAlloc,
                                      uint32_t dstXoff, uint32_t dstYoff,
                                      uint32_t dstMip, uint32_t dstFace,
                                      uint32_t width, uint32_t height,
-                                     android::renderscript::rs_allocation srcAlloc,
+                                     ::rs_allocation srcAlloc,
                                      uint32_t srcXoff, uint32_t srcYoff,
                                      uint32_t srcMip, uint32_t srcFace) {
     Context *rsc = RsdCpuReference::getTlsContext();
@@ -144,13 +142,13 @@ static void SC_AllocationCopy2DRange(android::renderscript::rs_allocation dstAll
                              srcXoff, srcYoff, srcMip, srcFace);
 }
 
-static void SC_AllocationIoSend(android::renderscript::rs_allocation alloc) {
+static void SC_AllocationIoSend(::rs_allocation alloc) {
     Context *rsc = RsdCpuReference::getTlsContext();
     rsrAllocationIoSend(rsc, (Allocation*)alloc.p);
 }
 
 
-static void SC_AllocationIoReceive(android::renderscript::rs_allocation alloc) {
+static void SC_AllocationIoReceive(::rs_allocation alloc) {
     Context *rsc = RsdCpuReference::getTlsContext();
     rsrAllocationIoReceive(rsc, (Allocation*)alloc.p);
 }
@@ -183,15 +181,15 @@ static void SC_AllocationCopy2DRange(::rs_allocation dstAlloc,
                              srcXoff, srcYoff, srcMip, srcFace);
 }
 
-static void SC_AllocationIoSend(Allocation* alloc) {
+static void SC_AllocationIoSend(::rs_allocation alloc) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrAllocationIoSend(rsc, alloc);
+    rsrAllocationIoSend(rsc, (Allocation *) alloc.p);
 }
 
 
-static void SC_AllocationIoReceive(Allocation* alloc) {
+static void SC_AllocationIoReceive(::rs_allocation alloc) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrAllocationIoReceive(rsc, alloc);
+    rsrAllocationIoReceive(rsc, (Allocation *) alloc.p);
 }
 
 #endif
@@ -476,7 +474,7 @@ static void SC_ClearObject(rs_object_base *dst) {
     Context *rsc = RsdCpuReference::getTlsContext();
     rsrClearObject(rsc, dst);
 }
-#ifndef RS_COMPATIBILITY_LIB
+
 static void SC_SetObject(rs_object_base *dst, rs_object_base  src) {
     //    ALOGE("SC_SetObject: dst = %p, src = %p", dst, src.p);
     //    ALOGE("SC_SetObject: dst[0] = %p", dst[0]);
@@ -501,20 +499,6 @@ static bool SC_IsObject(rs_object_base o) {
 static bool SC_IsObject_ByRef(rs_object_base *o) {
     Context *rsc = RsdCpuReference::getTlsContext();
     return rsrIsObject(rsc, *o);
-}
-#endif
-
-#else
-static void SC_SetObject(rs_object_base *dst, ObjectBase*  src) {
-    //    ALOGE("SC_SetObject: dst = %p, src = %p", dst, src.p);
-    //    ALOGE("SC_SetObject: dst[0] = %p", dst[0]);
-    Context *rsc = RsdCpuReference::getTlsContext();
-    rsrSetObject(rsc, dst, src);
-}
-
-static bool SC_IsObject(ObjectBase* o) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    return rsrIsObject(rsc, o);
 }
 #endif
 
@@ -556,15 +540,11 @@ static const android::renderscript::rs_allocation SC_GetAllocation(const void *p
 #endif
 #endif
 
-#ifndef RS_COMPATIBILITY_LIB
+
 #ifndef __LP64__
-static void SC_ForEach_SAA(android::renderscript::rs_script target,
-                            android::renderscript::rs_allocation in,
-                            android::renderscript::rs_allocation out) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target.p, (Allocation*)in.p, (Allocation*)out.p,
-               nullptr, 0, nullptr);
-}
+static void SC_ForEach_SAA(::rs_script target,
+                           ::rs_allocation in,
+                           ::rs_allocation out);
 #else
 static void SC_ForEach_SAA(android::renderscript::rs_script *target,
                             android::renderscript::rs_allocation *in,
@@ -575,9 +555,9 @@ static void SC_ForEach_SAA(android::renderscript::rs_script *target,
 #endif
 
 #ifndef __LP64__
-static void SC_ForEach_SAAU(android::renderscript::rs_script target,
-                            android::renderscript::rs_allocation in,
-                            android::renderscript::rs_allocation out,
+static void SC_ForEach_SAAU(::rs_script target,
+                            ::rs_allocation in,
+                            ::rs_allocation out,
                             const void *usr) {
     Context *rsc = RsdCpuReference::getTlsContext();
     rsrForEach(rsc, (Script*)target.p, (Allocation*)in.p, (Allocation*)out.p,
@@ -594,14 +574,11 @@ static void SC_ForEach_SAAU(android::renderscript::rs_script *target,
 #endif
 
 #ifndef __LP64__
-static void SC_ForEach_SAAUS(android::renderscript::rs_script target,
-                             android::renderscript::rs_allocation in,
-                             android::renderscript::rs_allocation out,
+static void SC_ForEach_SAAUS(::rs_script target,
+                             ::rs_allocation in,
+                             ::rs_allocation out,
                              const void *usr,
-                             const RsScriptCall *call) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target.p, (Allocation*)in.p, (Allocation*)out.p, usr, 0, call);
-}
+                             const RsScriptCall *call);
 #else
 static void SC_ForEach_SAAUS(android::renderscript::rs_script *target,
                              android::renderscript::rs_allocation *in,
@@ -615,25 +592,19 @@ static void SC_ForEach_SAAUS(android::renderscript::rs_script *target,
 
 // These functions are only supported in 32-bit.
 #ifndef __LP64__
-static void SC_ForEach_SAAUL(android::renderscript::rs_script target,
-                             android::renderscript::rs_allocation in,
-                             android::renderscript::rs_allocation out,
+static void SC_ForEach_SAAUL(::rs_script target,
+                             ::rs_allocation in,
+                             ::rs_allocation out,
                              const void *usr,
-                             uint32_t usrLen) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target.p, (Allocation*)in.p, (Allocation*)out.p,
-               usr, usrLen, nullptr);
-}
-static void SC_ForEach_SAAULS(android::renderscript::rs_script target,
-                              android::renderscript::rs_allocation in,
-                              android::renderscript::rs_allocation out,
+                             uint32_t usrLen);
+
+static void SC_ForEach_SAAULS(::rs_script target,
+                              ::rs_allocation in,
+                              ::rs_allocation out,
                               const void *usr,
                               uint32_t usrLen,
-                              const RsScriptCall *call) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, (Script*)target.p, (Allocation*)in.p, (Allocation*)out.p, usr, usrLen, call);
+                              const RsScriptCall *call);
 }
-#endif
 #endif
 
 
@@ -647,7 +618,8 @@ static float SC_GetDt() {
     return rsrGetDt(rsc, sc);
 }
 
-#ifndef RS_COMPATIBILITY_LIB
+// #if !defined(RS_COMPATIBILITY_LIB) && defined(__LP64__)
+#ifdef __LP64__
 time_t SC_Time(time_t *timer) {
     Context *rsc = RsdCpuReference::getTlsContext();
     return rsrTime(rsc, timer);
@@ -1414,8 +1386,6 @@ static RsdCpuReference::CpuSymbol gSyms[] = {
     { nullptr, nullptr, false }
 };
 
-#ifdef RS_COMPATIBILITY_LIB
-
 //////////////////////////////////////////////////////////////////////////////
 // Compatibility Library entry points
 //////////////////////////////////////////////////////////////////////////////
@@ -1428,7 +1398,9 @@ static RsdCpuReference::CpuSymbol gSyms[] = {
         return SC_ClearObject(reinterpret_cast<rs_object_base *>(dst)); \
     } \
     void __attribute__((overloadable)) rsSetObject(t *dst, t src) { \
-        return SC_SetObject(reinterpret_cast<rs_object_base *>(dst), (ObjectBase*)src.p); \
+        android::renderscript::rs_object_base cast; \
+        cast.p = (ObjectBase *) src.p; \
+        return SC_SetObject(reinterpret_cast<rs_object_base *>(dst), cast);\
     }
 
 IS_CLEAR_SET_OBJ(::rs_element)
@@ -1436,6 +1408,8 @@ IS_CLEAR_SET_OBJ(::rs_type)
 IS_CLEAR_SET_OBJ(::rs_allocation)
 IS_CLEAR_SET_OBJ(::rs_sampler)
 IS_CLEAR_SET_OBJ(::rs_script)
+
+
 #undef IS_CLEAR_SET_OBJ
 
 static void SC_ForEach_SAA(::rs_script target,
@@ -1477,6 +1451,7 @@ static void SC_ForEach_SAAULS(::rs_script target,
                usr, usrLen, call);
 }
 
+#ifdef RS_COMPATIBILITY_LIB
 static const Allocation * SC_GetAllocation(const void *ptr) {
     Context *rsc = RsdCpuReference::getTlsContext();
     const Script *sc = RsdCpuReference::getTlsScript();
@@ -1487,12 +1462,19 @@ const Allocation * rsGetAllocation(const void *ptr) {
     return SC_GetAllocation(ptr);
 }
 
+#else
+const android::renderscript::rs_allocation rsGetAllocation(const void *ptr) {
+    return SC_GetAllocation(ptr);
+}
+#endif
+
+
 void __attribute__((overloadable)) rsAllocationIoSend(::rs_allocation a) {
-    SC_AllocationIoSend((Allocation *)a.p);
+    SC_AllocationIoSend(a);
 }
 
 void __attribute__((overloadable)) rsAllocationIoReceive(::rs_allocation a) {
-    SC_AllocationIoReceive((Allocation *)a.p);
+    SC_AllocationIoReceive(a);
 }
 
 
@@ -1529,6 +1511,13 @@ void __attribute__((overloadable)) rsForEach(::rs_script script,
 
 void __attribute__((overloadable)) rsForEach(::rs_script script,
                                              ::rs_allocation in,
+                                             ::rs_allocation out,
+                                             const void *usr) {
+    return SC_ForEach_SAAU(script, in, out, usr);
+}
+
+void __attribute__((overloadable)) rsForEach(::rs_script script,
+                                             ::rs_allocation in,
                                              ::rs_allocation out) {
     return SC_ForEach_SAA(script, in, out);
 }
@@ -1550,9 +1539,16 @@ void __attribute__((overloadable)) rsForEach(::rs_script script,
     return SC_ForEach_SAAULS(script, in, out, usr, usrLen, (RsScriptCall*)call);
 }
 
+// #if defined(RS_COMPATIBILITY_LIB) || !defined(__LP64__)
+#ifndef __LP64__
 int rsTime(int *timer) {
     return SC_Time(timer);
 }
+#else
+time_t rsTime(time_t * timer) {
+    return SC_Time(timer);
+}
+#endif // RS_COMPATIBILITY_LIB
 
 rs_tm* rsLocaltime(rs_tm* local, const int *timer) {
     return (rs_tm*)(SC_LocalTime((tm*)local, (long*)timer));
@@ -1971,7 +1967,6 @@ void rsDebug(const char *s, const ulong4 c) {
 void rsDebug(const char *s, const void *p) {
     SC_debugP(s, p);
 }
-#endif // RS_COMPATIBILITY_LIB
 
 extern const RsdCpuReference::CpuSymbol * rsdLookupRuntimeStub(Context * pContext, char const* name) {
     ScriptC *s = (ScriptC *)pContext;
