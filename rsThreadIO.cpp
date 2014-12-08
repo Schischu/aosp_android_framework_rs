@@ -107,7 +107,9 @@ bool ThreadIO::playCoreCommands(Context *con, int waitFd) {
 
     uint8_t buf[2 * 1024];
     const CoreCmdHeader *cmd = (const CoreCmdHeader *)&buf[0];
-    const void * data = (const void *)&buf[sizeof(CoreCmdHeader)];
+
+    uint32_t apiNumber = (uint32_t)(sizeof(gPlaybackFuncs) / sizeof(void *));
+    uint32_t coreCmdSize = (uint32_t)sizeof(CoreCmdHeader);
 
     struct pollfd p[2];
     p[0].fd = mToCore.getReadFd();
@@ -134,10 +136,23 @@ bool ThreadIO::playCoreCommands(Context *con, int waitFd) {
 
         if (p[0].revents) {
             size_t r = 0;
+            uint32_t offset = 0;
+
             if (isLocal) {
-                r = mToCore.read(&buf[0], sizeof(CoreCmdHeader));
-                mToCore.read(&buf[sizeof(CoreCmdHeader)], cmd->bytes);
-                if (r != sizeof(CoreCmdHeader)) {
+                r = mToCore.read(&buf[0], coreCmdSize);
+                if (cmd->cmdID < apiNumber) {
+                    int align = gPlaybackFuncsAlign[cmd->cmdID];
+                    if (align > 1) {
+                        offset = coreCmdSize + gRsCmdRecSize[cmd->cmdID];
+                        offset = (uint32_t)((((uint64_t)&buf[offset + align-1]) & ~(uint64_t)(align-1))
+                                            - (uint64_t)&buf[offset]);
+                        // ALOGV("playCoreCommands, align = %d, rec_size = %d, offset = %d, cmd = %p",
+                        //          align, gRsCmdRecSize[cmd->cmdID], offset, cmd);
+                    }
+                }
+
+                mToCore.read(&buf[coreCmdSize + offset], cmd->bytes);
+                if (r != coreCmdSize) {
                     // exception or timeout occurred.
                     break;
                 }
@@ -152,13 +167,13 @@ bool ThreadIO::playCoreCommands(Context *con, int waitFd) {
             }
             //ALOGV("playCoreCommands 3 %i %i", cmd->cmdID, cmd->bytes);
 
-            if (cmd->cmdID >= (sizeof(gPlaybackFuncs) / sizeof(void *))) {
-                rsAssert(cmd->cmdID < (sizeof(gPlaybackFuncs) / sizeof(void *)));
+            if (cmd->cmdID >= apiNumber) {
+                rsAssert(cmd->cmdID < apiNumber);
                 ALOGE("playCoreCommands error con %p, cmd %i", con, cmd->cmdID);
             }
 
             if (isLocal) {
-                gPlaybackFuncs[cmd->cmdID](con, data, cmd->bytes);
+                gPlaybackFuncs[cmd->cmdID](con, (const void *)&buf[coreCmdSize + offset], cmd->bytes);
             } else {
                 gPlaybackRemoteFuncs[cmd->cmdID](con, this);
             }

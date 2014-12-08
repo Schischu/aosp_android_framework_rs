@@ -26,6 +26,7 @@ typedef struct {
   int sync;
   int handcodeApi;
   int direct;
+  int align;
   int nocontext;
   int paramCount;
   VarType ret;

@@ -281,6 +281,7 @@ ScriptInvoke {
     }
 
 ScriptInvokeV {
+    align 16
     param RsScript s
     param uint32_t slot
     param const void * data

@@ -630,7 +630,28 @@ void printPlaybackCpp(FILE *f) {
             fprintf(f, "    %s%s,\n", "rsp_", apis[ct].name);
         }
     }
-    fprintf(f, "};\n");
+    fprintf(f, "};\n\n");
+
+    fprintf(f, "int gPlaybackFuncsAlign[%i] = {\n", apiCount + 1);
+    fprintf(f, "    0,");
+    for (ct=0; ct < apiCount; ct++) {
+        if ((ct % 10) == 0) {
+            fprintf(f, "\n");
+        }
+        if (apis[ct].align > 1) {
+            fprintf(f, "  %3d,", apis[ct].align);
+        } else {
+            fprintf(f, "    0,");
+        }
+    }
+    fprintf(f, "};\n\n");
+
+    fprintf(f, "int gRsCmdRecSize[%i] = {\n", apiCount + 1);
+    fprintf(f, "    0,\n");
+    for (ct=0; ct < apiCount; ct++) {
+        fprintf(f, "    (int)sizeof(RS_CMD_%s),\n", apis[ct].name);
+    }
+    fprintf(f, "};\n\n");
 
     fprintf(f, "RsPlaybackRemoteFunc gPlaybackRemoteFuncs[%i] = {\n", apiCount + 1);
     fprintf(f, "    NULL,\n");
@@ -688,6 +709,8 @@ int main(int argc, char **argv) {
             fprintf(f, "typedef void (*RsPlaybackRemoteFunc)(Context *, ThreadIO *);\n");
             fprintf(f, "extern RsPlaybackLocalFunc gPlaybackFuncs[%i];\n", apiCount + 1);
             fprintf(f, "extern RsPlaybackRemoteFunc gPlaybackRemoteFuncs[%i];\n", apiCount + 1);
+            fprintf(f, "extern int gPlaybackFuncsAlign[%i];\n", apiCount + 1);
+            fprintf(f, "extern int gRsCmdRecSize[%i];\n", apiCount + 1);
 
             fprintf(f, "}\n");
             fprintf(f, "}\n");

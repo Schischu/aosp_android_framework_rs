@@ -14,6 +14,7 @@ ID       [a-zA-Z_][a-zA-Z0-9_]*
    int num_lines = 0;
 
    VarType *currType = 0;
+   int* funcAlign = 0;
 
    ApiEntry apis[128];
    int apiCount = 0;
@@ -78,6 +79,12 @@ ID       [a-zA-Z_][a-zA-Z0-9_]*
 
 <api_entry2>"direct" {
     apis[apiCount].direct = 1;
+    }
+
+<api_entry2>"align" {
+    funcAlign = &apis[apiCount].align;
+    typeNextState = api_entry2;
+    BEGIN(var_type);
     }
 
 <api_entry2>"nocontext" {
@@ -158,6 +165,41 @@ ID       [a-zA-Z_][a-zA-Z0-9_]*
 <var_type>"d" {
     currType->type = 3;
     currType->bits = 64;
+    BEGIN(typeNextState);
+    }
+
+<var_type>"1" {
+    *funcAlign = 1;
+    BEGIN(typeNextState);
+    }
+
+<var_type>"2" {
+    *funcAlign = 2;
+    BEGIN(typeNextState);
+    }
+
+<var_type>"4" {
+    *funcAlign = 4;
+    BEGIN(typeNextState);
+    }
+
+<var_type>"8" {
+    *funcAlign = 8;
+    BEGIN(typeNextState);
+    }
+
+<var_type>"16" {
+    *funcAlign = 16;
+    BEGIN(typeNextState);
+    }
+
+<var_type>"32" {
+    *funcAlign = 32;
+    BEGIN(typeNextState);
+    }
+
+<var_type>"64" {
+    *funcAlign = 64;
     BEGIN(typeNextState);
     }
 
