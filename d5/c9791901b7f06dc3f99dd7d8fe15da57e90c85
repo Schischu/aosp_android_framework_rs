@@ -1,0 +1,7 @@
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Code-Review+2: Elliott Hughes <enh@google.com>
+Submitted-by: Dimitry Ivanov <dimitry@google.com>
+Submitted-at: Mon, 08 Dec 2014 21:16:55 +0000
+Reviewed-on: https://android-review.googlesource.com/118080
+Project: platform/frameworks/rs
+Branch: refs/heads/master
