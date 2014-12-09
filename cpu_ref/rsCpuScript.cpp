@@ -200,7 +200,7 @@ static void *loadSharedLibrary(const char *cacheDir, const char *resName) {
 
     // We should check if we can load the library from the standard app
     // location for shared libraries first.
-    ALOGE("Looking for %s with %s for resource %s", scriptSOName.c_str(), cacheDir, resName);
+    //ALOGE("Looking for %s with %s for resource %s", scriptSOName.c_str(), cacheDir, resName);
     loaded = loadSOHelper(scriptSOName.c_str(), cacheDir, resName);
 
     if(loaded == nullptr) {
@@ -449,24 +449,24 @@ bool RsdCpuScriptImpl::storeRSInfoFromSO() {
 
     mRoot = (RootFunc_t) dlsym(mScriptSO, "root");
     if (mRoot) {
-        ALOGE("Found root(): %p", mRoot);
+        //ALOGE("Found root(): %p", mRoot);
     }
     mRootExpand = (RootFunc_t) dlsym(mScriptSO, "root.expand");
     if (mRootExpand) {
-        ALOGE("Found root.expand(): %p", mRootExpand);
+        //ALOGE("Found root.expand(): %p", mRootExpand);
     }
     mInit = (InvokeFunc_t) dlsym(mScriptSO, "init");
     if (mInit) {
-        ALOGE("Found init(): %p", mInit);
+        //ALOGE("Found init(): %p", mInit);
     }
     mFreeChildren = (InvokeFunc_t) dlsym(mScriptSO, ".rs.dtor");
     if (mFreeChildren) {
-        ALOGE("Found .rs.dtor(): %p", mFreeChildren);
+        //ALOGE("Found .rs.dtor(): %p", mFreeChildren);
     }
 
     const char *rsInfo = (const char *) dlsym(mScriptSO, ".rs.info");
     if (rsInfo) {
-        ALOGE("Found .rs.info(): %p - %s", rsInfo, rsInfo);
+        //ALOGE("Found .rs.info(): %p - %s", rsInfo, rsInfo);
     }
 
     if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
@@ -478,7 +478,7 @@ bool RsdCpuScriptImpl::storeRSInfoFromSO() {
     }
 
     mExportedVariableCount = varCount;
-    ALOGE("varCount: %zu", varCount);
+    //ALOGE("varCount: %zu", varCount);
     if (varCount > 0) {
         // Start by creating/zeroing this member, since we don't want to
         // accidentally clean up invalid pointers later (if we error out).
@@ -521,7 +521,7 @@ bool RsdCpuScriptImpl::storeRSInfoFromSO() {
     }
 
     mExportedFunctionCount = funcCount;
-    ALOGE("funcCount: %zu", funcCount);
+    //ALOGE("funcCount: %zu", funcCount);
 
     if (funcCount > 0) {
         mInvokeFunctions = new InvokeFunc_t[funcCount];
@@ -544,7 +544,7 @@ bool RsdCpuScriptImpl::storeRSInfoFromSO() {
                 goto error;
             }
             else {
-                ALOGE("Found InvokeFunc_t %s at %p", line, mInvokeFunctions[i]);
+                //ALOGE("Found InvokeFunc_t %s at %p", line, mInvokeFunctions[i]);
             }
         }
     }
@@ -593,7 +593,7 @@ bool RsdCpuScriptImpl::storeRSInfoFromSO() {
                 goto error;
             }
             else {
-                ALOGE("Found forEach %s at %p", tmpName, mForEachFunctions[i]);
+                //ALOGE("Found forEach %s at %p", tmpName, mForEachFunctions[i]);
             }
         }
     }
@@ -1138,46 +1138,47 @@ int RsdCpuScriptImpl::invokeRoot() {
 
 void RsdCpuScriptImpl::invokeInit() {
     if (mInit) {
-        ALOGE("Invoking init");
+        //ALOGE("Invoking init");
         mInit();
     }
 }
 
 void RsdCpuScriptImpl::invokeFreeChildren() {
     if (mFreeChildren) {
-        ALOGE("Invoking free children");
+        //ALOGE("Invoking free children");
         mFreeChildren();
     }
 }
 
 void RsdCpuScriptImpl::invokeFunction(uint32_t slot, const void *params,
                                       size_t paramLength) {
-    ALOGE("invoke %i %p %i", slot, params, paramLength);
+    //ALOGE("invoke %i %p %zu", slot, params, paramLength);
 
     RsdCpuScriptImpl * oldTLS = mCtx->setTLS(this);
 #ifndef RS_COMPATIBILITY_LIB
     if (! is_skip_linkloader()) {
-        ALOGE("Invoking %p", mExecutable->getExportFuncAddrs()[slot]);
+        //ALOGE("Invoking %p", mExecutable->getExportFuncAddrs()[slot]);
         reinterpret_cast<void (*)(const void *, uint32_t)>(
             mExecutable->getExportFuncAddrs()[slot])(params, paramLength);
     }
     else {
-        ALOGE("Invoking %p", mInvokeFunctions[slot]);
+        //ALOGE("Invoking %p", mInvokeFunctions[slot]);
         reinterpret_cast<void (*)(const void *, uint32_t)>(
             mInvokeFunctions[slot])(params, paramLength);
     }
-    ALOGE("return from invoke %i", slot);
+    //ALOGE("return from invoke %i", slot);
 #else
-    ALOGE("Invoking %p", mInvokeFunctions[slot]);
+    //ALOGE("Invoking %p", mInvokeFunctions[slot]);
     reinterpret_cast<void (*)(const void *, uint32_t)>(
         mInvokeFunctions[slot])(params, paramLength);
 #endif
     mCtx->setTLS(oldTLS);
+    //ALOGE("mCtx %p", mCtx);
 }
 
 void RsdCpuScriptImpl::setGlobalVar(uint32_t slot, const void *data, size_t dataLength) {
     //rsAssert(!script->mFieldIsObject[slot]);
-    ALOGE("setGlobalVar %i %p %i", slot, data, dataLength);
+    //ALOGE("setGlobalVar %i %p %zu", slot, data, dataLength);
 
     //if (mIntrinsicID) {
         //mIntrinsicFuncs.setVar(dc, script, drv->mIntrinsicData, slot, data, dataLength);
@@ -1206,7 +1207,7 @@ void RsdCpuScriptImpl::setGlobalVar(uint32_t slot, const void *data, size_t data
 
 void RsdCpuScriptImpl::getGlobalVar(uint32_t slot, void *data, size_t dataLength) {
     //rsAssert(!script->mFieldIsObject[slot]);
-    ALOGE("getGlobalVar %i %p %i", slot, data, dataLength);
+    //ALOGE("getGlobalVar %i %p %zu", slot, data, dataLength);
 
 #ifndef RS_COMPATIBILITY_LIB
     int32_t *srcPtr = nullptr;
@@ -1278,7 +1279,7 @@ void RsdCpuScriptImpl::setGlobalVarWithElemDims(uint32_t slot, const void *data,
 void RsdCpuScriptImpl::setGlobalBind(uint32_t slot, Allocation *data) {
 
     //rsAssert(!script->mFieldIsObject[slot]);
-    ALOGE("setGlobalBind %i %p", slot, data);
+    //ALOGE("setGlobalBind %i %p", slot, data);
 
 #ifndef RS_COMPATIBILITY_LIB
     int32_t *destPtr = nullptr;
@@ -1308,7 +1309,7 @@ void RsdCpuScriptImpl::setGlobalBind(uint32_t slot, Allocation *data) {
 void RsdCpuScriptImpl::setGlobalObj(uint32_t slot, ObjectBase *data) {
 
     //rsAssert(script->mFieldIsObject[slot]);
-    ALOGE("setGlobalObj %i %p", slot, data);
+    //ALOGE("setGlobalObj %i %p", slot, data);
 
 #ifndef RS_COMPATIBILITY_LIB
     int32_t *destPtr = nullptr;
