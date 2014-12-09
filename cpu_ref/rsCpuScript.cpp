@@ -123,7 +123,6 @@ static void *loadSOHelper(const char *origName, const char *cacheDir,
 
     // Skip everything if we don't even have the original library available.
     if (access(origName, F_OK) != 0) {
-        ALOGE("skip_linkloader: orig library not available");
         return nullptr;
     }
 
@@ -203,10 +202,12 @@ static void *loadSharedLibrary(const char *cacheDir, const char *resName) {
     //ALOGE("Looking for %s with %s for resource %s", scriptSOName.c_str(), cacheDir, resName);
     loaded = loadSOHelper(scriptSOName.c_str(), cacheDir, resName);
 
+#ifndef RS_COMPATIBILITY_LIB
     if(loaded == nullptr) {
-        ALOGE("skip_linkloader: Cannot find default resource.  Push the right .so files");
+        ALOGE("skip_linkloader: Cannot find default resource.  Not looking in \"/system/lib\" as it is unlikely to be the correct version");
     }
     return loaded;
+#endif
 
     if (loaded == nullptr) {
         ALOGE("Unable to open shared library (%s): %s",
@@ -760,7 +761,7 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
     // again.
     if (is_skip_linkloader()) {
         if(mScriptSO == nullptr) {
-            ALOGE("skip_linkloader: should not be here");
+            ALOGE("skip_linkloader: Failing in unsupported path.  Cannot link on the device");
             mCtx->unlockMutex();
             return false;
 
