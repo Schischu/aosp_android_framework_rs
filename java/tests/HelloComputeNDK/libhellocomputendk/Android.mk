@@ -31,7 +31,7 @@ LOCAL_C_INCLUDES += frameworks/rs
 LOCAL_CFLAGS := -std=c++11
 LOCAL_LDFLAGS := -Wl,-Bsymbolic
 LOCAL_SHARED_LIBRARIES := libdl liblog libjnigraphics
-LOCAL_STATIC_LIBRARIES := libRScpp_static
+LOCAL_STATIC_LIBRARIES := libRScpp_static libc_common
 
 ifeq ($(my_32_64_bit_suffix),32)
 LOCAL_SDK_VERSION := 8
