@@ -20,151 +20,175 @@
 #define __rs_core_math_rsh__
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern uchar __attribute__((const, overloadable))abs(char value);
+extern uchar __attribute__((const, overloadable))abs(char n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern uchar2 __attribute__((const, overloadable))abs(char2 value);
+extern uchar2 __attribute__((const, overloadable))abs(char2 n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern uchar3 __attribute__((const, overloadable))abs(char3 value);
+extern uchar3 __attribute__((const, overloadable))abs(char3 n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern uchar4 __attribute__((const, overloadable))abs(char4 value);
+extern uchar4 __attribute__((const, overloadable))abs(char4 n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern ushort __attribute__((const, overloadable))abs(short value);
+extern ushort __attribute__((const, overloadable))abs(short n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern ushort2 __attribute__((const, overloadable))abs(short2 value);
+extern ushort2 __attribute__((const, overloadable))abs(short2 n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern ushort3 __attribute__((const, overloadable))abs(short3 value);
+extern ushort3 __attribute__((const, overloadable))abs(short3 n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern ushort4 __attribute__((const, overloadable))abs(short4 value);
+extern ushort4 __attribute__((const, overloadable))abs(short4 n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern uint __attribute__((const, overloadable))abs(int value);
+extern uint __attribute__((const, overloadable))abs(int n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern uint2 __attribute__((const, overloadable))abs(int2 value);
+extern uint2 __attribute__((const, overloadable))abs(int2 n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern uint3 __attribute__((const, overloadable))abs(int3 value);
+extern uint3 __attribute__((const, overloadable))abs(int3 n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the integer n.
+ *
+ * For float values, use the fabs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern uint4 __attribute__((const, overloadable))abs(int4 value);
+extern uint4 __attribute__((const, overloadable))abs(int4 n);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acos
+ * Returns the inverse cosine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))acos(float v);
+extern float __attribute__((const, overloadable))acos(float a);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acos
+ * Returns the inverse cosine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))acos(float2 v);
+extern float2 __attribute__((const, overloadable))acos(float2 a);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acos
+ * Returns the inverse cosine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))acos(float3 v);
+extern float3 __attribute__((const, overloadable))acos(float3 a);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acos
+ * Returns the inverse cosine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))acos(float4 v);
+extern float4 __attribute__((const, overloadable))acos(float4 a);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acosh
+ * Returns the inverse hyperbolic cosine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -173,7 +197,7 @@ extern float __attribute__((const, overloadable))acosh(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acosh
+ * Returns the inverse hyperbolic cosine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -182,7 +206,7 @@ extern float2 __attribute__((const, overloadable))acosh(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acosh
+ * Returns the inverse hyperbolic cosine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -191,7 +215,7 @@ extern float3 __attribute__((const, overloadable))acosh(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acosh
+ * Returns the inverse hyperbolic cosine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -200,7 +224,9 @@ extern float4 __attribute__((const, overloadable))acosh(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acospi
+ * Returns the inverse cosine in radians, divided by pi.
+ *
+ * I.e. to get an inverse cosine measured in degrees, use acospi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -209,7 +235,9 @@ extern float __attribute__((const, overloadable))acospi(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acospi
+ * Returns the inverse cosine in radians, divided by pi.
+ *
+ * I.e. to get an inverse cosine measured in degrees, use acospi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -218,7 +246,9 @@ extern float2 __attribute__((const, overloadable))acospi(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acospi
+ * Returns the inverse cosine in radians, divided by pi.
+ *
+ * I.e. to get an inverse cosine measured in degrees, use acospi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -227,7 +257,9 @@ extern float3 __attribute__((const, overloadable))acospi(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * acospi
+ * Returns the inverse cosine in radians, divided by pi.
+ *
+ * I.e. to get an inverse cosine measured in degrees, use acospi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -236,7 +268,7 @@ extern float4 __attribute__((const, overloadable))acospi(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * asin
+ * Returns the inverse sine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -245,7 +277,7 @@ extern float __attribute__((const, overloadable))asin(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * asin
+ * Returns the inverse sine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -254,7 +286,7 @@ extern float2 __attribute__((const, overloadable))asin(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * asin
+ * Returns the inverse sine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -263,7 +295,7 @@ extern float3 __attribute__((const, overloadable))asin(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * asin
+ * Returns the inverse sine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -272,7 +304,7 @@ extern float4 __attribute__((const, overloadable))asin(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * asinh
+ * Returns the inverse hyperbolic sine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -281,7 +313,7 @@ extern float __attribute__((const, overloadable))asinh(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * asinh
+ * Returns the inverse hyperbolic sine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -290,7 +322,7 @@ extern float2 __attribute__((const, overloadable))asinh(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * asinh
+ * Returns the inverse hyperbolic sine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -299,7 +331,7 @@ extern float3 __attribute__((const, overloadable))asinh(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * asinh
+ * Returns the inverse hyperbolic sine, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -308,7 +340,9 @@ extern float4 __attribute__((const, overloadable))asinh(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse sine divided by PI.
+ * Returns the inverse sine in radians, divided by pi.
+ *
+ * I.e. to get an inverse sine measured in degrees, use asinpi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -317,7 +351,9 @@ extern float __attribute__((const, overloadable))asinpi(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse sine divided by PI.
+ * Returns the inverse sine in radians, divided by pi.
+ *
+ * I.e. to get an inverse sine measured in degrees, use asinpi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -326,7 +362,9 @@ extern float2 __attribute__((const, overloadable))asinpi(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse sine divided by PI.
+ * Returns the inverse sine in radians, divided by pi.
+ *
+ * I.e. to get an inverse sine measured in degrees, use asinpi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -335,7 +373,9 @@ extern float3 __attribute__((const, overloadable))asinpi(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse sine divided by PI.
+ * Returns the inverse sine in radians, divided by pi.
+ *
+ * I.e. to get an inverse sine measured in degrees, use asinpi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -344,7 +384,7 @@ extern float4 __attribute__((const, overloadable))asinpi(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent.
+ * Returns the inverse tangent, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -353,7 +393,7 @@ extern float __attribute__((const, overloadable))atan(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent.
+ * Returns the inverse tangent, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -362,7 +402,7 @@ extern float2 __attribute__((const, overloadable))atan(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent.
+ * Returns the inverse tangent, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -371,7 +411,7 @@ extern float3 __attribute__((const, overloadable))atan(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent.
+ * Returns the inverse tangent, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -380,7 +420,9 @@ extern float4 __attribute__((const, overloadable))atan(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent of y / x.
+ * Returns the inverse tangent of y / x, in radians.
+ *
+ * x can be 0.
  *
  * Supported by API versions 9 and newer.
  */
@@ -389,7 +431,9 @@ extern float __attribute__((const, overloadable))atan2(float y, float x);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent of y / x.
+ * Returns the inverse tangent of y / x, in radians.
+ *
+ * x can be 0.
  *
  * Supported by API versions 9 and newer.
  */
@@ -398,7 +442,9 @@ extern float2 __attribute__((const, overloadable))atan2(float2 y, float2 x);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent of y / x.
+ * Returns the inverse tangent of y / x, in radians.
+ *
+ * x can be 0.
  *
  * Supported by API versions 9 and newer.
  */
@@ -407,7 +453,9 @@ extern float3 __attribute__((const, overloadable))atan2(float3 y, float3 x);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent of y / x.
+ * Returns the inverse tangent of y / x, in radians.
+ *
+ * x can be 0.
  *
  * Supported by API versions 9 and newer.
  */
@@ -416,7 +464,11 @@ extern float4 __attribute__((const, overloadable))atan2(float4 y, float4 x);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent of y / x, divided by PI.
+ * Returns the inverse tangent of y / x, in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atan2pi(x, y) * 180.f.
+ *
+ * x can be 0.
  *
  * Supported by API versions 9 and newer.
  */
@@ -425,7 +477,11 @@ extern float __attribute__((const, overloadable))atan2pi(float y, float x);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent of y / x, divided by PI.
+ * Returns the inverse tangent of y / x, in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atan2pi(x, y) * 180.f.
+ *
+ * x can be 0.
  *
  * Supported by API versions 9 and newer.
  */
@@ -434,7 +490,11 @@ extern float2 __attribute__((const, overloadable))atan2pi(float2 y, float2 x);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent of y / x, divided by PI.
+ * Returns the inverse tangent of y / x, in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atan2pi(x, y) * 180.f.
+ *
+ * x can be 0.
  *
  * Supported by API versions 9 and newer.
  */
@@ -443,7 +503,11 @@ extern float3 __attribute__((const, overloadable))atan2pi(float3 y, float3 x);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent of y / x, divided by PI.
+ * Returns the inverse tangent of y / x, in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atan2pi(x, y) * 180.f.
+ *
+ * x can be 0.
  *
  * Supported by API versions 9 and newer.
  */
@@ -452,7 +516,7 @@ extern float4 __attribute__((const, overloadable))atan2pi(float4 y, float4 x);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse hyperbolic tangent.
+ * Returns the inverse hyperbolic tangent, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -461,7 +525,7 @@ extern float __attribute__((const, overloadable))atanh(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse hyperbolic tangent.
+ * Returns the inverse hyperbolic tangent, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -470,7 +534,7 @@ extern float2 __attribute__((const, overloadable))atanh(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse hyperbolic tangent.
+ * Returns the inverse hyperbolic tangent, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -479,7 +543,7 @@ extern float3 __attribute__((const, overloadable))atanh(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse hyperbolic tangent.
+ * Returns the inverse hyperbolic tangent, in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -488,7 +552,9 @@ extern float4 __attribute__((const, overloadable))atanh(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent divided by PI.
+ * Returns the inverse tangent in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -497,7 +563,9 @@ extern float __attribute__((const, overloadable))atanpi(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent divided by PI.
+ * Returns the inverse tangent in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -506,7 +574,9 @@ extern float2 __attribute__((const, overloadable))atanpi(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent divided by PI.
+ * Returns the inverse tangent in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -515,7 +585,9 @@ extern float3 __attribute__((const, overloadable))atanpi(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the inverse tangent divided by PI.
+ * Returns the inverse tangent in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -524,7 +596,7 @@ extern float4 __attribute__((const, overloadable))atanpi(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cube root.
+ * Returns the cube root.
  *
  * Supported by API versions 9 and newer.
  */
@@ -533,7 +605,7 @@ extern float __attribute__((const, overloadable))cbrt(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cube root.
+ * Returns the cube root.
  *
  * Supported by API versions 9 and newer.
  */
@@ -542,7 +614,7 @@ extern float2 __attribute__((const, overloadable))cbrt(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cube root.
+ * Returns the cube root.
  *
  * Supported by API versions 9 and newer.
  */
@@ -551,7 +623,7 @@ extern float3 __attribute__((const, overloadable))cbrt(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cube root.
+ * Returns the cube root.
  *
  * Supported by API versions 9 and newer.
  */
@@ -560,7 +632,7 @@ extern float4 __attribute__((const, overloadable))cbrt(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the smallest integer not less than a value.
+ * Returns the smallest integer not less than a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -569,7 +641,7 @@ extern float __attribute__((const, overloadable))ceil(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the smallest integer not less than a value.
+ * Returns the smallest integer not less than a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -578,7 +650,7 @@ extern float2 __attribute__((const, overloadable))ceil(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the smallest integer not less than a value.
+ * Returns the smallest integer not less than a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -587,7 +659,7 @@ extern float3 __attribute__((const, overloadable))ceil(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the smallest integer not less than a value.
+ * Returns the smallest integer not less than a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -596,9 +668,13 @@ extern float4 __attribute__((const, overloadable))ceil(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -609,9 +685,13 @@ extern float __attribute__((const, overloadable))clamp(float value, float min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -622,9 +702,13 @@ extern float2 __attribute__((const, overloadable))clamp(float2 value, float2 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -635,9 +719,13 @@ extern float3 __attribute__((const, overloadable))clamp(float3 value, float3 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -648,9 +736,13 @@ extern float4 __attribute__((const, overloadable))clamp(float4 value, float4 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -661,9 +753,13 @@ extern float2 __attribute__((const, overloadable))clamp(float2 value, float min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -674,9 +770,13 @@ extern float3 __attribute__((const, overloadable))clamp(float3 value, float min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -687,9 +787,13 @@ extern float4 __attribute__((const, overloadable))clamp(float4 value, float min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -700,9 +804,13 @@ extern char __attribute__((const, overloadable))clamp(char value, char min_value
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -713,9 +821,13 @@ extern char2 __attribute__((const, overloadable))clamp(char2 value, char2 min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -726,9 +838,13 @@ extern char3 __attribute__((const, overloadable))clamp(char3 value, char3 min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -739,9 +855,13 @@ extern char4 __attribute__((const, overloadable))clamp(char4 value, char4 min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -752,9 +872,13 @@ extern uchar __attribute__((const, overloadable))clamp(uchar value, uchar min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -765,9 +889,13 @@ extern uchar2 __attribute__((const, overloadable))clamp(uchar2 value, uchar2 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -778,9 +906,13 @@ extern uchar3 __attribute__((const, overloadable))clamp(uchar3 value, uchar3 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -791,9 +923,13 @@ extern uchar4 __attribute__((const, overloadable))clamp(uchar4 value, uchar4 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -804,9 +940,13 @@ extern short __attribute__((const, overloadable))clamp(short value, short min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -817,9 +957,13 @@ extern short2 __attribute__((const, overloadable))clamp(short2 value, short2 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -830,9 +974,13 @@ extern short3 __attribute__((const, overloadable))clamp(short3 value, short3 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -843,9 +991,13 @@ extern short4 __attribute__((const, overloadable))clamp(short4 value, short4 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -856,9 +1008,13 @@ extern ushort __attribute__((const, overloadable))clamp(ushort value, ushort min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -869,9 +1025,13 @@ extern ushort2 __attribute__((const, overloadable))clamp(ushort2 value, ushort2 
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -882,9 +1042,13 @@ extern ushort3 __attribute__((const, overloadable))clamp(ushort3 value, ushort3 
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -895,9 +1059,13 @@ extern ushort4 __attribute__((const, overloadable))clamp(ushort4 value, ushort4 
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -908,9 +1076,13 @@ extern int __attribute__((const, overloadable))clamp(int value, int min_value, i
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -921,9 +1093,13 @@ extern int2 __attribute__((const, overloadable))clamp(int2 value, int2 min_value
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -934,9 +1110,13 @@ extern int3 __attribute__((const, overloadable))clamp(int3 value, int3 min_value
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -947,9 +1127,13 @@ extern int4 __attribute__((const, overloadable))clamp(int4 value, int4 min_value
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -960,9 +1144,13 @@ extern uint __attribute__((const, overloadable))clamp(uint value, uint min_value
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -973,9 +1161,13 @@ extern uint2 __attribute__((const, overloadable))clamp(uint2 value, uint2 min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -986,9 +1178,13 @@ extern uint3 __attribute__((const, overloadable))clamp(uint3 value, uint3 min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -999,9 +1195,13 @@ extern uint4 __attribute__((const, overloadable))clamp(uint4 value, uint4 min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1012,9 +1212,13 @@ extern long __attribute__((const, overloadable))clamp(long value, long min_value
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1025,9 +1229,13 @@ extern long2 __attribute__((const, overloadable))clamp(long2 value, long2 min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1038,9 +1246,13 @@ extern long3 __attribute__((const, overloadable))clamp(long3 value, long3 min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1051,9 +1263,13 @@ extern long4 __attribute__((const, overloadable))clamp(long4 value, long4 min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1064,9 +1280,13 @@ extern ulong __attribute__((const, overloadable))clamp(ulong value, ulong min_va
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1077,9 +1297,13 @@ extern ulong2 __attribute__((const, overloadable))clamp(ulong2 value, ulong2 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1090,9 +1314,13 @@ extern ulong3 __attribute__((const, overloadable))clamp(ulong3 value, ulong3 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1103,9 +1331,13 @@ extern ulong4 __attribute__((const, overloadable))clamp(ulong4 value, ulong4 min
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1116,9 +1348,13 @@ extern char2 __attribute__((const, overloadable))clamp(char2 value, char min_val
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1129,9 +1365,13 @@ extern char3 __attribute__((const, overloadable))clamp(char3 value, char min_val
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1142,9 +1382,13 @@ extern char4 __attribute__((const, overloadable))clamp(char4 value, char min_val
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1155,9 +1399,13 @@ extern uchar2 __attribute__((const, overloadable))clamp(uchar2 value, uchar min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1168,9 +1416,13 @@ extern uchar3 __attribute__((const, overloadable))clamp(uchar3 value, uchar min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1181,9 +1433,13 @@ extern uchar4 __attribute__((const, overloadable))clamp(uchar4 value, uchar min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1194,9 +1450,13 @@ extern short2 __attribute__((const, overloadable))clamp(short2 value, short min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1207,9 +1467,13 @@ extern short3 __attribute__((const, overloadable))clamp(short3 value, short min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1220,9 +1484,13 @@ extern short4 __attribute__((const, overloadable))clamp(short4 value, short min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1233,9 +1501,13 @@ extern ushort2 __attribute__((const, overloadable))clamp(ushort2 value, ushort m
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1246,9 +1518,13 @@ extern ushort3 __attribute__((const, overloadable))clamp(ushort3 value, ushort m
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1259,9 +1535,13 @@ extern ushort4 __attribute__((const, overloadable))clamp(ushort4 value, ushort m
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1272,9 +1552,13 @@ extern int2 __attribute__((const, overloadable))clamp(int2 value, int min_value,
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1285,9 +1569,13 @@ extern int3 __attribute__((const, overloadable))clamp(int3 value, int min_value,
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1298,9 +1586,13 @@ extern int4 __attribute__((const, overloadable))clamp(int4 value, int min_value,
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1311,9 +1603,13 @@ extern uint2 __attribute__((const, overloadable))clamp(uint2 value, uint min_val
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1324,9 +1620,13 @@ extern uint3 __attribute__((const, overloadable))clamp(uint3 value, uint min_val
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1337,9 +1637,13 @@ extern uint4 __attribute__((const, overloadable))clamp(uint4 value, uint min_val
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1350,9 +1654,13 @@ extern long2 __attribute__((const, overloadable))clamp(long2 value, long min_val
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1363,9 +1671,13 @@ extern long3 __attribute__((const, overloadable))clamp(long3 value, long min_val
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1376,9 +1688,13 @@ extern long4 __attribute__((const, overloadable))clamp(long4 value, long min_val
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1389,9 +1705,13 @@ extern ulong2 __attribute__((const, overloadable))clamp(ulong2 value, ulong min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1402,9 +1722,13 @@ extern ulong3 __attribute__((const, overloadable))clamp(ulong3 value, ulong min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 19))
 /*
- * Clamp a value to a specified high and low bound.
+ * Clamps a value to a specified high and low bound.
  *
- * @param amount value to be clamped.  Supports 1,2,3,4 components
+ * clamp() returns min_value if value < min_value, max_value if value > max_value, otherwise value.
+ *
+ * If min_value is greater than max_value, the results are undefined.
+ *
+ * @param amount value to be clamped.  Supports 1, 2, 3, 4 components
  * @param min_value Lower bound, must be scalar or matching vector.
  * @param max_value High bound, must match type of low
  *
@@ -1415,7 +1739,9 @@ extern ulong4 __attribute__((const, overloadable))clamp(ulong4 value, ulong min_
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1424,7 +1750,9 @@ extern char __attribute__((const, overloadable))clz(char value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1433,7 +1761,9 @@ extern char2 __attribute__((const, overloadable))clz(char2 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1442,7 +1772,9 @@ extern char3 __attribute__((const, overloadable))clz(char3 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1451,7 +1783,9 @@ extern char4 __attribute__((const, overloadable))clz(char4 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1460,7 +1794,9 @@ extern uchar __attribute__((const, overloadable))clz(uchar value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1469,7 +1805,9 @@ extern uchar2 __attribute__((const, overloadable))clz(uchar2 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1478,7 +1816,9 @@ extern uchar3 __attribute__((const, overloadable))clz(uchar3 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1487,7 +1827,9 @@ extern uchar4 __attribute__((const, overloadable))clz(uchar4 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1496,7 +1838,9 @@ extern short __attribute__((const, overloadable))clz(short value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1505,7 +1849,9 @@ extern short2 __attribute__((const, overloadable))clz(short2 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1514,7 +1860,9 @@ extern short3 __attribute__((const, overloadable))clz(short3 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1523,7 +1871,9 @@ extern short4 __attribute__((const, overloadable))clz(short4 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1532,7 +1882,9 @@ extern ushort __attribute__((const, overloadable))clz(ushort value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1541,7 +1893,9 @@ extern ushort2 __attribute__((const, overloadable))clz(ushort2 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1550,7 +1904,9 @@ extern ushort3 __attribute__((const, overloadable))clz(ushort3 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1559,7 +1915,9 @@ extern ushort4 __attribute__((const, overloadable))clz(ushort4 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1568,7 +1926,9 @@ extern int __attribute__((const, overloadable))clz(int value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1577,7 +1937,9 @@ extern int2 __attribute__((const, overloadable))clz(int2 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1586,7 +1948,9 @@ extern int3 __attribute__((const, overloadable))clz(int3 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1595,7 +1959,9 @@ extern int4 __attribute__((const, overloadable))clz(int4 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1604,7 +1970,9 @@ extern uint __attribute__((const, overloadable))clz(uint value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1613,7 +1981,9 @@ extern uint2 __attribute__((const, overloadable))clz(uint2 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1622,7 +1992,9 @@ extern uint3 __attribute__((const, overloadable))clz(uint3 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the number of leading 0-bits in a value.
+ * Returns the number of leading 0-bits in a value.
+ *
+ * For example, clz((char)0x03) returns 5.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1633,6 +2005,10 @@ extern uint4 __attribute__((const, overloadable))clz(uint4 value);
 /*
  * Component wise conversion from float2 to float2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float2 __attribute__((const, overloadable))convert_float2(float2 v);
@@ -1641,6 +2017,10 @@ extern float2 __attribute__((const, overloadable))convert_float2(float2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from float3 to float3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1651,6 +2031,10 @@ extern float3 __attribute__((const, overloadable))convert_float3(float3 v);
 /*
  * Component wise conversion from float4 to float4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))convert_float4(float4 v);
@@ -1659,6 +2043,10 @@ extern float4 __attribute__((const, overloadable))convert_float4(float4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from char2 to float2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1669,6 +2057,10 @@ extern float2 __attribute__((const, overloadable))convert_float2(char2 v);
 /*
  * Component wise conversion from char3 to float3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float3 __attribute__((const, overloadable))convert_float3(char3 v);
@@ -1677,6 +2069,10 @@ extern float3 __attribute__((const, overloadable))convert_float3(char3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from char4 to float4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1687,6 +2083,10 @@ extern float4 __attribute__((const, overloadable))convert_float4(char4 v);
 /*
  * Component wise conversion from uchar2 to float2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float2 __attribute__((const, overloadable))convert_float2(uchar2 v);
@@ -1695,6 +2095,10 @@ extern float2 __attribute__((const, overloadable))convert_float2(uchar2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uchar3 to float3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1705,6 +2109,10 @@ extern float3 __attribute__((const, overloadable))convert_float3(uchar3 v);
 /*
  * Component wise conversion from uchar4 to float4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))convert_float4(uchar4 v);
@@ -1713,6 +2121,10 @@ extern float4 __attribute__((const, overloadable))convert_float4(uchar4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from short2 to float2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1723,6 +2135,10 @@ extern float2 __attribute__((const, overloadable))convert_float2(short2 v);
 /*
  * Component wise conversion from short3 to float3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float3 __attribute__((const, overloadable))convert_float3(short3 v);
@@ -1731,6 +2147,10 @@ extern float3 __attribute__((const, overloadable))convert_float3(short3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from short4 to float4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1741,6 +2161,10 @@ extern float4 __attribute__((const, overloadable))convert_float4(short4 v);
 /*
  * Component wise conversion from ushort2 to float2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float2 __attribute__((const, overloadable))convert_float2(ushort2 v);
@@ -1749,6 +2173,10 @@ extern float2 __attribute__((const, overloadable))convert_float2(ushort2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from ushort3 to float3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1759,6 +2187,10 @@ extern float3 __attribute__((const, overloadable))convert_float3(ushort3 v);
 /*
  * Component wise conversion from ushort4 to float4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))convert_float4(ushort4 v);
@@ -1767,6 +2199,10 @@ extern float4 __attribute__((const, overloadable))convert_float4(ushort4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from int2 to float2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1777,6 +2213,10 @@ extern float2 __attribute__((const, overloadable))convert_float2(int2 v);
 /*
  * Component wise conversion from int3 to float3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float3 __attribute__((const, overloadable))convert_float3(int3 v);
@@ -1785,6 +2225,10 @@ extern float3 __attribute__((const, overloadable))convert_float3(int3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from int4 to float4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1795,6 +2239,10 @@ extern float4 __attribute__((const, overloadable))convert_float4(int4 v);
 /*
  * Component wise conversion from uint2 to float2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float2 __attribute__((const, overloadable))convert_float2(uint2 v);
@@ -1803,6 +2251,10 @@ extern float2 __attribute__((const, overloadable))convert_float2(uint2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uint3 to float3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1813,6 +2265,10 @@ extern float3 __attribute__((const, overloadable))convert_float3(uint3 v);
 /*
  * Component wise conversion from uint4 to float4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))convert_float4(uint4 v);
@@ -1821,6 +2277,10 @@ extern float4 __attribute__((const, overloadable))convert_float4(uint4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from float2 to char2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1831,6 +2291,10 @@ extern char2 __attribute__((const, overloadable))convert_char2(float2 v);
 /*
  * Component wise conversion from float3 to char3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern char3 __attribute__((const, overloadable))convert_char3(float3 v);
@@ -1839,6 +2303,10 @@ extern char3 __attribute__((const, overloadable))convert_char3(float3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from float4 to char4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1849,6 +2317,10 @@ extern char4 __attribute__((const, overloadable))convert_char4(float4 v);
 /*
  * Component wise conversion from char2 to char2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern char2 __attribute__((const, overloadable))convert_char2(char2 v);
@@ -1857,6 +2329,10 @@ extern char2 __attribute__((const, overloadable))convert_char2(char2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from char3 to char3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1867,6 +2343,10 @@ extern char3 __attribute__((const, overloadable))convert_char3(char3 v);
 /*
  * Component wise conversion from char4 to char4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern char4 __attribute__((const, overloadable))convert_char4(char4 v);
@@ -1875,6 +2355,10 @@ extern char4 __attribute__((const, overloadable))convert_char4(char4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uchar2 to char2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1885,6 +2369,10 @@ extern char2 __attribute__((const, overloadable))convert_char2(uchar2 v);
 /*
  * Component wise conversion from uchar3 to char3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern char3 __attribute__((const, overloadable))convert_char3(uchar3 v);
@@ -1893,6 +2381,10 @@ extern char3 __attribute__((const, overloadable))convert_char3(uchar3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uchar4 to char4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1903,6 +2395,10 @@ extern char4 __attribute__((const, overloadable))convert_char4(uchar4 v);
 /*
  * Component wise conversion from short2 to char2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern char2 __attribute__((const, overloadable))convert_char2(short2 v);
@@ -1911,6 +2407,10 @@ extern char2 __attribute__((const, overloadable))convert_char2(short2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from short3 to char3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1921,6 +2421,10 @@ extern char3 __attribute__((const, overloadable))convert_char3(short3 v);
 /*
  * Component wise conversion from short4 to char4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern char4 __attribute__((const, overloadable))convert_char4(short4 v);
@@ -1929,6 +2433,10 @@ extern char4 __attribute__((const, overloadable))convert_char4(short4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from ushort2 to char2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1939,6 +2447,10 @@ extern char2 __attribute__((const, overloadable))convert_char2(ushort2 v);
 /*
  * Component wise conversion from ushort3 to char3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern char3 __attribute__((const, overloadable))convert_char3(ushort3 v);
@@ -1947,6 +2459,10 @@ extern char3 __attribute__((const, overloadable))convert_char3(ushort3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from ushort4 to char4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1957,6 +2473,10 @@ extern char4 __attribute__((const, overloadable))convert_char4(ushort4 v);
 /*
  * Component wise conversion from int2 to char2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern char2 __attribute__((const, overloadable))convert_char2(int2 v);
@@ -1965,6 +2485,10 @@ extern char2 __attribute__((const, overloadable))convert_char2(int2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from int3 to char3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1975,6 +2499,10 @@ extern char3 __attribute__((const, overloadable))convert_char3(int3 v);
 /*
  * Component wise conversion from int4 to char4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern char4 __attribute__((const, overloadable))convert_char4(int4 v);
@@ -1983,6 +2511,10 @@ extern char4 __attribute__((const, overloadable))convert_char4(int4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uint2 to char2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -1993,6 +2525,10 @@ extern char2 __attribute__((const, overloadable))convert_char2(uint2 v);
 /*
  * Component wise conversion from uint3 to char3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern char3 __attribute__((const, overloadable))convert_char3(uint3 v);
@@ -2001,6 +2537,10 @@ extern char3 __attribute__((const, overloadable))convert_char3(uint3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uint4 to char4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2011,6 +2551,10 @@ extern char4 __attribute__((const, overloadable))convert_char4(uint4 v);
 /*
  * Component wise conversion from float2 to uchar2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uchar2 __attribute__((const, overloadable))convert_uchar2(float2 v);
@@ -2019,6 +2563,10 @@ extern uchar2 __attribute__((const, overloadable))convert_uchar2(float2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from float3 to uchar3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2029,6 +2577,10 @@ extern uchar3 __attribute__((const, overloadable))convert_uchar3(float3 v);
 /*
  * Component wise conversion from float4 to uchar4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uchar4 __attribute__((const, overloadable))convert_uchar4(float4 v);
@@ -2037,6 +2589,10 @@ extern uchar4 __attribute__((const, overloadable))convert_uchar4(float4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from char2 to uchar2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2047,6 +2603,10 @@ extern uchar2 __attribute__((const, overloadable))convert_uchar2(char2 v);
 /*
  * Component wise conversion from char3 to uchar3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uchar3 __attribute__((const, overloadable))convert_uchar3(char3 v);
@@ -2055,6 +2615,10 @@ extern uchar3 __attribute__((const, overloadable))convert_uchar3(char3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from char4 to uchar4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2065,6 +2629,10 @@ extern uchar4 __attribute__((const, overloadable))convert_uchar4(char4 v);
 /*
  * Component wise conversion from uchar2 to uchar2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uchar2 __attribute__((const, overloadable))convert_uchar2(uchar2 v);
@@ -2073,6 +2641,10 @@ extern uchar2 __attribute__((const, overloadable))convert_uchar2(uchar2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uchar3 to uchar3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2083,6 +2655,10 @@ extern uchar3 __attribute__((const, overloadable))convert_uchar3(uchar3 v);
 /*
  * Component wise conversion from uchar4 to uchar4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uchar4 __attribute__((const, overloadable))convert_uchar4(uchar4 v);
@@ -2091,6 +2667,10 @@ extern uchar4 __attribute__((const, overloadable))convert_uchar4(uchar4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from short2 to uchar2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2101,6 +2681,10 @@ extern uchar2 __attribute__((const, overloadable))convert_uchar2(short2 v);
 /*
  * Component wise conversion from short3 to uchar3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uchar3 __attribute__((const, overloadable))convert_uchar3(short3 v);
@@ -2109,6 +2693,10 @@ extern uchar3 __attribute__((const, overloadable))convert_uchar3(short3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from short4 to uchar4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2119,6 +2707,10 @@ extern uchar4 __attribute__((const, overloadable))convert_uchar4(short4 v);
 /*
  * Component wise conversion from ushort2 to uchar2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uchar2 __attribute__((const, overloadable))convert_uchar2(ushort2 v);
@@ -2127,6 +2719,10 @@ extern uchar2 __attribute__((const, overloadable))convert_uchar2(ushort2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from ushort3 to uchar3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2137,6 +2733,10 @@ extern uchar3 __attribute__((const, overloadable))convert_uchar3(ushort3 v);
 /*
  * Component wise conversion from ushort4 to uchar4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uchar4 __attribute__((const, overloadable))convert_uchar4(ushort4 v);
@@ -2145,6 +2745,10 @@ extern uchar4 __attribute__((const, overloadable))convert_uchar4(ushort4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from int2 to uchar2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2155,6 +2759,10 @@ extern uchar2 __attribute__((const, overloadable))convert_uchar2(int2 v);
 /*
  * Component wise conversion from int3 to uchar3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uchar3 __attribute__((const, overloadable))convert_uchar3(int3 v);
@@ -2163,6 +2771,10 @@ extern uchar3 __attribute__((const, overloadable))convert_uchar3(int3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from int4 to uchar4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2173,6 +2785,10 @@ extern uchar4 __attribute__((const, overloadable))convert_uchar4(int4 v);
 /*
  * Component wise conversion from uint2 to uchar2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uchar2 __attribute__((const, overloadable))convert_uchar2(uint2 v);
@@ -2181,6 +2797,10 @@ extern uchar2 __attribute__((const, overloadable))convert_uchar2(uint2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uint3 to uchar3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2191,6 +2811,10 @@ extern uchar3 __attribute__((const, overloadable))convert_uchar3(uint3 v);
 /*
  * Component wise conversion from uint4 to uchar4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uchar4 __attribute__((const, overloadable))convert_uchar4(uint4 v);
@@ -2199,6 +2823,10 @@ extern uchar4 __attribute__((const, overloadable))convert_uchar4(uint4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from float2 to short2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2209,6 +2837,10 @@ extern short2 __attribute__((const, overloadable))convert_short2(float2 v);
 /*
  * Component wise conversion from float3 to short3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern short3 __attribute__((const, overloadable))convert_short3(float3 v);
@@ -2217,6 +2849,10 @@ extern short3 __attribute__((const, overloadable))convert_short3(float3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from float4 to short4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2227,6 +2863,10 @@ extern short4 __attribute__((const, overloadable))convert_short4(float4 v);
 /*
  * Component wise conversion from char2 to short2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern short2 __attribute__((const, overloadable))convert_short2(char2 v);
@@ -2235,6 +2875,10 @@ extern short2 __attribute__((const, overloadable))convert_short2(char2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from char3 to short3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2245,6 +2889,10 @@ extern short3 __attribute__((const, overloadable))convert_short3(char3 v);
 /*
  * Component wise conversion from char4 to short4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern short4 __attribute__((const, overloadable))convert_short4(char4 v);
@@ -2253,6 +2901,10 @@ extern short4 __attribute__((const, overloadable))convert_short4(char4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uchar2 to short2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2263,6 +2915,10 @@ extern short2 __attribute__((const, overloadable))convert_short2(uchar2 v);
 /*
  * Component wise conversion from uchar3 to short3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern short3 __attribute__((const, overloadable))convert_short3(uchar3 v);
@@ -2271,6 +2927,10 @@ extern short3 __attribute__((const, overloadable))convert_short3(uchar3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uchar4 to short4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2281,6 +2941,10 @@ extern short4 __attribute__((const, overloadable))convert_short4(uchar4 v);
 /*
  * Component wise conversion from short2 to short2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern short2 __attribute__((const, overloadable))convert_short2(short2 v);
@@ -2289,6 +2953,10 @@ extern short2 __attribute__((const, overloadable))convert_short2(short2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from short3 to short3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2299,6 +2967,10 @@ extern short3 __attribute__((const, overloadable))convert_short3(short3 v);
 /*
  * Component wise conversion from short4 to short4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern short4 __attribute__((const, overloadable))convert_short4(short4 v);
@@ -2307,6 +2979,10 @@ extern short4 __attribute__((const, overloadable))convert_short4(short4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from ushort2 to short2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2317,6 +2993,10 @@ extern short2 __attribute__((const, overloadable))convert_short2(ushort2 v);
 /*
  * Component wise conversion from ushort3 to short3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern short3 __attribute__((const, overloadable))convert_short3(ushort3 v);
@@ -2325,6 +3005,10 @@ extern short3 __attribute__((const, overloadable))convert_short3(ushort3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from ushort4 to short4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2335,6 +3019,10 @@ extern short4 __attribute__((const, overloadable))convert_short4(ushort4 v);
 /*
  * Component wise conversion from int2 to short2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern short2 __attribute__((const, overloadable))convert_short2(int2 v);
@@ -2343,6 +3031,10 @@ extern short2 __attribute__((const, overloadable))convert_short2(int2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from int3 to short3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2353,6 +3045,10 @@ extern short3 __attribute__((const, overloadable))convert_short3(int3 v);
 /*
  * Component wise conversion from int4 to short4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern short4 __attribute__((const, overloadable))convert_short4(int4 v);
@@ -2361,6 +3057,10 @@ extern short4 __attribute__((const, overloadable))convert_short4(int4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uint2 to short2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2371,6 +3071,10 @@ extern short2 __attribute__((const, overloadable))convert_short2(uint2 v);
 /*
  * Component wise conversion from uint3 to short3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern short3 __attribute__((const, overloadable))convert_short3(uint3 v);
@@ -2379,6 +3083,10 @@ extern short3 __attribute__((const, overloadable))convert_short3(uint3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uint4 to short4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2389,6 +3097,10 @@ extern short4 __attribute__((const, overloadable))convert_short4(uint4 v);
 /*
  * Component wise conversion from float2 to ushort2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern ushort2 __attribute__((const, overloadable))convert_ushort2(float2 v);
@@ -2397,6 +3109,10 @@ extern ushort2 __attribute__((const, overloadable))convert_ushort2(float2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from float3 to ushort3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2407,6 +3123,10 @@ extern ushort3 __attribute__((const, overloadable))convert_ushort3(float3 v);
 /*
  * Component wise conversion from float4 to ushort4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern ushort4 __attribute__((const, overloadable))convert_ushort4(float4 v);
@@ -2415,6 +3135,10 @@ extern ushort4 __attribute__((const, overloadable))convert_ushort4(float4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from char2 to ushort2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2425,6 +3149,10 @@ extern ushort2 __attribute__((const, overloadable))convert_ushort2(char2 v);
 /*
  * Component wise conversion from char3 to ushort3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern ushort3 __attribute__((const, overloadable))convert_ushort3(char3 v);
@@ -2433,6 +3161,10 @@ extern ushort3 __attribute__((const, overloadable))convert_ushort3(char3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from char4 to ushort4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2443,6 +3175,10 @@ extern ushort4 __attribute__((const, overloadable))convert_ushort4(char4 v);
 /*
  * Component wise conversion from uchar2 to ushort2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern ushort2 __attribute__((const, overloadable))convert_ushort2(uchar2 v);
@@ -2451,6 +3187,10 @@ extern ushort2 __attribute__((const, overloadable))convert_ushort2(uchar2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uchar3 to ushort3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2461,6 +3201,10 @@ extern ushort3 __attribute__((const, overloadable))convert_ushort3(uchar3 v);
 /*
  * Component wise conversion from uchar4 to ushort4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern ushort4 __attribute__((const, overloadable))convert_ushort4(uchar4 v);
@@ -2469,6 +3213,10 @@ extern ushort4 __attribute__((const, overloadable))convert_ushort4(uchar4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from short2 to ushort2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2479,6 +3227,10 @@ extern ushort2 __attribute__((const, overloadable))convert_ushort2(short2 v);
 /*
  * Component wise conversion from short3 to ushort3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern ushort3 __attribute__((const, overloadable))convert_ushort3(short3 v);
@@ -2487,6 +3239,10 @@ extern ushort3 __attribute__((const, overloadable))convert_ushort3(short3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from short4 to ushort4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2497,6 +3253,10 @@ extern ushort4 __attribute__((const, overloadable))convert_ushort4(short4 v);
 /*
  * Component wise conversion from ushort2 to ushort2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern ushort2 __attribute__((const, overloadable))convert_ushort2(ushort2 v);
@@ -2505,6 +3265,10 @@ extern ushort2 __attribute__((const, overloadable))convert_ushort2(ushort2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from ushort3 to ushort3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2515,6 +3279,10 @@ extern ushort3 __attribute__((const, overloadable))convert_ushort3(ushort3 v);
 /*
  * Component wise conversion from ushort4 to ushort4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern ushort4 __attribute__((const, overloadable))convert_ushort4(ushort4 v);
@@ -2523,6 +3291,10 @@ extern ushort4 __attribute__((const, overloadable))convert_ushort4(ushort4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from int2 to ushort2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2533,6 +3305,10 @@ extern ushort2 __attribute__((const, overloadable))convert_ushort2(int2 v);
 /*
  * Component wise conversion from int3 to ushort3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern ushort3 __attribute__((const, overloadable))convert_ushort3(int3 v);
@@ -2541,6 +3317,10 @@ extern ushort3 __attribute__((const, overloadable))convert_ushort3(int3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from int4 to ushort4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2551,6 +3331,10 @@ extern ushort4 __attribute__((const, overloadable))convert_ushort4(int4 v);
 /*
  * Component wise conversion from uint2 to ushort2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern ushort2 __attribute__((const, overloadable))convert_ushort2(uint2 v);
@@ -2559,6 +3343,10 @@ extern ushort2 __attribute__((const, overloadable))convert_ushort2(uint2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uint3 to ushort3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2569,6 +3357,10 @@ extern ushort3 __attribute__((const, overloadable))convert_ushort3(uint3 v);
 /*
  * Component wise conversion from uint4 to ushort4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern ushort4 __attribute__((const, overloadable))convert_ushort4(uint4 v);
@@ -2577,6 +3369,10 @@ extern ushort4 __attribute__((const, overloadable))convert_ushort4(uint4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from float2 to int2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2587,6 +3383,10 @@ extern int2 __attribute__((const, overloadable))convert_int2(float2 v);
 /*
  * Component wise conversion from float3 to int3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern int3 __attribute__((const, overloadable))convert_int3(float3 v);
@@ -2595,6 +3395,10 @@ extern int3 __attribute__((const, overloadable))convert_int3(float3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from float4 to int4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2605,6 +3409,10 @@ extern int4 __attribute__((const, overloadable))convert_int4(float4 v);
 /*
  * Component wise conversion from char2 to int2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern int2 __attribute__((const, overloadable))convert_int2(char2 v);
@@ -2613,6 +3421,10 @@ extern int2 __attribute__((const, overloadable))convert_int2(char2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from char3 to int3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2623,6 +3435,10 @@ extern int3 __attribute__((const, overloadable))convert_int3(char3 v);
 /*
  * Component wise conversion from char4 to int4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern int4 __attribute__((const, overloadable))convert_int4(char4 v);
@@ -2631,6 +3447,10 @@ extern int4 __attribute__((const, overloadable))convert_int4(char4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uchar2 to int2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2641,6 +3461,10 @@ extern int2 __attribute__((const, overloadable))convert_int2(uchar2 v);
 /*
  * Component wise conversion from uchar3 to int3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern int3 __attribute__((const, overloadable))convert_int3(uchar3 v);
@@ -2649,6 +3473,10 @@ extern int3 __attribute__((const, overloadable))convert_int3(uchar3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uchar4 to int4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2659,6 +3487,10 @@ extern int4 __attribute__((const, overloadable))convert_int4(uchar4 v);
 /*
  * Component wise conversion from short2 to int2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern int2 __attribute__((const, overloadable))convert_int2(short2 v);
@@ -2667,6 +3499,10 @@ extern int2 __attribute__((const, overloadable))convert_int2(short2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from short3 to int3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2677,6 +3513,10 @@ extern int3 __attribute__((const, overloadable))convert_int3(short3 v);
 /*
  * Component wise conversion from short4 to int4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern int4 __attribute__((const, overloadable))convert_int4(short4 v);
@@ -2685,6 +3525,10 @@ extern int4 __attribute__((const, overloadable))convert_int4(short4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from ushort2 to int2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2695,6 +3539,10 @@ extern int2 __attribute__((const, overloadable))convert_int2(ushort2 v);
 /*
  * Component wise conversion from ushort3 to int3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern int3 __attribute__((const, overloadable))convert_int3(ushort3 v);
@@ -2703,6 +3551,10 @@ extern int3 __attribute__((const, overloadable))convert_int3(ushort3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from ushort4 to int4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2713,6 +3565,10 @@ extern int4 __attribute__((const, overloadable))convert_int4(ushort4 v);
 /*
  * Component wise conversion from int2 to int2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern int2 __attribute__((const, overloadable))convert_int2(int2 v);
@@ -2721,6 +3577,10 @@ extern int2 __attribute__((const, overloadable))convert_int2(int2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from int3 to int3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2731,6 +3591,10 @@ extern int3 __attribute__((const, overloadable))convert_int3(int3 v);
 /*
  * Component wise conversion from int4 to int4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern int4 __attribute__((const, overloadable))convert_int4(int4 v);
@@ -2739,6 +3603,10 @@ extern int4 __attribute__((const, overloadable))convert_int4(int4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uint2 to int2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2749,6 +3617,10 @@ extern int2 __attribute__((const, overloadable))convert_int2(uint2 v);
 /*
  * Component wise conversion from uint3 to int3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern int3 __attribute__((const, overloadable))convert_int3(uint3 v);
@@ -2757,6 +3629,10 @@ extern int3 __attribute__((const, overloadable))convert_int3(uint3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uint4 to int4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2767,6 +3643,10 @@ extern int4 __attribute__((const, overloadable))convert_int4(uint4 v);
 /*
  * Component wise conversion from float2 to uint2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uint2 __attribute__((const, overloadable))convert_uint2(float2 v);
@@ -2775,6 +3655,10 @@ extern uint2 __attribute__((const, overloadable))convert_uint2(float2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from float3 to uint3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2785,6 +3669,10 @@ extern uint3 __attribute__((const, overloadable))convert_uint3(float3 v);
 /*
  * Component wise conversion from float4 to uint4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uint4 __attribute__((const, overloadable))convert_uint4(float4 v);
@@ -2793,6 +3681,10 @@ extern uint4 __attribute__((const, overloadable))convert_uint4(float4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from char2 to uint2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2803,6 +3695,10 @@ extern uint2 __attribute__((const, overloadable))convert_uint2(char2 v);
 /*
  * Component wise conversion from char3 to uint3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uint3 __attribute__((const, overloadable))convert_uint3(char3 v);
@@ -2811,6 +3707,10 @@ extern uint3 __attribute__((const, overloadable))convert_uint3(char3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from char4 to uint4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2821,6 +3721,10 @@ extern uint4 __attribute__((const, overloadable))convert_uint4(char4 v);
 /*
  * Component wise conversion from uchar2 to uint2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uint2 __attribute__((const, overloadable))convert_uint2(uchar2 v);
@@ -2829,6 +3733,10 @@ extern uint2 __attribute__((const, overloadable))convert_uint2(uchar2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uchar3 to uint3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2839,6 +3747,10 @@ extern uint3 __attribute__((const, overloadable))convert_uint3(uchar3 v);
 /*
  * Component wise conversion from uchar4 to uint4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uint4 __attribute__((const, overloadable))convert_uint4(uchar4 v);
@@ -2847,6 +3759,10 @@ extern uint4 __attribute__((const, overloadable))convert_uint4(uchar4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from short2 to uint2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2857,6 +3773,10 @@ extern uint2 __attribute__((const, overloadable))convert_uint2(short2 v);
 /*
  * Component wise conversion from short3 to uint3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uint3 __attribute__((const, overloadable))convert_uint3(short3 v);
@@ -2865,6 +3785,10 @@ extern uint3 __attribute__((const, overloadable))convert_uint3(short3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from short4 to uint4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2875,6 +3799,10 @@ extern uint4 __attribute__((const, overloadable))convert_uint4(short4 v);
 /*
  * Component wise conversion from ushort2 to uint2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uint2 __attribute__((const, overloadable))convert_uint2(ushort2 v);
@@ -2883,6 +3811,10 @@ extern uint2 __attribute__((const, overloadable))convert_uint2(ushort2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from ushort3 to uint3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2893,6 +3825,10 @@ extern uint3 __attribute__((const, overloadable))convert_uint3(ushort3 v);
 /*
  * Component wise conversion from ushort4 to uint4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uint4 __attribute__((const, overloadable))convert_uint4(ushort4 v);
@@ -2901,6 +3837,10 @@ extern uint4 __attribute__((const, overloadable))convert_uint4(ushort4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from int2 to uint2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2911,6 +3851,10 @@ extern uint2 __attribute__((const, overloadable))convert_uint2(int2 v);
 /*
  * Component wise conversion from int3 to uint3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uint3 __attribute__((const, overloadable))convert_uint3(int3 v);
@@ -2919,6 +3863,10 @@ extern uint3 __attribute__((const, overloadable))convert_uint3(int3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from int4 to uint4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2929,6 +3877,10 @@ extern uint4 __attribute__((const, overloadable))convert_uint4(int4 v);
 /*
  * Component wise conversion from uint2 to uint2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uint2 __attribute__((const, overloadable))convert_uint2(uint2 v);
@@ -2937,6 +3889,10 @@ extern uint2 __attribute__((const, overloadable))convert_uint2(uint2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Component wise conversion from uint3 to uint3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 9 and newer.
  */
@@ -2947,6 +3903,10 @@ extern uint3 __attribute__((const, overloadable))convert_uint3(uint3 v);
 /*
  * Component wise conversion from uint4 to uint4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 9 and newer.
  */
 extern uint4 __attribute__((const, overloadable))convert_uint4(uint4 v);
@@ -2955,6 +3915,10 @@ extern uint4 __attribute__((const, overloadable))convert_uint4(uint4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from double2 to double2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -2965,6 +3929,10 @@ extern double2 __attribute__((const, overloadable))convert_double2(double2 v);
 /*
  * Component wise conversion from double3 to double3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern double3 __attribute__((const, overloadable))convert_double3(double3 v);
@@ -2973,6 +3941,10 @@ extern double3 __attribute__((const, overloadable))convert_double3(double3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from double4 to double4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -2983,6 +3955,10 @@ extern double4 __attribute__((const, overloadable))convert_double4(double4 v);
 /*
  * Component wise conversion from long2 to double2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern double2 __attribute__((const, overloadable))convert_double2(long2 v);
@@ -2991,6 +3967,10 @@ extern double2 __attribute__((const, overloadable))convert_double2(long2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from long3 to double3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3001,6 +3981,10 @@ extern double3 __attribute__((const, overloadable))convert_double3(long3 v);
 /*
  * Component wise conversion from long4 to double4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern double4 __attribute__((const, overloadable))convert_double4(long4 v);
@@ -3009,6 +3993,10 @@ extern double4 __attribute__((const, overloadable))convert_double4(long4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from ulong2 to double2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3019,6 +4007,10 @@ extern double2 __attribute__((const, overloadable))convert_double2(ulong2 v);
 /*
  * Component wise conversion from ulong3 to double3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern double3 __attribute__((const, overloadable))convert_double3(ulong3 v);
@@ -3027,6 +4019,10 @@ extern double3 __attribute__((const, overloadable))convert_double3(ulong3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from ulong4 to double4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3037,6 +4033,10 @@ extern double4 __attribute__((const, overloadable))convert_double4(ulong4 v);
 /*
  * Component wise conversion from double2 to long2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern long2 __attribute__((const, overloadable))convert_long2(double2 v);
@@ -3045,6 +4045,10 @@ extern long2 __attribute__((const, overloadable))convert_long2(double2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from double3 to long3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3055,6 +4059,10 @@ extern long3 __attribute__((const, overloadable))convert_long3(double3 v);
 /*
  * Component wise conversion from double4 to long4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern long4 __attribute__((const, overloadable))convert_long4(double4 v);
@@ -3063,6 +4071,10 @@ extern long4 __attribute__((const, overloadable))convert_long4(double4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from long2 to long2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3073,6 +4085,10 @@ extern long2 __attribute__((const, overloadable))convert_long2(long2 v);
 /*
  * Component wise conversion from long3 to long3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern long3 __attribute__((const, overloadable))convert_long3(long3 v);
@@ -3081,6 +4097,10 @@ extern long3 __attribute__((const, overloadable))convert_long3(long3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from long4 to long4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3091,6 +4111,10 @@ extern long4 __attribute__((const, overloadable))convert_long4(long4 v);
 /*
  * Component wise conversion from ulong2 to long2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern long2 __attribute__((const, overloadable))convert_long2(ulong2 v);
@@ -3099,6 +4123,10 @@ extern long2 __attribute__((const, overloadable))convert_long2(ulong2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from ulong3 to long3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3109,6 +4137,10 @@ extern long3 __attribute__((const, overloadable))convert_long3(ulong3 v);
 /*
  * Component wise conversion from ulong4 to long4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern long4 __attribute__((const, overloadable))convert_long4(ulong4 v);
@@ -3117,6 +4149,10 @@ extern long4 __attribute__((const, overloadable))convert_long4(ulong4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from double2 to ulong2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3127,6 +4163,10 @@ extern ulong2 __attribute__((const, overloadable))convert_ulong2(double2 v);
 /*
  * Component wise conversion from double3 to ulong3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern ulong3 __attribute__((const, overloadable))convert_ulong3(double3 v);
@@ -3135,6 +4175,10 @@ extern ulong3 __attribute__((const, overloadable))convert_ulong3(double3 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from double4 to ulong4
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3145,6 +4189,10 @@ extern ulong4 __attribute__((const, overloadable))convert_ulong4(double4 v);
 /*
  * Component wise conversion from long2 to ulong2
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern ulong2 __attribute__((const, overloadable))convert_ulong2(long2 v);
@@ -3153,6 +4201,10 @@ extern ulong2 __attribute__((const, overloadable))convert_ulong2(long2 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from long3 to ulong3
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3163,6 +4215,10 @@ extern ulong3 __attribute__((const, overloadable))convert_ulong3(long3 v);
 /*
  * Component wise conversion from long4 to ulong4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern ulong4 __attribute__((const, overloadable))convert_ulong4(long4 v);
@@ -3171,6 +4227,10 @@ extern ulong4 __attribute__((const, overloadable))convert_ulong4(long4 v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
  * Component wise conversion from ulong2 to ulong2
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3181,6 +4241,10 @@ extern ulong2 __attribute__((const, overloadable))convert_ulong2(ulong2 v);
 /*
  * Component wise conversion from ulong3 to ulong3
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern ulong3 __attribute__((const, overloadable))convert_ulong3(ulong3 v);
@@ -3190,6 +4254,10 @@ extern ulong3 __attribute__((const, overloadable))convert_ulong3(ulong3 v);
 /*
  * Component wise conversion from ulong4 to ulong4
  *
+ * For the convert_* functions, conversions of floating point values to integer will round.[TODO or truncate?]
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
+ *
  * Supported by API versions 21 and newer.
  */
 extern ulong4 __attribute__((const, overloadable))convert_ulong4(ulong4 v);
@@ -3197,7 +4265,11 @@ extern ulong4 __attribute__((const, overloadable))convert_ulong4(ulong4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double2 to float2
+ * Component wise conversion from double2 to float2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3206,7 +4278,11 @@ extern float2 __attribute__((const, overloadable))convert_float2(double2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double3 to float3
+ * Component wise conversion from double3 to float3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3215,7 +4291,11 @@ extern float3 __attribute__((const, overloadable))convert_float3(double3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double4 to float4
+ * Component wise conversion from double4 to float4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3224,7 +4304,11 @@ extern float4 __attribute__((const, overloadable))convert_float4(double4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long2 to float2
+ * Component wise conversion from long2 to float2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3233,7 +4317,11 @@ extern float2 __attribute__((const, overloadable))convert_float2(long2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long3 to float3
+ * Component wise conversion from long3 to float3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3242,7 +4330,11 @@ extern float3 __attribute__((const, overloadable))convert_float3(long3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long4 to float4
+ * Component wise conversion from long4 to float4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3251,7 +4343,11 @@ extern float4 __attribute__((const, overloadable))convert_float4(long4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong2 to float2
+ * Component wise conversion from ulong2 to float2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3260,7 +4356,11 @@ extern float2 __attribute__((const, overloadable))convert_float2(ulong2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong3 to float3
+ * Component wise conversion from ulong3 to float3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3269,7 +4369,11 @@ extern float3 __attribute__((const, overloadable))convert_float3(ulong3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong4 to float4
+ * Component wise conversion from ulong4 to float4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3278,7 +4382,11 @@ extern float4 __attribute__((const, overloadable))convert_float4(ulong4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double2 to char2
+ * Component wise conversion from double2 to char2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3287,7 +4395,11 @@ extern char2 __attribute__((const, overloadable))convert_char2(double2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double3 to char3
+ * Component wise conversion from double3 to char3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3296,7 +4408,11 @@ extern char3 __attribute__((const, overloadable))convert_char3(double3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double4 to char4
+ * Component wise conversion from double4 to char4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3305,7 +4421,11 @@ extern char4 __attribute__((const, overloadable))convert_char4(double4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long2 to char2
+ * Component wise conversion from long2 to char2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3314,7 +4434,11 @@ extern char2 __attribute__((const, overloadable))convert_char2(long2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long3 to char3
+ * Component wise conversion from long3 to char3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3323,7 +4447,11 @@ extern char3 __attribute__((const, overloadable))convert_char3(long3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long4 to char4
+ * Component wise conversion from long4 to char4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3332,7 +4460,11 @@ extern char4 __attribute__((const, overloadable))convert_char4(long4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong2 to char2
+ * Component wise conversion from ulong2 to char2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3341,7 +4473,11 @@ extern char2 __attribute__((const, overloadable))convert_char2(ulong2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong3 to char3
+ * Component wise conversion from ulong3 to char3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3350,7 +4486,11 @@ extern char3 __attribute__((const, overloadable))convert_char3(ulong3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong4 to char4
+ * Component wise conversion from ulong4 to char4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3359,7 +4499,11 @@ extern char4 __attribute__((const, overloadable))convert_char4(ulong4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double2 to uchar2
+ * Component wise conversion from double2 to uchar2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3368,7 +4512,11 @@ extern uchar2 __attribute__((const, overloadable))convert_uchar2(double2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double3 to uchar3
+ * Component wise conversion from double3 to uchar3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3377,7 +4525,11 @@ extern uchar3 __attribute__((const, overloadable))convert_uchar3(double3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double4 to uchar4
+ * Component wise conversion from double4 to uchar4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3386,7 +4538,11 @@ extern uchar4 __attribute__((const, overloadable))convert_uchar4(double4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long2 to uchar2
+ * Component wise conversion from long2 to uchar2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3395,7 +4551,11 @@ extern uchar2 __attribute__((const, overloadable))convert_uchar2(long2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long3 to uchar3
+ * Component wise conversion from long3 to uchar3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3404,7 +4564,11 @@ extern uchar3 __attribute__((const, overloadable))convert_uchar3(long3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long4 to uchar4
+ * Component wise conversion from long4 to uchar4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3413,7 +4577,11 @@ extern uchar4 __attribute__((const, overloadable))convert_uchar4(long4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong2 to uchar2
+ * Component wise conversion from ulong2 to uchar2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3422,7 +4590,11 @@ extern uchar2 __attribute__((const, overloadable))convert_uchar2(ulong2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong3 to uchar3
+ * Component wise conversion from ulong3 to uchar3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3431,7 +4603,11 @@ extern uchar3 __attribute__((const, overloadable))convert_uchar3(ulong3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong4 to uchar4
+ * Component wise conversion from ulong4 to uchar4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3440,7 +4616,11 @@ extern uchar4 __attribute__((const, overloadable))convert_uchar4(ulong4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double2 to short2
+ * Component wise conversion from double2 to short2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3449,7 +4629,11 @@ extern short2 __attribute__((const, overloadable))convert_short2(double2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double3 to short3
+ * Component wise conversion from double3 to short3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3458,7 +4642,11 @@ extern short3 __attribute__((const, overloadable))convert_short3(double3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double4 to short4
+ * Component wise conversion from double4 to short4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3467,7 +4655,11 @@ extern short4 __attribute__((const, overloadable))convert_short4(double4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long2 to short2
+ * Component wise conversion from long2 to short2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3476,7 +4668,11 @@ extern short2 __attribute__((const, overloadable))convert_short2(long2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long3 to short3
+ * Component wise conversion from long3 to short3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3485,7 +4681,11 @@ extern short3 __attribute__((const, overloadable))convert_short3(long3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long4 to short4
+ * Component wise conversion from long4 to short4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3494,7 +4694,11 @@ extern short4 __attribute__((const, overloadable))convert_short4(long4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong2 to short2
+ * Component wise conversion from ulong2 to short2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3503,7 +4707,11 @@ extern short2 __attribute__((const, overloadable))convert_short2(ulong2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong3 to short3
+ * Component wise conversion from ulong3 to short3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3512,7 +4720,11 @@ extern short3 __attribute__((const, overloadable))convert_short3(ulong3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong4 to short4
+ * Component wise conversion from ulong4 to short4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3521,7 +4733,11 @@ extern short4 __attribute__((const, overloadable))convert_short4(ulong4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double2 to ushort2
+ * Component wise conversion from double2 to ushort2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3530,7 +4746,11 @@ extern ushort2 __attribute__((const, overloadable))convert_ushort2(double2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double3 to ushort3
+ * Component wise conversion from double3 to ushort3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3539,7 +4759,11 @@ extern ushort3 __attribute__((const, overloadable))convert_ushort3(double3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double4 to ushort4
+ * Component wise conversion from double4 to ushort4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3548,7 +4772,11 @@ extern ushort4 __attribute__((const, overloadable))convert_ushort4(double4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long2 to ushort2
+ * Component wise conversion from long2 to ushort2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3557,7 +4785,11 @@ extern ushort2 __attribute__((const, overloadable))convert_ushort2(long2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long3 to ushort3
+ * Component wise conversion from long3 to ushort3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3566,7 +4798,11 @@ extern ushort3 __attribute__((const, overloadable))convert_ushort3(long3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long4 to ushort4
+ * Component wise conversion from long4 to ushort4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3575,7 +4811,11 @@ extern ushort4 __attribute__((const, overloadable))convert_ushort4(long4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong2 to ushort2
+ * Component wise conversion from ulong2 to ushort2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3584,7 +4824,11 @@ extern ushort2 __attribute__((const, overloadable))convert_ushort2(ulong2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong3 to ushort3
+ * Component wise conversion from ulong3 to ushort3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3593,7 +4837,11 @@ extern ushort3 __attribute__((const, overloadable))convert_ushort3(ulong3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong4 to ushort4
+ * Component wise conversion from ulong4 to ushort4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3602,7 +4850,11 @@ extern ushort4 __attribute__((const, overloadable))convert_ushort4(ulong4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double2 to int2
+ * Component wise conversion from double2 to int2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3611,7 +4863,11 @@ extern int2 __attribute__((const, overloadable))convert_int2(double2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double3 to int3
+ * Component wise conversion from double3 to int3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3620,7 +4876,11 @@ extern int3 __attribute__((const, overloadable))convert_int3(double3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double4 to int4
+ * Component wise conversion from double4 to int4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3629,7 +4889,11 @@ extern int4 __attribute__((const, overloadable))convert_int4(double4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long2 to int2
+ * Component wise conversion from long2 to int2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3638,7 +4902,11 @@ extern int2 __attribute__((const, overloadable))convert_int2(long2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long3 to int3
+ * Component wise conversion from long3 to int3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3647,7 +4915,11 @@ extern int3 __attribute__((const, overloadable))convert_int3(long3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long4 to int4
+ * Component wise conversion from long4 to int4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3656,7 +4928,11 @@ extern int4 __attribute__((const, overloadable))convert_int4(long4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong2 to int2
+ * Component wise conversion from ulong2 to int2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3665,7 +4941,11 @@ extern int2 __attribute__((const, overloadable))convert_int2(ulong2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong3 to int3
+ * Component wise conversion from ulong3 to int3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3674,7 +4954,11 @@ extern int3 __attribute__((const, overloadable))convert_int3(ulong3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong4 to int4
+ * Component wise conversion from ulong4 to int4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3683,7 +4967,11 @@ extern int4 __attribute__((const, overloadable))convert_int4(ulong4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double2 to uint2
+ * Component wise conversion from double2 to uint2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3692,7 +4980,11 @@ extern uint2 __attribute__((const, overloadable))convert_uint2(double2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double3 to uint3
+ * Component wise conversion from double3 to uint3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3701,7 +4993,11 @@ extern uint3 __attribute__((const, overloadable))convert_uint3(double3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from double4 to uint4
+ * Component wise conversion from double4 to uint4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3710,7 +5006,11 @@ extern uint4 __attribute__((const, overloadable))convert_uint4(double4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long2 to uint2
+ * Component wise conversion from long2 to uint2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3719,7 +5019,11 @@ extern uint2 __attribute__((const, overloadable))convert_uint2(long2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long3 to uint3
+ * Component wise conversion from long3 to uint3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3728,7 +5032,11 @@ extern uint3 __attribute__((const, overloadable))convert_uint3(long3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from long4 to uint4
+ * Component wise conversion from long4 to uint4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3737,7 +5045,11 @@ extern uint4 __attribute__((const, overloadable))convert_uint4(long4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong2 to uint2
+ * Component wise conversion from ulong2 to uint2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3746,7 +5058,11 @@ extern uint2 __attribute__((const, overloadable))convert_uint2(ulong2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong3 to uint3
+ * Component wise conversion from ulong3 to uint3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3755,7 +5071,11 @@ extern uint3 __attribute__((const, overloadable))convert_uint3(ulong3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ulong4 to uint4
+ * Component wise conversion from ulong4 to uint4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3764,7 +5084,11 @@ extern uint4 __attribute__((const, overloadable))convert_uint4(ulong4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from float2 to double2
+ * Component wise conversion from float2 to double2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3773,7 +5097,11 @@ extern double2 __attribute__((const, overloadable))convert_double2(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from float3 to double3
+ * Component wise conversion from float3 to double3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3782,7 +5110,11 @@ extern double3 __attribute__((const, overloadable))convert_double3(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from float4 to double4
+ * Component wise conversion from float4 to double4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3791,7 +5123,11 @@ extern double4 __attribute__((const, overloadable))convert_double4(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from char2 to double2
+ * Component wise conversion from char2 to double2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3800,7 +5136,11 @@ extern double2 __attribute__((const, overloadable))convert_double2(char2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from char3 to double3
+ * Component wise conversion from char3 to double3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3809,7 +5149,11 @@ extern double3 __attribute__((const, overloadable))convert_double3(char3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from char4 to double4
+ * Component wise conversion from char4 to double4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3818,7 +5162,11 @@ extern double4 __attribute__((const, overloadable))convert_double4(char4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uchar2 to double2
+ * Component wise conversion from uchar2 to double2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3827,7 +5175,11 @@ extern double2 __attribute__((const, overloadable))convert_double2(uchar2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uchar3 to double3
+ * Component wise conversion from uchar3 to double3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3836,7 +5188,11 @@ extern double3 __attribute__((const, overloadable))convert_double3(uchar3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uchar4 to double4
+ * Component wise conversion from uchar4 to double4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3845,7 +5201,11 @@ extern double4 __attribute__((const, overloadable))convert_double4(uchar4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from short2 to double2
+ * Component wise conversion from short2 to double2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3854,7 +5214,11 @@ extern double2 __attribute__((const, overloadable))convert_double2(short2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from short3 to double3
+ * Component wise conversion from short3 to double3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3863,7 +5227,11 @@ extern double3 __attribute__((const, overloadable))convert_double3(short3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from short4 to double4
+ * Component wise conversion from short4 to double4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3872,7 +5240,11 @@ extern double4 __attribute__((const, overloadable))convert_double4(short4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ushort2 to double2
+ * Component wise conversion from ushort2 to double2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3881,7 +5253,11 @@ extern double2 __attribute__((const, overloadable))convert_double2(ushort2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ushort3 to double3
+ * Component wise conversion from ushort3 to double3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3890,7 +5266,11 @@ extern double3 __attribute__((const, overloadable))convert_double3(ushort3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ushort4 to double4
+ * Component wise conversion from ushort4 to double4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3899,7 +5279,11 @@ extern double4 __attribute__((const, overloadable))convert_double4(ushort4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from int2 to double2
+ * Component wise conversion from int2 to double2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3908,7 +5292,11 @@ extern double2 __attribute__((const, overloadable))convert_double2(int2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from int3 to double3
+ * Component wise conversion from int3 to double3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3917,7 +5305,11 @@ extern double3 __attribute__((const, overloadable))convert_double3(int3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from int4 to double4
+ * Component wise conversion from int4 to double4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3926,7 +5318,11 @@ extern double4 __attribute__((const, overloadable))convert_double4(int4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uint2 to double2
+ * Component wise conversion from uint2 to double2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3935,7 +5331,11 @@ extern double2 __attribute__((const, overloadable))convert_double2(uint2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uint3 to double3
+ * Component wise conversion from uint3 to double3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3944,7 +5344,11 @@ extern double3 __attribute__((const, overloadable))convert_double3(uint3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uint4 to double4
+ * Component wise conversion from uint4 to double4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3953,7 +5357,11 @@ extern double4 __attribute__((const, overloadable))convert_double4(uint4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from float2 to long2
+ * Component wise conversion from float2 to long2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3962,7 +5370,11 @@ extern long2 __attribute__((const, overloadable))convert_long2(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from float3 to long3
+ * Component wise conversion from float3 to long3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3971,7 +5383,11 @@ extern long3 __attribute__((const, overloadable))convert_long3(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from float4 to long4
+ * Component wise conversion from float4 to long4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3980,7 +5396,11 @@ extern long4 __attribute__((const, overloadable))convert_long4(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from char2 to long2
+ * Component wise conversion from char2 to long2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3989,7 +5409,11 @@ extern long2 __attribute__((const, overloadable))convert_long2(char2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from char3 to long3
+ * Component wise conversion from char3 to long3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -3998,7 +5422,11 @@ extern long3 __attribute__((const, overloadable))convert_long3(char3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from char4 to long4
+ * Component wise conversion from char4 to long4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4007,7 +5435,11 @@ extern long4 __attribute__((const, overloadable))convert_long4(char4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uchar2 to long2
+ * Component wise conversion from uchar2 to long2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4016,7 +5448,11 @@ extern long2 __attribute__((const, overloadable))convert_long2(uchar2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uchar3 to long3
+ * Component wise conversion from uchar3 to long3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4025,7 +5461,11 @@ extern long3 __attribute__((const, overloadable))convert_long3(uchar3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uchar4 to long4
+ * Component wise conversion from uchar4 to long4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4034,7 +5474,11 @@ extern long4 __attribute__((const, overloadable))convert_long4(uchar4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from short2 to long2
+ * Component wise conversion from short2 to long2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4043,7 +5487,11 @@ extern long2 __attribute__((const, overloadable))convert_long2(short2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from short3 to long3
+ * Component wise conversion from short3 to long3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4052,7 +5500,11 @@ extern long3 __attribute__((const, overloadable))convert_long3(short3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from short4 to long4
+ * Component wise conversion from short4 to long4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4061,7 +5513,11 @@ extern long4 __attribute__((const, overloadable))convert_long4(short4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ushort2 to long2
+ * Component wise conversion from ushort2 to long2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4070,7 +5526,11 @@ extern long2 __attribute__((const, overloadable))convert_long2(ushort2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ushort3 to long3
+ * Component wise conversion from ushort3 to long3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4079,7 +5539,11 @@ extern long3 __attribute__((const, overloadable))convert_long3(ushort3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ushort4 to long4
+ * Component wise conversion from ushort4 to long4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4088,7 +5552,11 @@ extern long4 __attribute__((const, overloadable))convert_long4(ushort4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from int2 to long2
+ * Component wise conversion from int2 to long2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4097,7 +5565,11 @@ extern long2 __attribute__((const, overloadable))convert_long2(int2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from int3 to long3
+ * Component wise conversion from int3 to long3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4106,7 +5578,11 @@ extern long3 __attribute__((const, overloadable))convert_long3(int3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from int4 to long4
+ * Component wise conversion from int4 to long4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4115,7 +5591,11 @@ extern long4 __attribute__((const, overloadable))convert_long4(int4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uint2 to long2
+ * Component wise conversion from uint2 to long2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4124,7 +5604,11 @@ extern long2 __attribute__((const, overloadable))convert_long2(uint2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uint3 to long3
+ * Component wise conversion from uint3 to long3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4133,7 +5617,11 @@ extern long3 __attribute__((const, overloadable))convert_long3(uint3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uint4 to long4
+ * Component wise conversion from uint4 to long4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4142,7 +5630,11 @@ extern long4 __attribute__((const, overloadable))convert_long4(uint4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from float2 to ulong2
+ * Component wise conversion from float2 to ulong2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4151,7 +5643,11 @@ extern ulong2 __attribute__((const, overloadable))convert_ulong2(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from float3 to ulong3
+ * Component wise conversion from float3 to ulong3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4160,7 +5656,11 @@ extern ulong3 __attribute__((const, overloadable))convert_ulong3(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from float4 to ulong4
+ * Component wise conversion from float4 to ulong4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4169,7 +5669,11 @@ extern ulong4 __attribute__((const, overloadable))convert_ulong4(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from char2 to ulong2
+ * Component wise conversion from char2 to ulong2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4178,7 +5682,11 @@ extern ulong2 __attribute__((const, overloadable))convert_ulong2(char2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from char3 to ulong3
+ * Component wise conversion from char3 to ulong3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4187,7 +5695,11 @@ extern ulong3 __attribute__((const, overloadable))convert_ulong3(char3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from char4 to ulong4
+ * Component wise conversion from char4 to ulong4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4196,7 +5708,11 @@ extern ulong4 __attribute__((const, overloadable))convert_ulong4(char4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uchar2 to ulong2
+ * Component wise conversion from uchar2 to ulong2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4205,7 +5721,11 @@ extern ulong2 __attribute__((const, overloadable))convert_ulong2(uchar2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uchar3 to ulong3
+ * Component wise conversion from uchar3 to ulong3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4214,7 +5734,11 @@ extern ulong3 __attribute__((const, overloadable))convert_ulong3(uchar3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uchar4 to ulong4
+ * Component wise conversion from uchar4 to ulong4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4223,7 +5747,11 @@ extern ulong4 __attribute__((const, overloadable))convert_ulong4(uchar4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from short2 to ulong2
+ * Component wise conversion from short2 to ulong2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4232,7 +5760,11 @@ extern ulong2 __attribute__((const, overloadable))convert_ulong2(short2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from short3 to ulong3
+ * Component wise conversion from short3 to ulong3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4241,7 +5773,11 @@ extern ulong3 __attribute__((const, overloadable))convert_ulong3(short3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from short4 to ulong4
+ * Component wise conversion from short4 to ulong4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4250,7 +5786,11 @@ extern ulong4 __attribute__((const, overloadable))convert_ulong4(short4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ushort2 to ulong2
+ * Component wise conversion from ushort2 to ulong2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4259,7 +5799,11 @@ extern ulong2 __attribute__((const, overloadable))convert_ulong2(ushort2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ushort3 to ulong3
+ * Component wise conversion from ushort3 to ulong3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4268,7 +5812,11 @@ extern ulong3 __attribute__((const, overloadable))convert_ulong3(ushort3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from ushort4 to ulong4
+ * Component wise conversion from ushort4 to ulong4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4277,7 +5825,11 @@ extern ulong4 __attribute__((const, overloadable))convert_ulong4(ushort4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from int2 to ulong2
+ * Component wise conversion from int2 to ulong2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4286,7 +5838,11 @@ extern ulong2 __attribute__((const, overloadable))convert_ulong2(int2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from int3 to ulong3
+ * Component wise conversion from int3 to ulong3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4295,7 +5851,11 @@ extern ulong3 __attribute__((const, overloadable))convert_ulong3(int3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from int4 to ulong4
+ * Component wise conversion from int4 to ulong4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4304,7 +5864,11 @@ extern ulong4 __attribute__((const, overloadable))convert_ulong4(int4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uint2 to ulong2
+ * Component wise conversion from uint2 to ulong2.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4313,7 +5877,11 @@ extern ulong2 __attribute__((const, overloadable))convert_ulong2(uint2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uint3 to ulong3
+ * Component wise conversion from uint3 to ulong3.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4322,7 +5890,11 @@ extern ulong3 __attribute__((const, overloadable))convert_ulong3(uint3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Component wise conversion from uint4 to ulong4
+ * Component wise conversion from uint4 to ulong4.
+ *
+ * For the convert_* functions, conversions of floating point values to integer will round.
+ * Conversions of numbers too large to fit the destination type yield undefined results.
+ * For example, converting a float that contains 1.0e18 to a short is undefined.
  *
  * Supported by API versions 21 and newer.
  */
@@ -4331,7 +5903,11 @@ extern ulong4 __attribute__((const, overloadable))convert_ulong4(uint4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Copy the sign bit from y to x.
+ * Copies the sign from y to x.
+ *
+ * The value returned is either x or -x.
+ *
+ * For example, copysign(4.0f, -2.7f) returns -4.0f and copysign(-4.0f, 2.7f) returns 4.0f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4340,7 +5916,11 @@ extern float __attribute__((const, overloadable))copysign(float x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Copy the sign bit from y to x.
+ * Copies the sign from y to x.
+ *
+ * The value returned is either x or -x.
+ *
+ * For example, copysign(4.0f, -2.7f) returns -4.0f and copysign(-4.0f, 2.7f) returns 4.0f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4349,7 +5929,11 @@ extern float2 __attribute__((const, overloadable))copysign(float2 x, float2 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Copy the sign bit from y to x.
+ * Copies the sign from y to x.
+ *
+ * The value returned is either x or -x.
+ *
+ * For example, copysign(4.0f, -2.7f) returns -4.0f and copysign(-4.0f, 2.7f) returns 4.0f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4358,7 +5942,11 @@ extern float3 __attribute__((const, overloadable))copysign(float3 x, float3 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Copy the sign bit from y to x.
+ * Copies the sign from y to x.
+ *
+ * The value returned is either x or -x.
+ *
+ * For example, copysign(4.0f, -2.7f) returns -4.0f and copysign(-4.0f, 2.7f) returns 4.0f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4367,7 +5955,7 @@ extern float4 __attribute__((const, overloadable))copysign(float4 x, float4 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cosine.
+ * Returns the cosine of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4376,7 +5964,7 @@ extern float __attribute__((const, overloadable))cos(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cosine.
+ * Returns the cosine of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4385,7 +5973,7 @@ extern float2 __attribute__((const, overloadable))cos(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cosine.
+ * Returns the cosine of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4394,7 +5982,7 @@ extern float3 __attribute__((const, overloadable))cos(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cosine.
+ * Returns the cosine of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4403,79 +5991,87 @@ extern float4 __attribute__((const, overloadable))cos(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hypebolic cosine.
+ * Returns the hypebolic cosine of x, where x is measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))cosh(float);
+extern float __attribute__((const, overloadable))cosh(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hypebolic cosine.
+ * Returns the hypebolic cosine of x, where x is measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))cosh(float2);
+extern float2 __attribute__((const, overloadable))cosh(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hypebolic cosine.
+ * Returns the hypebolic cosine of x, where x is measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))cosh(float3);
+extern float3 __attribute__((const, overloadable))cosh(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hypebolic cosine.
+ * Returns the hypebolic cosine of x, where x is measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))cosh(float4);
+extern float4 __attribute__((const, overloadable))cosh(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cosine of the value * PI.
+ * Returns the cosine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the cosine of a value measured in degrees, call cospi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))cospi(float);
+extern float __attribute__((const, overloadable))cospi(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cosine of the value * PI.
+ * Returns the cosine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the cosine of a value measured in degrees, call cospi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))cospi(float2);
+extern float2 __attribute__((const, overloadable))cospi(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cosine of the value * PI.
+ * Returns the cosine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the cosine of a value measured in degrees, call cospi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))cospi(float3);
+extern float3 __attribute__((const, overloadable))cospi(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the cosine of the value * PI.
+ * Returns the cosine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the cosine of a value measured in degrees, call cospi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))cospi(float4);
+extern float4 __attribute__((const, overloadable))cospi(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the cross product of two vectors.
+ * Computes the cross product of two vectors.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4484,7 +6080,7 @@ extern float3 __attribute__((const, overloadable))cross(float3 lhs, float3 rhs);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the cross product of two vectors.
+ * Computes the cross product of two vectors.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4493,7 +6089,7 @@ extern float4 __attribute__((const, overloadable))cross(float4 lhs, float4 rhs);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Convert from radians to degrees.
+ * Converts from radians to degrees.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4502,7 +6098,7 @@ extern float __attribute__((const, overloadable))degrees(float value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Convert from radians to degrees.
+ * Converts from radians to degrees.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4511,7 +6107,7 @@ extern float2 __attribute__((const, overloadable))degrees(float2 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Convert from radians to degrees.
+ * Converts from radians to degrees.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4520,7 +6116,7 @@ extern float3 __attribute__((const, overloadable))degrees(float3 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Convert from radians to degrees.
+ * Converts from radians to degrees.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4565,7 +6161,7 @@ extern float __attribute__((const, overloadable))distance(float4 lhs, float4 rhs
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the dot product of two vectors.
+ * Computes the dot product of two vectors.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4574,7 +6170,7 @@ extern float __attribute__((const, overloadable))dot(float lhs, float rhs);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the dot product of two vectors.
+ * Computes the dot product of two vectors.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4583,7 +6179,7 @@ extern float __attribute__((const, overloadable))dot(float2 lhs, float2 rhs);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the dot product of two vectors.
+ * Computes the dot product of two vectors.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4592,7 +6188,7 @@ extern float __attribute__((const, overloadable))dot(float3 lhs, float3 rhs);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the dot product of two vectors.
+ * Computes the dot product of two vectors.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4601,7 +6197,7 @@ extern float __attribute__((const, overloadable))dot(float4 lhs, float4 rhs);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the error function.
+ * Returns the error function.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4610,7 +6206,7 @@ extern float __attribute__((const, overloadable))erf(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the error function.
+ * Returns the error function.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4619,7 +6215,7 @@ extern float2 __attribute__((const, overloadable))erf(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the error function.
+ * Returns the error function.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4628,7 +6224,7 @@ extern float3 __attribute__((const, overloadable))erf(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the error function.
+ * Returns the error function.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4637,7 +6233,7 @@ extern float4 __attribute__((const, overloadable))erf(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the complementary error function.
+ * Returns the complementary error function.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4646,7 +6242,7 @@ extern float __attribute__((const, overloadable))erfc(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the complementary error function.
+ * Returns the complementary error function.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4655,7 +6251,7 @@ extern float2 __attribute__((const, overloadable))erfc(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the complementary error function.
+ * Returns the complementary error function.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4664,7 +6260,7 @@ extern float3 __attribute__((const, overloadable))erfc(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the complementary error function.
+ * Returns the complementary error function.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4673,187 +6269,197 @@ extern float4 __attribute__((const, overloadable))erfc(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return e ^ value.
+ * Returns e raised to x, i.e. e ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))exp(float);
+extern float __attribute__((const, overloadable))exp(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return e ^ value.
+ * Returns e raised to x, i.e. e ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))exp(float2);
+extern float2 __attribute__((const, overloadable))exp(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return e ^ value.
+ * Returns e raised to x, i.e. e ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))exp(float3);
+extern float3 __attribute__((const, overloadable))exp(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return e ^ value.
+ * Returns e raised to x, i.e. e ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))exp(float4);
+extern float4 __attribute__((const, overloadable))exp(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return 10 ^ value.
+ * Returns 10 raised to x, i.e. 10.f ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))exp10(float);
+extern float __attribute__((const, overloadable))exp10(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return 10 ^ value.
+ * Returns 10 raised to x, i.e. 10.f ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))exp10(float2);
+extern float2 __attribute__((const, overloadable))exp10(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return 10 ^ value.
+ * Returns 10 raised to x, i.e. 10.f ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))exp10(float3);
+extern float3 __attribute__((const, overloadable))exp10(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return 10 ^ value.
+ * Returns 10 raised to x, i.e. 10.f ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))exp10(float4);
+extern float4 __attribute__((const, overloadable))exp10(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return 2 ^ value.
+ * Returns 2 raised to x, i.e. 2.f ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))exp2(float);
+extern float __attribute__((const, overloadable))exp2(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return 2 ^ value.
+ * Returns 2 raised to x, i.e. 2.f ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))exp2(float2);
+extern float2 __attribute__((const, overloadable))exp2(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return 2 ^ value.
+ * Returns 2 raised to x, i.e. 2.f ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))exp2(float3);
+extern float3 __attribute__((const, overloadable))exp2(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return 2 ^ value.
+ * Returns 2 raised to x, i.e. 2.f ^ x.
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))exp2(float4);
+extern float4 __attribute__((const, overloadable))exp2(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (e ^ value) - 1.
+ * Returns e raised to x minus 1, i.e. (e ^ x) - 1.
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))expm1(float);
+extern float __attribute__((const, overloadable))expm1(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (e ^ value) - 1.
+ * Returns e raised to x minus 1, i.e. (e ^ x) - 1.
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))expm1(float2);
+extern float2 __attribute__((const, overloadable))expm1(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (e ^ value) - 1.
+ * Returns e raised to x minus 1, i.e. (e ^ x) - 1.
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))expm1(float3);
+extern float3 __attribute__((const, overloadable))expm1(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (e ^ value) - 1.
+ * Returns e raised to x minus 1, i.e. (e ^ x) - 1.
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))expm1(float4);
+extern float4 __attribute__((const, overloadable))expm1(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the float x.
+ *
+ * For integer values, use the abs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))fabs(float);
+extern float __attribute__((const, overloadable))fabs(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the float x.
+ *
+ * For integer values, use the abs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))fabs(float2);
+extern float2 __attribute__((const, overloadable))fabs(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the float x.
+ *
+ * For integer values, use the abs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))fabs(float3);
+extern float3 __attribute__((const, overloadable))fabs(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the absolute value of a value.
+ * Returns the absolute value of the float x.
+ *
+ * For integer values, use the abs() function.
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))fabs(float4);
+extern float4 __attribute__((const, overloadable))fabs(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Compute the approximate distance between two points.
+ * Computes the approximate distance between two points.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4862,7 +6468,9 @@ extern float __attribute__((const, overloadable))fast_distance(float lhs, float 
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Compute the approximate distance between two points.
+ * Computes the approximate distance between two points.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4871,7 +6479,9 @@ extern float __attribute__((const, overloadable))fast_distance(float2 lhs, float
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Compute the approximate distance between two points.
+ * Computes the approximate distance between two points.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4880,7 +6490,9 @@ extern float __attribute__((const, overloadable))fast_distance(float3 lhs, float
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Compute the approximate distance between two points.
+ * Computes the approximate distance between two points.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4889,7 +6501,9 @@ extern float __attribute__((const, overloadable))fast_distance(float4 lhs, float
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Compute the approximate length of a vector.
+ * Computes the approximate length of a vector.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4898,7 +6512,9 @@ extern float __attribute__((const, overloadable))fast_length(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Compute the approximate length of a vector.
+ * Computes the approximate length of a vector.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4907,7 +6523,9 @@ extern float __attribute__((const, overloadable))fast_length(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Compute the approximate length of a vector.
+ * Computes the approximate length of a vector.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4916,7 +6534,9 @@ extern float __attribute__((const, overloadable))fast_length(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Compute the approximate length of a vector.
+ * Computes the approximate length of a vector.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4925,7 +6545,11 @@ extern float __attribute__((const, overloadable))fast_length(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Approximately normalize a vector.
+ * Approximately normalizes a vector.
+ *
+ * For vectors of size 1, returns -1.f for negative values, 0.f for null values, and 1.f for positive values.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4934,7 +6558,11 @@ extern float __attribute__((const, overloadable))fast_normalize(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Approximately normalize a vector.
+ * Approximately normalizes a vector.
+ *
+ * For vectors of size 1, returns -1.f for negative values, 0.f for null values, and 1.f for positive values.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4943,7 +6571,11 @@ extern float2 __attribute__((const, overloadable))fast_normalize(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Approximately normalize a vector.
+ * Approximately normalizes a vector.
+ *
+ * For vectors of size 1, returns -1.f for negative values, 0.f for null values, and 1.f for positive values.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4952,7 +6584,11 @@ extern float3 __attribute__((const, overloadable))fast_normalize(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Approximately normalize a vector.
+ * Approximately normalizes a vector.
+ *
+ * For vectors of size 1, returns -1.f for negative values, 0.f for null values, and 1.f for positive values.
+ *
+ * The precision is what would be expected from doing the computation using 16 bit floating point values.
  *
  * Supported by API versions 17 and newer.
  */
@@ -4961,7 +6597,9 @@ extern float4 __attribute__((const, overloadable))fast_normalize(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the positive difference between two values.
+ * Returns the positive difference between two values.
+ *
+ * If a > b, returns (a - b) otherwise returns 0f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4970,7 +6608,9 @@ extern float __attribute__((const, overloadable))fdim(float a, float b);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the positive difference between two values.
+ * Returns the positive difference between two values.
+ *
+ * If a > b, returns (a - b) otherwise returns 0f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4979,7 +6619,9 @@ extern float2 __attribute__((const, overloadable))fdim(float2 a, float2 b);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the positive difference between two values.
+ * Returns the positive difference between two values.
+ *
+ * If a > b, returns (a - b) otherwise returns 0f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4988,7 +6630,9 @@ extern float3 __attribute__((const, overloadable))fdim(float3 a, float3 b);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the positive difference between two values.
+ * Returns the positive difference between two values.
+ *
+ * If a > b, returns (a - b) otherwise returns 0f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -4997,7 +6641,7 @@ extern float4 __attribute__((const, overloadable))fdim(float4 a, float4 b);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the smallest integer not greater than a value.
+ * Returns the smallest integer not greater than a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5006,7 +6650,7 @@ extern float __attribute__((const, overloadable))floor(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the smallest integer not greater than a value.
+ * Returns the smallest integer not greater than a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5015,7 +6659,7 @@ extern float2 __attribute__((const, overloadable))floor(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the smallest integer not greater than a value.
+ * Returns the smallest integer not greater than a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5024,7 +6668,7 @@ extern float3 __attribute__((const, overloadable))floor(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the smallest integer not greater than a value.
+ * Returns the smallest integer not greater than a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5033,7 +6677,9 @@ extern float4 __attribute__((const, overloadable))floor(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (a * b) + c.
+ * Multiply and add.  Returns (a * b) + c.
+ *
+ * This function is identical to mad().
  *
  * Supported by API versions 9 and newer.
  */
@@ -5042,7 +6688,9 @@ extern float __attribute__((const, overloadable))fma(float a, float b, float c);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (a * b) + c.
+ * Multiply and add.  Returns (a * b) + c.
+ *
+ * This function is identical to mad().
  *
  * Supported by API versions 9 and newer.
  */
@@ -5051,7 +6699,9 @@ extern float2 __attribute__((const, overloadable))fma(float2 a, float2 b, float2
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (a * b) + c.
+ * Multiply and add.  Returns (a * b) + c.
+ *
+ * This function is identical to mad().
  *
  * Supported by API versions 9 and newer.
  */
@@ -5060,7 +6710,9 @@ extern float3 __attribute__((const, overloadable))fma(float3 a, float3 b, float3
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (a * b) + c.
+ * Multiply and add.  Returns (a * b) + c.
+ *
+ * This function is identical to mad().
  *
  * Supported by API versions 9 and newer.
  */
@@ -5069,7 +6721,9 @@ extern float4 __attribute__((const, overloadable))fma(float4 a, float4 b, float4
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x < y ? y : x)
+ * Returns the maximum of x and y, i.e. (x < y ? y : x).
+ *
+ * The max() function returns identical results but can be applied to more data types.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5078,7 +6732,9 @@ extern float __attribute__((const, overloadable))fmax(float x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x < y ? y : x)
+ * Returns the maximum of x and y, i.e. (x < y ? y : x).
+ *
+ * The max() function returns identical results but can be applied to more data types.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5087,7 +6743,9 @@ extern float2 __attribute__((const, overloadable))fmax(float2 x, float2 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x < y ? y : x)
+ * Returns the maximum of x and y, i.e. (x < y ? y : x).
+ *
+ * The max() function returns identical results but can be applied to more data types.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5096,7 +6754,9 @@ extern float3 __attribute__((const, overloadable))fmax(float3 x, float3 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x < y ? y : x)
+ * Returns the maximum of x and y, i.e. (x < y ? y : x).
+ *
+ * The max() function returns identical results but can be applied to more data types.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5105,7 +6765,9 @@ extern float4 __attribute__((const, overloadable))fmax(float4 x, float4 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x < y ? y : x)
+ * Returns the maximum of x and y, i.e. (x < y ? y : x).
+ *
+ * Unlike the other variants of fmax() and max, this function compare each element of x to the scalar y.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5114,7 +6776,9 @@ extern float2 __attribute__((const, overloadable))fmax(float2 x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x < y ? y : x)
+ * Returns the maximum of x and y, i.e. (x < y ? y : x).
+ *
+ * Unlike the other variants of fmax() and max, this function compare each element of x to the scalar y.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5123,7 +6787,9 @@ extern float3 __attribute__((const, overloadable))fmax(float3 x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x < y ? y : x)
+ * Returns the maximum of x and y, i.e. (x < y ? y : x).
+ *
+ * Unlike the other variants of fmax() and max, this function compare each element of x to the scalar y.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5132,7 +6798,9 @@ extern float4 __attribute__((const, overloadable))fmax(float4 x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x > y ? y : x)
+ * Returns the minimum of x and y, i.e. (x > y ? y : x).
+ *
+ * The min() function returns identical results but can be applied to more data types.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5141,7 +6809,9 @@ extern float __attribute__((const, overloadable))fmin(float x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x > y ? y : x)
+ * Returns the minimum of x and y, i.e. (x > y ? y : x).
+ *
+ * The min() function returns identical results but can be applied to more data types.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5150,7 +6820,9 @@ extern float2 __attribute__((const, overloadable))fmin(float2 x, float2 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x > y ? y : x)
+ * Returns the minimum of x and y, i.e. (x > y ? y : x).
+ *
+ * The min() function returns identical results but can be applied to more data types.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5159,7 +6831,9 @@ extern float3 __attribute__((const, overloadable))fmin(float3 x, float3 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x > y ? y : x)
+ * Returns the minimum of x and y, i.e. (x > y ? y : x).
+ *
+ * The min() function returns identical results but can be applied to more data types.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5168,7 +6842,9 @@ extern float4 __attribute__((const, overloadable))fmin(float4 x, float4 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x > y ? y : x)
+ * Returns the minimum of x and y, i.e. (x > y ? y : x)
+ *
+ * Unlike the other variants of fmin() and min, this function compare each element of x to the scalar y.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5177,7 +6853,9 @@ extern float2 __attribute__((const, overloadable))fmin(float2 x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x > y ? y : x)
+ * Returns the minimum of x and y, i.e. (x > y ? y : x)
+ *
+ * Unlike the other variants of fmin() and min, this function compare each element of x to the scalar y.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5186,7 +6864,9 @@ extern float3 __attribute__((const, overloadable))fmin(float3 x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x > y ? y : x)
+ * Returns the minimum of x and y, i.e. (x > y ? y : x)
+ *
+ * Unlike the other variants of fmin() and min, this function compare each element of x to the scalar y.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5195,7 +6875,11 @@ extern float4 __attribute__((const, overloadable))fmin(float4 x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the remainder from x / y
+ * Returns the remainder of x / y, where the quotient is rounded towards zero.
+ *
+ * The function remainder() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5204,7 +6888,11 @@ extern float __attribute__((const, overloadable))fmod(float x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the remainder from x / y
+ * Returns the remainder of x / y, where the quotient is rounded towards zero.
+ *
+ * The function remainder() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5213,7 +6901,11 @@ extern float2 __attribute__((const, overloadable))fmod(float2 x, float2 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the remainder from x / y
+ * Returns the remainder of x / y, where the quotient is rounded towards zero.
+ *
+ * The function remainder() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5222,7 +6914,11 @@ extern float3 __attribute__((const, overloadable))fmod(float3 x, float3 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the remainder from x / y
+ * Returns the remainder of x / y, where the quotient is rounded towards zero.
+ *
+ * The function remainder() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5231,9 +6927,12 @@ extern float4 __attribute__((const, overloadable))fmod(float4 x, float4 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return fractional part of v
+ * Returns the positive fractional part of v, i.e. v - floor(v).
  *
- * @param floor  floor[0] will be set to the floor of the input value.
+ * For example, fract(1.3f, &val) returns 0.3f and sets val to 1.f.
+ * fract(-1.3f, &val) returns 0.7f and sets val to -2.f.
+ *
+ * @param floor  If floor is not null, each element of floor will be set to the floor of the corresponding element of v.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5242,9 +6941,12 @@ extern float __attribute__((overloadable))fract(float v, float* floor);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return fractional part of v
+ * Returns the positive fractional part of v, i.e. v - floor(v).
  *
- * @param floor  floor[0] will be set to the floor of the input value.
+ * For example, fract(1.3f, &val) returns 0.3f and sets val to 1.f.
+ * fract(-1.3f, &val) returns 0.7f and sets val to -2.f.
+ *
+ * @param floor  If floor is not null, each element of floor will be set to the floor of the corresponding element of v.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5253,9 +6955,12 @@ extern float2 __attribute__((overloadable))fract(float2 v, float2* floor);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return fractional part of v
+ * Returns the positive fractional part of v, i.e. v - floor(v).
  *
- * @param floor  floor[0] will be set to the floor of the input value.
+ * For example, fract(1.3f, &val) returns 0.3f and sets val to 1.f.
+ * fract(-1.3f, &val) returns 0.7f and sets val to -2.f.
+ *
+ * @param floor  If floor is not null, each element of floor will be set to the floor of the corresponding element of v.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5264,9 +6969,12 @@ extern float3 __attribute__((overloadable))fract(float3 v, float3* floor);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return fractional part of v
+ * Returns the positive fractional part of v, i.e. v - floor(v).
  *
- * @param floor  floor[0] will be set to the floor of the input value.
+ * For example, fract(1.3f, &val) returns 0.3f and sets val to 1.f.
+ * fract(-1.3f, &val) returns 0.7f and sets val to -2.f.
+ *
+ * @param floor  If floor is not null, each element of floor will be set to the floor of the corresponding element of v.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5275,7 +6983,10 @@ extern float4 __attribute__((overloadable))fract(float4 v, float4* floor);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return fractional part of v
+ * Returns the positive fractional part of v, i.e. v - floor(v).
+ *
+ * For example, fract(1.3f, &val) returns 0.3f and sets val to 1.f.
+ * fract(-1.3f, &val) returns 0.7f and sets val to -2.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5287,7 +6998,10 @@ static float __attribute__((const, overloadable))fract(float v) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return fractional part of v
+ * Returns the positive fractional part of v, i.e. v - floor(v).
+ *
+ * For example, fract(1.3f, &val) returns 0.3f and sets val to 1.f.
+ * fract(-1.3f, &val) returns 0.7f and sets val to -2.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5299,7 +7013,10 @@ static float2 __attribute__((const, overloadable))fract(float2 v) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return fractional part of v
+ * Returns the positive fractional part of v, i.e. v - floor(v).
+ *
+ * For example, fract(1.3f, &val) returns 0.3f and sets val to 1.f.
+ * fract(-1.3f, &val) returns 0.7f and sets val to -2.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5311,7 +7028,10 @@ static float3 __attribute__((const, overloadable))fract(float3 v) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return fractional part of v
+ * Returns the positive fractional part of v, i.e. v - floor(v).
+ *
+ * For example, fract(1.3f, &val) returns 0.3f and sets val to 1.f.
+ * fract(-1.3f, &val) returns 0.7f and sets val to -2.f.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5323,51 +7043,69 @@ static float4 __attribute__((const, overloadable))fract(float4 v) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the mantissa and place the exponent into iptr[0]
+ * Returns the binary mantissa and exponent of v, e.g. v == mantissa * 2 ^ exponent.
+ *
+ * The mantissa is always between 0.5 (inclusive) and 1.0 (exclusive).
+ * See ldexp() [TODO create links here and elsewhere] for the reverse operation.
  *
  * @param v Supports float, float2, float3, float4.
+ * @param expo  If expo is not null, each element of expo will be set to the exponent of the corresponding element of v.
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((overloadable))frexp(float v, int* iptr);
+extern float __attribute__((overloadable))frexp(float v, int* expo);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the mantissa and place the exponent into iptr[0]
+ * Returns the binary mantissa and exponent of v, e.g. v == mantissa * 2 ^ exponent.
+ *
+ * The mantissa is always between 0.5 (inclusive) and 1.0 (exclusive).
+ * See ldexp() [TODO create links here and elsewhere] for the reverse operation.
  *
  * @param v Supports float, float2, float3, float4.
+ * @param expo  If expo is not null, each element of expo will be set to the exponent of the corresponding element of v.
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((overloadable))frexp(float2 v, int2* iptr);
+extern float2 __attribute__((overloadable))frexp(float2 v, int2* expo);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the mantissa and place the exponent into iptr[0]
+ * Returns the binary mantissa and exponent of v, e.g. v == mantissa * 2 ^ exponent.
+ *
+ * The mantissa is always between 0.5 (inclusive) and 1.0 (exclusive).
+ * See ldexp() [TODO create links here and elsewhere] for the reverse operation.
  *
  * @param v Supports float, float2, float3, float4.
+ * @param expo  If expo is not null, each element of expo will be set to the exponent of the corresponding element of v.
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((overloadable))frexp(float3 v, int3* iptr);
+extern float3 __attribute__((overloadable))frexp(float3 v, int3* expo);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the mantissa and place the exponent into iptr[0]
+ * Returns the binary mantissa and exponent of v, e.g. v == mantissa * 2 ^ exponent.
+ *
+ * The mantissa is always between 0.5 (inclusive) and 1.0 (exclusive).
+ * See ldexp() [TODO create links here and elsewhere] for the reverse operation.
  *
  * @param v Supports float, float2, float3, float4.
+ * @param expo  If expo is not null, each element of expo will be set to the exponent of the corresponding element of v.
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((overloadable))frexp(float4 v, int4* iptr);
+extern float4 __attribute__((overloadable))frexp(float4 v, int4* expo);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate reciprocal of a value.
+ * Returns the approximate reciprocal of a value.
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5376,7 +7114,9 @@ extern float __attribute__((const, overloadable))half_recip(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate reciprocal of a value.
+ * Returns the approximate reciprocal of a value.
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5385,7 +7125,9 @@ extern float2 __attribute__((const, overloadable))half_recip(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate reciprocal of a value.
+ * Returns the approximate reciprocal of a value.
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5394,7 +7136,9 @@ extern float3 __attribute__((const, overloadable))half_recip(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate reciprocal of a value.
+ * Returns the approximate reciprocal of a value.
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5403,7 +7147,9 @@ extern float4 __attribute__((const, overloadable))half_recip(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate value of (1.f / sqrt(value)).
+ * Returns the approximate value of (1.f / sqrt(value)).
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5412,7 +7158,9 @@ extern float __attribute__((const, overloadable))half_rsqrt(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate value of (1.f / sqrt(value)).
+ * Returns the approximate value of (1.f / sqrt(value)).
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5421,7 +7169,9 @@ extern float2 __attribute__((const, overloadable))half_rsqrt(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate value of (1.f / sqrt(value)).
+ * Returns the approximate value of (1.f / sqrt(value)).
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5430,7 +7180,9 @@ extern float3 __attribute__((const, overloadable))half_rsqrt(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate value of (1.f / sqrt(value)).
+ * Returns the approximate value of (1.f / sqrt(value)).
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5439,7 +7191,9 @@ extern float4 __attribute__((const, overloadable))half_rsqrt(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate square root of a value.
+ * Returns the approximate square root of a value.
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5448,7 +7202,9 @@ extern float __attribute__((const, overloadable))half_sqrt(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate square root of a value.
+ * Returns the approximate square root of a value.
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5457,7 +7213,9 @@ extern float2 __attribute__((const, overloadable))half_sqrt(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate square root of a value.
+ * Returns the approximate square root of a value.
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5466,7 +7224,9 @@ extern float3 __attribute__((const, overloadable))half_sqrt(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
 /*
- * Return the approximate square root of a value.
+ * Returns the approximate square root of a value.
+ *
+ * The precision is that of a 16 bit floating point value.
  *
  * Supported by API versions 17 and newer.
  */
@@ -5475,7 +7235,7 @@ extern float4 __attribute__((const, overloadable))half_sqrt(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return sqrt(x*x + y*y)
+ * Returns the hypothenuse, i.e. sqrt(x * x + y * y).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5484,7 +7244,7 @@ extern float __attribute__((const, overloadable))hypot(float x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return sqrt(x*x + y*y)
+ * Returns the hypothenuse, i.e. sqrt(x * x + y * y).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5493,7 +7253,7 @@ extern float2 __attribute__((const, overloadable))hypot(float2 x, float2 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return sqrt(x*x + y*y)
+ * Returns the hypothenuse, i.e. sqrt(x * x + y * y).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5502,7 +7262,7 @@ extern float3 __attribute__((const, overloadable))hypot(float3 x, float3 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return sqrt(x*x + y*y)
+ * Returns the hypothenuse, i.e. sqrt(x * x + y * y).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5511,7 +7271,12 @@ extern float4 __attribute__((const, overloadable))hypot(float4 x, float4 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the integer exponent of a value
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * logb() is similar but returns a float.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5520,7 +7285,12 @@ extern int __attribute__((const, overloadable))ilogb(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the integer exponent of a value
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * logb() is similar but returns a float.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5529,7 +7299,12 @@ extern int2 __attribute__((const, overloadable))ilogb(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the integer exponent of a value
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * logb() is similar but returns a float.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5538,7 +7313,12 @@ extern int3 __attribute__((const, overloadable))ilogb(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the integer exponent of a value
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * logb() is similar but returns a float.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5547,58 +7327,67 @@ extern int4 __attribute__((const, overloadable))ilogb(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x * 2^y)
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
  *
- * @param x Supports 1,2,3,4 components
- * @param y Supports single component or matching vector.
+ * See frexp() [TODO create links here and elsewhere] for the reverse operation.
+ *
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))ldexp(float x, int y);
+extern float __attribute__((const, overloadable))ldexp(float mantissa, int exponent);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x * 2^y)
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
  *
- * @param x Supports 1,2,3,4 components
- * @param y Supports single component or matching vector.
+ * See frexp() [TODO create links here and elsewhere] for the reverse operation.
+ *
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))ldexp(float2 x, int2 y);
+extern float2 __attribute__((const, overloadable))ldexp(float2 mantissa, int2 exponent);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x * 2^y)
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
  *
- * @param x Supports 1,2,3,4 components
- * @param y Supports single component or matching vector.
+ * See frexp() [TODO create links here and elsewhere] for the reverse operation.
+ *
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))ldexp(float3 x, int3 y);
+extern float3 __attribute__((const, overloadable))ldexp(float3 mantissa, int3 exponent);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x * 2^y)
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
  *
- * @param x Supports 1,2,3,4 components
- * @param y Supports single component or matching vector.
+ * See frexp() [TODO create links here and elsewhere] for the reverse operation.
+ *
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))ldexp(float4 x, int4 y);
+extern float4 __attribute__((const, overloadable))ldexp(float4 mantissa, int4 exponent);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x * 2^y)
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+ * See frexp() [TODO create links here and elsewhere] for the reverse operation.
  *
- * @param x Supports 1,2,3,4 components
- * @param y Supports single component or matching vector.
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5607,10 +7396,11 @@ extern float2 __attribute__((const, overloadable))ldexp(float2 x, int y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x * 2^y)
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+ * See frexp() [TODO create links here and elsewhere] for the reverse operation.
  *
- * @param x Supports 1,2,3,4 components
- * @param y Supports single component or matching vector.
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5619,10 +7409,11 @@ extern float3 __attribute__((const, overloadable))ldexp(float3 x, int y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (x * 2^y)
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+ * See frexp() [TODO create links here and elsewhere] for the reverse operation.
  *
- * @param x Supports 1,2,3,4 components
- * @param y Supports single component or matching vector.
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5631,7 +7422,7 @@ extern float4 __attribute__((const, overloadable))ldexp(float4 x, int y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the length of a vector.
+ * Computes the length of a vector.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5640,7 +7431,7 @@ extern float __attribute__((const, overloadable))length(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the length of a vector.
+ * Computes the length of a vector.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5649,7 +7440,7 @@ extern float __attribute__((const, overloadable))length(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the length of a vector.
+ * Computes the length of a vector.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5658,7 +7449,7 @@ extern float __attribute__((const, overloadable))length(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the length of a vector.
+ * Computes the length of a vector.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5667,7 +7458,7 @@ extern float __attribute__((const, overloadable))length(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the log gamma
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(value))).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5676,7 +7467,7 @@ extern float __attribute__((const, overloadable))lgamma(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the log gamma
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(value))).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5685,7 +7476,7 @@ extern float2 __attribute__((const, overloadable))lgamma(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the log gamma
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(value))).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5694,7 +7485,7 @@ extern float3 __attribute__((const, overloadable))lgamma(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the log gamma
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(value))).
  *
  * Supported by API versions 9 and newer.
  */
@@ -5703,43 +7494,63 @@ extern float4 __attribute__((const, overloadable))lgamma(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the log gamma and sign
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(x))).
+ *
+ * Can also return the sign of the gamma function.
+ *
+ * @param sign  If sign is not null, each element of sign will be set to -1.f if the gamma of the corresponding element of x is negative, otherwise to 1.f.  [TODO for 0?]
+ *
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((overloadable))lgamma(float x, int* y);
+extern float __attribute__((overloadable))lgamma(float x, int* sign);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the log gamma and sign
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(x))).
+ *
+ * Can also return the sign of the gamma function.
+ *
+ * @param sign  If sign is not null, each element of sign will be set to -1.f if the gamma of the corresponding element of x is negative, otherwise to 1.f.  [TODO for 0?]
+ *
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((overloadable))lgamma(float2 x, int2* y);
+extern float2 __attribute__((overloadable))lgamma(float2 x, int2* sign);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the log gamma and sign
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(x))).
+ *
+ * Can also return the sign of the gamma function.
+ *
+ * @param sign  If sign is not null, each element of sign will be set to -1.f if the gamma of the corresponding element of x is negative, otherwise to 1.f.  [TODO for 0?]
+ *
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((overloadable))lgamma(float3 x, int3* y);
+extern float3 __attribute__((overloadable))lgamma(float3 x, int3* sign);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the log gamma and sign
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(x))).
+ *
+ * Can also return the sign of the gamma function.
+ *
+ * @param sign  If sign is not null, each element of sign will be set to -1.f if the gamma of the corresponding element of x is negative, otherwise to 1.f.  [TODO for 0?]
+ *
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((overloadable))lgamma(float4 x, int4* y);
+extern float4 __attribute__((overloadable))lgamma(float4 x, int4* sign);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the natural logarithm.
+ * Returns the natural logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5748,7 +7559,7 @@ extern float __attribute__((const, overloadable))log(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the natural logarithm.
+ * Returns the natural logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5757,7 +7568,7 @@ extern float2 __attribute__((const, overloadable))log(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the natural logarithm.
+ * Returns the natural logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5766,7 +7577,7 @@ extern float3 __attribute__((const, overloadable))log(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the natural logarithm.
+ * Returns the natural logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5775,7 +7586,7 @@ extern float4 __attribute__((const, overloadable))log(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the base 10 logarithm.
+ * Returns the base 10 logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5784,7 +7595,7 @@ extern float __attribute__((const, overloadable))log10(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the base 10 logarithm.
+ * Returns the base 10 logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5793,7 +7604,7 @@ extern float2 __attribute__((const, overloadable))log10(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the base 10 logarithm.
+ * Returns the base 10 logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5802,7 +7613,7 @@ extern float3 __attribute__((const, overloadable))log10(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the base 10 logarithm.
+ * Returns the base 10 logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5811,43 +7622,43 @@ extern float4 __attribute__((const, overloadable))log10(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the natural logarithm of (v + 1.0f)
+ * Returns the natural logarithm of (v + 1.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))log1p(float);
+extern float __attribute__((const, overloadable))log1p(float v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the natural logarithm of (v + 1.0f)
+ * Returns the natural logarithm of (v + 1.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))log1p(float2);
+extern float2 __attribute__((const, overloadable))log1p(float2 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the natural logarithm of (v + 1.0f)
+ * Returns the natural logarithm of (v + 1.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))log1p(float3);
+extern float3 __attribute__((const, overloadable))log1p(float3 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the natural logarithm of (v + 1.0f)
+ * Returns the natural logarithm of (v + 1.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))log1p(float4);
+extern float4 __attribute__((const, overloadable))log1p(float4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the base 2 logarithm.
+ * Returns the base 2 logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5856,7 +7667,7 @@ extern float __attribute__((const, overloadable))log2(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the base 2 logarithm.
+ * Returns the base 2 logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5865,7 +7676,7 @@ extern float2 __attribute__((const, overloadable))log2(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the base 2 logarithm.
+ * Returns the base 2 logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5874,7 +7685,7 @@ extern float3 __attribute__((const, overloadable))log2(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the base 2 logarithm.
+ * Returns the base 2 logarithm.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5883,7 +7694,12 @@ extern float4 __attribute__((const, overloadable))log2(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the exponent of the value.
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * ilogb() is similar but returns an integer.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5892,7 +7708,12 @@ extern float __attribute__((const, overloadable))logb(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the exponent of the value.
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * ilogb() is similar but returns an integer.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5901,7 +7722,12 @@ extern float2 __attribute__((const, overloadable))logb(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the exponent of the value.
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * ilogb() is similar but returns an integer.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5910,7 +7736,12 @@ extern float3 __attribute__((const, overloadable))logb(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the exponent of the value.
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * ilogb() is similar but returns an integer.
  *
  * Supported by API versions 9 and newer.
  */
@@ -5919,7 +7750,9 @@ extern float4 __attribute__((const, overloadable))logb(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute (a * b) + c
+ * Multiply and add.  Returns (a * b) + c.
+ *
+ * This function is identical to fma().
  *
  * Supported by API versions 9 and newer.
  */
@@ -5928,7 +7761,9 @@ extern float __attribute__((const, overloadable))mad(float a, float b, float c);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute (a * b) + c
+ * Multiply and add.  Returns (a * b) + c.
+ *
+ * This function is identical to fma().
  *
  * Supported by API versions 9 and newer.
  */
@@ -5937,7 +7772,9 @@ extern float2 __attribute__((const, overloadable))mad(float2 a, float2 b, float2
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute (a * b) + c
+ * Multiply and add.  Returns (a * b) + c.
+ *
+ * This function is identical to fma().
  *
  * Supported by API versions 9 and newer.
  */
@@ -5946,7 +7783,9 @@ extern float3 __attribute__((const, overloadable))mad(float3 a, float3 b, float3
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute (a * b) + c
+ * Multiply and add.  Returns (a * b) + c.
+ *
+ * This function is identical to fma().
  *
  * Supported by API versions 9 and newer.
  */
@@ -5955,7 +7794,7 @@ extern float4 __attribute__((const, overloadable))mad(float4 a, float4 b, float4
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 9 and newer.
  */
@@ -5964,7 +7803,7 @@ extern float __attribute__((const, overloadable))max(float, float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 9 and newer.
  */
@@ -5973,7 +7812,7 @@ extern float2 __attribute__((const, overloadable))max(float2, float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 9 and newer.
  */
@@ -5982,7 +7821,7 @@ extern float3 __attribute__((const, overloadable))max(float3, float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 9 and newer.
  */
@@ -5991,7 +7830,7 @@ extern float4 __attribute__((const, overloadable))max(float4, float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6002,7 +7841,7 @@ static char __attribute__((const, overloadable))max(char v1, char v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6013,7 +7852,7 @@ static uchar __attribute__((const, overloadable))max(uchar v1, uchar v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6024,7 +7863,7 @@ static short __attribute__((const, overloadable))max(short v1, short v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6035,7 +7874,7 @@ static ushort __attribute__((const, overloadable))max(ushort v1, ushort v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6046,7 +7885,7 @@ static int __attribute__((const, overloadable))max(int v1, int v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6057,7 +7896,7 @@ static uint __attribute__((const, overloadable))max(uint v1, uint v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6071,7 +7910,7 @@ static char2 __attribute__((const, overloadable))max(char2 v1, char2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6085,7 +7924,7 @@ static uchar2 __attribute__((const, overloadable))max(uchar2 v1, uchar2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6099,7 +7938,7 @@ static short2 __attribute__((const, overloadable))max(short2 v1, short2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6113,7 +7952,7 @@ static ushort2 __attribute__((const, overloadable))max(ushort2 v1, ushort2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6127,7 +7966,7 @@ static int2 __attribute__((const, overloadable))max(int2 v1, int2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6141,7 +7980,7 @@ static uint2 __attribute__((const, overloadable))max(uint2 v1, uint2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6156,7 +7995,7 @@ static char3 __attribute__((const, overloadable))max(char3 v1, char3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6171,7 +8010,7 @@ static uchar3 __attribute__((const, overloadable))max(uchar3 v1, uchar3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6186,7 +8025,7 @@ static short3 __attribute__((const, overloadable))max(short3 v1, short3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6201,7 +8040,7 @@ static ushort3 __attribute__((const, overloadable))max(ushort3 v1, ushort3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6216,7 +8055,7 @@ static int3 __attribute__((const, overloadable))max(int3 v1, int3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6231,7 +8070,7 @@ static uint3 __attribute__((const, overloadable))max(uint3 v1, uint3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6247,7 +8086,7 @@ static char4 __attribute__((const, overloadable))max(char4 v1, char4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6263,7 +8102,7 @@ static uchar4 __attribute__((const, overloadable))max(uchar4 v1, uchar4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6279,7 +8118,7 @@ static short4 __attribute__((const, overloadable))max(short4 v1, short4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6295,7 +8134,7 @@ static ushort4 __attribute__((const, overloadable))max(ushort4 v1, ushort4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6311,7 +8150,7 @@ static int4 __attribute__((const, overloadable))max(int4 v1, int4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6327,7 +8166,7 @@ static uint4 __attribute__((const, overloadable))max(uint4 v1, uint4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6336,7 +8175,7 @@ extern char __attribute__((const, overloadable))max(char v1, char v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6345,7 +8184,7 @@ extern char2 __attribute__((const, overloadable))max(char2 v1, char2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6354,7 +8193,7 @@ extern char3 __attribute__((const, overloadable))max(char3 v1, char3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6363,7 +8202,7 @@ extern char4 __attribute__((const, overloadable))max(char4 v1, char4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6372,7 +8211,7 @@ extern uchar __attribute__((const, overloadable))max(uchar v1, uchar v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6381,7 +8220,7 @@ extern uchar2 __attribute__((const, overloadable))max(uchar2 v1, uchar2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6390,7 +8229,7 @@ extern uchar3 __attribute__((const, overloadable))max(uchar3 v1, uchar3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6399,7 +8238,7 @@ extern uchar4 __attribute__((const, overloadable))max(uchar4 v1, uchar4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6408,7 +8247,7 @@ extern short __attribute__((const, overloadable))max(short v1, short v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6417,7 +8256,7 @@ extern short2 __attribute__((const, overloadable))max(short2 v1, short2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6426,7 +8265,7 @@ extern short3 __attribute__((const, overloadable))max(short3 v1, short3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6435,7 +8274,7 @@ extern short4 __attribute__((const, overloadable))max(short4 v1, short4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6444,7 +8283,7 @@ extern ushort __attribute__((const, overloadable))max(ushort v1, ushort v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6453,7 +8292,7 @@ extern ushort2 __attribute__((const, overloadable))max(ushort2 v1, ushort2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6462,7 +8301,7 @@ extern ushort3 __attribute__((const, overloadable))max(ushort3 v1, ushort3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6471,7 +8310,7 @@ extern ushort4 __attribute__((const, overloadable))max(ushort4 v1, ushort4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6480,7 +8319,7 @@ extern int __attribute__((const, overloadable))max(int v1, int v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6489,7 +8328,7 @@ extern int2 __attribute__((const, overloadable))max(int2 v1, int2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6498,7 +8337,7 @@ extern int3 __attribute__((const, overloadable))max(int3 v1, int3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6507,7 +8346,7 @@ extern int4 __attribute__((const, overloadable))max(int4 v1, int4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6516,7 +8355,7 @@ extern uint __attribute__((const, overloadable))max(uint v1, uint v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6525,7 +8364,7 @@ extern uint2 __attribute__((const, overloadable))max(uint2 v1, uint2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6534,7 +8373,7 @@ extern uint3 __attribute__((const, overloadable))max(uint3 v1, uint3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6543,7 +8382,7 @@ extern uint4 __attribute__((const, overloadable))max(uint4 v1, uint4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6552,7 +8391,7 @@ extern long __attribute__((const, overloadable))max(long v1, long v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6561,7 +8400,7 @@ extern long2 __attribute__((const, overloadable))max(long2 v1, long2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6570,7 +8409,7 @@ extern long3 __attribute__((const, overloadable))max(long3 v1, long3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6579,7 +8418,7 @@ extern long4 __attribute__((const, overloadable))max(long4 v1, long4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6588,7 +8427,7 @@ extern ulong __attribute__((const, overloadable))max(ulong v1, ulong v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6597,7 +8436,7 @@ extern ulong2 __attribute__((const, overloadable))max(ulong2 v1, ulong2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6606,7 +8445,7 @@ extern ulong3 __attribute__((const, overloadable))max(ulong3 v1, ulong3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the maximum value from two arguments
+ * Returns the maximum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6615,7 +8454,7 @@ extern ulong4 __attribute__((const, overloadable))max(ulong4 v1, ulong4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 9 and newer.
  */
@@ -6624,7 +8463,7 @@ extern float __attribute__((const, overloadable))min(float, float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 9 and newer.
  */
@@ -6633,7 +8472,7 @@ extern float2 __attribute__((const, overloadable))min(float2, float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 9 and newer.
  */
@@ -6642,7 +8481,7 @@ extern float3 __attribute__((const, overloadable))min(float3, float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 9 and newer.
  */
@@ -6651,7 +8490,7 @@ extern float4 __attribute__((const, overloadable))min(float4, float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6662,7 +8501,7 @@ static char __attribute__((const, overloadable))min(char v1, char v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6673,7 +8512,7 @@ static uchar __attribute__((const, overloadable))min(uchar v1, uchar v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6684,7 +8523,7 @@ static short __attribute__((const, overloadable))min(short v1, short v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6695,7 +8534,7 @@ static ushort __attribute__((const, overloadable))min(ushort v1, ushort v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6706,7 +8545,7 @@ static int __attribute__((const, overloadable))min(int v1, int v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6717,7 +8556,7 @@ static uint __attribute__((const, overloadable))min(uint v1, uint v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6731,7 +8570,7 @@ static char2 __attribute__((const, overloadable))min(char2 v1, char2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6745,7 +8584,7 @@ static uchar2 __attribute__((const, overloadable))min(uchar2 v1, uchar2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6759,7 +8598,7 @@ static short2 __attribute__((const, overloadable))min(short2 v1, short2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6773,7 +8612,7 @@ static ushort2 __attribute__((const, overloadable))min(ushort2 v1, ushort2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6787,7 +8626,7 @@ static int2 __attribute__((const, overloadable))min(int2 v1, int2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6801,7 +8640,7 @@ static uint2 __attribute__((const, overloadable))min(uint2 v1, uint2 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6816,7 +8655,7 @@ static char3 __attribute__((const, overloadable))min(char3 v1, char3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6831,7 +8670,7 @@ static uchar3 __attribute__((const, overloadable))min(uchar3 v1, uchar3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6846,7 +8685,7 @@ static short3 __attribute__((const, overloadable))min(short3 v1, short3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6861,7 +8700,7 @@ static ushort3 __attribute__((const, overloadable))min(ushort3 v1, ushort3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6876,7 +8715,7 @@ static int3 __attribute__((const, overloadable))min(int3 v1, int3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6891,7 +8730,7 @@ static uint3 __attribute__((const, overloadable))min(uint3 v1, uint3 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6907,7 +8746,7 @@ static char4 __attribute__((const, overloadable))min(char4 v1, char4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6923,7 +8762,7 @@ static uchar4 __attribute__((const, overloadable))min(uchar4 v1, uchar4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6939,7 +8778,7 @@ static short4 __attribute__((const, overloadable))min(short4 v1, short4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6955,7 +8794,7 @@ static ushort4 __attribute__((const, overloadable))min(ushort4 v1, ushort4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6971,7 +8810,7 @@ static int4 __attribute__((const, overloadable))min(int4 v1, int4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Suppored by API versions 9 - 19
  */
@@ -6987,7 +8826,7 @@ static uint4 __attribute__((const, overloadable))min(uint4 v1, uint4 v2) {
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -6996,7 +8835,7 @@ extern char __attribute__((const, overloadable))min(char v1, char v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7005,7 +8844,7 @@ extern char2 __attribute__((const, overloadable))min(char2 v1, char2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7014,7 +8853,7 @@ extern char3 __attribute__((const, overloadable))min(char3 v1, char3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7023,7 +8862,7 @@ extern char4 __attribute__((const, overloadable))min(char4 v1, char4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7032,7 +8871,7 @@ extern uchar __attribute__((const, overloadable))min(uchar v1, uchar v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7041,7 +8880,7 @@ extern uchar2 __attribute__((const, overloadable))min(uchar2 v1, uchar2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7050,7 +8889,7 @@ extern uchar3 __attribute__((const, overloadable))min(uchar3 v1, uchar3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7059,7 +8898,7 @@ extern uchar4 __attribute__((const, overloadable))min(uchar4 v1, uchar4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7068,7 +8907,7 @@ extern short __attribute__((const, overloadable))min(short v1, short v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7077,7 +8916,7 @@ extern short2 __attribute__((const, overloadable))min(short2 v1, short2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7086,7 +8925,7 @@ extern short3 __attribute__((const, overloadable))min(short3 v1, short3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7095,7 +8934,7 @@ extern short4 __attribute__((const, overloadable))min(short4 v1, short4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7104,7 +8943,7 @@ extern ushort __attribute__((const, overloadable))min(ushort v1, ushort v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7113,7 +8952,7 @@ extern ushort2 __attribute__((const, overloadable))min(ushort2 v1, ushort2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7122,7 +8961,7 @@ extern ushort3 __attribute__((const, overloadable))min(ushort3 v1, ushort3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7131,7 +8970,7 @@ extern ushort4 __attribute__((const, overloadable))min(ushort4 v1, ushort4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7140,7 +8979,7 @@ extern int __attribute__((const, overloadable))min(int v1, int v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7149,7 +8988,7 @@ extern int2 __attribute__((const, overloadable))min(int2 v1, int2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7158,7 +8997,7 @@ extern int3 __attribute__((const, overloadable))min(int3 v1, int3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7167,7 +9006,7 @@ extern int4 __attribute__((const, overloadable))min(int4 v1, int4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7176,7 +9015,7 @@ extern uint __attribute__((const, overloadable))min(uint v1, uint v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7185,7 +9024,7 @@ extern uint2 __attribute__((const, overloadable))min(uint2 v1, uint2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7194,7 +9033,7 @@ extern uint3 __attribute__((const, overloadable))min(uint3 v1, uint3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7203,7 +9042,7 @@ extern uint4 __attribute__((const, overloadable))min(uint4 v1, uint4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7212,7 +9051,7 @@ extern long __attribute__((const, overloadable))min(long v1, long v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7221,7 +9060,7 @@ extern long2 __attribute__((const, overloadable))min(long2 v1, long2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7230,7 +9069,7 @@ extern long3 __attribute__((const, overloadable))min(long3 v1, long3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7239,7 +9078,7 @@ extern long4 __attribute__((const, overloadable))min(long4 v1, long4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7248,7 +9087,7 @@ extern ulong __attribute__((const, overloadable))min(ulong v1, ulong v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7257,7 +9096,7 @@ extern ulong2 __attribute__((const, overloadable))min(ulong2 v1, ulong2 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7266,7 +9105,7 @@ extern ulong3 __attribute__((const, overloadable))min(ulong3 v1, ulong3 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the minimum value from two arguments
+ * Returns the minimum value from two arguments
  *
  * Supported by API versions 21 and newer.
  */
@@ -7275,7 +9114,7 @@ extern ulong4 __attribute__((const, overloadable))min(ulong4 v1, ulong4 v2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * return start + ((stop - start) * amount)
+ * Returns start + ((stop - start) * amount).
  *
  * Supported by API versions 9 and newer.
  */
@@ -7284,7 +9123,7 @@ extern float __attribute__((const, overloadable))mix(float start, float stop, fl
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * return start + ((stop - start) * amount)
+ * Returns start + ((stop - start) * amount).
  *
  * Supported by API versions 9 and newer.
  */
@@ -7293,7 +9132,7 @@ extern float2 __attribute__((const, overloadable))mix(float2 start, float2 stop,
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * return start + ((stop - start) * amount)
+ * Returns start + ((stop - start) * amount).
  *
  * Supported by API versions 9 and newer.
  */
@@ -7302,7 +9141,7 @@ extern float3 __attribute__((const, overloadable))mix(float3 start, float3 stop,
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * return start + ((stop - start) * amount)
+ * Returns start + ((stop - start) * amount).
  *
  * Supported by API versions 9 and newer.
  */
@@ -7311,7 +9150,9 @@ extern float4 __attribute__((const, overloadable))mix(float4 start, float4 stop,
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * return start + ((stop - start) * amount)
+ * Returns start + ((stop - start) * amount).
+ *
+ * This can be useful for mixing two values.  For example, to create a new color that is 40% color1 and 60% color2, use mix(color1, color2, 0.6f).
  *
  * Supported by API versions 9 and newer.
  */
@@ -7320,7 +9161,9 @@ extern float2 __attribute__((const, overloadable))mix(float2 start, float2 stop,
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * return start + ((stop - start) * amount)
+ * Returns start + ((stop - start) * amount).
+ *
+ * This can be useful for mixing two values.  For example, to create a new color that is 40% color1 and 60% color2, use mix(color1, color2, 0.6f).
  *
  * Supported by API versions 9 and newer.
  */
@@ -7329,7 +9172,9 @@ extern float3 __attribute__((const, overloadable))mix(float3 start, float3 stop,
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * return start + ((stop - start) * amount)
+ * Returns start + ((stop - start) * amount).
+ *
+ * This can be useful for mixing two values.  For example, to create a new color that is 40% color1 and 60% color2, use mix(color1, color2, 0.6f).
  *
  * Supported by API versions 9 and newer.
  */
@@ -7338,7 +9183,9 @@ extern float4 __attribute__((const, overloadable))mix(float4 start, float4 stop,
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the integral and fractional components of a number.
+ * Returns the integral and fractional components of a number.
+ *
+ * Both componets will have the same sign as x.  For example, for an input of -3.72f, iret will be set to -3.f and .72f will be returned.
  *
  * @param x Source value
  * @param iret iret[0] will be set to the integral portion of the number.
@@ -7351,7 +9198,9 @@ extern float __attribute__((overloadable))modf(float x, float* iret);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the integral and fractional components of a number.
+ * Returns the integral and fractional components of a number.
+ *
+ * Both componets will have the same sign as x.  For example, for an input of -3.72f, iret will be set to -3.f and .72f will be returned.
  *
  * @param x Source value
  * @param iret iret[0] will be set to the integral portion of the number.
@@ -7364,7 +9213,9 @@ extern float2 __attribute__((overloadable))modf(float2 x, float2* iret);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the integral and fractional components of a number.
+ * Returns the integral and fractional components of a number.
+ *
+ * Both componets will have the same sign as x.  For example, for an input of -3.72f, iret will be set to -3.f and .72f will be returned.
  *
  * @param x Source value
  * @param iret iret[0] will be set to the integral portion of the number.
@@ -7377,7 +9228,9 @@ extern float3 __attribute__((overloadable))modf(float3 x, float3* iret);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the integral and fractional components of a number.
+ * Returns the integral and fractional components of a number.
+ *
+ * Both componets will have the same sign as x.  For example, for an input of -3.72f, iret will be set to -3.f and .72f will be returned.
  *
  * @param x Source value
  * @param iret iret[0] will be set to the integral portion of the number.
@@ -7390,7 +9243,9 @@ extern float4 __attribute__((overloadable))modf(float4 x, float4* iret);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * generate a nan
+ * Returns a NaN value (Not a Number).
+ *
+ * The argument is embedded into the return value and can be used to distinguish various NaNs.
  *
  * Supported by API versions 9 and newer.
  */
@@ -7399,7 +9254,7 @@ extern float __attribute__((const, overloadable))nan(uint);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acos
+ * Returns the approximate inverse cosine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7408,7 +9263,7 @@ extern float __attribute__((const, overloadable))native_acos(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acos
+ * Returns the approximate inverse cosine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7417,7 +9272,7 @@ extern float2 __attribute__((const, overloadable))native_acos(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acos
+ * Returns the approximate inverse cosine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7426,7 +9281,7 @@ extern float3 __attribute__((const, overloadable))native_acos(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acos
+ * Returns the approximate inverse cosine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7435,7 +9290,7 @@ extern float4 __attribute__((const, overloadable))native_acos(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acosh
+ * Returns the approximate inverse hyperbolic cosine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7444,7 +9299,7 @@ extern float __attribute__((const, overloadable))native_acosh(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acosh
+ * Returns the approximate inverse hyperbolic cosine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7453,7 +9308,7 @@ extern float2 __attribute__((const, overloadable))native_acosh(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acosh
+ * Returns the approximate inverse hyperbolic cosine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7462,7 +9317,7 @@ extern float3 __attribute__((const, overloadable))native_acosh(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acosh
+ * Returns the approximate inverse hyperbolic cosine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7471,7 +9326,9 @@ extern float4 __attribute__((const, overloadable))native_acosh(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acospi
+ * Returns the approximate inverse cosine in radians, divided by pi.
+ *
+ * I.e. to get an inverse cosine measured in degrees, use acospi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7480,7 +9337,9 @@ extern float __attribute__((const, overloadable))native_acospi(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acospi
+ * Returns the approximate inverse cosine in radians, divided by pi.
+ *
+ * I.e. to get an inverse cosine measured in degrees, use acospi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7489,7 +9348,9 @@ extern float2 __attribute__((const, overloadable))native_acospi(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acospi
+ * Returns the approximate inverse cosine in radians, divided by pi.
+ *
+ * I.e. to get an inverse cosine measured in degrees, use acospi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7498,7 +9359,9 @@ extern float3 __attribute__((const, overloadable))native_acospi(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * acospi
+ * Returns the approximate inverse cosine in radians, divided by pi.
+ *
+ * I.e. to get an inverse cosine measured in degrees, use acospi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7507,7 +9370,7 @@ extern float4 __attribute__((const, overloadable))native_acospi(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * asin
+ * Returns the approximate inverse sine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7516,7 +9379,7 @@ extern float __attribute__((const, overloadable))native_asin(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * asin
+ * Returns the approximate inverse sine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7525,7 +9388,7 @@ extern float2 __attribute__((const, overloadable))native_asin(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * asin
+ * Returns the approximate inverse sine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7534,7 +9397,7 @@ extern float3 __attribute__((const, overloadable))native_asin(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * asin
+ * Returns the approximate inverse sine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7543,7 +9406,7 @@ extern float4 __attribute__((const, overloadable))native_asin(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * asinh
+ * Returns the approximate inverse hyperbolic sine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7552,7 +9415,7 @@ extern float __attribute__((const, overloadable))native_asinh(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * asinh
+ * Returns the approximate inverse hyperbolic sine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7561,7 +9424,7 @@ extern float2 __attribute__((const, overloadable))native_asinh(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * asinh
+ * Returns the approximate inverse hyperbolic sine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7570,7 +9433,7 @@ extern float3 __attribute__((const, overloadable))native_asinh(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * asinh
+ * Returns the approximate inverse hyperbolic sine, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7579,7 +9442,9 @@ extern float4 __attribute__((const, overloadable))native_asinh(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse sine divided by PI.
+ * Returns the approximate inverse sine in radians, divided by pi.
+ *
+ * I.e. to get an inverse sine measured in degrees, use asinpi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7588,7 +9453,9 @@ extern float __attribute__((const, overloadable))native_asinpi(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse sine divided by PI.
+ * Returns the approximate inverse sine in radians, divided by pi.
+ *
+ * I.e. to get an inverse sine measured in degrees, use asinpi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7597,7 +9464,9 @@ extern float2 __attribute__((const, overloadable))native_asinpi(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse sine divided by PI.
+ * Returns the approximate inverse sine in radians, divided by pi.
+ *
+ * I.e. to get an inverse sine measured in degrees, use asinpi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7606,7 +9475,9 @@ extern float3 __attribute__((const, overloadable))native_asinpi(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse sine divided by PI.
+ * Returns the approximate inverse sine in radians, divided by pi.
+ *
+ * I.e. to get an inverse sine measured in degrees, use asinpi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7615,7 +9486,7 @@ extern float4 __attribute__((const, overloadable))native_asinpi(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent.
+ * Returns the approximate inverse tangent, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7624,7 +9495,7 @@ extern float __attribute__((const, overloadable))native_atan(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent.
+ * Returns the approximate inverse tangent, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7633,7 +9504,7 @@ extern float2 __attribute__((const, overloadable))native_atan(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent.
+ * Returns the approximate inverse tangent, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7642,7 +9513,7 @@ extern float3 __attribute__((const, overloadable))native_atan(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent.
+ * Returns the approximate inverse tangent, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7651,7 +9522,9 @@ extern float4 __attribute__((const, overloadable))native_atan(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent of y / x.
+ * Returns the approximate inverse tangent of y / x, in radians.
+ *
+ * x can be 0.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7660,7 +9533,9 @@ extern float __attribute__((const, overloadable))native_atan2(float y, float x);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent of y / x.
+ * Returns the approximate inverse tangent of y / x, in radians.
+ *
+ * x can be 0.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7669,7 +9544,9 @@ extern float2 __attribute__((const, overloadable))native_atan2(float2 y, float2 
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent of y / x.
+ * Returns the approximate inverse tangent of y / x, in radians.
+ *
+ * x can be 0.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7678,7 +9555,9 @@ extern float3 __attribute__((const, overloadable))native_atan2(float3 y, float3 
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent of y / x.
+ * Returns the approximate inverse tangent of y / x, in radians.
+ *
+ * x can be 0.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7687,7 +9566,11 @@ extern float4 __attribute__((const, overloadable))native_atan2(float4 y, float4 
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent of y / x, divided by PI.
+ * Returns the approximate inverse tangent of y / x, in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atan2pi(x, y) * 180.f.
+ *
+ * x can be 0.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7696,7 +9579,11 @@ extern float __attribute__((const, overloadable))native_atan2pi(float y, float x
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent of y / x, divided by PI.
+ * Returns the approximate inverse tangent of y / x, in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atan2pi(x, y) * 180.f.
+ *
+ * x can be 0.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7705,7 +9592,11 @@ extern float2 __attribute__((const, overloadable))native_atan2pi(float2 y, float
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent of y / x, divided by PI.
+ * Returns the approximate inverse tangent of y / x, in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atan2pi(x, y) * 180.f.
+ *
+ * x can be 0.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7714,7 +9605,11 @@ extern float3 __attribute__((const, overloadable))native_atan2pi(float3 y, float
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent of y / x, divided by PI.
+ * Returns the approximate inverse tangent of y / x, in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atan2pi(x, y) * 180.f.
+ *
+ * x can be 0.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7723,7 +9618,7 @@ extern float4 __attribute__((const, overloadable))native_atan2pi(float4 y, float
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse hyperbolic tangent.
+ * Returns the approximate inverse hyperbolic tangent, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7732,7 +9627,7 @@ extern float __attribute__((const, overloadable))native_atanh(float in);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse hyperbolic tangent.
+ * Returns the approximate inverse hyperbolic tangent, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7741,7 +9636,7 @@ extern float2 __attribute__((const, overloadable))native_atanh(float2 in);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse hyperbolic tangent.
+ * Returns the approximate inverse hyperbolic tangent, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7750,7 +9645,7 @@ extern float3 __attribute__((const, overloadable))native_atanh(float3 in);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse hyperbolic tangent.
+ * Returns the approximate inverse hyperbolic tangent, in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7759,7 +9654,9 @@ extern float4 __attribute__((const, overloadable))native_atanh(float4 in);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent divided by PI.
+ * Returns the approximate inverse tangent in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7768,7 +9665,9 @@ extern float __attribute__((const, overloadable))native_atanpi(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent divided by PI.
+ * Returns the approximate inverse tangent in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7777,7 +9676,9 @@ extern float2 __attribute__((const, overloadable))native_atanpi(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent divided by PI.
+ * Returns the approximate inverse tangent in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7786,7 +9687,9 @@ extern float3 __attribute__((const, overloadable))native_atanpi(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the inverse tangent divided by PI.
+ * Returns the approximate inverse tangent in radians, divided by pi.
+ *
+ * I.e. to get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7795,7 +9698,7 @@ extern float4 __attribute__((const, overloadable))native_atanpi(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cube root.
+ * Returns the approximate cube root.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7804,7 +9707,7 @@ extern float __attribute__((const, overloadable))native_cbrt(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cube root.
+ * Returns the approximate cube root.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7813,7 +9716,7 @@ extern float2 __attribute__((const, overloadable))native_cbrt(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cube root.
+ * Returns the approximate cube root.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7822,7 +9725,7 @@ extern float3 __attribute__((const, overloadable))native_cbrt(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cube root.
+ * Returns the approximate cube root.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7831,7 +9734,7 @@ extern float4 __attribute__((const, overloadable))native_cbrt(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cosine.
+ * Returns the approximate cosine of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7840,7 +9743,7 @@ extern float __attribute__((const, overloadable))native_cos(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cosine.
+ * Returns the approximate cosine of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7849,7 +9752,7 @@ extern float2 __attribute__((const, overloadable))native_cos(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cosine.
+ * Returns the approximate cosine of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7858,7 +9761,7 @@ extern float3 __attribute__((const, overloadable))native_cos(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cosine.
+ * Returns the approximate cosine of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7867,7 +9770,7 @@ extern float4 __attribute__((const, overloadable))native_cos(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hypebolic cosine.
+ * Returns the approximate hypebolic cosine.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7876,7 +9779,7 @@ extern float __attribute__((const, overloadable))native_cosh(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hypebolic cosine.
+ * Returns the approximate hypebolic cosine.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7885,7 +9788,7 @@ extern float2 __attribute__((const, overloadable))native_cosh(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hypebolic cosine.
+ * Returns the approximate hypebolic cosine.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7894,7 +9797,7 @@ extern float3 __attribute__((const, overloadable))native_cosh(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hypebolic cosine.
+ * Returns the approximate hypebolic cosine.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7903,43 +9806,51 @@ extern float4 __attribute__((const, overloadable))native_cosh(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cosine of the value * PI.
+ * Returns the approximate cosine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the cosine of a value measured in degrees, call cospi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float __attribute__((const, overloadable))native_cospi(float);
+extern float __attribute__((const, overloadable))native_cospi(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cosine of the value * PI.
+ * Returns the approximate cosine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the cosine of a value measured in degrees, call cospi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float2 __attribute__((const, overloadable))native_cospi(float2);
+extern float2 __attribute__((const, overloadable))native_cospi(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cosine of the value * PI.
+ * Returns the approximate cosine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the cosine of a value measured in degrees, call cospi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float3 __attribute__((const, overloadable))native_cospi(float3);
+extern float3 __attribute__((const, overloadable))native_cospi(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the cosine of the value * PI.
+ * Returns the approximate cosine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the cosine of a value measured in degrees, call cospi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float4 __attribute__((const, overloadable))native_cospi(float4);
+extern float4 __attribute__((const, overloadable))native_cospi(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the approximate distance between two points.
+ * Computes the approximate distance between two points.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7948,7 +9859,7 @@ extern float __attribute__((const, overloadable))native_distance(float lhs, floa
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the approximate distance between two points.
+ * Computes the approximate distance between two points.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7957,7 +9868,7 @@ extern float __attribute__((const, overloadable))native_distance(float2 lhs, flo
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the approximate distance between two points.
+ * Computes the approximate distance between two points.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7966,7 +9877,7 @@ extern float __attribute__((const, overloadable))native_distance(float3 lhs, flo
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the approximate distance between two points.
+ * Computes the approximate distance between two points.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7975,7 +9886,7 @@ extern float __attribute__((const, overloadable))native_distance(float4 lhs, flo
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the approximate division result of two values.
+ * Computes the approximate division result of two values.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7984,7 +9895,7 @@ extern float __attribute__((const, overloadable))native_divide(float lhs, float 
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the approximate division result of two values.
+ * Computes the approximate division result of two values.
  *
  * Supported by API versions 21 and newer.
  */
@@ -7993,7 +9904,7 @@ extern float2 __attribute__((const, overloadable))native_divide(float2 lhs, floa
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the approximate division result of two values.
+ * Computes the approximate division result of two values.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8002,7 +9913,7 @@ extern float3 __attribute__((const, overloadable))native_divide(float3 lhs, floa
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the approximate division result of two values.
+ * Computes the approximate division result of two values.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8011,9 +9922,9 @@ extern float4 __attribute__((const, overloadable))native_divide(float4 lhs, floa
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp
- * valid for inputs -86.f to 86.f
- * Max 8192 ulps of error
+ * Fast approximate exp.
+ *
+ * It is valid for inputs from -86.f to 86.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8022,9 +9933,9 @@ extern float __attribute__((const, overloadable))native_exp(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp
- * valid for inputs -86.f to 86.f
- * Max 8192 ulps of error
+ * Fast approximate exp.
+ *
+ * It is valid for inputs from -86.f to 86.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8033,9 +9944,9 @@ extern float2 __attribute__((const, overloadable))native_exp(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp
- * valid for inputs -86.f to 86.f
- * Max 8192 ulps of error
+ * Fast approximate exp.
+ *
+ * It is valid for inputs from -86.f to 86.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8044,9 +9955,9 @@ extern float3 __attribute__((const, overloadable))native_exp(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp
- * valid for inputs -86.f to 86.f
- * Max 8192 ulps of error
+ * Fast approximate exp.
+ *
+ * It is valid for inputs from -86.f to 86.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8055,9 +9966,9 @@ extern float4 __attribute__((const, overloadable))native_exp(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp10
- * valid for inputs -37.f to 37.f
- * Max 8192 ulps of error
+ * Fast approximate exp10.
+ *
+ * It is valid for inputs from -37.f to 37.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8066,9 +9977,9 @@ extern float __attribute__((const, overloadable))native_exp10(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp10
- * valid for inputs -37.f to 37.f
- * Max 8192 ulps of error
+ * Fast approximate exp10.
+ *
+ * It is valid for inputs from -37.f to 37.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8077,9 +9988,9 @@ extern float2 __attribute__((const, overloadable))native_exp10(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp10
- * valid for inputs -37.f to 37.f
- * Max 8192 ulps of error
+ * Fast approximate exp10.
+ *
+ * It is valid for inputs from -37.f to 37.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8088,9 +9999,9 @@ extern float3 __attribute__((const, overloadable))native_exp10(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp10
- * valid for inputs -37.f to 37.f
- * Max 8192 ulps of error
+ * Fast approximate exp10.
+ *
+ * It is valid for inputs from -37.f to 37.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8099,9 +10010,9 @@ extern float4 __attribute__((const, overloadable))native_exp10(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp2
- * valid for inputs -125.f to 125.f
- * Max 8192 ulps of error
+ * Fast approximate exp2.
+ *
+ * It is valid for inputs from -125.f to 125.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8110,9 +10021,9 @@ extern float __attribute__((const, overloadable))native_exp2(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp2
- * valid for inputs -125.f to 125.f
- * Max 8192 ulps of error
+ * Fast approximate exp2.
+ *
+ * It is valid for inputs from -125.f to 125.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8121,9 +10032,9 @@ extern float2 __attribute__((const, overloadable))native_exp2(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp2
- * valid for inputs -125.f to 125.f
- * Max 8192 ulps of error
+ * Fast approximate exp2.
+ *
+ * It is valid for inputs from -125.f to 125.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8132,9 +10043,9 @@ extern float3 __attribute__((const, overloadable))native_exp2(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate exp2
- * valid for inputs -125.f to 125.f
- * Max 8192 ulps of error
+ * Fast approximate exp2.
+ *
+ * It is valid for inputs from -125.f to 125.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
  *
  * Supported by API versions 18 and newer.
  */
@@ -8143,7 +10054,7 @@ extern float4 __attribute__((const, overloadable))native_exp2(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return (e ^ value) - 1.
+ * Returns the approximate (e ^ value) - 1.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8152,7 +10063,7 @@ extern float __attribute__((const, overloadable))native_expm1(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return (e ^ value) - 1.
+ * Returns the approximate (e ^ value) - 1.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8161,7 +10072,7 @@ extern float2 __attribute__((const, overloadable))native_expm1(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return (e ^ value) - 1.
+ * Returns the approximate (e ^ value) - 1.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8170,7 +10081,7 @@ extern float3 __attribute__((const, overloadable))native_expm1(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return (e ^ value) - 1.
+ * Returns the approximate (e ^ value) - 1.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8179,7 +10090,7 @@ extern float4 __attribute__((const, overloadable))native_expm1(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return native_sqrt(x*x + y*y)
+ * Returns the approximate native_sqrt(x*x + y*y)
  *
  * Supported by API versions 21 and newer.
  */
@@ -8188,7 +10099,7 @@ extern float __attribute__((const, overloadable))native_hypot(float x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return native_sqrt(x*x + y*y)
+ * Returns the approximate native_sqrt(x*x + y*y)
  *
  * Supported by API versions 21 and newer.
  */
@@ -8197,7 +10108,7 @@ extern float2 __attribute__((const, overloadable))native_hypot(float2 x, float2 
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return native_sqrt(x*x + y*y)
+ * Returns the approximate native_sqrt(x*x + y*y)
  *
  * Supported by API versions 21 and newer.
  */
@@ -8206,7 +10117,7 @@ extern float3 __attribute__((const, overloadable))native_hypot(float3 x, float3 
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return native_sqrt(x*x + y*y)
+ * Returns the approximate native_sqrt(x*x + y*y)
  *
  * Supported by API versions 21 and newer.
  */
@@ -8251,7 +10162,8 @@ extern float __attribute__((const, overloadable))native_length(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log
+ * Fast approximate log.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8261,7 +10173,8 @@ extern float __attribute__((const, overloadable))native_log(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log
+ * Fast approximate log.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8271,7 +10184,8 @@ extern float2 __attribute__((const, overloadable))native_log(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log
+ * Fast approximate log.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8281,7 +10195,8 @@ extern float3 __attribute__((const, overloadable))native_log(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log
+ * Fast approximate log.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8291,7 +10206,8 @@ extern float4 __attribute__((const, overloadable))native_log(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log10
+ * Fast approximate log10.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8301,7 +10217,8 @@ extern float __attribute__((const, overloadable))native_log10(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log10
+ * Fast approximate log10.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8311,7 +10228,8 @@ extern float2 __attribute__((const, overloadable))native_log10(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log10
+ * Fast approximate log10.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8321,7 +10239,8 @@ extern float3 __attribute__((const, overloadable))native_log10(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log10
+ * Fast approximate log10.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8331,7 +10250,7 @@ extern float4 __attribute__((const, overloadable))native_log10(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the natural logarithm of (v + 1.0f)
+ * Returns the approximate natural logarithm of (v + 1.0f)
  *
  * Supported by API versions 21 and newer.
  */
@@ -8340,7 +10259,7 @@ extern float __attribute__((const, overloadable))native_log1p(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the natural logarithm of (v + 1.0f)
+ * Returns the approximate natural logarithm of (v + 1.0f)
  *
  * Supported by API versions 21 and newer.
  */
@@ -8349,7 +10268,7 @@ extern float2 __attribute__((const, overloadable))native_log1p(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the natural logarithm of (v + 1.0f)
+ * Returns the approximate natural logarithm of (v + 1.0f)
  *
  * Supported by API versions 21 and newer.
  */
@@ -8358,7 +10277,7 @@ extern float3 __attribute__((const, overloadable))native_log1p(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the natural logarithm of (v + 1.0f)
+ * Returns the approximate natural logarithm of (v + 1.0f)
  *
  * Supported by API versions 21 and newer.
  */
@@ -8367,7 +10286,8 @@ extern float4 __attribute__((const, overloadable))native_log1p(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log2
+ * Fast approximate log2.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8377,7 +10297,8 @@ extern float __attribute__((const, overloadable))native_log2(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log2
+ * Fast approximate log2.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8387,7 +10308,8 @@ extern float2 __attribute__((const, overloadable))native_log2(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log2
+ * Fast approximate log2.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8397,7 +10319,8 @@ extern float3 __attribute__((const, overloadable))native_log2(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate log2
+ * Fast approximate log2.
+ *
  * It is not accurate for values very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8407,7 +10330,7 @@ extern float4 __attribute__((const, overloadable))native_log2(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Normalize a vector.
+ * Approximatly normalizes a vector.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8416,7 +10339,7 @@ extern float __attribute__((const, overloadable))native_normalize(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Normalize a vector.
+ * Approximatly normalizes a vector.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8425,7 +10348,7 @@ extern float2 __attribute__((const, overloadable))native_normalize(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Normalize a vector.
+ * Approximatly normalizes a vector.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8434,7 +10357,7 @@ extern float3 __attribute__((const, overloadable))native_normalize(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Normalize a vector.
+ * Approximatly normalizes a vector.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8443,9 +10366,11 @@ extern float4 __attribute__((const, overloadable))native_normalize(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate v ^ y
- * v must be between 0.f and 256.f
- * y must be between -15.f and 15.f
+ * Fast approximate v ^ y.
+ *
+ * v must be between 0.f and 256.f.
+ * y must be between -15.f and 15.f.
+ *
  * It is not accurate for values of v very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8455,9 +10380,11 @@ extern float __attribute__((const, overloadable))native_powr(float v, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate v ^ y
- * v must be between 0.f and 256.f
- * y must be between -15.f and 15.f
+ * Fast approximate v ^ y.
+ *
+ * v must be between 0.f and 256.f.
+ * y must be between -15.f and 15.f.
+ *
  * It is not accurate for values of v very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8467,9 +10394,11 @@ extern float2 __attribute__((const, overloadable))native_powr(float2 v, float2 y
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate v ^ y
- * v must be between 0.f and 256.f
- * y must be between -15.f and 15.f
+ * Fast approximate v ^ y.
+ *
+ * v must be between 0.f and 256.f.
+ * y must be between -15.f and 15.f.
+ *
  * It is not accurate for values of v very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8479,9 +10408,11 @@ extern float3 __attribute__((const, overloadable))native_powr(float3 v, float3 y
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 18))
 /*
- * Fast approximate v ^ y
- * v must be between 0.f and 256.f
- * y must be between -15.f and 15.f
+ * Fast approximate v ^ y.
+ *
+ * v must be between 0.f and 256.f.
+ * y must be between -15.f and 15.f.
+ *
  * It is not accurate for values of v very close to zero.
  *
  * Supported by API versions 18 and newer.
@@ -8491,7 +10422,7 @@ extern float4 __attribute__((const, overloadable))native_powr(float4 v, float4 y
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the approximate reciprocal of a value.
+ * Returns the approximate approximate reciprocal of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8500,7 +10431,7 @@ extern float __attribute__((const, overloadable))native_recip(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the approximate reciprocal of a value.
+ * Returns the approximate approximate reciprocal of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8509,7 +10440,7 @@ extern float2 __attribute__((const, overloadable))native_recip(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the approximate reciprocal of a value.
+ * Returns the approximate approximate reciprocal of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8518,7 +10449,7 @@ extern float3 __attribute__((const, overloadable))native_recip(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the approximate reciprocal of a value.
+ * Returns the approximate approximate reciprocal of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8527,7 +10458,7 @@ extern float4 __attribute__((const, overloadable))native_recip(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the Nth root of a value.
+ * Compute the approximate Nth root of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8536,7 +10467,7 @@ extern float __attribute__((const, overloadable))native_rootn(float v, int n);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the Nth root of a value.
+ * Compute the approximate Nth root of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8545,7 +10476,7 @@ extern float2 __attribute__((const, overloadable))native_rootn(float2 v, int2 n)
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the Nth root of a value.
+ * Compute the approximate Nth root of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8554,7 +10485,7 @@ extern float3 __attribute__((const, overloadable))native_rootn(float3 v, int3 n)
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Compute the Nth root of a value.
+ * Compute the approximate Nth root of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8563,7 +10494,7 @@ extern float4 __attribute__((const, overloadable))native_rootn(float4 v, int4 n)
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return (1 / sqrt(value)).
+ * Returns approximate (1 / sqrt(value)).
  *
  * Supported by API versions 21 and newer.
  */
@@ -8572,7 +10503,7 @@ extern float __attribute__((const, overloadable))native_rsqrt(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return (1 / sqrt(value)).
+ * Returns approximate (1 / sqrt(value)).
  *
  * Supported by API versions 21 and newer.
  */
@@ -8581,7 +10512,7 @@ extern float2 __attribute__((const, overloadable))native_rsqrt(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return (1 / sqrt(value)).
+ * Returns approximate (1 / sqrt(value)).
  *
  * Supported by API versions 21 and newer.
  */
@@ -8590,7 +10521,7 @@ extern float3 __attribute__((const, overloadable))native_rsqrt(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return (1 / sqrt(value)).
+ * Returns approximate (1 / sqrt(value)).
  *
  * Supported by API versions 21 and newer.
  */
@@ -8599,7 +10530,7 @@ extern float4 __attribute__((const, overloadable))native_rsqrt(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sine of a value specified in radians.
+ * Returns the approximate sine of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8608,7 +10539,7 @@ extern float __attribute__((const, overloadable))native_sin(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sine of a value specified in radians.
+ * Returns the approximate sine of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8617,7 +10548,7 @@ extern float2 __attribute__((const, overloadable))native_sin(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sine of a value specified in radians.
+ * Returns the approximate sine of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8626,7 +10557,7 @@ extern float3 __attribute__((const, overloadable))native_sin(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sine of a value specified in radians.
+ * Returns the approximate sine of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8635,7 +10566,7 @@ extern float4 __attribute__((const, overloadable))native_sin(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sine and cosine of a value.
+ * Returns the approximate sine and cosine of a value.
  *
  * @return sine
  * @param v The incoming value in radians
@@ -8648,7 +10579,7 @@ extern float __attribute__((overloadable))native_sincos(float v, float* cosptr);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sine and cosine of a value.
+ * Returns the approximate sine and cosine of a value.
  *
  * @return sine
  * @param v The incoming value in radians
@@ -8661,7 +10592,7 @@ extern float2 __attribute__((overloadable))native_sincos(float2 v, float2* cospt
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sine and cosine of a value.
+ * Returns the approximate sine and cosine of a value.
  *
  * @return sine
  * @param v The incoming value in radians
@@ -8674,7 +10605,7 @@ extern float3 __attribute__((overloadable))native_sincos(float3 v, float3* cospt
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sine and cosine of a value.
+ * Returns the approximate sine and cosine of a value.
  *
  * @return sine
  * @param v The incoming value in radians
@@ -8687,7 +10618,7 @@ extern float4 __attribute__((overloadable))native_sincos(float4 v, float4* cospt
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hyperbolic sine of a value specified in radians.
+ * Returns the approximate hyperbolic sine of a value specified in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8696,7 +10627,7 @@ extern float __attribute__((const, overloadable))native_sinh(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hyperbolic sine of a value specified in radians.
+ * Returns the approximate hyperbolic sine of a value specified in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8705,7 +10636,7 @@ extern float2 __attribute__((const, overloadable))native_sinh(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hyperbolic sine of a value specified in radians.
+ * Returns the approximate hyperbolic sine of a value specified in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8714,7 +10645,7 @@ extern float3 __attribute__((const, overloadable))native_sinh(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hyperbolic sine of a value specified in radians.
+ * Returns the approximate hyperbolic sine of a value specified in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8723,43 +10654,51 @@ extern float4 __attribute__((const, overloadable))native_sinh(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sin(v * PI).
+ * Returns the approximate sine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the sine of a value measured in degrees, call sinpi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float __attribute__((const, overloadable))native_sinpi(float);
+extern float __attribute__((const, overloadable))native_sinpi(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sin(v * PI).
+ * Returns the approximate sine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the sine of a value measured in degrees, call sinpi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float2 __attribute__((const, overloadable))native_sinpi(float2);
+extern float2 __attribute__((const, overloadable))native_sinpi(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sin(v * PI).
+ * Returns the approximate sine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the sine of a value measured in degrees, call sinpi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float3 __attribute__((const, overloadable))native_sinpi(float3);
+extern float3 __attribute__((const, overloadable))native_sinpi(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the sin(v * PI).
+ * Returns the approximate sine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the sine of a value measured in degrees, call sinpi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float4 __attribute__((const, overloadable))native_sinpi(float4);
+extern float4 __attribute__((const, overloadable))native_sinpi(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the aproximate sqrt(v).
+ * Returns the approximate sqrt(v).
  *
  * Supported by API versions 21 and newer.
  */
@@ -8768,7 +10707,7 @@ extern float __attribute__((const, overloadable))native_sqrt(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the aproximate sqrt(v).
+ * Returns the approximate sqrt(v).
  *
  * Supported by API versions 21 and newer.
  */
@@ -8777,7 +10716,7 @@ extern float2 __attribute__((const, overloadable))native_sqrt(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the aproximate sqrt(v).
+ * Returns the approximate sqrt(v).
  *
  * Supported by API versions 21 and newer.
  */
@@ -8786,7 +10725,7 @@ extern float3 __attribute__((const, overloadable))native_sqrt(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the aproximate sqrt(v).
+ * Returns the approximate sqrt(v).
  *
  * Supported by API versions 21 and newer.
  */
@@ -8795,7 +10734,7 @@ extern float4 __attribute__((const, overloadable))native_sqrt(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the tangent of a value.
+ * Returns the approximate tangent of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8804,7 +10743,7 @@ extern float __attribute__((const, overloadable))native_tan(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the tangent of a value.
+ * Returns the approximate tangent of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8813,7 +10752,7 @@ extern float2 __attribute__((const, overloadable))native_tan(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the tangent of a value.
+ * Returns the approximate tangent of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8822,7 +10761,7 @@ extern float3 __attribute__((const, overloadable))native_tan(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the tangent of a value.
+ * Returns the approximate tangent of an angle measured in radians.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8831,7 +10770,7 @@ extern float4 __attribute__((const, overloadable))native_tan(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hyperbolic tangent of a value.
+ * Returns the approximate hyperbolic tangent of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8840,7 +10779,7 @@ extern float __attribute__((const, overloadable))native_tanh(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hyperbolic tangent of a value.
+ * Returns the approximate hyperbolic tangent of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8849,7 +10788,7 @@ extern float2 __attribute__((const, overloadable))native_tanh(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hyperbolic tangent of a value.
+ * Returns the approximate hyperbolic tangent of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8858,7 +10797,7 @@ extern float3 __attribute__((const, overloadable))native_tanh(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return the hyperbolic tangent of a value.
+ * Returns the approximate hyperbolic tangent of a value.
  *
  * Supported by API versions 21 and newer.
  */
@@ -8867,43 +10806,51 @@ extern float4 __attribute__((const, overloadable))native_tanh(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return tan(v * PI)
+ * Returns the approximate tangent of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the tangent of a value measured in degrees, call tanpi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float __attribute__((const, overloadable))native_tanpi(float);
+extern float __attribute__((const, overloadable))native_tanpi(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return tan(v * PI)
+ * Returns the approximate tangent of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the tangent of a value measured in degrees, call tanpi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float2 __attribute__((const, overloadable))native_tanpi(float2);
+extern float2 __attribute__((const, overloadable))native_tanpi(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return tan(v * PI)
+ * Returns the approximate tangent of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the tangent of a value measured in degrees, call tanpi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float3 __attribute__((const, overloadable))native_tanpi(float3);
+extern float3 __attribute__((const, overloadable))native_tanpi(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * Return tan(v * PI)
+ * Returns the approximate tangent of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the tangent of a value measured in degrees, call tanpi(a / 180.f).
  *
  * Supported by API versions 21 and newer.
  */
-extern float4 __attribute__((const, overloadable))native_tanpi(float4);
+extern float4 __attribute__((const, overloadable))native_tanpi(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the next floating point number from x towards y.
+ * Returns the next floating point number from x towards y.
  *
  * Supported by API versions 9 and newer.
  */
@@ -8912,7 +10859,7 @@ extern float __attribute__((const, overloadable))nextafter(float x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the next floating point number from x towards y.
+ * Returns the next floating point number from x towards y.
  *
  * Supported by API versions 9 and newer.
  */
@@ -8921,7 +10868,7 @@ extern float2 __attribute__((const, overloadable))nextafter(float2 x, float2 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the next floating point number from x towards y.
+ * Returns the next floating point number from x towards y.
  *
  * Supported by API versions 9 and newer.
  */
@@ -8930,7 +10877,7 @@ extern float3 __attribute__((const, overloadable))nextafter(float3 x, float3 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the next floating point number from x towards y.
+ * Returns the next floating point number from x towards y.
  *
  * Supported by API versions 9 and newer.
  */
@@ -8941,6 +10888,8 @@ extern float4 __attribute__((const, overloadable))nextafter(float4 x, float4 y);
 /*
  * Normalize a vector.
  *
+ * For vectors of size 1, returns -1.f for negative values, 0.f for null values, and 1.f for positive values.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float __attribute__((const, overloadable))normalize(float v);
@@ -8949,6 +10898,8 @@ extern float __attribute__((const, overloadable))normalize(float v);
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
  * Normalize a vector.
+ *
+ * For vectors of size 1, returns -1.f for negative values, 0.f for null values, and 1.f for positive values.
  *
  * Supported by API versions 9 and newer.
  */
@@ -8959,6 +10910,8 @@ extern float2 __attribute__((const, overloadable))normalize(float2 v);
 /*
  * Normalize a vector.
  *
+ * For vectors of size 1, returns -1.f for negative values, 0.f for null values, and 1.f for positive values.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float3 __attribute__((const, overloadable))normalize(float3 v);
@@ -8968,6 +10921,8 @@ extern float3 __attribute__((const, overloadable))normalize(float3 v);
 /*
  * Normalize a vector.
  *
+ * For vectors of size 1, returns -1.f for negative values, 0.f for null values, and 1.f for positive values.
+ *
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))normalize(float4 v);
@@ -8975,7 +10930,9 @@ extern float4 __attribute__((const, overloadable))normalize(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
+ * Returns x raised to the power y, i.e. x ^ y.
+ *
+ * pown() and powr() are similar.  pown() takes an integer exponent. powr() assumes the base to be non-negative.
  *
  * Supported by API versions 9 and newer.
  */
@@ -8984,7 +10941,9 @@ extern float __attribute__((const, overloadable))pow(float x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
+ * Returns x raised to the power y, i.e. x ^ y.
+ *
+ * pown() and powr() are similar.  pown() takes an integer exponent. powr() assumes the base to be non-negative.
  *
  * Supported by API versions 9 and newer.
  */
@@ -8993,7 +10952,9 @@ extern float2 __attribute__((const, overloadable))pow(float2 x, float2 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
+ * Returns x raised to the power y, i.e. x ^ y.
+ *
+ * pown() and powr() are similar.  pown() takes an integer exponent. powr() assumes the base to be non-negative.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9002,7 +10963,9 @@ extern float3 __attribute__((const, overloadable))pow(float3 x, float3 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
+ * Returns x raised to the power y, i.e. x ^ y.
+ *
+ * pown() and powr() are similar.  pown() takes an integer exponent. powr() assumes the base to be non-negative.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9011,7 +10974,9 @@ extern float4 __attribute__((const, overloadable))pow(float4 x, float4 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
+ * Returns x raised to the power y, i.e. x ^ y.
+ *
+ * pow() and powr() are similar.  The both take a float exponent. powr() also assumes the base to be non-negative.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9020,7 +10985,9 @@ extern float __attribute__((const, overloadable))pown(float x, int y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
+ * Returns x raised to the power y, i.e. x ^ y.
+ *
+ * pow() and powr() are similar.  The both take a float exponent. powr() also assumes the base to be non-negative.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9029,7 +10996,9 @@ extern float2 __attribute__((const, overloadable))pown(float2 x, int2 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
+ * Returns x raised to the power y, i.e. x ^ y.
+ *
+ * pow() and powr() are similar.  The both take a float exponent. powr() also assumes the base to be non-negative.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9038,7 +11007,9 @@ extern float3 __attribute__((const, overloadable))pown(float3 x, int3 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
+ * Returns x raised to the power y, i.e. x ^ y.
+ *
+ * pow() and powr() are similar.  The both take a float exponent. powr() also assumes the base to be non-negative.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9047,8 +11018,9 @@ extern float4 __attribute__((const, overloadable))pown(float4 x, int4 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
- * x must be >= 0
+ * Returns x raised to the power y, i.e. x ^ y.  x must be >= 0.
+ *
+ * pow() and pown() are similar.  They both make no assumptions about the base.  pow() takes a float exponent while pown() take an integer.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9057,8 +11029,9 @@ extern float __attribute__((const, overloadable))powr(float x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
- * x must be >= 0
+ * Returns x raised to the power y, i.e. x ^ y.  x must be >= 0.
+ *
+ * pow() and pown() are similar.  They both make no assumptions about the base.  pow() takes a float exponent while pown() take an integer.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9067,8 +11040,9 @@ extern float2 __attribute__((const, overloadable))powr(float2 x, float2 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
- * x must be >= 0
+ * Returns x raised to the power y, i.e. x ^ y.  x must be >= 0.
+ *
+ * pow() and pown() are similar.  They both make no assumptions about the base.  pow() takes a float exponent while pown() take an integer.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9077,8 +11051,9 @@ extern float3 __attribute__((const, overloadable))powr(float3 x, float3 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return x ^ y.
- * x must be >= 0
+ * Returns x raised to the power y, i.e. x ^ y.  x must be >= 0.
+ *
+ * pow() and pown() are similar.  They both make no assumptions about the base.  pow() takes a float exponent while pown() take an integer.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9087,7 +11062,7 @@ extern float4 __attribute__((const, overloadable))powr(float4 x, float4 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Convert from degrees to radians.
+ * Converts from degrees to radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9096,7 +11071,7 @@ extern float __attribute__((const, overloadable))radians(float value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Convert from degrees to radians.
+ * Converts from degrees to radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9105,7 +11080,7 @@ extern float2 __attribute__((const, overloadable))radians(float2 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Convert from degrees to radians.
+ * Converts from degrees to radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9114,7 +11089,7 @@ extern float3 __attribute__((const, overloadable))radians(float3 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Convert from degrees to radians.
+ * Converts from degrees to radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9123,7 +11098,11 @@ extern float4 __attribute__((const, overloadable))radians(float4 value);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return round x/y to the nearest integer then compute the remainder.
+ * Returns the remainder of x / y, where the quotient is rounded towards the nearest integer.
+ *
+ * The function fmod() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9132,7 +11111,11 @@ extern float __attribute__((const, overloadable))remainder(float x, float y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return round x/y to the nearest integer then compute the remainder.
+ * Returns the remainder of x / y, where the quotient is rounded towards the nearest integer.
+ *
+ * The function fmod() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9141,7 +11124,11 @@ extern float2 __attribute__((const, overloadable))remainder(float2 x, float2 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return round x/y to the nearest integer then compute the remainder.
+ * Returns the remainder of x / y, where the quotient is rounded towards the nearest integer.
+ *
+ * The function fmod() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9150,7 +11137,11 @@ extern float3 __attribute__((const, overloadable))remainder(float3 x, float3 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return round x/y to the nearest integer then compute the remainder.
+ * Returns the remainder of x / y, where the quotient is rounded towards the nearest integer.
+ *
+ * The function fmod() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9159,7 +11150,18 @@ extern float4 __attribute__((const, overloadable))remainder(float4 x, float4 y);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the quotient and the remainder of b/c.  Only the sign and lowest three bits of the quotient are guaranteed to be accurate.
+ * Returns the quotient and the remainder of b / c.
+ *
+ * Only the sign and lowest three bits of the quotient are guaranteed to be accurate.
+ *
+ * This function is useful for implementing periodic functions.  The low three bits of the quotient gives the quadrant and the remainder the distance within the quadrant.  For example, an implementation of sin(x) could call remquo(x, PI / 2.f, &quadrant) to reduce very large value of x to something within a limited range.
+ *
+ * Example: remquo(-23.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
+ *
+ * @param b The numerator.
+ * @param c The denominator.
+ * @param *d d[0] will be set to the integer quotient.
+ * @return The remainder, precise only for the low three bits.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9168,7 +11170,18 @@ extern float __attribute__((overloadable))remquo(float b, float c, int* d);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the quotient and the remainder of b/c.  Only the sign and lowest three bits of the quotient are guaranteed to be accurate.
+ * Returns the quotient and the remainder of b / c.
+ *
+ * Only the sign and lowest three bits of the quotient are guaranteed to be accurate.
+ *
+ * This function is useful for implementing periodic functions.  The low three bits of the quotient gives the quadrant and the remainder the distance within the quadrant.  For example, an implementation of sin(x) could call remquo(x, PI / 2.f, &quadrant) to reduce very large value of x to something within a limited range.
+ *
+ * Example: remquo(-23.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
+ *
+ * @param b The numerator.
+ * @param c The denominator.
+ * @param *d d[0] will be set to the integer quotient.
+ * @return The remainder, precise only for the low three bits.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9177,7 +11190,18 @@ extern float2 __attribute__((overloadable))remquo(float2 b, float2 c, int2* d);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the quotient and the remainder of b/c.  Only the sign and lowest three bits of the quotient are guaranteed to be accurate.
+ * Returns the quotient and the remainder of b / c.
+ *
+ * Only the sign and lowest three bits of the quotient are guaranteed to be accurate.
+ *
+ * This function is useful for implementing periodic functions.  The low three bits of the quotient gives the quadrant and the remainder the distance within the quadrant.  For example, an implementation of sin(x) could call remquo(x, PI / 2.f, &quadrant) to reduce very large value of x to something within a limited range.
+ *
+ * Example: remquo(-23.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
+ *
+ * @param b The numerator.
+ * @param c The denominator.
+ * @param *d d[0] will be set to the integer quotient.
+ * @return The remainder, precise only for the low three bits.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9186,7 +11210,18 @@ extern float3 __attribute__((overloadable))remquo(float3 b, float3 c, int3* d);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the quotient and the remainder of b/c.  Only the sign and lowest three bits of the quotient are guaranteed to be accurate.
+ * Returns the quotient and the remainder of b / c.
+ *
+ * Only the sign and lowest three bits of the quotient are guaranteed to be accurate.
+ *
+ * This function is useful for implementing periodic functions.  The low three bits of the quotient gives the quadrant and the remainder the distance within the quadrant.  For example, an implementation of sin(x) could call remquo(x, PI / 2.f, &quadrant) to reduce very large value of x to something within a limited range.
+ *
+ * Example: remquo(-23.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
+ *
+ * @param b The numerator.
+ * @param c The denominator.
+ * @param *d d[0] will be set to the integer quotient.
+ * @return The remainder, precise only for the low three bits.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9195,7 +11230,11 @@ extern float4 __attribute__((overloadable))remquo(float4 b, float4 c, int4* d);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Round to the nearest integral value.
+ * Rounds to the nearest integral value.
+ *
+ * rint() rounds half values to even.  For example, rint(0.5f) returns 0.f and rint(1.5f) returns 2.f.  Similarly, rint(-0.5f) returns -0.f and rint(-1.5f) returns -2.f.
+ *
+ * round() is similar but rounds away from zero.  trunc() truncates the decimal fraction.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9204,7 +11243,11 @@ extern float __attribute__((const, overloadable))rint(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Round to the nearest integral value.
+ * Rounds to the nearest integral value.
+ *
+ * rint() rounds half values to even.  For example, rint(0.5f) returns 0.f and rint(1.5f) returns 2.f.  Similarly, rint(-0.5f) returns -0.f and rint(-1.5f) returns -2.f.
+ *
+ * round() is similar but rounds away from zero.  trunc() truncates the decimal fraction.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9213,7 +11256,11 @@ extern float2 __attribute__((const, overloadable))rint(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Round to the nearest integral value.
+ * Rounds to the nearest integral value.
+ *
+ * rint() rounds half values to even.  For example, rint(0.5f) returns 0.f and rint(1.5f) returns 2.f.  Similarly, rint(-0.5f) returns -0.f and rint(-1.5f) returns -2.f.
+ *
+ * round() is similar but rounds away from zero.  trunc() truncates the decimal fraction.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9222,7 +11269,11 @@ extern float3 __attribute__((const, overloadable))rint(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Round to the nearest integral value.
+ * Rounds to the nearest integral value.
+ *
+ * rint() rounds half values to even.  For example, rint(0.5f) returns 0.f and rint(1.5f) returns 2.f.  Similarly, rint(-0.5f) returns -0.f and rint(-1.5f) returns -2.f.
+ *
+ * round() is similar but rounds away from zero.  trunc() truncates the decimal fraction.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9267,7 +11318,11 @@ extern float4 __attribute__((const, overloadable))rootn(float4 v, int4 n);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Round to the nearest integral value.  Half values are rounded away from zero.
+ * Round to the nearest integral value.
+ *
+ * round() rounds half values away from zero.  For example, round(0.5f) returns 1.f and round(1.5f) returns 2.f.  Similarly, round(-0.5f) returns -1.f and round(-1.5f) returns -2.f.
+ *
+ * rint() is similar but rounds half values toward even.  trunc() truncates the decimal fraction.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9276,7 +11331,11 @@ extern float __attribute__((const, overloadable))round(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Round to the nearest integral value.  Half values are rounded away from zero.
+ * Round to the nearest integral value.
+ *
+ * round() rounds half values away from zero.  For example, round(0.5f) returns 1.f and round(1.5f) returns 2.f.  Similarly, round(-0.5f) returns -1.f and round(-1.5f) returns -2.f.
+ *
+ * rint() is similar but rounds half values toward even.  trunc() truncates the decimal fraction.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9285,7 +11344,11 @@ extern float2 __attribute__((const, overloadable))round(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Round to the nearest integral value.  Half values are rounded away from zero.
+ * Round to the nearest integral value.
+ *
+ * round() rounds half values away from zero.  For example, round(0.5f) returns 1.f and round(1.5f) returns 2.f.  Similarly, round(-0.5f) returns -1.f and round(-1.5f) returns -2.f.
+ *
+ * rint() is similar but rounds half values toward even.  trunc() truncates the decimal fraction.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9294,7 +11357,11 @@ extern float3 __attribute__((const, overloadable))round(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Round to the nearest integral value.  Half values are rounded away from zero.
+ * Round to the nearest integral value.
+ *
+ * round() rounds half values away from zero.  For example, round(0.5f) returns 1.f and round(1.5f) returns 2.f.  Similarly, round(-0.5f) returns -1.f and round(-1.5f) returns -2.f.
+ *
+ * rint() is similar but rounds half values toward even.  trunc() truncates the decimal fraction.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9303,7 +11370,7 @@ extern float4 __attribute__((const, overloadable))round(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (1 / sqrt(value)).
+ * Returns (1 / sqrt(value)).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9312,7 +11379,7 @@ extern float __attribute__((const, overloadable))rsqrt(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (1 / sqrt(value)).
+ * Returns (1 / sqrt(value)).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9321,7 +11388,7 @@ extern float2 __attribute__((const, overloadable))rsqrt(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (1 / sqrt(value)).
+ * Returns (1 / sqrt(value)).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9330,7 +11397,7 @@ extern float3 __attribute__((const, overloadable))rsqrt(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return (1 / sqrt(value)).
+ * Returns (1 / sqrt(value)).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9339,7 +11406,7 @@ extern float4 __attribute__((const, overloadable))rsqrt(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sign of a value.
+ * Returns the sign of a value.
  *
  * if (v < 0) return -1.f;
  * else if (v > 0) return 1.f;
@@ -9352,7 +11419,7 @@ extern float __attribute__((const, overloadable))sign(float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sign of a value.
+ * Returns the sign of a value.
  *
  * if (v < 0) return -1.f;
  * else if (v > 0) return 1.f;
@@ -9365,7 +11432,7 @@ extern float2 __attribute__((const, overloadable))sign(float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sign of a value.
+ * Returns the sign of a value.
  *
  * if (v < 0) return -1.f;
  * else if (v > 0) return 1.f;
@@ -9378,7 +11445,7 @@ extern float3 __attribute__((const, overloadable))sign(float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sign of a value.
+ * Returns the sign of a value.
  *
  * if (v < 0) return -1.f;
  * else if (v > 0) return 1.f;
@@ -9391,7 +11458,7 @@ extern float4 __attribute__((const, overloadable))sign(float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sine of a value specified in radians.
+ * Returns the sine of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9400,7 +11467,7 @@ extern float __attribute__((const, overloadable))sin(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sine of a value specified in radians.
+ * Returns the sine of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9409,7 +11476,7 @@ extern float2 __attribute__((const, overloadable))sin(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sine of a value specified in radians.
+ * Returns the sine of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9418,7 +11485,7 @@ extern float3 __attribute__((const, overloadable))sin(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sine of a value specified in radians.
+ * Returns the sine of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9427,9 +11494,9 @@ extern float4 __attribute__((const, overloadable))sin(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sine and cosine of a value.
+ * Returns the sine and cosine of a value.
  *
- * @return sine
+ * @return sine of v
  * @param v The incoming value in radians
  * @param *cosptr cosptr[0] will be set to the cosine value.
  *
@@ -9440,9 +11507,9 @@ extern float __attribute__((overloadable))sincos(float v, float* cosptr);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sine and cosine of a value.
+ * Returns the sine and cosine of a value.
  *
- * @return sine
+ * @return sine of v
  * @param v The incoming value in radians
  * @param *cosptr cosptr[0] will be set to the cosine value.
  *
@@ -9453,9 +11520,9 @@ extern float2 __attribute__((overloadable))sincos(float2 v, float2* cosptr);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sine and cosine of a value.
+ * Returns the sine and cosine of a value.
  *
- * @return sine
+ * @return sine of v
  * @param v The incoming value in radians
  * @param *cosptr cosptr[0] will be set to the cosine value.
  *
@@ -9466,9 +11533,9 @@ extern float3 __attribute__((overloadable))sincos(float3 v, float3* cosptr);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sine and cosine of a value.
+ * Returns the sine and cosine of a value.
  *
- * @return sine
+ * @return sine of v
  * @param v The incoming value in radians
  * @param *cosptr cosptr[0] will be set to the cosine value.
  *
@@ -9479,7 +11546,7 @@ extern float4 __attribute__((overloadable))sincos(float4 v, float4* cosptr);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hyperbolic sine of a value specified in radians.
+ * Returns the hyperbolic sine of x, where x is measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9488,7 +11555,7 @@ extern float __attribute__((const, overloadable))sinh(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hyperbolic sine of a value specified in radians.
+ * Returns the hyperbolic sine of x, where x is measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9497,7 +11564,7 @@ extern float2 __attribute__((const, overloadable))sinh(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hyperbolic sine of a value specified in radians.
+ * Returns the hyperbolic sine of x, where x is measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9506,7 +11573,7 @@ extern float3 __attribute__((const, overloadable))sinh(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hyperbolic sine of a value specified in radians.
+ * Returns the hyperbolic sine of x, where x is measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9515,43 +11582,51 @@ extern float4 __attribute__((const, overloadable))sinh(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sin(v * PI).
+ * Returns the sine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the sine of a value measured in degrees, call sinpi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))sinpi(float);
+extern float __attribute__((const, overloadable))sinpi(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sin(v * PI).
+ * Returns the sine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the sine of a value measured in degrees, call sinpi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))sinpi(float2);
+extern float2 __attribute__((const, overloadable))sinpi(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sin(v * PI).
+ * Returns the sine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the sine of a value measured in degrees, call sinpi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))sinpi(float3);
+extern float3 __attribute__((const, overloadable))sinpi(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the sin(v * PI).
+ * Returns the sine of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the sine of a value measured in degrees, call sinpi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))sinpi(float4);
+extern float4 __attribute__((const, overloadable))sinpi(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the square root of a value.
+ * Returns the square root of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9560,7 +11635,7 @@ extern float __attribute__((const, overloadable))sqrt(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the square root of a value.
+ * Returns the square root of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9569,7 +11644,7 @@ extern float2 __attribute__((const, overloadable))sqrt(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the square root of a value.
+ * Returns the square root of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9578,7 +11653,7 @@ extern float3 __attribute__((const, overloadable))sqrt(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the square root of a value.
+ * Returns the square root of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9587,10 +11662,9 @@ extern float4 __attribute__((const, overloadable))sqrt(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * if (v < edge)
- * return 0.f;
- * else
- * return 1.f;
+ * Returns 0.f if v < edge, 1.f otherwise.
+ *
+ * This can be useful to create conditional computations without using loops and branching instructions.  For example, instead of computing (a[i] < b[i]) ? 0.f : atan2(a[i], b[i]) for the corresponding elements of a vector, you could instead use step(a, b) * atan2(a, b).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9599,10 +11673,9 @@ extern float __attribute__((const, overloadable))step(float edge, float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * if (v < edge)
- * return 0.f;
- * else
- * return 1.f;
+ * Returns 0.f if v < edge, 1.f otherwise.
+ *
+ * This can be useful to create conditional computations without using loops and branching instructions.  For example, instead of computing (a[i] < b[i]) ? 0.f : atan2(a[i], b[i]) for the corresponding elements of a vector, you could instead use step(a, b) * atan2(a, b).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9611,10 +11684,9 @@ extern float2 __attribute__((const, overloadable))step(float2 edge, float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * if (v < edge)
- * return 0.f;
- * else
- * return 1.f;
+ * Returns 0.f if v < edge, 1.f otherwise.
+ *
+ * This can be useful to create conditional computations without using loops and branching instructions.  For example, instead of computing (a[i] < b[i]) ? 0.f : atan2(a[i], b[i]) for the corresponding elements of a vector, you could instead use step(a, b) * atan2(a, b).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9623,10 +11695,9 @@ extern float3 __attribute__((const, overloadable))step(float3 edge, float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * if (v < edge)
- * return 0.f;
- * else
- * return 1.f;
+ * Returns 0.f if v < edge, 1.f otherwise.
+ *
+ * This can be useful to create conditional computations without using loops and branching instructions.  For example, instead of computing (a[i] < b[i]) ? 0.f : atan2(a[i], b[i]) for the corresponding elements of a vector, you could instead use step(a, b) * atan2(a, b).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9635,10 +11706,9 @@ extern float4 __attribute__((const, overloadable))step(float4 edge, float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * if (v < edge)
- * return 0.f;
- * else
- * return 1.f;
+ * Returns 0.f if v < edge, 1.f otherwise.
+ *
+ * This can be useful to create conditional computations without using loops and branching instructions.  For example, instead of computing (a[i] < b) ? 0.f : atan2(a[i], b) for each element of a vector, you could instead use step(a, b) * atan2(a, b).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9647,10 +11717,9 @@ extern float2 __attribute__((const, overloadable))step(float2 edge, float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * if (v < edge)
- * return 0.f;
- * else
- * return 1.f;
+ * Returns 0.f if v < edge, 1.f otherwise.
+ *
+ * This can be useful to create conditional computations without using loops and branching instructions.  For example, instead of computing (a[i] < b) ? 0.f : atan2(a[i], b) for each element of a vector, you could instead use step(a, b) * atan2(a, b).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9659,10 +11728,9 @@ extern float3 __attribute__((const, overloadable))step(float3 edge, float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * if (v < edge)
- * return 0.f;
- * else
- * return 1.f;
+ * Returns 0.f if v < edge, 1.f otherwise.
+ *
+ * This can be useful to create conditional computations without using loops and branching instructions.  For example, instead of computing (a[i] < b) ? 0.f : atan2(a[i], b) for each element of a vector, you could instead use step(a, b) * atan2(a, b).
  *
  * Supported by API versions 9 and newer.
  */
@@ -9671,10 +11739,9 @@ extern float4 __attribute__((const, overloadable))step(float4 edge, float v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * if (v < edge)
- * return 0.f;
- * else
- * return 1.f;
+ * Returns 0.f if v < edge, 1.f otherwise.
+ *
+ * This can be useful to create conditional computations without using loops and branching instructions.  For example, instead of computing (a < b[i]) ? 0.f : atan2(a, b[i]) for each element of a vector, you could instead use step(a, b) * atan2(a, b).
  *
  * Supported by API versions 21 and newer.
  */
@@ -9683,10 +11750,9 @@ extern float2 __attribute__((const, overloadable))step(float edge, float2 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * if (v < edge)
- * return 0.f;
- * else
- * return 1.f;
+ * Returns 0.f if v < edge, 1.f otherwise.
+ *
+ * This can be useful to create conditional computations without using loops and branching instructions.  For example, instead of computing (a < b[i]) ? 0.f : atan2(a, b[i]) for each element of a vector, you could instead use step(a, b) * atan2(a, b).
  *
  * Supported by API versions 21 and newer.
  */
@@ -9695,10 +11761,9 @@ extern float3 __attribute__((const, overloadable))step(float edge, float3 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 21))
 /*
- * if (v < edge)
- * return 0.f;
- * else
- * return 1.f;
+ * Returns 0.f if v < edge, 1.f otherwise.
+ *
+ * This can be useful to create conditional computations without using loops and branching instructions.  For example, instead of computing (a < b[i]) ? 0.f : atan2(a, b[i]) for each element of a vector, you could instead use step(a, b) * atan2(a, b).
  *
  * Supported by API versions 21 and newer.
  */
@@ -9707,43 +11772,43 @@ extern float4 __attribute__((const, overloadable))step(float edge, float4 v);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the tangent of a value.
+ * Returns the tangent of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))tan(float);
+extern float __attribute__((const, overloadable))tan(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the tangent of a value.
+ * Returns the tangent of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))tan(float2);
+extern float2 __attribute__((const, overloadable))tan(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the tangent of a value.
+ * Returns the tangent of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))tan(float3);
+extern float3 __attribute__((const, overloadable))tan(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the tangent of a value.
+ * Returns the tangent of an angle measured in radians.
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))tan(float4);
+extern float4 __attribute__((const, overloadable))tan(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hyperbolic tangent of a value.
+ * Returns the hyperbolic tangent of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9752,7 +11817,7 @@ extern float __attribute__((const, overloadable))tanh(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hyperbolic tangent of a value.
+ * Returns the hyperbolic tangent of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9761,7 +11826,7 @@ extern float2 __attribute__((const, overloadable))tanh(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hyperbolic tangent of a value.
+ * Returns the hyperbolic tangent of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9770,7 +11835,7 @@ extern float3 __attribute__((const, overloadable))tanh(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return the hyperbolic tangent of a value.
+ * Returns the hyperbolic tangent of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9779,43 +11844,51 @@ extern float4 __attribute__((const, overloadable))tanh(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return tan(v * PI)
+ * Returns the tangent of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the tangent of a value measured in degrees, call tanpi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float __attribute__((const, overloadable))tanpi(float);
+extern float __attribute__((const, overloadable))tanpi(float x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return tan(v * PI)
+ * Returns the tangent of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the tangent of a value measured in degrees, call tanpi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float2 __attribute__((const, overloadable))tanpi(float2);
+extern float2 __attribute__((const, overloadable))tanpi(float2 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return tan(v * PI)
+ * Returns the tangent of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the tangent of a value measured in degrees, call tanpi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float3 __attribute__((const, overloadable))tanpi(float3);
+extern float3 __attribute__((const, overloadable))tanpi(float3 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Return tan(v * PI)
+ * Returns the tangent of (x * pi), where (x * pi) is measured in radians.
+ *
+ * I.e. to get the tangent of a value measured in degrees, call tanpi(a / 180.f).
  *
  * Supported by API versions 9 and newer.
  */
-extern float4 __attribute__((const, overloadable))tanpi(float4);
+extern float4 __attribute__((const, overloadable))tanpi(float4 x);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the gamma function of a value.
+ * Returns the gamma function of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9824,7 +11897,7 @@ extern float __attribute__((const, overloadable))tgamma(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the gamma function of a value.
+ * Returns the gamma function of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9833,7 +11906,7 @@ extern float2 __attribute__((const, overloadable))tgamma(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the gamma function of a value.
+ * Returns the gamma function of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9842,7 +11915,7 @@ extern float3 __attribute__((const, overloadable))tgamma(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * Compute the gamma function of a value.
+ * Returns the gamma function of a value.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9851,7 +11924,11 @@ extern float4 __attribute__((const, overloadable))tgamma(float4);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * ound to integral using truncation.
+ * Rounds to integral using truncation.
+ *
+ * For example, trunc(1.7f) returns 1.f and trunc(-1.7f) returns -1.f.
+ *
+ * See rint() and round() for other rounding options.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9860,7 +11937,11 @@ extern float __attribute__((const, overloadable))trunc(float);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * ound to integral using truncation.
+ * Rounds to integral using truncation.
+ *
+ * For example, trunc(1.7f) returns 1.f and trunc(-1.7f) returns -1.f.
+ *
+ * See rint() and round() for other rounding options.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9869,7 +11950,11 @@ extern float2 __attribute__((const, overloadable))trunc(float2);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * ound to integral using truncation.
+ * Rounds to integral using truncation.
+ *
+ * For example, trunc(1.7f) returns 1.f and trunc(-1.7f) returns -1.f.
+ *
+ * See rint() and round() for other rounding options.
  *
  * Supported by API versions 9 and newer.
  */
@@ -9878,7 +11963,11 @@ extern float3 __attribute__((const, overloadable))trunc(float3);
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /*
- * ound to integral using truncation.
+ * Rounds to integral using truncation.
+ *
+ * For example, trunc(1.7f) returns 1.f and trunc(-1.7f) returns -1.f.
+ *
+ * See rint() and round() for other rounding options.
  *
  * Supported by API versions 9 and newer.
  */
