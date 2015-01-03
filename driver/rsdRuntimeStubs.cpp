@@ -78,7 +78,7 @@ typedef uint64_t ulong;
     typedef struct { const int* const p; } __attribute__((packed, aligned(4))) t;
 #else
 #define OPAQUETYPE(t) \
-    typedef struct { const void* p; const void* r; const void* v1; const void* v2; } t;
+    typedef struct { const long* const p; const long* const r; const long* const v1; const long* const v2; } t;
 #endif
 
 OPAQUETYPE(rs_element)
@@ -650,17 +650,11 @@ static float SC_GetDt() {
     return rsrGetDt(rsc, sc);
 }
 
-#ifndef RS_COMPATIBILITY_LIB
 time_t SC_Time(time_t *timer) {
     Context *rsc = RsdCpuReference::getTlsContext();
     return rsrTime(rsc, timer);
 }
-#else
-static int SC_Time(int *timer) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    return rsrTime(rsc, (long*)timer);
-}
-#endif
+
 
 tm* SC_LocalTime(tm *local, time_t *timer) {
     Context *rsc = RsdCpuReference::getTlsContext();
@@ -1480,13 +1474,30 @@ static void SC_ForEach_SAAULS(::rs_script target,
                usr, usrLen, call);
 }
 
-static const Allocation * SC_GetAllocation(const void *ptr) {
+#ifndef __LP64__
+// ARMv7/MIPS
+static const ::rs_allocation SC_GetAllocation(const void *ptr) {
     Context *rsc = RsdCpuReference::getTlsContext();
     const Script *sc = RsdCpuReference::getTlsScript();
-    return rsdScriptGetAllocationForPointer(rsc, sc, ptr);
+    Allocation* alloc = rsdScriptGetAllocationForPointer(rsc, sc, ptr);
+    ::rs_allocation obj = {0};
+    alloc->callUpdateCacheObject(rsc, &obj);
+    return obj;
 }
+#else
+// AArch64/x86_64/MIPS64
+static const ::rs_allocation SC_GetAllocation(const void *ptr) {
+    Context *rsc = RsdCpuReference::getTlsContext();
+    const Script *sc = RsdCpuReference::getTlsScript();
+    Allocation* alloc = rsdScriptGetAllocationForPointer(rsc, sc, ptr);
+    ::rs_allocation obj = {0, 0, 0, 0};
+    alloc->callUpdateCacheObject(rsc, &obj);
+    return obj;
+}
+#endif
 
-const Allocation * rsGetAllocation(const void *ptr) {
+
+const ::rs_allocation rsGetAllocation(const void *ptr) {
     return SC_GetAllocation(ptr);
 }
 
@@ -1553,13 +1564,23 @@ void __attribute__((overloadable)) rsForEach(::rs_script script,
     return SC_ForEach_SAAULS(script, in, out, usr, usrLen, (RsScriptCall*)call);
 }
 
+#ifndef __LP64__
 int rsTime(int *timer) {
-    return SC_Time(timer);
+    return SC_Time((long*)timer);
 }
 
 rs_tm* rsLocaltime(rs_tm* local, const int *timer) {
     return (rs_tm*)(SC_LocalTime((tm*)local, (long*)timer));
 }
+#else
+time_t rsTime(time_t *timer) {
+    return SC_Time(timer);
+}
+
+rs_tm* rsLocaltime(rs_tm* local, const time_t *timer) {
+    return (rs_tm*)(SC_LocalTime((tm*)local, (time_t*)timer));
+}
+#endif
 
 int64_t rsUptimeMillis() {
     Context *rsc = RsdCpuReference::getTlsContext();
