@@ -77,7 +77,7 @@ typedef uint64_t ulong;
     typedef struct { const int* const p; } __attribute__((packed, aligned(4))) t;
 #else
 #define OPAQUETYPE(t) \
-    typedef struct { const void* p; const void* r; const void* v1; const void* v2; } t;
+    typedef struct { const long* const p; const long* const r; const long* const v1; const long* const v2; } t;
 #endif
 
 OPAQUETYPE(rs_element)
@@ -558,7 +558,6 @@ static bool SC_IsObject_ByRef(rs_object_base *o) {
 #endif
 
 
-#ifndef RS_COMPATIBILITY_LIB
 #ifndef __LP64__
 
 // i386 has different struct return passing to ARM; emulate with void*
@@ -592,7 +591,6 @@ static const android::renderscript::rs_allocation SC_GetAllocation(const void *p
     alloc->callUpdateCacheObject(rsc, &obj);
     return obj;
 }
-#endif
 #endif
 
 
@@ -1766,29 +1764,23 @@ IS_CLEAR_SET_OBJ(::rs_program_raster, _Z10rsIsObject17rs_program_raster, _Z11rsS
 IS_CLEAR_SET_OBJ(::rs_program_store, _Z10rsIsObject16rs_program_store, _Z11rsSetObjectP16rs_program_storeS_)
 IS_CLEAR_SET_OBJ(::rs_font, _Z10rsIsObject7rs_font, _Z11rsSetObjectP7rs_fontS_)
 
-
 #undef IS_CLEAR_SET_OBJ
 
+#ifdef __i386__
 #ifdef RS_COMPATIBILITY_LIB
-static const Allocation * SC_GetAllocation(const void *ptr) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    const Script *sc = RsdCpuReference::getTlsScript();
-    return rsdScriptGetAllocationForPointer(rsc, sc, ptr);
-}
-
-const Allocation * rsGetAllocation(const void *ptr) {
+const void* rsGetAllocation(const void *ptr) {
     return SC_GetAllocation(ptr);
 }
-
 #else
 const android::renderscript::rs_allocation rsGetAllocation(const void *ptr) {
-#ifdef __i386__
     android::renderscript::rs_allocation obj;
     obj.p = (Allocation *) SC_GetAllocation(ptr);
     return obj;
-#else
-    return SC_GetAllocation(ptr);
+}
 #endif
+#else
+const android::renderscript::rs_allocation rsGetAllocation(const void *ptr) {
+    return SC_GetAllocation(ptr);
 }
 #endif
 
@@ -1870,19 +1862,21 @@ void __attribute__((overloadable)) rsForEach(::rs_script script,
 int rsTime(int *timer) {
     return SC_Time(timer);
 }
-
-rs_tm* rsLocaltime(rs_tm* local, const int *timer) {
-    return (rs_tm*)(SC_LocalTime((tm*)local, (time_t *)timer));
-}
 #else
 time_t rsTime(time_t * timer) {
     return SC_Time(timer);
 }
+#endif
 
-rs_tm* rsLocaltime(rs_tm* local, const time_t *timer) {
-    return (rs_tm*)(SC_LocalTime((tm*)local, (time_t *)timer));
+#ifndef __LP64__
+rs_tm* rsLocaltime(rs_tm* local, const int *timer) {
+    return (rs_tm*)(SC_LocalTime((tm*)local, (long*)timer));
 }
-#endif // RS_COMPATIBILITY_LIB
+#else
+rs_tm* rsLocaltime(rs_tm* local, const time_t *timer) {
+    return (rs_tm*)(SC_LocalTime((tm*)local, (time_t*)timer));
+}
+#endif
 
 int64_t rsUptimeMillis() {
     Context *rsc = RsdCpuReference::getTlsContext();
