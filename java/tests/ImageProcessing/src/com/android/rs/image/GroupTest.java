@@ -16,17 +16,22 @@
 
 package com.android.rs.image;
 
-import java.lang.Math;
-
 import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
+import android.renderscript.Script;
 import android.renderscript.ScriptIntrinsicConvolve3x3;
 import android.renderscript.ScriptIntrinsicColorMatrix;
 import android.renderscript.Type;
 import android.renderscript.Matrix4f;
 import android.renderscript.ScriptGroup;
+import android.renderscript.ScriptGroup2;
+import android.renderscript.Closure;
+import android.renderscript.UnboundValue;
 import android.util.Log;
+
+import java.lang.Math;
+import java.util.HashMap;
 
 public class GroupTest extends TestBase {
     private ScriptIntrinsicConvolve3x3 mConvolve;
@@ -34,14 +39,18 @@ public class GroupTest extends TestBase {
 
     private Allocation mScratchPixelsAllocation1;
     private ScriptGroup mGroup;
+    private ScriptGroup2 mGroup2;
 
     private int mWidth;
     private int mHeight;
-    private boolean mUseNative;
+    private int mMode;
 
+    public static final int EMULATED = 0;
+    public static final int NATIVE1 = 1;
+    public static final int NATIVE2 = 2;
 
-    public GroupTest(boolean useNative) {
-        mUseNative = useNative;
+    public GroupTest(int mode) {
+        mMode = mode;
     }
 
     public void createTest(android.content.res.Resources res) {
@@ -68,25 +77,47 @@ public class GroupTest extends TestBase {
         tb.setY(mHeight);
         Type connect = tb.create();
 
-        if (mUseNative) {
+        switch (mMode) {
+          case NATIVE1:
             ScriptGroup.Builder b = new ScriptGroup.Builder(mRS);
             b.addKernel(mConvolve.getKernelID());
             b.addKernel(mMatrix.getKernelID());
             b.addConnection(connect, mConvolve.getKernelID(), mMatrix.getKernelID());
             mGroup = b.create();
-        } else {
+            break;
+          case NATIVE2:
+            ScriptGroup2.Builder b2 = new ScriptGroup2.Builder(mRS);
+            UnboundValue in = b2.addInput();
+            HashMap<Script.FieldID, Object> bindings = new HashMap<Script.FieldID, Object>();
+            bindings.put(mConvolve.getFieldID_Input(), in);
+            Closure c1 = b2.addKernel(mConvolve.getKernelID(), connect,
+                new Object[0], bindings);
+            Closure c2 = b2.addKernel(mMatrix.getKernelID(),
+                mOutPixelsAllocation.getType(), new Object[]{c1.getReturn()},
+                new HashMap<Script.FieldID, Object>());
+            mGroup2 = b2.create(c2.getReturn());
+            break;
+          case EMULATED:
             mScratchPixelsAllocation1 = Allocation.createTyped(mRS, connect);
+            break;
         }
     }
 
     public void runTest() {
-        mConvolve.setInput(mInPixelsAllocation);
-        if (mUseNative) {
+        switch (mMode) {
+          case NATIVE1:
+            mConvolve.setInput(mInPixelsAllocation);
             mGroup.setOutput(mMatrix.getKernelID(), mOutPixelsAllocation);
             mGroup.execute();
-        } else {
+            break;
+          case NATIVE2:
+            mOutPixelsAllocation = (Allocation)mGroup2.execute(mInPixelsAllocation)[0];
+            break;
+          case EMULATED:
+            mConvolve.setInput(mInPixelsAllocation);
             mConvolve.forEach(mScratchPixelsAllocation1);
             mMatrix.forEach(mScratchPixelsAllocation1, mOutPixelsAllocation);
+            break;
         }
     }
 
