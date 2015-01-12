@@ -271,15 +271,13 @@ static bool is_force_recompile() {
 #endif  // RS_SERVER
 }
 
-const static char *BCC_EXE_PATH = "/system/bin/bcc";
-
 static void setCompileArguments(std::vector<const char*>* args,
                                 const std::string& bcFileName,
                                 const char* cacheDir, const char* resName,
                                 const char* core_lib, bool useRSDebugContext,
                                 const char* bccPluginName) {
     rsAssert(cacheDir && resName && core_lib);
-    args->push_back(BCC_EXE_PATH);
+    args->push_back(android::renderscript::RsdCpuScriptImpl::BCC_EXE_PATH);
     args->push_back("-unroll-runtime");
     args->push_back("-scalarize-load-store");
     args->push_back("-o");
@@ -346,7 +344,8 @@ static bool compileBitcode(const std::string &bcFileName,
     }
     case 0: {  // Child process
         ALOGV("Invoking BCC with: %s", compileCommandLine.c_str());
-        execv(BCC_EXE_PATH, (char* const*)compileArguments);
+        execv(android::renderscript::RsdCpuScriptImpl::BCC_EXE_PATH,
+              (char* const*)compileArguments);
 
         ALOGE("execv() failed: %s", strerror(errno));
         abort();
@@ -434,6 +433,8 @@ static bool createSharedLib(const char *cacheDir, const char *resName) {
 
 namespace android {
 namespace renderscript {
+
+const char* RsdCpuScriptImpl::BCC_EXE_PATH = "/system/bin/bcc";
 
 #define MAXLINE 500
 #define MAKE_STR_HELPER(S) #S
@@ -847,6 +848,8 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
             return false;
         }
     }
+
+    mBitcodeFilePath = bcFileName;
 
     // if using the shared object path, read RS symbol information
     // from the .so.  Otherwise, read from the object files
