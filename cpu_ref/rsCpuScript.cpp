@@ -240,15 +240,13 @@ static bool is_force_recompile() {
 #endif  // RS_SERVER
 }
 
-const static char *BCC_EXE_PATH = "/system/bin/bcc";
-
 static void setCompileArguments(std::vector<const char*>* args,
                                 const std::string& bcFileName,
                                 const char* cacheDir, const char* resName,
                                 const char* core_lib, bool useRSDebugContext,
                                 const char* bccPluginName) {
     rsAssert(cacheDir && resName && core_lib);
-    args->push_back(BCC_EXE_PATH);
+    args->push_back(android::renderscript::RsdCpuScriptImpl::BCC_EXE_PATH);
     args->push_back("-unroll-runtime");
     args->push_back("-scalarize-load-store");
     args->push_back("-o");
@@ -310,7 +308,8 @@ static bool compileBitcode(const std::string &bcFileName,
     }
     case 0: {  // Child process
         ALOGV("Invoking BCC with: %s", compileCommandLine.c_str());
-        execv(BCC_EXE_PATH, (char* const*)compileArguments);
+        execv(android::renderscript::RsdCpuScriptImpl::BCC_EXE_PATH,
+              (char* const*)compileArguments);
 
         ALOGE("execv() failed: %s", strerror(errno));
         abort();
@@ -340,6 +339,8 @@ static bool compileBitcode(const std::string &bcFileName,
 
 namespace android {
 namespace renderscript {
+
+const char* RsdCpuScriptImpl::BCC_EXE_PATH = "/system/bin/bcc";
 
 #ifdef RS_COMPATIBILITY_LIB
 #define MAXLINE 500
@@ -489,6 +490,8 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
             return false;
         }
     }
+
+    mBitcodeFilePath = bcFileName;
 
     mExecutable->setThreadable(mIsThreadable);
     if (!mExecutable->syncInfo()) {
@@ -734,12 +737,6 @@ error:
 }
 
 #ifndef RS_COMPATIBILITY_LIB
-
-#ifdef __LP64__
-#define SYSLIBPATH "/system/lib64"
-#else
-#define SYSLIBPATH "/system/lib"
-#endif
 
 const char* RsdCpuScriptImpl::findCoreLib(const bcinfo::MetadataExtractor& ME, const char* bitcode,
                                           size_t bitcodeSize) {
