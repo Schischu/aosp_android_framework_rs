@@ -223,6 +223,13 @@ protected:
     Allocation **mBoundAllocs;
     void * mIntrinsicData;
     bool mIsThreadable;
+
+ public:
+  static const char* BCC_EXE_PATH;
+  const std::string& getBitcodeFilePath() const { return mBitcodeFilePath; }
+
+ private:
+  std::string mBitcodeFilePath;
 };
 
 Allocation * rsdScriptGetAllocationForPointer(
@@ -230,9 +237,13 @@ Allocation * rsdScriptGetAllocationForPointer(
                         const Script *script,
                         const void *);
 
-
-
 }
+
+#ifdef __LP64__
+#define SYSLIBPATH "/system/lib64"
+#else
+#define SYSLIBPATH "/system/lib"
+#endif
 
 }
 
