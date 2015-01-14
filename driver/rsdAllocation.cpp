@@ -472,6 +472,72 @@ bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
     return true;
 }
 
+void rsdAllocationAdapterOffset(const Context *rsc, Allocation *alloc) {
+
+    // Get a base pointer to the new LOD
+    const Allocation *base = alloc->mHal.state.baseAlloc;
+    if (base == nullptr) {
+        return;
+    }
+
+
+
+}
+
+bool rsdAllocationAdapterInit(const Context *rsc, Allocation *alloc) {
+    DrvAllocation *drv = (DrvAllocation *)calloc(1, sizeof(DrvAllocation));
+    if (!drv) {
+        return false;
+    }
+    alloc->mHal.drv = drv;
+
+    // We need to build an allocation that looks like a subset of the parent allocation
+
+
+
+
+
+
+
+struct DrvAllocation {
+    // Is this a legal structure to be used as a texture source.
+    // Initially this will require 1D or 2D and color data
+    uint32_t textureID;
+
+    // Is this a legal structure to be used as a vertex source.
+    // Initially this will require 1D and x(yzw).  Additional per element data
+    // is allowed.
+    uint32_t bufferID;
+
+    // Is this a legal structure to be used as an FBO render target
+    uint32_t renderTargetID;
+
+#ifndef RS_COMPATIBILITY_LIB
+    GLenum glTarget;
+    GLenum glType;
+    GLenum glFormat;
+
+    ANativeWindowBuffer *wndBuffer;
+    android::GLConsumer *surfaceTexture;
+#else
+    int glTarget;
+    int glType;
+    int glFormat;
+
+    ANativeWindow_Buffer *wndBuffer;
+#endif
+
+    bool useUserProvidedPtr;
+    bool uploadDeferred;
+
+    RsdFrameBufferObj * readBackFBO;
+    ANativeWindow *wnd;
+    ANativeWindow *wndSurface;
+};
+
+
+}
+
 void rsdAllocationDestroy(const Context *rsc, Allocation *alloc) {
     DrvAllocation *drv = (DrvAllocation *)alloc->mHal.drv;
 
