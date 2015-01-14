@@ -172,9 +172,10 @@ static void *loadSOHelper(const char *origName, const char *cacheDir,
 // cache dir) and then load that. We then immediately destroy the copy.
 // This is required behavior to implement script instancing for the support
 // library, since shared objects are loaded and de-duped by name only.
-static void *loadSharedLibrary(const char *cacheDir, const char *resName) {
+static void *loadSharedLibrary(const char *nativeLibDir, const char *cacheDir, const char *resName) {
     void *loaded = nullptr;
 #ifndef RS_SERVER
+#ifndef __LP64__
     std::string scriptSOName(cacheDir);
     size_t cutPos = scriptSOName.rfind("cache");
     if (cutPos != std::string::npos) {
@@ -183,6 +184,10 @@ static void *loadSharedLibrary(const char *cacheDir, const char *resName) {
         ALOGE("Found peculiar cacheDir (missing \"cache\"): %s", cacheDir);
     }
     scriptSOName.append("/lib/librs.");
+#else
+    std::string scriptSOName(nativeLibDir);
+    scriptSOName.append("/librs.");
+#endif
 #else
     std::string scriptSOName("lib");
 #endif
@@ -515,8 +520,8 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
     }
 
 #else  // RS_COMPATIBILITY_LIB is defined
-
-    mScriptSO = loadSharedLibrary(cacheDir, resName);
+    char *nativeLibDir = mCtx->getContext()->getNativeLibDir();
+    mScriptSO = loadSharedLibrary(nativeLibDir, cacheDir, resName);
 
     if (mScriptSO) {
         char line[MAXLINE];
