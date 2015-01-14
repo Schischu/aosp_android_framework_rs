@@ -182,10 +182,9 @@ static void *loadSOHelper(const char *origName, const char *cacheDir,
 
 static std::string findSharedObjectName(const char *cacheDir,
                                         const char *resName) {
-
 #ifndef RS_SERVER
     std::string scriptSOName(cacheDir);
-#ifdef RS_COMPATIBILITY_LIB
+#if defined(RS_COMPATIBILITY_LIB) && !defined(__LP64__)
     size_t cutPos = scriptSOName.rfind("cache");
     if (cutPos != std::string::npos) {
         scriptSOName.erase(cutPos);
@@ -195,11 +194,11 @@ static std::string findSharedObjectName(const char *cacheDir,
     scriptSOName.append("/lib/librs.");
 #else
     scriptSOName.append("/librs.");
-#endif
+#endif // RS_COMPATIBILITY_LIB
 
 #else
     std::string scriptSOName("lib");
-#endif
+#endif // RS_SERVER
     scriptSOName.append(resName);
     scriptSOName.append(".so");
 
@@ -211,10 +210,19 @@ static std::string findSharedObjectName(const char *cacheDir,
 // cache dir) and then load that. We then immediately destroy the copy.
 // This is required behavior to implement script instancing for the support
 // library, since shared objects are loaded and de-duped by name only.
+// For 64bit Compat lib, we also need the Native Lib Path.
+#ifndef RS_COMPATIBILITY_LIB
 static void *loadSharedLibrary(const char *cacheDir, const char *resName) {
+#else
+static void *loadSharedLibrary(const char *nativeLibDir, const char *cacheDir, const char *resName) {
+#endif
     void *loaded = nullptr;
 
+#if defined(RS_COMPATIBILITY_LIB) && defined(__LP64__)
+    std::string scriptSOName = findSharedObjectName(nativeLibDir, resName);
+#else
     std::string scriptSOName = findSharedObjectName(cacheDir, resName);
+#endif
 
     // We should check if we can load the library from the standard app
     // location for shared libraries first.
@@ -881,8 +889,8 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
         }
     }
 #else  // RS_COMPATIBILITY_LIB is defined
-
-    mScriptSO = loadSharedLibrary(cacheDir, resName);
+    const char *nativeLibDir = mCtx->getContext()->getNativeLibDir();
+    mScriptSO = loadSharedLibrary(nativeLibDir, cacheDir, resName);
 
     if (!mScriptSO) {
         goto error;

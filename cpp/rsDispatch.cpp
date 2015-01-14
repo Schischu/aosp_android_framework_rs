@@ -22,6 +22,11 @@
 #define LOG_API(...)
 
 bool loadSymbols(void* handle, dispatchTable& dispatchTab) {
+    //fucntion to set the native lib path for 64bit compat lib.
+    dispatchTab.SetNativeLibDir = (SetNativeLibDirFnPtr)dlsym(handle, "rsaContextSetNativeLibDir");
+    if (dispatchTab.SetNativeLibDir == NULL) {
+        LOG_API("Couldn't initialize dispatchTab.SetNativeLibDir");
+    }
 
     dispatchTab.AllocationGetType = (AllocationGetTypeFnPtr)dlsym(handle, "rsaAllocationGetType");
     if (dispatchTab.AllocationGetType == NULL) {
