@@ -51,7 +51,7 @@ class SharedLibraryUtils {
   // cache dir) and then load that. We then immediately destroy the copy.
   // This is required behavior to implement script instancing for the support
   // library, since shared objects are loaded and de-duped by name only.
-  static void* loadSharedLibrary(const char* cacheDir, const char* resName);
+  static void* loadSharedLibrary(const char *nativeLibDir, const char *cacheDir, const char *resName);
 
  private:
   // Attempt to load the shared library from origName, but then fall back to
