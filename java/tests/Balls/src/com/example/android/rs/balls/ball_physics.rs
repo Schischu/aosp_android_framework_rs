@@ -29,6 +29,8 @@ void touch(float x, float y, float pressure, int id) {
 }
 
 void root(Ball_t *ball, uint32_t x) {
+    //rsDebug("X", x);
+    //rsDebug("p", ball);
     float2 fv = 0;
     float pressure = 0;
     float2 pos = ball->position;

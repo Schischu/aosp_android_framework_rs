@@ -353,6 +353,21 @@ void RsdCpuScriptIntrinsicBlur::kernelU4(const RsExpandKernelParams *p,
 void RsdCpuScriptIntrinsicBlur::kernelU1(const RsExpandKernelParams *p,
                                          uint32_t xstart, uint32_t xend,
                                          uint32_t outstep) {
+
+    ALOGE("RsdCpuScriptIntrinsicBlur::kernelU1");
+
+    ALOGE("ins %p", p->ins);
+    ALOGE("inEStrides %p", p->inEStrides);
+    ALOGE("out %p", p->out);
+    ALOGE("y, z, lid  %i, %i, %i", p->y, p->z, p->lid);
+
+    ALOGE("usr %p", p->usr);
+    ALOGE("dim %i %i %i", p->dimX, p->dimY, p->dimZ);
+    ALOGE("slot %i", p->slot);
+
+    ALOGE("ins %p[0]", p->ins[0]);
+
+
     float buf[4 * 2048];
     RsdCpuScriptIntrinsicBlur *cp = (RsdCpuScriptIntrinsicBlur *)p->usr;
     if (!cp->mAlloc.get()) {
@@ -420,6 +435,7 @@ RsdCpuScriptIntrinsicBlur::RsdCpuScriptIntrinsicBlur(RsdCpuReferenceImpl *ctx,
                                                      const Script *s, const Element *e)
             : RsdCpuScriptIntrinsic(ctx, s, e, RS_SCRIPT_INTRINSIC_ID_BLUR) {
 
+    ALOGE("RsdCpuScriptIntrinsicBlur");
     mRootPtr = nullptr;
     if (e->getType() == RS_TYPE_UNSIGNED_8) {
         switch (e->getVectorSize()) {
