@@ -39,7 +39,60 @@ namespace bcinfo {
 namespace android {
 namespace renderscript {
 
+class ScriptExecutable {
+ public:
+  ScriptExecutable(Context* RSContext,
+                   size_t varCount, void* fieldAddress[], bool fieldIsObject[],
+                   size_t funcCount, InvokeFunc_t invokeFunctions[],
+                   size_t forEachCount, ForEachFunc_t forEachFunctions[],
+                   uint32_t forEachSignatures[]) :
+      mExportedVariableCount(varCount), mExportedFunctionCount(funcCount),
+      mExportedForEachCount(forEachCount),
+      mFieldAddress(fieldAddress), mFieldIsObject(fieldIsObject),
+      mInvokeFunctions(invokeFunctions), mForEachFunctions(forEachFunctions),
+      mForEachSignatures(forEachSignatures),
+      mRS(RSContext) {}
 
+  ~ScriptExecutable() {
+      if (mFieldIsObject) {
+          for (size_t i = 0; i < mExportedVariableCount; ++i) {
+              if (mFieldIsObject[i]) {
+                  if (mFieldAddress[i] != nullptr) {
+                      rs_object_base *obj_addr =
+                          reinterpret_cast<rs_object_base *>((mFieldAddress.get())[i]);
+                      rsrClearObject(mRS, obj_addr);
+                  }
+              }
+          }
+      }
+  }
+
+  static ScriptExecutable*
+  createFromSharedObject(Context* RSContext, void* sharedObj);
+
+  size_t getExportedVariableCount() const { return mExportedVariableCount; }
+  size_t getExportedFunctionCount() const { return mExportedFunctionCount; }
+  size_t getExportedForEachCount() const { return mExportedForEachCount; }
+
+  void** getFieldAddress() const { return mFieldAddress.get(); }
+  bool* getFieldIsObject() const { return mFieldIsObject.get(); }
+  InvokeFunc_t* getInvokeFunctions() const { return mInvokeFunctions.get(); }
+  ForEachFunc_t* getForEachFunctions() const { return mForEachFunctions.get(); }
+  uint32_t* getForEachSignatures() const { return mForEachSignatures.get(); }
+
+ private:
+  const size_t mExportedVariableCount;
+  const size_t mExportedFunctionCount;
+  const size_t mExportedForEachCount;
+
+  std::unique_ptr<void*[]> mFieldAddress;
+  std::unique_ptr<bool[]> mFieldIsObject;
+  std::unique_ptr<InvokeFunc_t[]> mInvokeFunctions;
+  std::unique_ptr<ForEachFunc_t[]> mForEachFunctions;
+  std::unique_ptr<uint32_t[]> mForEachSignatures;
+
+  Context* mRS;
+};
 
 class RsdCpuScriptImpl : public RsdCpuReferenceImpl::CpuScript {
 public:
@@ -124,15 +177,7 @@ protected:
     RootFunc_t mRootExpand;
     InvokeFunc_t mInit;
     InvokeFunc_t mFreeChildren;
-    InvokeFunc_t *mInvokeFunctions;
-    ForEachFunc_t *mForEachFunctions;
-
-    void **mFieldAddress;
-    bool *mFieldIsObject;
-    uint32_t *mForEachSignatures;
-
-    size_t mExportedVariableCount;
-    size_t mExportedFunctionCount;
+    std::unique_ptr<ScriptExecutable> mScriptExec;
 
     Allocation **mBoundAllocs;
     void * mIntrinsicData;
@@ -147,6 +192,7 @@ Allocation * rsdScriptGetAllocationForPointer(
 
 
 }
+
 }
 
 #endif
