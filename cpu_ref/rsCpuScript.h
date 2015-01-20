@@ -21,8 +21,6 @@
 #include <rsRuntime.h>
 
 #ifndef RS_COMPATIBILITY_LIB
-#include <bcc/ExecutionEngine/CompilerRTSymbolResolver.h>
-#include <bcc/ExecutionEngine/SymbolResolverProxy.h>
 #include <vector>
 #include <utility>
 #endif
@@ -32,7 +30,6 @@
 namespace bcc {
     class BCCContext;
     class RSCompilerDriver;
-    class RSExecutable;
 }
 
 namespace bcinfo {
@@ -110,11 +107,6 @@ public:
     virtual Allocation * getAllocationForPointer(const void *ptr) const;
     bool storeRSInfoFromSO();
 
-#ifndef RS_COMPATIBILITY_LIB
-    bool storeRSInfoFromObj(bcinfo::MetadataExtractor &bitcodeMetadata);
-    virtual  void * getRSExecutable() { return mExecutable; }
-#endif
-
 protected:
     RsdCpuReferenceImpl *mCtx;
     const Script *mScript;
@@ -140,10 +132,6 @@ protected:
     std::vector<std::pair<const char *, uint32_t> > mExportedForEachFuncList;
 
     bcc::RSCompilerDriver *mCompilerDriver;
-    bcc::CompilerRTSymbolResolver mCompilerRuntime;
-    bcc::LookupFunctionSymbolResolver<void *> mRSRuntime;
-    bcc::SymbolResolverProxy mResolver;
-    bcc::RSExecutable *mExecutable;
 #else
     RootFunc_t mRoot;
     RootFunc_t mRootExpand;
