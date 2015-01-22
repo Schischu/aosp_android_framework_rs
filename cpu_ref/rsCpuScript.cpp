@@ -205,45 +205,6 @@ static std::string findSharedObjectName(const char *cacheDir,
     return scriptSOName;
 }
 
-// Load the shared library referred to by cacheDir and resName. If we have
-// already loaded this library, we instead create a new copy (in the
-// cache dir) and then load that. We then immediately destroy the copy.
-// This is required behavior to implement script instancing for the support
-// library, since shared objects are loaded and de-duped by name only.
-static void *loadSharedLibrary(const char *cacheDir, const char *resName) {
-    void *loaded = nullptr;
-
-    std::string scriptSOName = findSharedObjectName(cacheDir, resName);
-
-    // We should check if we can load the library from the standard app
-    // location for shared libraries first.
-    loaded = loadSOHelper(scriptSOName.c_str(), cacheDir, resName);
-
-    if (loaded == nullptr) {
-        ALOGE("Unable to open shared library (%s): %s",
-              scriptSOName.c_str(), dlerror());
-
-#ifdef RS_COMPATIBILITY_LIB
-        // One final attempt to find the library in "/system/lib".
-        // We do this to allow bundled applications to use the compatibility
-        // library fallback path. Those applications don't have a private
-        // library path, so they need to install to the system directly.
-        // Note that this is really just a testing path.
-        std::string scriptSONameSystem("/system/lib/librs.");
-        scriptSONameSystem.append(resName);
-        scriptSONameSystem.append(".so");
-        loaded = loadSOHelper(scriptSONameSystem.c_str(), cacheDir,
-                              resName);
-        if (loaded == nullptr) {
-            ALOGE("Unable to open system shared library (%s): %s",
-                  scriptSONameSystem.c_str(), dlerror());
-        }
-#endif
-    }
-
-    return loaded;
-}
-
 #ifndef RS_COMPATIBILITY_LIB
 
 static bool is_force_recompile() {
@@ -366,9 +327,17 @@ static bool compileBitcode(const std::string &bcFileName,
     }
 }
 
-const static char *LD_EXE_PATH = "/system/bin/ld.mc";
+#endif  // !defined(RS_COMPATIBILITY_LIB)
+}  // namespace
 
-static bool createSharedLib(const char *cacheDir, const char *resName) {
+namespace android {
+namespace renderscript {
+
+const char* SharedLibraryUtils::LD_EXE_PATH = "/system/bin/ld.mc";
+
+#ifndef RS_COMPATIBILITY_LIB
+
+bool SharedLibraryUtils::createSharedLibrary(const char *cacheDir, const char *resName) {
     std::string sharedLibName = findSharedObjectName(cacheDir, resName);
     std::string objFileName = cacheDir;
     objFileName.append("/");
@@ -424,11 +393,42 @@ static bool createSharedLib(const char *cacheDir, const char *resName) {
     }
     }
 }
-#endif  // !defined(RS_COMPATIBILITY_LIB)
-}  // namespace
 
-namespace android {
-namespace renderscript {
+#endif  // RS_COMPATIBILITY_LIB
+
+void* SharedLibraryUtils::loadSharedLibrary(const char *cacheDir, const char *resName) {
+    void *loaded = nullptr;
+
+    std::string scriptSOName = findSharedObjectName(cacheDir, resName);
+
+    // We should check if we can load the library from the standard app
+    // location for shared libraries first.
+    loaded = loadSOHelper(scriptSOName.c_str(), cacheDir, resName);
+
+    if (loaded == nullptr) {
+        ALOGE("Unable to open shared library (%s): %s",
+              scriptSOName.c_str(), dlerror());
+
+#ifdef RS_COMPATIBILITY_LIB
+        // One final attempt to find the library in "/system/lib".
+        // We do this to allow bundled applications to use the compatibility
+        // library fallback path. Those applications don't have a private
+        // library path, so they need to install to the system directly.
+        // Note that this is really just a testing path.
+        std::string scriptSONameSystem("/system/lib/librs.");
+        scriptSONameSystem.append(resName);
+        scriptSONameSystem.append(".so");
+        loaded = loadSOHelper(scriptSONameSystem.c_str(), cacheDir,
+                              resName);
+        if (loaded == nullptr) {
+            ALOGE("Unable to open system shared library (%s): %s",
+                  scriptSONameSystem.c_str(), dlerror());
+        }
+#endif
+    }
+
+    return loaded;
+}
 
 #define MAXLINE 500
 #define MAKE_STR_HELPER(S) #S
@@ -706,7 +706,7 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
                 bcc::getCommandLine(compileArguments.size() - 1, compileArguments.data());
 
     if (!is_force_recompile()) {
-        mScriptSO = loadSharedLibrary(cacheDir, resName);
+        mScriptSO = SharedLibraryUtils::loadSharedLibrary(cacheDir, resName);
     }
 
     // If we can't, it's either not there or out of date.  We compile the bit code and try loading
@@ -720,13 +720,13 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
             return false;
         }
 
-        if (!createSharedLib(cacheDir, resName)) {
+        if (!SharedLibraryUtils::createSharedLibrary(cacheDir, resName)) {
             ALOGE("Linker: Failed to link object file '%s'", resName);
             mCtx->unlockMutex();
             return false;
         }
 
-        mScriptSO = loadSharedLibrary(cacheDir, resName);
+        mScriptSO = SharedLibraryUtils::loadSharedLibrary(cacheDir, resName);
         if (mScriptSO == nullptr) {
             ALOGE("Unable to load '%s'", resName);
             mCtx->unlockMutex();
@@ -744,7 +744,7 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
     }
 #else  // RS_COMPATIBILITY_LIB is defined
 
-    mScriptSO = loadSharedLibrary(cacheDir, resName);
+    mScriptSO = SharedLibraryUtils::loadSharedLibrary(cacheDir, resName);
 
     if (!mScriptSO) {
         goto error;
