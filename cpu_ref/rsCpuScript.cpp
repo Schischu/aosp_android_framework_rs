@@ -950,44 +950,86 @@ void RsdCpuScriptImpl::forEachMtlsSetup(const Allocation ** ains,
     }
 
     if (!sc || (sc->xEnd == 0)) {
-        mtls->xEnd = mtls->fep.dim.x;
+        mtls->end.x = mtls->fep.dim.x;
     } else {
         rsAssert(sc->xStart < mtls->fep.dim.x);
         rsAssert(sc->xEnd <= mtls->fep.dim.x);
         rsAssert(sc->xStart < sc->xEnd);
-        mtls->xStart = rsMin(mtls->fep.dim.x, sc->xStart);
-        mtls->xEnd = rsMin(mtls->fep.dim.x, sc->xEnd);
-        if (mtls->xStart >= mtls->xEnd) return;
+        mtls->start.x = rsMin(mtls->fep.dim.x, sc->xStart);
+        mtls->end.x = rsMin(mtls->fep.dim.x, sc->xEnd);
+        if (mtls->start.x >= mtls->end.x) return;
     }
 
     if (!sc || (sc->yEnd == 0)) {
-        mtls->yEnd = mtls->fep.dim.y;
+        mtls->end.y = mtls->fep.dim.y;
     } else {
         rsAssert(sc->yStart < mtls->fep.dim.y);
         rsAssert(sc->yEnd <= mtls->fep.dim.y);
         rsAssert(sc->yStart < sc->yEnd);
-        mtls->yStart = rsMin(mtls->fep.dim.y, sc->yStart);
-        mtls->yEnd = rsMin(mtls->fep.dim.y, sc->yEnd);
-        if (mtls->yStart >= mtls->yEnd) return;
+        mtls->start.y = rsMin(mtls->fep.dim.y, sc->yStart);
+        mtls->end.y = rsMin(mtls->fep.dim.y, sc->yEnd);
+        if (mtls->start.y >= mtls->end.y) return;
     }
 
     if (!sc || (sc->zEnd == 0)) {
-        mtls->zEnd = mtls->fep.dim.z;
+        mtls->end.z = mtls->fep.dim.z;
     } else {
         rsAssert(sc->zStart < mtls->fep.dim.z);
         rsAssert(sc->zEnd <= mtls->fep.dim.z);
         rsAssert(sc->zStart < sc->zEnd);
-        mtls->zStart = rsMin(mtls->fep.dim.z, sc->zStart);
-        mtls->zEnd = rsMin(mtls->fep.dim.z, sc->zEnd);
-        if (mtls->zStart >= mtls->zEnd) return;
+        mtls->start.z = rsMin(mtls->fep.dim.z, sc->zStart);
+        mtls->end.z = rsMin(mtls->fep.dim.z, sc->zEnd);
+        if (mtls->start.z >= mtls->end.z) return;
     }
 
-    mtls->xEnd     = rsMax((uint32_t)1, mtls->xEnd);
-    mtls->yEnd     = rsMax((uint32_t)1, mtls->yEnd);
-    mtls->zEnd     = rsMax((uint32_t)1, mtls->zEnd);
-    mtls->arrayEnd = rsMax((uint32_t)1, mtls->arrayEnd);
+    if (!sc || (sc->arrayEnd == 0)) {
+        mtls->end.array[0] = mtls->fep.dim.array[0];
+    } else {
+        rsAssert(sc->arrayStart < mtls->fep.dim.array[0]);
+        rsAssert(sc->arrayEnd <= mtls->fep.dim.array[0]);
+        rsAssert(sc->arrayStart < sc->arrayEnd);
+        mtls->start.array[0] = rsMin(mtls->fep.dim.array[0], sc->arrayStart);
+        mtls->end.array[0] = rsMin(mtls->fep.dim.array[0], sc->arrayEnd);
+        if (mtls->start.array[0] >= mtls->end.array[0]) return;
+    }
 
-    rsAssert(inLen == 0 || (ains[0]->getType()->getDimZ() == 0));
+    if (!sc || (sc->array2End == 0)) {
+        mtls->end.array[1] = mtls->fep.dim.array[1];
+    } else {
+        rsAssert(sc->array2Start < mtls->fep.dim.array[1]);
+        rsAssert(sc->array2End <= mtls->fep.dim.array[1]);
+        rsAssert(sc->array2Start < sc->array2End);
+        mtls->start.array[1] = rsMin(mtls->fep.dim.array[1], sc->array2Start);
+        mtls->end.array[1] = rsMin(mtls->fep.dim.array[1], sc->array2End);
+        if (mtls->start.array[1] >= mtls->end.array[1]) return;
+    }
+
+    if (!sc || (sc->array3End == 0)) {
+        mtls->end.array[2] = mtls->fep.dim.array[2];
+    } else {
+        rsAssert(sc->array3Start < mtls->fep.dim.array[2]);
+        rsAssert(sc->array3End <= mtls->fep.dim.array[2]);
+        rsAssert(sc->array3Start < sc->array3End);
+        mtls->start.array[2] = rsMin(mtls->fep.dim.array[2], sc->array3Start);
+        mtls->end.array[2] = rsMin(mtls->fep.dim.array[2], sc->array3End);
+        if (mtls->start.array[2] >= mtls->end.array[2]) return;
+    }
+
+    if (!sc || (sc->array4End == 0)) {
+        mtls->end.array[3] = mtls->fep.dim.array[3];
+    } else {
+        rsAssert(sc->array4Start < mtls->fep.dim.array[3]);
+        rsAssert(sc->array4End <= mtls->fep.dim.array[3]);
+        rsAssert(sc->array4Start < sc->array4End);
+        mtls->start.array[3] = rsMin(mtls->fep.dim.array[3], sc->array4Start);
+        mtls->end.array[3] = rsMin(mtls->fep.dim.array[3], sc->array4End);
+        if (mtls->start.array[3] >= mtls->end.array[3]) return;
+    }
+
+
+    // The X & Y walkers always want 0-1 min even if dim is not present
+    mtls->end.x    = rsMax((uint32_t)1, mtls->end.x);
+    mtls->end.y    = rsMax((uint32_t)1, mtls->end.y);
 
     mtls->rsc        = mCtx;
     if (ains) {
