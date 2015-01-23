@@ -705,7 +705,7 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
     std::string compileCommandLine =
                 bcc::getCommandLine(compileArguments.size() - 1, compileArguments.data());
 
-    if (!is_force_recompile()) {
+    if (!is_force_recompile() && !useRSDebugContext) {
         mScriptSO = loadSharedLibrary(cacheDir, resName);
     }
 
