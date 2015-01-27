@@ -765,12 +765,8 @@ error:
 
 #ifndef RS_COMPATIBILITY_LIB
     for (size_t idx = 0; idx < pragmaCount; ++idx) {
-        if (pragmaKeys[idx] != nullptr) {
-            delete [] pragmaKeys[idx];
-        }
-        if (pragmaValues[idx] != nullptr) {
-            delete [] pragmaValues[idx];
-        }
+        delete [] pragmaKeys[idx];
+        delete [] pragmaValues[idx];
     }
 
     delete[] pragmaValues;
@@ -898,6 +894,7 @@ error:
     mCtx->unlockMutex();
     if (mScriptSO) {
         dlclose(mScriptSO);
+        mScriptSO = nullptr;
     }
     return false;
 }
