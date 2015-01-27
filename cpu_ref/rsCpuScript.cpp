@@ -638,7 +638,6 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
 
     std::vector<bool> fieldIsObject(varCount, false);
 
-    rsAssert(varCount > 0);
     for (size_t i = 0; i < objectSlotCount; ++i) {
         uint32_t varNum = 0;
         if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
@@ -847,6 +846,7 @@ error:
     mCtx->unlockMutex();
     if (mScriptSO) {
         dlclose(mScriptSO);
+        mScriptSO = nullptr;
     }
     return false;
 }
