@@ -129,6 +129,22 @@ RsA3DClassID ScriptKernelID::getClassId() const {
     return RS_A3D_CLASS_ID_SCRIPT_KERNEL_ID;
 }
 
+ScriptInvokeID::ScriptInvokeID(Context *rsc, Script *s, int slot)
+    : ObjectBase(rsc) {
+    mScript = s;
+    mSlot = slot;
+}
+
+ScriptInvokeID::~ScriptInvokeID() {
+}
+
+void ScriptInvokeID::serialize(Context *rsc, OStream *stream) const {
+}
+
+RsA3DClassID ScriptInvokeID::getClassId() const {
+    return RS_A3D_CLASS_ID_SCRIPT_INVOKE_ID;
+}
+
 ScriptFieldID::ScriptFieldID(Context *rsc, Script *s, int slot) : ObjectBase(rsc) {
     mScript = s;
     mSlot = slot;
@@ -154,6 +170,12 @@ RsScriptKernelID rsi_ScriptKernelIDCreate(Context *rsc, RsScript vs, int slot, i
     ScriptKernelID *kid = new ScriptKernelID(rsc, (Script *)vs, slot, sig);
     kid->incUserRef();
     return kid;
+}
+
+RsScriptInvokeID rsi_ScriptInvokeIDCreate(Context *rsc, RsScript vs, uint32_t slot) {
+    ScriptInvokeID *iid = new ScriptInvokeID(rsc, (Script *)vs, slot);
+    iid->incUserRef();
+    return iid;
 }
 
 RsScriptFieldID rsi_ScriptFieldIDCreate(Context *rsc, RsScript vs, int slot) {

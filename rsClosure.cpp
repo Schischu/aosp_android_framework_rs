@@ -27,6 +27,18 @@ RsClosure rsi_ClosureCreate(Context* context, RsScriptKernelID kernelID,
       (const ScriptFieldID**)depFieldIDs));
 }
 
+RsClosure rsi_InvokeClosureCreate(Context* context, RsScriptInvokeID invokeID,
+                                  const void* params, const size_t paramLength,
+                                  const RsScriptFieldID* fieldIDs, const size_t fieldIDs_length,
+                                  const uintptr_t* values, const size_t values_length,
+                                  const size_t* sizes, const size_t sizes_length) {
+  rsAssert(fieldIDs_length == values_length && values_length == sizes_length);
+  return (RsClosure)(new Closure(
+      context, (const ScriptInvokeID*)invokeID, params, paramLength,
+      fieldIDs_length, (const ScriptFieldID**)fieldIDs, (const void**)values,
+      sizes));
+}
+
 void rsi_ClosureEval(Context* rsc, RsClosure closure) {
   ((Closure*)closure)->eval();
 }
@@ -53,7 +65,8 @@ Closure::Closure(Context* context,
                  const Closure** depClosures,
                  const ScriptFieldID** depFieldIDs) :
     ObjectBase(context), mContext(context), mKernelID((ScriptKernelID*)kernelID),
-    mReturnValue(returnValue) {
+    mInvokeID(nullptr), mReturnValue(returnValue), mParams(nullptr),
+    mParamLength(0) {
   size_t i;
 
   for (i = 0; i < (size_t)numValues && fieldIDs[i] == nullptr; i++);
@@ -94,6 +107,17 @@ Closure::Closure(Context* context,
           new ObjectBaseRef<ScriptFieldID>(
               const_cast<ScriptFieldID*>(depFieldIDs[i]));
     }
+  }
+}
+
+Closure::Closure(Context* context, const ScriptInvokeID* invokeID,
+                 const void* params, const size_t paramLength,
+                 const size_t numValues, const ScriptFieldID** fieldIDs,
+                 const void** values, const size_t* sizes) :
+    ObjectBase(context), mContext(context), mKernelID(nullptr), mInvokeID(invokeID),
+    mReturnValue(nullptr), mParams(params), mParamLength(paramLength) {
+  for (size_t i = 0; i < numValues; i++) {
+    mGlobals[fieldIDs[i]] = std::make_pair(values[i], sizes[i]);
   }
 }
 

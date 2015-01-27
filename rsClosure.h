@@ -18,7 +18,9 @@ using std::vector;
 
 class Allocation;
 class Context;
+class ObjectBase;
 class ScriptFieldID;
+class ScriptInvokeID;
 class ScriptKernelID;
 class Type;
 
@@ -30,9 +32,17 @@ class Closure : public ObjectBase {
           const int numValues,
           const ScriptFieldID** fieldIDs,
           const void** values,  // Allocations or primitive (numeric) types
-          const size_t* sizes,   // size for data type. -1 indicates an allocation.
+          const size_t* sizes,  // size for data type. -1 indicates an allocation.
           const Closure** depClosures,
           const ScriptFieldID** depFieldIDs);
+  Closure(Context* context,
+          const ScriptInvokeID* invokeID,
+          const void* params,
+          const size_t paramLength,
+          const size_t numValues,
+          const ScriptFieldID** fieldIDs,
+          const void** values,  // Allocations or primitive (numeric) types
+          const size_t* sizes);  // size for data type. -1 indicates an allocation.
 
   virtual ~Closure();
 
@@ -47,14 +57,21 @@ class Closure : public ObjectBase {
                  const size_t size);
 
   Context* mContext;
+
+  // If mKernelID is not null, this is a closure for a kernel. Otherwise, it is
+  // a closure for an invoke function, whose id is the next field. At least one
+  // of these fields has to be non-null.
   const ObjectBaseRef<ScriptKernelID> mKernelID;
+  // TODO(yangni): ObjectBaseRef<ScriptInvokeID>
+  const ScriptInvokeID* mInvokeID;
 
   // Values referrenced in arguments and globals cannot be futures. They must be
   // either a known value or unbound value.
   // For now, all arguments should be Allocations.
   vector<const void*> mArgs;
 
-  // A global could be allocation or any primitive data type.
+  // A global could be allocation or any other data type, including primitive
+  // data types.
   map<const ScriptFieldID*, pair<const void*, int>> mGlobals;
 
   Allocation* mReturnValue;
@@ -70,6 +87,9 @@ class Closure : public ObjectBase {
   // and the fields that it depends on.
   map<const Closure*, map<const ObjectBaseRef<ScriptFieldID>*,
                           const ObjectBaseRef<ScriptFieldID>*>*> mGlobalDeps;
+
+  const void* mParams;
+  const size_t mParamLength;
 };
 
 }  // namespace renderscript
