@@ -131,17 +131,26 @@ bool Batch::conflict(CPUClosure* closure) const {
 CpuScriptGroup2Impl::CpuScriptGroup2Impl(RsdCpuReferenceImpl *cpuRefImpl,
                                          const ScriptGroupBase *sg) :
     mCpuRefImpl(cpuRefImpl), mGroup((const ScriptGroup2*)(sg)) {
+  rsAssert(!mGroup->mClosures.empty());
+
   Batch* batch = new Batch(this);
   for (Closure* closure: mGroup->mClosures) {
     const ScriptKernelID* kernelID = closure->mKernelID.get();
-    RsdCpuScriptImpl* si =
-        (RsdCpuScriptImpl *)mCpuRefImpl->lookupScript(kernelID->mScript);
+    RsdCpuScriptImpl* si;
+    CPUClosure* cc;
+    if (kernelID != nullptr) {
+      si = (RsdCpuScriptImpl *)mCpuRefImpl->lookupScript(kernelID->mScript);
+      MTLaunchStruct mtls;
+      si->forEachKernelSetup(kernelID->mSlot, &mtls);
+      // TODO: Is mtls.fep.usrLen ever used?
+      cc = new CPUClosure(closure, si, (ExpandFuncTy)mtls.kernel,
+                          mtls.fep.usr, mtls.fep.usrLen);
+    } else {
+      si = (RsdCpuScriptImpl *)mCpuRefImpl->lookupScript(
+          closure->mInvokeID->mScript);
+      cc = new CPUClosure(closure, si);
+    }
 
-    MTLaunchStruct mtls;
-    si->forEachKernelSetup(kernelID->mSlot, &mtls);
-    // TODO: Is mtls.fep.usrLen ever used?
-    CPUClosure* cc = new CPUClosure(closure, si, (ExpandFuncTy)mtls.kernel,
-                                    mtls.fep.usr, mtls.fep.usrLen);
     if (batch->conflict(cc)) {
       mBatches.push_back(batch);
       batch = new Batch(this);
@@ -150,6 +159,7 @@ CpuScriptGroup2Impl::CpuScriptGroup2Impl(RsdCpuReferenceImpl *cpuRefImpl,
     batch->mClosures.push_back(cc);
   }
 
+  rsAssert(!batch->mClosures.empty());
   mBatches.push_back(batch);
 
 #ifndef RS_COMPATIBILITY_LIB
@@ -250,8 +260,6 @@ bool fuseAndCompile(const char** arguments,
 void Batch::tryToCreateFusedKernel(const char *cacheDir) {
 #ifndef RS_COMPATIBILITY_LIB
   if (mClosures.size() < 2) {
-    ALOGV("Compiler kernel fusion skipped due to only one or zero kernel in"
-          " a script group batch.");
     return;
   }
 
@@ -330,10 +338,22 @@ void Batch::setGlobalsForBatch() {
   for (CPUClosure* cpuClosure : mClosures) {
     const Closure* closure = cpuClosure->mClosure;
     const ScriptKernelID* kernelID = closure->mKernelID.get();
-    Script* s = kernelID->mScript;
+    Script* s;
+    if (kernelID != nullptr) {
+      s = kernelID->mScript;
+    } else {
+      s = cpuClosure->mClosure->mInvokeID->mScript;
+    }
     for (const auto& p : closure->mGlobals) {
       const void* value = p.second.first;
       int size = p.second.second;
+      if (value == nullptr && size == 0) {
+        // This indicates the current closure depends on another closure for a
+        // global in their shared module (script). In this case we don't need to
+        // copy the value. For example, an invoke intializes a global variable
+        // which a kernel later reads.
+        continue;
+      }
       // We use -1 size to indicate an ObjectBase rather than a primitive type
       if (size < 0) {
         s->setVarObj(p.first->mSlot, (ObjectBase*)value);
@@ -369,6 +389,17 @@ void Batch::run() {
     return;
   }
 
+  if (mClosures.size() == 1 &&
+      mClosures.front()->mClosure->mKernelID.get() == nullptr) {
+    // This closure is for an invoke function
+    CPUClosure* cc = mClosures.front();
+    const Closure* c = cc->mClosure;
+    const ScriptInvokeID* invokeID = c->mInvokeID;
+    rsAssert(invokeID != nullptr);
+    cc->mSi->invokeFunction(invokeID->mSlot, c->mParams, c->mParamLength);
+    return;
+  }
+
   for (CPUClosure* cpuClosure : mClosures) {
     const Closure* closure = cpuClosure->mClosure;
     const ScriptKernelID* kernelID = closure->mKernelID.get();
@@ -392,7 +423,6 @@ void Batch::run() {
       mtls.kernel = (void (*)())&groupRoot;
       mtls.fep.usr = &mClosures;
 
-      mCpuRefImpl->launchThreads(nullptr, 0, nullptr, nullptr, &mtls);
       mGroup->getCpuRefImpl()->launchThreads(nullptr, 0, nullptr, nullptr, &mtls);
   }
 
