@@ -46,6 +46,18 @@ public:
     bool mHasKernelOutput;
 };
 
+class ScriptInvokeID : public ObjectBase {
+ public:
+    ScriptInvokeID(Context *rsc, Script *s, int slot);
+    virtual ~ScriptInvokeID();
+
+    virtual void serialize(Context *rsc, OStream *stream) const;
+    virtual RsA3DClassID getClassId() const;
+
+    Script *mScript;
+    int mSlot;
+};
+
 class ScriptFieldID : public ObjectBase {
 public:
     ScriptFieldID(Context *rsc, Script *s, int slot);
