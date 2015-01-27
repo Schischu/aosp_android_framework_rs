@@ -20,13 +20,18 @@ struct RsExpandKernelParams;
 
 typedef void (*ExpandFuncTy)(const RsExpandKernelParams*, uint32_t, uint32_t,
                              uint32_t);
+typedef void (*InvokeFuncTy)(const void*, uint32_t);
 
 class CPUClosure {
  public:
   CPUClosure(const Closure* closure, RsdCpuScriptImpl* si, ExpandFuncTy func,
              const void* usrPtr, const size_t usrSize) :
-      mClosure(closure), mSi(si), mFunc(func), mUsrPtr(usrPtr),
-      mUsrSize(usrSize) {}
+      mClosure(closure), mSi(si), mFunc(func),
+      mUsrPtr(usrPtr), mUsrSize(usrSize) {}
+
+  CPUClosure(const Closure* closure, RsdCpuScriptImpl* si) :
+      mClosure(closure), mSi(si), mFunc(nullptr),
+      mUsrPtr(nullptr), mUsrSize(0) {}
 
   // It's important to do forwarding here than inheritance for unbound value
   // binding to work.
