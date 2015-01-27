@@ -894,6 +894,7 @@ error:
     mCtx->unlockMutex();
     if (mScriptSO) {
         dlclose(mScriptSO);
+        mScriptSO = nullptr;
     }
     return false;
 }
