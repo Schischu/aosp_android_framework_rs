@@ -533,6 +533,14 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
     size_t pragmaCount = 0;
     bool isThreadable = true;
 
+    void** fieldAddress;
+    bool* fieldIsObject;
+    InvokeFunc_t* invokeFunctions;
+    ForEachFunc_t* forEachFunctions;
+    uint32_t* forEachSignatures;
+    const char ** pragmaKeys = nullptr;
+    const char ** pragmaValues = nullptr;
+
     const char *rsInfo = (const char *) dlsym(sharedObj, ".rs.info");
 
     if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
@@ -543,11 +551,19 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         return nullptr;
     }
 
-    std::vector<void*> fieldAddress;
+    fieldAddress = new void*[varCount];
+    if (fieldAddress == nullptr) {
+        return nullptr;
+    }
+
+    fieldIsObject = new bool[varCount];
+    if (fieldIsObject == nullptr) {
+        goto error_exit0;
+    }
 
     for (size_t i = 0; i < varCount; ++i) {
         if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
-            return nullptr;
+            goto error_exit1;
         }
         char *c = strrchr(line, '\n');
         if (c) {
@@ -559,22 +575,28 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
                   line, dlerror());
             // Not a critical error if we don't find a global variable.
         }
-        fieldAddress.push_back(addr);
+        //fieldAddress.push_back(addr);
+        // fieldAddress.get()[i] = addr;
+        fieldAddress[i] = addr;
+        fieldIsObject[i] = false;
     }
 
     if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
-        return nullptr;
+        goto error_exit1;
     }
     if (sscanf(line, EXPORT_FUNC_STR "%zu", &funcCount) != 1) {
         ALOGE("Invalid export func count!: %s", line);
-        return nullptr;
+        goto error_exit1;
     }
 
-    std::vector<InvokeFunc_t> invokeFunctions(funcCount);
+    invokeFunctions = new InvokeFunc_t[funcCount];
+    if (invokeFunctions == nullptr) {
+        goto error_exit1;
+    }
 
     for (size_t i = 0; i < funcCount; ++i) {
         if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
-            return nullptr ;
+            goto error_exit2;
         }
         char *c = strrchr(line, '\n');
         if (c) {
@@ -585,32 +607,39 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         if (invokeFunctions[i] == nullptr) {
             ALOGE("Failed to get function address for %s(): %s",
                   line, dlerror());
-            return nullptr;
+            goto error_exit2;
         }
     }
 
     if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
-        return nullptr;
+        goto error_exit2;
     }
     if (sscanf(line, EXPORT_FOREACH_STR "%zu", &forEachCount) != 1) {
         ALOGE("Invalid export forEach count!: %s", line);
-        return nullptr;
+        goto error_exit2;
     }
 
-    std::vector<ForEachFunc_t> forEachFunctions(forEachCount);
-    std::vector<uint32_t> forEachSignatures(forEachCount);
+    forEachFunctions = new ForEachFunc_t[forEachCount];
+    if (forEachFunctions == nullptr) {
+        goto error_exit2;
+    }
+
+    forEachSignatures = new uint32_t[forEachCount];
+    if (forEachSignatures == nullptr) {
+        goto error_exit3;
+    }
 
     for (size_t i = 0; i < forEachCount; ++i) {
         unsigned int tmpSig = 0;
         char tmpName[MAXLINE];
 
         if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
-            return nullptr;
+            goto error_exit4;
         }
         if (sscanf(line, "%u - %" MAKE_STR(MAXLINE) "s",
                    &tmpSig, tmpName) != 2) {
           ALOGE("Invalid export forEach!: %s", line);
-          return nullptr;
+          goto error_exit4;
         }
 
         // Lookup the expanded ForEach kernel.
@@ -623,29 +652,26 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
             // root() is always specified at location 0.
             ALOGE("Failed to find forEach function address for %s: %s",
                   tmpName, dlerror());
-            return nullptr;
+            goto error_exit4;
         }
     }
 
     if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
-        return nullptr;
+        goto error_exit4;
     }
     if (sscanf(line, OBJECT_SLOT_STR "%zu", &objectSlotCount) != 1) {
         ALOGE("Invalid object slot count!: %s", line);
-        return nullptr;
+        goto error_exit4;
     }
 
-    std::vector<bool> fieldIsObject(varCount, false);
-
-    rsAssert(varCount > 0);
     for (size_t i = 0; i < objectSlotCount; ++i) {
         uint32_t varNum = 0;
         if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
-            return nullptr;
+            goto error_exit4;
         }
         if (sscanf(line, "%u", &varNum) != 1) {
             ALOGE("Invalid object slot!: %s", line);
-            return nullptr;
+            goto error_exit4;
         }
 
         if (varNum < varCount) {
@@ -653,31 +679,36 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         }
     }
 
-#ifdef RS_COMPATIBILITY_LIB
+#ifndef RS_COMPATIBILITY_LIB
     // Do not attempt to read pragmas or isThreadable flag in compat lib path.
     // Neither is applicable for compat lib
-    std::vector<const char *> pragmaKeys(pragmaCount);
-    std::vector<const char *> pragmaValues(pragmaCount);
 
-    isThreadable = true;
-
-#else
     if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
-        return nullptr;
+        goto error_exit4;
     }
 
     if (sscanf(line, PRAGMA_STR "%zu", &pragmaCount) != 1) {
         ALOGE("Invalid pragma count!: %s", line);
-        return nullptr;
+        goto error_exit4;
     }
 
-    std::vector<const char *> pragmaKeys(pragmaCount);
-    std::vector<const char *> pragmaValues(pragmaCount);
+    pragmaKeys = new const char*[pragmaCount];
+    if (pragmaKeys == nullptr) {
+        goto error_exit4;
+    }
+
+    pragmaValues = new const char*[pragmaCount];
+    if (pragmaValues == nullptr) {
+        goto error_exit5;
+    }
+
+    bzero(pragmaKeys, sizeof(char*) * pragmaCount);
+    bzero(pragmaValues, sizeof(char*) * pragmaCount);
 
     for (size_t i = 0; i < pragmaCount; ++i) {
         if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
             ALOGE("Unable to read pragma at index %zu!", i);
-            return nullptr;
+            goto error_exit7;
         }
 
         char key[MAXLINE];
@@ -691,12 +722,7 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         {
             ALOGE("Invalid pragma value!: %s", line);
 
-            // free previously allocated keys and values
-            for (size_t idx = 0; idx < i; ++idx) {
-                delete [] pragmaKeys[idx];
-                delete [] pragmaValues[idx];
-            }
-            return nullptr;
+            goto error_exit7;
         }
 
         char *pKey = new char[strlen(key)+1];
@@ -710,13 +736,13 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
     }
 
     if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
-        return nullptr;
+        goto error_exit7;
     }
 
     char tmpFlag[4];
     if (sscanf(line, THREADABLE_STR "%4s", tmpFlag) != 1) {
         ALOGE("Invalid threadable flag!: %s", line);
-        return nullptr;
+        goto error_exit7;
     }
     if (strcmp(tmpFlag, "yes") == 0)
         isThreadable = true;
@@ -724,15 +750,51 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         isThreadable = false;
     else {
         ALOGE("Invalid threadable flag!: %s", tmpFlag);
-        return nullptr;
+        goto error_exit7;
     }
 
-#endif
+#endif  // RS_COMPATIBILITY_LIB
 
     return new ScriptExecutable(
-        RSContext, fieldAddress, fieldIsObject, invokeFunctions,
-        forEachFunctions, forEachSignatures, pragmaKeys, pragmaValues,
+        RSContext, fieldAddress, fieldIsObject, varCount,
+        invokeFunctions, funcCount,
+        forEachFunctions, forEachSignatures, forEachCount,
+        pragmaKeys, pragmaValues, pragmaCount,
         isThreadable);
+
+#ifndef RS_COMPATIBILITY_LIB
+error_exit7:
+    for (size_t idx = 0; idx < pragmaCount; ++idx) {
+        if (pragmaKeys[idx] != nullptr) {
+            delete [] pragmaKeys[idx];
+        }
+        if (pragmaValues[idx] != nullptr) {
+            delete [] pragmaValues[idx];
+        }
+    }
+
+    delete[] pragmaValues;
+
+error_exit5:
+    delete[] pragmaKeys;
+#endif  // RS_COMPATIBILITY_LIB
+
+error_exit4:
+    delete[] forEachSignatures;
+
+error_exit3:
+    delete[] forEachFunctions;
+
+error_exit2:
+    delete[] invokeFunctions;
+
+error_exit1:
+    delete[] fieldIsObject;
+
+error_exit0:
+    delete[] fieldAddress;
+
+    return nullptr;
 }
 
 bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
@@ -892,10 +954,8 @@ void RsdCpuScriptImpl::populateScript(Script *script) {
     script->mHal.info.exportedFunctionCount = mScriptExec->getExportedFunctionCount();
     script->mHal.info.exportedVariableCount = mScriptExec->getExportedVariableCount();
     script->mHal.info.exportedPragmaCount = mScriptExec->getPragmaCount();;
-    script->mHal.info.exportedPragmaKeyList =
-        const_cast<const char**>(&mScriptExec->getPragmaKeys().front());
-    script->mHal.info.exportedPragmaValueList =
-        const_cast<const char**>(&mScriptExec->getPragmaValues().front());
+    script->mHal.info.exportedPragmaKeyList = mScriptExec->getPragmaKeys();
+    script->mHal.info.exportedPragmaValueList = mScriptExec->getPragmaValues();
 
     // Bug, need to stash in metadata
     if (mRootExpand) {
