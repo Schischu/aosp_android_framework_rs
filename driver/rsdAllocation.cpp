@@ -472,6 +472,131 @@ bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
     return true;
 }
 
+void rsdAllocationAdapterOffset(const Context *rsc, Allocation *alloc) {
+
+    // Get a base pointer to the new LOD
+    const Allocation *base = alloc->mHal.state.baseAlloc;
+    const Type *type = alloc->mHal.state.type;
+    if (base == nullptr) {
+        return;
+    }
+
+    uint8_t * ptrA = base->getPointerUnchecked(alloc->mHal.state.originX, alloc->mHal.state.originY);
+    uint8_t * ptrB = base->getPointerUnchecked(0, 0);
+
+
+    const int lodBias = alloc->mHal.state.originLOD;
+    for (uint32_t lod=0; lod < alloc->mHal.drvState.lodCount; lod++) {
+        alloc->mHal.drvState.lod[lod] = base->mHal.drvState.lod[lod + lodBias];
+        alloc->mHal.drvState.lod[lod] += ptrA - ptrB;
+
+
+    }
+
+
+    alloc->mHal.drvState.lod[0].dimX = type->getDimX();
+    alloc->mHal.drvState.lod[0].dimY = type->getDimY();
+    alloc->mHal.drvState.lod[0].dimZ = type->getDimZ();
+    alloc->mHal.drvState.lod[0].mallocPtr = ptr;
+    alloc->mHal.drvState.lod[0].stride = base->mHal.drvState.lod[alloc->mHal.state.originLOD].stride;
+    alloc->mHal.drvState.lodCount = type->getLODCount();
+    alloc->mHal.drvState.faceCount = type->getDimFaces();
+
+    if (alloc->mHal.drvState.lodCount > 1) {
+
+        uint32_t tx = alloc->mHal.drvState.lod[0].dimX;
+        uint32_t ty = alloc->mHal.drvState.lod[0].dimY;
+        uint32_t tz = alloc->mHal.drvState.lod[0].dimZ;
+        for (uint32_t lod=1; lod < alloc->mHal.drvState.lodCount; lod++) {
+            alloc->mHal.drvState.lod[lod].dimX = tx;
+            alloc->mHal.drvState.lod[lod].dimY = ty;
+            alloc->mHal.drvState.lod[lod].dimZ = tz;
+            alloc->mHal.drvState.lod[lod].stride =
+                    rsRound(tx * type->getElementSizeBytes(), 16);
+            offsets[lod] = o;
+            o += alloc->mHal.drvState.lod[lod].stride * rsMax(ty, 1u) * rsMax(tz, 1u);
+            if (tx > 1) tx >>= 1;
+            if (ty > 1) ty >>= 1;
+            if (tz > 1) tz >>= 1;
+        }
+    }
+
+    alloc->mHal.drvState.faceOffset = o;
+
+    alloc->mHal.drvState.lod[0].mallocPtr = ptr;
+    for (uint32_t lod=1; lod < alloc->mHal.drvState.lodCount; lod++) {
+        alloc->mHal.drvState.lod[lod].mallocPtr = ptr + offsets[lod];
+    }
+
+    size_t allocSize = alloc->mHal.drvState.faceOffset;
+    if(alloc->mHal.drvState.faceCount) {
+        allocSize *= 6;
+    }
+
+    return allocSize;
+
+
+
+    AllocationBuildPointerTable(rsc, alloc, allo
+            const Type *type, uint8_t *ptr) {
+
+}
+
+bool rsdAllocationAdapterInit(const Context *rsc, Allocation *alloc) {
+    DrvAllocation *drv = (DrvAllocation *)calloc(1, sizeof(DrvAllocation));
+    if (!drv) {
+        return false;
+    }
+    alloc->mHal.drv = drv;
+
+    // We need to build an allocation that looks like a subset of the parent allocation
+
+
+
+
+
+
+
+
+struct DrvAllocation {
+    // Is this a legal structure to be used as a texture source.
+    // Initially this will require 1D or 2D and color data
+    uint32_t textureID;
+
+    // Is this a legal structure to be used as a vertex source.
+    // Initially this will require 1D and x(yzw).  Additional per element data
+    // is allowed.
+    uint32_t bufferID;
+
+    // Is this a legal structure to be used as an FBO render target
+    uint32_t renderTargetID;
+
+#ifndef RS_COMPATIBILITY_LIB
+    GLenum glTarget;
+    GLenum glType;
+    GLenum glFormat;
+
+    ANativeWindowBuffer *wndBuffer;
+    android::GLConsumer *surfaceTexture;
+#else
+    int glTarget;
+    int glType;
+    int glFormat;
+
+    ANativeWindow_Buffer *wndBuffer;
+#endif
+
+    bool useUserProvidedPtr;
+    bool uploadDeferred;
+
+    RsdFrameBufferObj * readBackFBO;
+    ANativeWindow *wnd;
+    ANativeWindow *wndSurface;
+};
+
+
+}
+
 void rsdAllocationDestroy(const Context *rsc, Allocation *alloc) {
     DrvAllocation *drv = (DrvAllocation *)alloc->mHal.drv;
 
