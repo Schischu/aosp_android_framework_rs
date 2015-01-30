@@ -472,6 +472,39 @@ bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
     return true;
 }
 
+void rsdAllocationAdapterOffset(const Context *rsc, const Allocation *alloc) {
+
+    // Get a base pointer to the new LOD
+    const Allocation *base = alloc->mHal.state.baseAlloc;
+    const Type *type = alloc->mHal.state.type;
+    if (base == nullptr) {
+        return;
+    }
+
+    uint8_t * ptrA = (uint8_t *)base->getPointerUnchecked(alloc->mHal.state.originX, alloc->mHal.state.originY);
+    uint8_t * ptrB = (uint8_t *)base->getPointerUnchecked(0, 0);
+
+    const int lodBias = alloc->mHal.state.originLOD;
+    for (uint32_t lod=0; lod < alloc->mHal.drvState.lodCount; lod++) {
+        alloc->mHal.drvState.lod[lod] = base->mHal.drvState.lod[lod + lodBias];
+        alloc->mHal.drvState.lod[lod].mallocPtr =
+                ((uint8_t *)alloc->mHal.drvState.lod[lod].mallocPtr + (ptrA - ptrB));
+    }
+}
+
+bool rsdAllocationAdapterInit(const Context *rsc, Allocation *alloc) {
+    DrvAllocation *drv = (DrvAllocation *)calloc(1, sizeof(DrvAllocation));
+    if (!drv) {
+        return false;
+    }
+    alloc->mHal.drv = drv;
+
+    // We need to build an allocation that looks like a subset of the parent allocation
+    rsdAllocationAdapterOffset(rsc, alloc);
+
+    return true;
+}
+
 void rsdAllocationDestroy(const Context *rsc, Allocation *alloc) {
     DrvAllocation *drv = (DrvAllocation *)alloc->mHal.drv;
 
