@@ -11,6 +11,7 @@
 #endif
 
 #include "cpu_ref/rsCpuCore.h"
+#include "cpu_ref/rsCpuCoreRuntime.h"
 #include "rsClosure.h"
 #include "rsContext.h"
 #include "rsCpuCore.h"
