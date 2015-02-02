@@ -57,6 +57,8 @@ public class RSTestCore {
 
         unitTests = new ArrayList<UnitTest>();
 
+        unitTests.add(new UT_kernel2d(this, mRes, mCtx));
+        unitTests.add(new UT_kernel3d(this, mRes, mCtx));
         unitTests.add(new UT_primitives(this, mRes, mCtx));
         unitTests.add(new UT_constant(this, mRes, mCtx));
         unitTests.add(new UT_vector(this, mRes, mCtx));
