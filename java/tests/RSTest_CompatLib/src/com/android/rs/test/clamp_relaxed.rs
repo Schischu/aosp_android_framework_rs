@@ -1,2 +1,2 @@
 #include "clamp.rs"
-#pragma rs_fp_relaxed
+//#pragma rs_fp_relaxed

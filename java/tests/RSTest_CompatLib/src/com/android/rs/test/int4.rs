@@ -1,5 +1,5 @@
 #include "shared.rsh"
-#pragma rs_fp_relaxed
+//#pragma rs_fp_relaxed
 
 uchar4 u4 = 4;
 int4 gi4 = {2, 2, 2, 2};

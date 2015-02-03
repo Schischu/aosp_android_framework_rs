@@ -1,5 +1,5 @@
 #include "shared.rsh"
-#pragma rs_fp_relaxed
+//#pragma rs_fp_relaxed
 
 volatile uchar2 res_uc_2 = 1;
 volatile uchar2 src1_uc_2 = 1;
