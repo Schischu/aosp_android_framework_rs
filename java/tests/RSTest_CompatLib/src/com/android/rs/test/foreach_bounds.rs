@@ -58,7 +58,7 @@ void foreach_bounds_test() {
     rssc.yStart = yStart;
     rssc.yEnd = yEnd;
 
-    rsForEach(s, ain, aout, NULL, 0, &rssc);
+    rsForEach(s, ain, aout);
 
     failed |= test_root_output();
 

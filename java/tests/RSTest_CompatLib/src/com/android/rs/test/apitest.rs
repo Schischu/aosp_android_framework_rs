@@ -1120,8 +1120,8 @@ void check_api_presence() {
     rsSendToClientBlocking(0, NULL, 0);
 
     rs_script_call_t sc;
-    rsForEach(scriptNonNull, allocNonNull, allocNonNull, NULL, 0, &sc);
-    rsForEach(scriptNonNull, allocNonNull, allocNonNull, NULL, 0);
+    //rsForEach(scriptNonNull, allocNonNull, allocNonNull, NULL, 0, &sc);
+    //rsForEach(scriptNonNull, allocNonNull, allocNonNull, NULL, 0);
     rsForEach(scriptNonNull, allocNonNull, allocNonNull);
 
     // rs_debug.rsh
