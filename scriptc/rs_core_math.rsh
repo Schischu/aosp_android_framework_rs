@@ -190,6 +190,42 @@ extern float3 __attribute__((const, overloadable))acos(float3 v);
 extern float4 __attribute__((const, overloadable))acos(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse cosine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))acos(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse cosine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))acos(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse cosine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))acos(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse cosine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))acos(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the inverse hyperbolic cosine, in radians.
@@ -224,6 +260,42 @@ extern float3 __attribute__((const, overloadable))acosh(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))acosh(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic cosine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))acosh(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic cosine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))acosh(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic cosine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))acosh(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic cosine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))acosh(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -270,6 +342,50 @@ extern float3 __attribute__((const, overloadable))acospi(float3 v);
 extern float4 __attribute__((const, overloadable))acospi(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse cosine in radians, divided by pi.
+ *
+ * To get an inverse cosine measured in degrees, use acospi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))acospi(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse cosine in radians, divided by pi.
+ *
+ * To get an inverse cosine measured in degrees, use acospi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))acospi(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse cosine in radians, divided by pi.
+ *
+ * To get an inverse cosine measured in degrees, use acospi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))acospi(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse cosine in radians, divided by pi.
+ *
+ * To get an inverse cosine measured in degrees, use acospi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))acospi(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the inverse sine, in radians.
@@ -306,6 +422,42 @@ extern float3 __attribute__((const, overloadable))asin(float3 v);
 extern float4 __attribute__((const, overloadable))asin(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse sine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))asin(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse sine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))asin(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse sine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))asin(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse sine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))asin(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the inverse hyperbolic sine, in radians.
@@ -340,6 +492,42 @@ extern float3 __attribute__((const, overloadable))asinh(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))asinh(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic sine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))asinh(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic sine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))asinh(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic sine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))asinh(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic sine, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))asinh(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -386,6 +574,50 @@ extern float3 __attribute__((const, overloadable))asinpi(float3 v);
 extern float4 __attribute__((const, overloadable))asinpi(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse sine in radians, divided by pi.
+ *
+ * To get an inverse sine measured in degrees, use asinpi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))asinpi(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse sine in radians, divided by pi.
+ *
+ * To get an inverse sine measured in degrees, use asinpi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))asinpi(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse sine in radians, divided by pi.
+ *
+ * To get an inverse sine measured in degrees, use asinpi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))asinpi(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse sine in radians, divided by pi.
+ *
+ * To get an inverse sine measured in degrees, use asinpi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))asinpi(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the inverse tangent, in radians.
@@ -420,6 +652,42 @@ extern float3 __attribute__((const, overloadable))atan(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))atan(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))atan(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))atan(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))atan(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))atan(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -464,6 +732,50 @@ extern float3 __attribute__((const, overloadable))atan2(float3 numerator, float3
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))atan2(float4 numerator, float4 denominator);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent of (numerator / denominator), in radians.
+ *
+ * denominator can be 0.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))atan2(half numerator, half denominator);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent of (numerator / denominator), in radians.
+ *
+ * denominator can be 0.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))atan2(half2 numerator, half2 denominator);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent of (numerator / denominator), in radians.
+ *
+ * denominator can be 0.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))atan2(half3 numerator, half3 denominator);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent of (numerator / denominator), in radians.
+ *
+ * denominator can be 0.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))atan2(half4 numerator, half4 denominator);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -518,6 +830,58 @@ extern float3 __attribute__((const, overloadable))atan2pi(float3 numerator, floa
 extern float4 __attribute__((const, overloadable))atan2pi(float4 numerator, float4 denominator);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent of (numerator / denominator), in radians, divided by pi.
+ *
+ * To get an inverse tangent measured in degrees, use atan2pi(n, d) * 180.f.
+ *
+ * denominator can be 0.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))atan2pi(half numerator, half denominator);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent of (numerator / denominator), in radians, divided by pi.
+ *
+ * To get an inverse tangent measured in degrees, use atan2pi(n, d) * 180.f.
+ *
+ * denominator can be 0.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))atan2pi(half2 numerator, half2 denominator);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent of (numerator / denominator), in radians, divided by pi.
+ *
+ * To get an inverse tangent measured in degrees, use atan2pi(n, d) * 180.f.
+ *
+ * denominator can be 0.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))atan2pi(half3 numerator, half3 denominator);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent of (numerator / denominator), in radians, divided by pi.
+ *
+ * To get an inverse tangent measured in degrees, use atan2pi(n, d) * 180.f.
+ *
+ * denominator can be 0.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))atan2pi(half4 numerator, half4 denominator);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the inverse hyperbolic tangent, in radians.
@@ -552,6 +916,42 @@ extern float3 __attribute__((const, overloadable))atanh(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))atanh(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic tangent, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))atanh(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic tangent, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))atanh(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic tangent, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))atanh(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse hyperbolic tangent, in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))atanh(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -598,6 +998,50 @@ extern float3 __attribute__((const, overloadable))atanpi(float3 v);
 extern float4 __attribute__((const, overloadable))atanpi(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent in radians, divided by pi.
+ *
+ * To get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))atanpi(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent in radians, divided by pi.
+ *
+ * To get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))atanpi(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent in radians, divided by pi.
+ *
+ * To get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))atanpi(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the inverse tangent in radians, divided by pi.
+ *
+ * To get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))atanpi(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the cube root.
@@ -632,6 +1076,42 @@ extern float3 __attribute__((const, overloadable))cbrt(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))cbrt(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cube root.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))cbrt(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cube root.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))cbrt(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cube root.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))cbrt(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cube root.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))cbrt(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -676,6 +1156,50 @@ extern float3 __attribute__((const, overloadable))ceil(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))ceil(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the smallest integer not less than a value.
+ *
+ * For example, ceil(1.2f) returns 2.f, and ceil(-1.2f) returns -1.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))ceil(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the smallest integer not less than a value.
+ *
+ * For example, ceil(1.2f) returns 2.f, and ceil(-1.2f) returns -1.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))ceil(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the smallest integer not less than a value.
+ *
+ * For example, ceil(1.2f) returns 2.f, and ceil(-1.2f) returns -1.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))ceil(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the smallest integer not less than a value.
+ *
+ * For example, ceil(1.2f) returns 2.f, and ceil(-1.2f) returns -1.f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))ceil(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -5965,6 +6489,58 @@ extern float3 __attribute__((const, overloadable))copysign(float3 magnitude_valu
 extern float4 __attribute__((const, overloadable))copysign(float4 magnitude_value, float4 sign_value);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Copies the sign from sign_value to magnitude_value.
+ *
+ * The value returned is either magnitude_value or -magnitude_value.
+ *
+ * For example, copysign(4.0f, -2.7f) returns -4.0f and copysign(-4.0f, 2.7f) returns 4.0f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))copysign(half magnitude_value, half sign_value);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Copies the sign from sign_value to magnitude_value.
+ *
+ * The value returned is either magnitude_value or -magnitude_value.
+ *
+ * For example, copysign(4.0f, -2.7f) returns -4.0f and copysign(-4.0f, 2.7f) returns 4.0f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))copysign(half2 magnitude_value, half2 sign_value);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Copies the sign from sign_value to magnitude_value.
+ *
+ * The value returned is either magnitude_value or -magnitude_value.
+ *
+ * For example, copysign(4.0f, -2.7f) returns -4.0f and copysign(-4.0f, 2.7f) returns 4.0f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))copysign(half3 magnitude_value, half3 sign_value);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Copies the sign from sign_value to magnitude_value.
+ *
+ * The value returned is either magnitude_value or -magnitude_value.
+ *
+ * For example, copysign(4.0f, -2.7f) returns -4.0f and copysign(-4.0f, 2.7f) returns 4.0f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))copysign(half4 magnitude_value, half4 sign_value);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the cosine of an angle measured in radians.
@@ -6001,6 +6577,42 @@ extern float3 __attribute__((const, overloadable))cos(float3 v);
 extern float4 __attribute__((const, overloadable))cos(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cosine of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))cos(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cosine of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))cos(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cosine of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))cos(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cosine of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))cos(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the hypebolic cosine of v, where v is measured in radians.
@@ -6035,6 +6647,42 @@ extern float3 __attribute__((const, overloadable))cosh(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))cosh(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hypebolic cosine of v, where v is measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))cosh(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hypebolic cosine of v, where v is measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))cosh(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hypebolic cosine of v, where v is measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))cosh(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hypebolic cosine of v, where v is measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))cosh(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -6079,6 +6727,50 @@ extern float3 __attribute__((const, overloadable))cospi(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))cospi(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cosine of (v * pi), where (v * pi) is measured in radians.
+ *
+ * To get the cosine of a value measured in degrees, call cospi(v / 180.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))cospi(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cosine of (v * pi), where (v * pi) is measured in radians.
+ *
+ * To get the cosine of a value measured in degrees, call cospi(v / 180.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))cospi(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cosine of (v * pi), where (v * pi) is measured in radians.
+ *
+ * To get the cosine of a value measured in degrees, call cospi(v / 180.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))cospi(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the cosine of (v * pi), where (v * pi) is measured in radians.
+ *
+ * To get the cosine of a value measured in degrees, call cospi(v / 180.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))cospi(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -6243,6 +6935,42 @@ extern float3 __attribute__((const, overloadable))erf(float3 v);
 extern float4 __attribute__((const, overloadable))erf(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the error function.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))erf(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the error function.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))erf(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the error function.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))erf(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the error function.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))erf(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the complementary error function.
@@ -6277,6 +7005,42 @@ extern float3 __attribute__((const, overloadable))erfc(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))erfc(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the complementary error function.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))erfc(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the complementary error function.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))erfc(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the complementary error function.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))erfc(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the complementary error function.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))erfc(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -6315,6 +7079,42 @@ extern float3 __attribute__((const, overloadable))exp(float3 v);
 extern float4 __attribute__((const, overloadable))exp(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns e raised to v, i.e. e ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))exp(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns e raised to v, i.e. e ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))exp(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns e raised to v, i.e. e ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))exp(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns e raised to v, i.e. e ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))exp(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns 10 raised to v, i.e. 10.f ^ v.
@@ -6349,6 +7149,42 @@ extern float3 __attribute__((const, overloadable))exp10(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))exp10(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns 10 raised to v, i.e. 10.f ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))exp10(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns 10 raised to v, i.e. 10.f ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))exp10(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns 10 raised to v, i.e. 10.f ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))exp10(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns 10 raised to v, i.e. 10.f ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))exp10(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -6387,6 +7223,42 @@ extern float3 __attribute__((const, overloadable))exp2(float3 v);
 extern float4 __attribute__((const, overloadable))exp2(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns 2 raised to v, i.e. 2.f ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))exp2(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns 2 raised to v, i.e. 2.f ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))exp2(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns 2 raised to v, i.e. 2.f ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))exp2(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns 2 raised to v, i.e. 2.f ^ v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))exp2(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns e raised to v minus 1, i.e. (e ^ v) - 1.
@@ -6421,6 +7293,42 @@ extern float3 __attribute__((const, overloadable))expm1(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))expm1(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns e raised to v minus 1, i.e. (e ^ v) - 1.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))expm1(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns e raised to v minus 1, i.e. (e ^ v) - 1.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))expm1(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns e raised to v minus 1, i.e. (e ^ v) - 1.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))expm1(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns e raised to v minus 1, i.e. (e ^ v) - 1.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))expm1(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -6651,6 +7559,50 @@ extern float3 __attribute__((const, overloadable))fdim(float3 a, float3 b);
 extern float4 __attribute__((const, overloadable))fdim(float4 a, float4 b);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the positive difference between two values.
+ *
+ * If a > b, returns (a - b) otherwise returns 0f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))fdim(half a, half b);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the positive difference between two values.
+ *
+ * If a > b, returns (a - b) otherwise returns 0f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))fdim(half2 a, half2 b);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the positive difference between two values.
+ *
+ * If a > b, returns (a - b) otherwise returns 0f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))fdim(half3 a, half3 b);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the positive difference between two values.
+ *
+ * If a > b, returns (a - b) otherwise returns 0f.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))fdim(half4 a, half4 b);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the smallest integer not greater than a value.
@@ -6685,6 +7637,42 @@ extern float3 __attribute__((const, overloadable))floor(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))floor(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the smallest integer not greater than a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))floor(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the smallest integer not greater than a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))floor(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the smallest integer not greater than a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))floor(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the smallest integer not greater than a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))floor(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -6729,6 +7717,50 @@ extern float3 __attribute__((const, overloadable))fma(float3 multiplicand1, floa
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))fma(float4 multiplicand1, float4 multiplicand2, float4 offset);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Multiply and add.  Returns (multiplicand1 * multiplicand2) + offset.
+ *
+ * This function is identical to mad().
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))fma(half multiplicand1, half multiplicand2, half offset);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Multiply and add.  Returns (multiplicand1 * multiplicand2) + offset.
+ *
+ * This function is identical to mad().
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))fma(half2 multiplicand1, half2 multiplicand2, half2 offset);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Multiply and add.  Returns (multiplicand1 * multiplicand2) + offset.
+ *
+ * This function is identical to mad().
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))fma(half3 multiplicand1, half3 multiplicand2, half3 offset);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Multiply and add.  Returns (multiplicand1 * multiplicand2) + offset.
+ *
+ * This function is identical to mad().
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))fma(half4 multiplicand1, half4 multiplicand2, half4 offset);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -6808,6 +7840,50 @@ extern float3 __attribute__((const, overloadable))fmax(float3 a, float b);
 extern float4 __attribute__((const, overloadable))fmax(float4 a, float b);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the maximum of a and b, i.e. (a < b ? b : a).
+ *
+ * The max() function returns identical results but can be applied to more data types.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))fmax(half a, half b);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the maximum of a and b, i.e. (a < b ? b : a).
+ *
+ * The max() function returns identical results but can be applied to more data types.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))fmax(half2 a, half2 b);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the maximum of a and b, i.e. (a < b ? b : a).
+ *
+ * The max() function returns identical results but can be applied to more data types.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))fmax(half3 a, half3 b);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the maximum of a and b, i.e. (a < b ? b : a).
+ *
+ * The max() function returns identical results but can be applied to more data types.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))fmax(half4 a, half4 b);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the minimum of a and b, i.e. (a > b ? b : a).
@@ -6885,6 +7961,50 @@ extern float3 __attribute__((const, overloadable))fmin(float3 a, float b);
 extern float4 __attribute__((const, overloadable))fmin(float4 a, float b);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the minimum of a and b, i.e. (a > b ? b : a).
+ *
+ * The min() function returns identical results but can be applied to more data types.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))fmin(half a, half b);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the minimum of a and b, i.e. (a > b ? b : a).
+ *
+ * The min() function returns identical results but can be applied to more data types.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))fmin(half2 a, half2 b);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the minimum of a and b, i.e. (a > b ? b : a).
+ *
+ * The min() function returns identical results but can be applied to more data types.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))fmin(half3 a, half3 b);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the minimum of a and b, i.e. (a > b ? b : a).
+ *
+ * The min() function returns identical results but can be applied to more data types.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))fmin(half4 a, half4 b);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the remainder of (numerator / denominator), where the quotient is rounded towards zero.
@@ -6935,6 +8055,58 @@ extern float3 __attribute__((const, overloadable))fmod(float3 numerator, float3 
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))fmod(float4 numerator, float4 denominator);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the remainder of (numerator / denominator), where the quotient is rounded towards zero.
+ *
+ * The function remainder() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))fmod(half numerator, half denominator);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the remainder of (numerator / denominator), where the quotient is rounded towards zero.
+ *
+ * The function remainder() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))fmod(half2 numerator, half2 denominator);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the remainder of (numerator / denominator), where the quotient is rounded towards zero.
+ *
+ * The function remainder() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))fmod(half3 numerator, half3 denominator);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the remainder of (numerator / denominator), where the quotient is rounded towards zero.
+ *
+ * The function remainder() is similar but rounds toward the closest interger.
+ * For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ * while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))fmod(half4 numerator, half4 denominator);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -7115,6 +8287,66 @@ extern float3 __attribute__((overloadable))frexp(float3 v, int3* exponent);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((overloadable))frexp(float4 v, int4* exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the binary mantissa and exponent of v, e.g. v == mantissa * 2 ^ exponent.
+ *
+ * The mantissa is always between 0.5 (inclusive) and 1.0 (exclusive).
+ * See ldexp() for the reverse operation.
+ *
+ * @param v Supports float, float2, float3, float4.
+ * @param exponent  If exponent is not null, each element of exponent will be set to the exponent of the corresponding element of v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((overloadable))frexp(half v, int* exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the binary mantissa and exponent of v, e.g. v == mantissa * 2 ^ exponent.
+ *
+ * The mantissa is always between 0.5 (inclusive) and 1.0 (exclusive).
+ * See ldexp() for the reverse operation.
+ *
+ * @param v Supports float, float2, float3, float4.
+ * @param exponent  If exponent is not null, each element of exponent will be set to the exponent of the corresponding element of v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((overloadable))frexp(half2 v, int2* exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the binary mantissa and exponent of v, e.g. v == mantissa * 2 ^ exponent.
+ *
+ * The mantissa is always between 0.5 (inclusive) and 1.0 (exclusive).
+ * See ldexp() for the reverse operation.
+ *
+ * @param v Supports float, float2, float3, float4.
+ * @param exponent  If exponent is not null, each element of exponent will be set to the exponent of the corresponding element of v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((overloadable))frexp(half3 v, int3* exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the binary mantissa and exponent of v, e.g. v == mantissa * 2 ^ exponent.
+ *
+ * The mantissa is always between 0.5 (inclusive) and 1.0 (exclusive).
+ * See ldexp() for the reverse operation.
+ *
+ * @param v Supports float, float2, float3, float4.
+ * @param exponent  If exponent is not null, each element of exponent will be set to the exponent of the corresponding element of v.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((overloadable))frexp(half4 v, int4* exponent);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 17))
@@ -7341,6 +8573,62 @@ extern int3 __attribute__((const, overloadable))ilogb(float3 v);
 extern int4 __attribute__((const, overloadable))ilogb(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * logb() is similar but returns a float.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern int __attribute__((const, overloadable))ilogb(float v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * logb() is similar but returns a float.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern int2 __attribute__((const, overloadable))ilogb(float2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * logb() is similar but returns a float.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern int3 __attribute__((const, overloadable))ilogb(float3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, ilogb(8.5f) returns 3.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * logb() is similar but returns a float.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern int4 __attribute__((const, overloadable))ilogb(float4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
@@ -7432,6 +8720,101 @@ extern float3 __attribute__((const, overloadable))ldexp(float3 mantissa, int exp
  * @param exponent Supports single component or matching vector.
  *
  * Supported by API versions 9 and newer.
+ */
+extern float4 __attribute__((const, overloadable))ldexp(float4 mantissa, int exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+ *
+ * See frexp() for the reverse operation.
+ *
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern float __attribute__((const, overloadable))ldexp(float mantissa, int exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+ *
+ * See frexp() for the reverse operation.
+ *
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern float2 __attribute__((const, overloadable))ldexp(float2 mantissa, int2 exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+ *
+ * See frexp() for the reverse operation.
+ *
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern float3 __attribute__((const, overloadable))ldexp(float3 mantissa, int3 exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+ *
+ * See frexp() for the reverse operation.
+ *
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern float4 __attribute__((const, overloadable))ldexp(float4 mantissa, int4 exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+ * See frexp() for the reverse operation.
+ *
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern float2 __attribute__((const, overloadable))ldexp(float2 mantissa, int exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+ * See frexp() for the reverse operation.
+ *
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern float3 __attribute__((const, overloadable))ldexp(float3 mantissa, int exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+ * See frexp() for the reverse operation.
+ *
+ * @param mantissa Supports float, float2, float3, and float4.
+ * @param exponent Supports single component or matching vector.
+ *
+ * Supported by API versions 21 and newer.
  */
 extern float4 __attribute__((const, overloadable))ldexp(float4 mantissa, int exponent);
 #endif
@@ -7568,6 +8951,102 @@ extern float3 __attribute__((overloadable))lgamma(float3 v, int3* sign_of_gamma)
 extern float4 __attribute__((overloadable))lgamma(float4 v, int4* sign_of_gamma);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(v))).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))lgamma(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(v))).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))lgamma(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(v))).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))lgamma(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(v))).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))lgamma(half4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(v))).
+ *
+ * Can also return the sign of the gamma function.
+ *
+ * @param v Input value.
+ * @param sign_of_gamma  If sign is not null, each element of sign will be set to -1.f if the gamma of the corresponding element of v is negative, otherwise to 1.f.
+ *
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((overloadable))lgamma(half v, int* sign_of_gamma);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(v))).
+ *
+ * Can also return the sign of the gamma function.
+ *
+ * @param v Input value.
+ * @param sign_of_gamma  If sign is not null, each element of sign will be set to -1.f if the gamma of the corresponding element of v is negative, otherwise to 1.f.
+ *
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((overloadable))lgamma(half2 v, int2* sign_of_gamma);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(v))).
+ *
+ * Can also return the sign of the gamma function.
+ *
+ * @param v Input value.
+ * @param sign_of_gamma  If sign is not null, each element of sign will be set to -1.f if the gamma of the corresponding element of v is negative, otherwise to 1.f.
+ *
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((overloadable))lgamma(half3 v, int3* sign_of_gamma);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(v))).
+ *
+ * Can also return the sign of the gamma function.
+ *
+ * @param v Input value.
+ * @param sign_of_gamma  If sign is not null, each element of sign will be set to -1.f if the gamma of the corresponding element of v is negative, otherwise to 1.f.
+ *
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((overloadable))lgamma(half4 v, int4* sign_of_gamma);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the natural logarithm.
@@ -7602,6 +9081,42 @@ extern float3 __attribute__((const, overloadable))log(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))log(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))log(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))log(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))log(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))log(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -7640,6 +9155,42 @@ extern float3 __attribute__((const, overloadable))log10(float3 v);
 extern float4 __attribute__((const, overloadable))log10(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base 10 logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))log10(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base 10 logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))log10(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base 10 logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))log10(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base 10 logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))log10(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the natural logarithm of (v + 1.f).
@@ -7674,6 +9225,42 @@ extern float3 __attribute__((const, overloadable))log1p(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))log1p(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of (v + 1.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))log1p(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of (v + 1.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))log1p(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of (v + 1.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))log1p(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the natural logarithm of (v + 1.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))log1p(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -7712,11 +9299,47 @@ extern float3 __attribute__((const, overloadable))log2(float3 v);
 extern float4 __attribute__((const, overloadable))log2(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base 2 logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))log2(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base 2 logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))log2(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base 2 logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))log2(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base 2 logarithm.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))log2(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
  *
- * For example, ilogb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * For example, logb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
  * is returned by frexp().
  *
  * ilogb() is similar but returns an integer.
@@ -7730,7 +9353,7 @@ extern float __attribute__((const, overloadable))logb(float v);
 /**
  * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
  *
- * For example, ilogb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * For example, logb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
  * is returned by frexp().
  *
  * ilogb() is similar but returns an integer.
@@ -7744,7 +9367,7 @@ extern float2 __attribute__((const, overloadable))logb(float2 v);
 /**
  * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
  *
- * For example, ilogb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * For example, logb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
  * is returned by frexp().
  *
  * ilogb() is similar but returns an integer.
@@ -7758,7 +9381,7 @@ extern float3 __attribute__((const, overloadable))logb(float3 v);
 /**
  * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
  *
- * For example, ilogb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * For example, logb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
  * is returned by frexp().
  *
  * ilogb() is similar but returns an integer.
@@ -7766,6 +9389,62 @@ extern float3 __attribute__((const, overloadable))logb(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))logb(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, logb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * ilogb() is similar but returns an integer.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))logb(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, logb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * ilogb() is similar but returns an integer.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))logb(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, logb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * ilogb() is similar but returns an integer.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))logb(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+ *
+ * For example, logb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ * is returned by frexp().
+ *
+ * ilogb() is similar but returns an integer.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))logb(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -9267,6 +10946,66 @@ extern float3 __attribute__((overloadable))modf(float3 v, float3* integral_part)
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((overloadable))modf(float4 v, float4* integral_part);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the integral and fractional components of a number.
+ *
+ * Both components will have the same sign as x.  For example, for an input of -3.72f, iret will be set to -3.f and .72f will be returned.
+ *
+ * @param v Source value
+ * @param integral_part integral_part[0] will be set to the integral portion of the number.
+ * @return The floating point portion of the value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((overloadable))modf(half v, half* integral_part);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the integral and fractional components of a number.
+ *
+ * Both components will have the same sign as x.  For example, for an input of -3.72f, iret will be set to -3.f and .72f will be returned.
+ *
+ * @param v Source value
+ * @param integral_part integral_part[0] will be set to the integral portion of the number.
+ * @return The floating point portion of the value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((overloadable))modf(half2 v, half2* integral_part);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the integral and fractional components of a number.
+ *
+ * Both components will have the same sign as x.  For example, for an input of -3.72f, iret will be set to -3.f and .72f will be returned.
+ *
+ * @param v Source value
+ * @param integral_part integral_part[0] will be set to the integral portion of the number.
+ * @return The floating point portion of the value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((overloadable))modf(half3 v, half3* integral_part);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the integral and fractional components of a number.
+ *
+ * Both components will have the same sign as x.  For example, for an input of -3.72f, iret will be set to -3.f and .72f will be returned.
+ *
+ * @param v Source value
+ * @param integral_part integral_part[0] will be set to the integral portion of the number.
+ * @return The floating point portion of the value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((overloadable))modf(half4 v, half4* integral_part);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -11176,7 +12915,7 @@ extern float4 __attribute__((const, overloadable))remainder(float4 numerator, fl
  *
  * This function is useful for implementing periodic functions.  The low three bits of the quotient gives the quadrant and the remainder the distance within the quadrant.  For example, an implementation of sin(x) could call remquo(x, PI / 2.f, &quadrant) to reduce very large value of x to something within a limited range.
  *
- * Example: remquo(-23.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
+ * Example: remquo(2123.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
  *
  * @param numerator The numerator.
  * @param denominator The denominator.
@@ -11196,7 +12935,7 @@ extern float __attribute__((overloadable))remquo(float numerator, float denomina
  *
  * This function is useful for implementing periodic functions.  The low three bits of the quotient gives the quadrant and the remainder the distance within the quadrant.  For example, an implementation of sin(x) could call remquo(x, PI / 2.f, &quadrant) to reduce very large value of x to something within a limited range.
  *
- * Example: remquo(-23.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
+ * Example: remquo(2123.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
  *
  * @param numerator The numerator.
  * @param denominator The denominator.
@@ -11216,7 +12955,7 @@ extern float2 __attribute__((overloadable))remquo(float2 numerator, float2 denom
  *
  * This function is useful for implementing periodic functions.  The low three bits of the quotient gives the quadrant and the remainder the distance within the quadrant.  For example, an implementation of sin(x) could call remquo(x, PI / 2.f, &quadrant) to reduce very large value of x to something within a limited range.
  *
- * Example: remquo(-23.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
+ * Example: remquo(2123.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
  *
  * @param numerator The numerator.
  * @param denominator The denominator.
@@ -11236,7 +12975,7 @@ extern float3 __attribute__((overloadable))remquo(float3 numerator, float3 denom
  *
  * This function is useful for implementing periodic functions.  The low three bits of the quotient gives the quadrant and the remainder the distance within the quadrant.  For example, an implementation of sin(x) could call remquo(x, PI / 2.f, &quadrant) to reduce very large value of x to something within a limited range.
  *
- * Example: remquo(-23.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
+ * Example: remquo(2123.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
  *
  * @param numerator The numerator.
  * @param denominator The denominator.
@@ -11512,6 +13251,42 @@ extern float3 __attribute__((const, overloadable))sin(float3 v);
 extern float4 __attribute__((const, overloadable))sin(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the sine of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))sin(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the sine of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))sin(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the sine of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))sin(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the sine of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))sin(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the sine and cosine of a value.
@@ -11564,6 +13339,58 @@ extern float3 __attribute__((overloadable))sincos(float3 v, float3* cos);
 extern float4 __attribute__((overloadable))sincos(float4 v, float4* cos);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the sine and cosine of a value.
+ *
+ * @return sine of v
+ * @param v The incoming value in radians
+ * @param *cos cosptr[0] will be set to the cosine value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((overloadable))sincos(half v, half* cos);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the sine and cosine of a value.
+ *
+ * @return sine of v
+ * @param v The incoming value in radians
+ * @param *cos cosptr[0] will be set to the cosine value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((overloadable))sincos(half2 v, half2* cos);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the sine and cosine of a value.
+ *
+ * @return sine of v
+ * @param v The incoming value in radians
+ * @param *cos cosptr[0] will be set to the cosine value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((overloadable))sincos(half3 v, half3* cos);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the sine and cosine of a value.
+ *
+ * @return sine of v
+ * @param v The incoming value in radians
+ * @param *cos cosptr[0] will be set to the cosine value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((overloadable))sincos(half4 v, half4* cos);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the hyperbolic sine of v, where v is measured in radians.
@@ -11598,6 +13425,42 @@ extern float3 __attribute__((const, overloadable))sinh(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))sinh(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hyperbolic sine of v, where v is measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))sinh(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hyperbolic sine of v, where v is measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))sinh(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hyperbolic sine of v, where v is measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))sinh(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hyperbolic sine of v, where v is measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))sinh(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -11678,6 +13541,42 @@ extern float3 __attribute__((const, overloadable))sqrt(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))sqrt(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the square root of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))sqrt(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the square root of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))sqrt(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the square root of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))sqrt(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the square root of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))sqrt(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -11826,6 +13725,42 @@ extern float3 __attribute__((const, overloadable))tan(float3 v);
 extern float4 __attribute__((const, overloadable))tan(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the tangent of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))tan(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the tangent of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))tan(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the tangent of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))tan(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the tangent of an angle measured in radians.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))tan(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the hyperbolic tangent of a value.
@@ -11860,6 +13795,42 @@ extern float3 __attribute__((const, overloadable))tanh(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))tanh(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hyperbolic tangent of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))tanh(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hyperbolic tangent of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))tanh(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hyperbolic tangent of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))tanh(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the hyperbolic tangent of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))tanh(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -11906,6 +13877,50 @@ extern float3 __attribute__((const, overloadable))tanpi(float3 v);
 extern float4 __attribute__((const, overloadable))tanpi(float4 v);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the tangent of (v * pi), where (v * pi) is measured in radians.
+ *
+ * To get the tangent of a value measured in degrees, call tanpi(v / 180.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))tanpi(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the tangent of (v * pi), where (v * pi) is measured in radians.
+ *
+ * To get the tangent of a value measured in degrees, call tanpi(v / 180.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))tanpi(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the tangent of (v * pi), where (v * pi) is measured in radians.
+ *
+ * To get the tangent of a value measured in degrees, call tanpi(v / 180.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))tanpi(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the tangent of (v * pi), where (v * pi) is measured in radians.
+ *
+ * To get the tangent of a value measured in degrees, call tanpi(v / 180.f).
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))tanpi(half4 v);
+#endif
+
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
 /**
  * Returns the gamma function of a value.
@@ -11940,6 +13955,42 @@ extern float3 __attribute__((const, overloadable))tgamma(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))tgamma(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the gamma function of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))tgamma(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the gamma function of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))tgamma(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the gamma function of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))tgamma(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Returns the gamma function of a value.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))tgamma(half4 v);
 #endif
 
 #if (defined(RS_VERSION) && (RS_VERSION >= 9))
@@ -11992,6 +14043,58 @@ extern float3 __attribute__((const, overloadable))trunc(float3 v);
  * Supported by API versions 9 and newer.
  */
 extern float4 __attribute__((const, overloadable))trunc(float4 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Rounds to integral using truncation.
+ *
+ * For example, trunc(1.7f) returns 1.f and trunc(-1.7f) returns -1.f.
+ *
+ * See rint() and round() for other rounding options.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half __attribute__((const, overloadable))trunc(half v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Rounds to integral using truncation.
+ *
+ * For example, trunc(1.7f) returns 1.f and trunc(-1.7f) returns -1.f.
+ *
+ * See rint() and round() for other rounding options.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half2 __attribute__((const, overloadable))trunc(half2 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Rounds to integral using truncation.
+ *
+ * For example, trunc(1.7f) returns 1.f and trunc(-1.7f) returns -1.f.
+ *
+ * See rint() and round() for other rounding options.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half3 __attribute__((const, overloadable))trunc(half3 v);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 21))
+/**
+ * Rounds to integral using truncation.
+ *
+ * For example, trunc(1.7f) returns 1.f and trunc(-1.7f) returns -1.f.
+ *
+ * See rint() and round() for other rounding options.
+ *
+ * Supported by API versions 21 and newer.
+ */
+extern half4 __attribute__((const, overloadable))trunc(half4 v);
 #endif
 
 #endif // __rs_core_math_rsh__

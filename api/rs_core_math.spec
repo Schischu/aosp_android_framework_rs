@@ -1830,7 +1830,7 @@ comment:
 
  This function is useful for implementing periodic functions.  The low three bits of the quotient gives the quadrant and the remainder the distance within the quadrant.  For example, an implementation of sin(x) could call remquo(x, PI / 2.f, &quadrant) to reduce very large value of x to something within a limited range.
 
- Example: remquo(-23.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
+ Example: remquo(2123.5f, 8.f, &quot) sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
 
  @param numerator The numerator.
  @param denominator The denominator.
@@ -2072,3 +2072,646 @@ comment:
  See rint() and round() for other rounding options.
 version: 9
 end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: sqrt
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the square root of a value.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: tan
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the tangent of an angle measured in radians.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: tanh
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the hyperbolic tangent of a value.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: tanpi
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the tangent of (v * pi), where (v * pi) is measured in radians.
+
+ To get the tangent of a value measured in degrees, call tanpi(v / 180.f).
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: tgamma
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the gamma function of a value.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: trunc
+ret: #2#1
+arg: #2#1 v
+comment:
+ Rounds to integral using truncation.
+
+ For example, trunc(1.7f) returns 1.f and trunc(-1.7f) returns -1.f.
+
+ See rint() and round() for other rounding options.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: acos
+ret: #2#1
+arg: #2#1 v range(-1,1)
+comment:
+ Returns the inverse cosine, in radians.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: acosh
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the inverse hyperbolic cosine, in radians.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: acospi
+ret: #2#1
+arg: #2#1 v range(-1,1)
+comment:
+ Returns the inverse cosine in radians, divided by pi.
+
+ To get an inverse cosine measured in degrees, use acospi(a) * 180.f.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: asin
+ret: #2#1
+arg: #2#1 v range(-1,1)
+comment:
+ Returns the inverse sine, in radians.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: asinh
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the inverse hyperbolic sine, in radians.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: asinpi
+ret: #2#1
+arg: #2#1 v range(-1,1)
+comment:
+ Returns the inverse sine in radians, divided by pi.
+
+ To get an inverse sine measured in degrees, use asinpi(a) * 180.f.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: atan
+ret: #2#1
+arg: #2#1 v range(-1,1)
+comment:
+ Returns the inverse tangent, in radians.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: atan2
+ret: #2#1
+arg: #2#1 numerator
+arg: #2#1 denominator
+comment:
+ Returns the inverse tangent of (numerator / denominator), in radians.
+
+ denominator can be 0.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: atan2pi
+ret: #2#1
+arg: #2#1 numerator
+arg: #2#1 denominator
+comment:
+ Returns the inverse tangent of (numerator / denominator), in radians, divided by pi.
+
+ To get an inverse tangent measured in degrees, use atan2pi(n, d) * 180.f.
+
+ denominator can be 0.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: atanh
+ret: #2#1
+arg: #2#1 v range(-1,1)
+comment:
+ Returns the inverse hyperbolic tangent, in radians.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: atanpi
+ret: #2#1
+arg: #2#1 v range(-1,1)
+comment:
+ Returns the inverse tangent in radians, divided by pi.
+
+ To get an inverse tangent measured in degrees, use atanpi(a) * 180.f.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: cbrt
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the cube root.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: ceil
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the smallest integer not less than a value.
+
+ For example, ceil(1.2f) returns 2.f, and ceil(-1.2f) returns -1.f.
+version: 21
+end:
+start:
+w: 1, 2, 3, 4
+t: f16
+name: copysign
+ret: #2#1
+arg: #2#1 magnitude_value
+arg: #2#1 sign_value
+comment:
+ Copies the sign from sign_value to magnitude_value.
+
+ The value returned is either magnitude_value or -magnitude_value.
+
+ For example, copysign(4.0f, -2.7f) returns -4.0f and copysign(-4.0f, 2.7f) returns 4.0f.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: cos
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the cosine of an angle measured in radians.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: cosh
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the hypebolic cosine of v, where v is measured in radians.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: cospi
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the cosine of (v * pi), where (v * pi) is measured in radians.
+
+ To get the cosine of a value measured in degrees, call cospi(v / 180.f).
+version: 21
+end:
+start:
+w: 1, 2, 3, 4
+t: f16
+name: erf
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the error function.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: erfc
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the complementary error function.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: exp
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns e raised to v, i.e. e ^ v.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: exp10
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns 10 raised to v, i.e. 10.f ^ v.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: exp2
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns 2 raised to v, i.e. 2.f ^ v.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: expm1
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns e raised to v minus 1, i.e. (e ^ v) - 1.
+version: 21
+end:
+start:
+w: 1, 2, 3, 4
+t: f16
+name: fdim
+ret: #2#1
+arg: #2#1 a
+arg: #2#1 b
+comment:
+ Returns the positive difference between two values.
+
+ If a > b, returns (a - b) otherwise returns 0f.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: floor
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the smallest integer not greater than a value.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: fma
+ret: #2#1
+arg: #2#1 multiplicand1
+arg: #2#1 multiplicand2
+arg: #2#1 offset
+comment:
+ Multiply and add.  Returns (multiplicand1 * multiplicand2) + offset.
+
+ This function is identical to mad().
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: fmax
+ret: #2#1
+arg: #2#1 a
+arg: #2#1 b
+comment:
+ Returns the maximum of a and b, i.e. (a < b ? b : a).
+
+ The max() function returns identical results but can be applied to more data types.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: fmin
+ret: #2#1
+arg: #2#1 a
+arg: #2#1 b
+comment:
+ Returns the minimum of a and b, i.e. (a > b ? b : a).
+
+ The min() function returns identical results but can be applied to more data types.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: fmod
+ret: #2#1
+arg: #2#1 numerator
+arg: #2#1 denominator
+comment:
+ Returns the remainder of (numerator / denominator), where the quotient is rounded towards zero.
+
+ The function remainder() is similar but rounds toward the closest interger.
+ For example, fmod(-3.8f, 2.f) returns -1.8f (-3.8f - -1.f * 2.f)
+ while remainder(-3.8f, 2.f) returns 0.2f (-3.8f - -2.f * 2.f).
+version: 21
+
+end:
+start:
+w: 1, 2, 3, 4
+t: f16
+name: frexp
+ret: #2#1
+arg: #2#1 v
+arg: int#1 *exponent
+comment:
+ Returns the binary mantissa and exponent of v, e.g. v == mantissa * 2 ^ exponent.
+
+ The mantissa is always between 0.5 (inclusive) and 1.0 (exclusive).
+ See ldexp() for the reverse operation.
+
+ @param v Supports float, float2, float3, float4.
+ @param exponent  If exponent is not null, each element of exponent will be set to the exponent of the corresponding element of v.
+version: 21
+
+end:
+start:
+w: 1, 2, 3, 4
+t: f16
+name: ilogb
+ret: int#1
+arg: float#1 v
+comment:
+ Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+
+ For example, ilogb(8.5f) returns 3.  Because of the difference in mantissa, this number is one less than
+ is returned by frexp().
+
+ logb() is similar but returns a float.
+version: 21
+test: custom
+end:
+
+start:
+w: 1, 2, 3, 4
+name: ldexp
+ret: float#1
+arg: float#1 mantissa
+arg: int#1 exponent
+comment:
+ Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+
+ See frexp() for the reverse operation.
+
+ @param mantissa Supports float, float2, float3, and float4.
+ @param exponent Supports single component or matching vector.
+version: 21
+end:
+
+start:
+w: 2, 3, 4
+name: ldexp
+ret: float#1
+arg: float#1 mantissa
+arg: int exponent
+comment:
+ Returns the floating point created from the mantissa and exponent, i.e. (mantissa * 2 ^ exponent).
+ See frexp() for the reverse operation.
+
+ @param mantissa Supports float, float2, float3, and float4.
+ @param exponent Supports single component or matching vector.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: lgamma
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(v))).
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: lgamma
+ret: #2#1
+arg: #2#1 v
+arg: int#1 *sign_of_gamma
+comment:
+ Returns the natural logarithm of the absolute value of the gamma function, i.e. log(fabs(gamma(v))).
+
+ Can also return the sign of the gamma function.
+
+ @param v Input value.
+ @param sign_of_gamma  If sign is not null, each element of sign will be set to -1.f if the gamma of the corresponding element of v is negative, otherwise to 1.f.
+
+version: 21
+#TODO Temporary until bionic & associated drivers are fixed
+test: custom
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: log
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the natural logarithm.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: log10
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the base 10 logarithm.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: log1p
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the natural logarithm of (v + 1.f).
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: log2
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the base 2 logarithm.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: logb
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the base two exponent of a value, where the mantissa is between 1.f (inclusive) and 2.f (exclusive).
+
+ For example, logb(8.5f) returns 3.f.  Because of the difference in mantissa, this number is one less than
+ is returned by frexp().
+
+ ilogb() is similar but returns an integer.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: modf
+ret: #2#1
+arg: #2#1 v
+arg: #2#1 *integral_part
+comment:
+ Returns the integral and fractional components of a number.
+
+ Both components will have the same sign as x.  For example, for an input of -3.72f, iret will be set to -3.f and .72f will be returned.
+
+ @param v Source value
+ @param integral_part integral_part[0] will be set to the integral portion of the number.
+ @return The floating point portion of the value.
+version: 21
+
+end:
+start:
+w: 1, 2, 3, 4
+t: f16
+name: sin
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the sine of an angle measured in radians.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: sincos
+ret: #2#1
+arg: #2#1 v
+arg: #2#1 *cos
+comment:
+ Returns the sine and cosine of a value.
+
+ @return sine of v
+ @param v The incoming value in radians
+ @param *cos cosptr[0] will be set to the cosine value.
+version: 21
+end:
+
+start:
+w: 1, 2, 3, 4
+t: f16
+name: sinh
+ret: #2#1
+arg: #2#1 v
+comment:
+ Returns the hyperbolic sine of v, where v is measured in radians.
+version: 21
+end:
+
