@@ -1,5 +1,10 @@
 #include "rs_types.rsh"
 
+typedef ushort half_t;
+typedef ushort2 half_t2;
+typedef ushort3 half_t3;
+typedef ushort4 half_t4;
+
 extern float2 __attribute__((overloadable)) convert_float2(int2 c);
 extern float3 __attribute__((overloadable)) convert_float3(int3 c);
 extern float4 __attribute__((overloadable)) convert_float4(int4 c);
@@ -18,6 +23,30 @@ extern float __attribute__((overloadable)) fmax(float v, float v2);
 extern float2 __attribute__((overloadable)) fmax(float2 v, float v2);
 extern float3 __attribute__((overloadable)) fmax(float3 v, float v2);
 extern float4 __attribute__((overloadable)) fmax(float4 v, float v2);
+
+//Half ops
+#define HFN_FUNC_HFN(fnc)                                         \
+extern half_t2 __attribute__((overloadable)) fnc(half_t2 v) { \
+    half_t2 r;                                                   \
+    r.x = fnc(v.x);                                             \
+    r.y = fnc(v.y);                                             \
+    return r;                                                   \
+}                                                               \
+extern half_t3 __attribute__((overloadable)) fnc(half_t3 v) { \
+    half_t3 r;                                                   \
+    r.x = fnc(v.x);                                             \
+    r.y = fnc(v.y);                                             \
+    r.z = fnc(v.z);                                             \
+    return r;                                                   \
+}                                                               \
+extern half_t4 __attribute__((overloadable)) fnc(half_t4 v) { \
+    half_t4 r;                                                   \
+    r.x = fnc(v.x);                                             \
+    r.y = fnc(v.y);                                             \
+    r.z = fnc(v.z);                                             \
+    r.w = fnc(v.w);                                             \
+    return r;                                                   \
+}
 
 // Float ops, 6.11.2
 
@@ -333,6 +362,51 @@ static bool iszero(float f) {
     return isposzero(f) || isnegzero(f);
 }
 
+//////////////////////Half float ops/////////////////////////
+// TODO add other math functions for half float
+extern half_t __attribute__((overloadable)) acos(half_t);
+HFN_FUNC_HFN(acos)
+
+extern half_t __attribute__((overloadable)) acosh(half_t);
+HFN_FUNC_HFN(acosh)
+
+extern half_t __attribute__((overloadable)) asin(half_t);
+HFN_FUNC_HFN(asin)
+
+extern half_t __attribute__((overloadable)) asinh(half_t);
+HFN_FUNC_HFN(asinh)
+
+extern half_t __attribute__((overloadable)) atan(half_t);
+HFN_FUNC_HFN(atan)
+
+extern half_t __attribute__((overloadable)) atanh(half_t);
+HFN_FUNC_HFN(atanh)
+
+extern half_t __attribute__((overloadable)) cbrt(half_t);
+HFN_FUNC_HFN(cbrt)
+
+extern half_t __attribute__((overloadable)) cos(half_t);
+HFN_FUNC_HFN(cos)
+
+extern half_t __attribute__((overloadable)) cosh(half_t);
+HFN_FUNC_HFN(cosh)
+
+extern half_t __attribute__((overloadable)) sqrt(half_t);
+HFN_FUNC_HFN(sqrt)
+
+extern half_t __attribute__((overloadable)) sin(half_t);
+HFN_FUNC_HFN(sin)
+
+extern half_t __attribute__((overloadable)) sinh(half_t);
+HFN_FUNC_HFN(sinh)
+
+extern half_t __attribute__((overloadable)) tan(half_t);
+HFN_FUNC_HFN(tan)
+
+extern half_t __attribute__((overloadable)) tanh(half_t);
+HFN_FUNC_HFN(tanh)
+
+//////////////////////////////////////////////////////////////////
 
 extern float __attribute__((overloadable)) acos(float);
 FN_FUNC_FN(acos)
@@ -1444,6 +1518,12 @@ extern ulong4 __attribute__((overloadable)) max(ulong4 v1, ulong4 v2) {
     float3 __attribute__((overloadable)) native_##fn(float3 v1, int3 v2) { return fn(v1, v2);} \
     float4 __attribute__((overloadable)) native_##fn(float4 v1, int4 v2) { return fn(v1, v2);}
 
+#define THUNK_NATIVE_H(fn) \
+    half_t __attribute__((overloadable)) native_##fn(half_t v) { return fn(v);} \
+    half_t2 __attribute__((overloadable)) native_##fn(half_t2 v) { return fn(v);} \
+    half_t3 __attribute__((overloadable)) native_##fn(half_t3 v) { return fn(v);} \
+    half_t4 __attribute__((overloadable)) native_##fn(half_t4 v) { return fn(v);}
+
 THUNK_NATIVE_F(acos)
 THUNK_NATIVE_F(acosh)
 THUNK_NATIVE_F(acospi)
@@ -1473,10 +1553,26 @@ THUNK_NATIVE_F(tan)
 THUNK_NATIVE_F(tanh)
 THUNK_NATIVE_F(tanpi)
 
+THUNK_NATIVE_H(acos)
+THUNK_NATIVE_H(acosh)
+THUNK_NATIVE_H(asin)
+THUNK_NATIVE_H(asinh)
+THUNK_NATIVE_H(atan)
+THUNK_NATIVE_H(atanh)
+THUNK_NATIVE_H(cbrt)
+THUNK_NATIVE_H(cos)
+THUNK_NATIVE_H(cosh)
+THUNK_NATIVE_H(sqrt)
+THUNK_NATIVE_H(sin)
+THUNK_NATIVE_H(sinh)
+THUNK_NATIVE_H(tan)
+THUNK_NATIVE_H(tanh)
+
 #undef THUNK_NATIVE_F
 #undef THUNK_NATIVE_F_F
 #undef THUNK_NATIVE_F_I
 #undef THUNK_NATIVE_F_FP
+#undef THUNK_NATIVE_H
 
 float __attribute__((overloadable)) native_normalize(float v) { return fast_normalize(v);}
 float2 __attribute__((overloadable)) native_normalize(float2 v) { return fast_normalize(v);}
@@ -1506,7 +1602,7 @@ float4 __attribute__((overloadable)) native_recip(float4 v) { return ((float4)1.
 
 
 
-
+#undef HFN_FUNC_HFN
 #undef FN_FUNC_FN
 #undef IN_FUNC_FN
 #undef FN_FUNC_FN_FN
