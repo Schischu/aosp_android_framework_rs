@@ -3,6 +3,7 @@
 
 #include <list>
 
+#include "rsCpuCoreRuntime.h"
 #include "rsd_cpu.h"
 
 using std::list;
@@ -15,7 +16,7 @@ class RsdCpuScriptImpl;
 class RsdCpuReferenceImpl;
 class ScriptGroup2;
 
-struct RsExpandKernelParams;
+typedef ::RsExpandKernelParams RsExpandKernelParams;
 
 typedef void (*ExpandFuncTy)(const RsExpandKernelParams*, uint32_t, uint32_t,
                              uint32_t);
