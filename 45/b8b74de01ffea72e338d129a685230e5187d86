@@ -1,0 +1,8 @@
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Code-Review+2: Jason Sams <jsams@google.com>
+Code-Review+1: Yang Ni <yangni@google.com>
+Submitted-by: Miao Wang <miaowang@google.com>
+Submitted-at: Mon, 09 Feb 2015 23:59:27 +0000
+Reviewed-on: https://android-review.googlesource.com/129910
+Project: platform/frameworks/rs
+Branch: refs/heads/master
