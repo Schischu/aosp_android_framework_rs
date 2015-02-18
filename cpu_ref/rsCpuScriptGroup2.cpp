@@ -14,6 +14,7 @@
 #include "rsClosure.h"
 #include "rsContext.h"
 #include "rsCpuCore.h"
+#include "rsCpuExecutable.h"
 #include "rsCpuScript.h"
 #include "rsScript.h"
 #include "rsScriptGroup2.h"
