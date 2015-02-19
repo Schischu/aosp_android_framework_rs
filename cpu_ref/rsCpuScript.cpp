@@ -25,7 +25,6 @@
     #include <bcc/BCCContext.h>
     #include <bcc/Config/Config.h>
     #include <bcc/Renderscript/RSCompilerDriver.h>
-    #include <bcc/Renderscript/RSInfo.h>
     #include <bcinfo/MetadataExtractor.h>
     #include <cutils/properties.h>
 
@@ -268,6 +267,18 @@ const char* SharedLibraryUtils::RS_CACHE_DIR = "com.android.renderscript.cache";
 
 #ifndef RS_COMPATIBILITY_LIB
 
+std::string getCommandLine(int argc, const char* const* argv) {
+    std::string s;
+    for (int i = 0; i < argc; i++) {
+        if (i > 0) {
+            s += ' ';
+        }
+        s += argv[i];
+    }
+    return s;
+}
+
+
 bool SharedLibraryUtils::createSharedLibrary(const char *cacheDir, const char *resName) {
     std::string sharedLibName = findSharedObjectName(cacheDir, resName);
     std::string objFileName = cacheDir;
@@ -289,7 +300,7 @@ bool SharedLibraryUtils::createSharedLibrary(const char *cacheDir, const char *r
         nullptr
     };
 
-    std::string cmdLineStr = bcc::getCommandLine(args.size()-1, args.data());
+    std::string cmdLineStr = getCommandLine(args.size()-1, args.data());
 
     pid_t pid = fork();
 
@@ -837,7 +848,7 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
                         useRSDebugContext, bccPluginName);
     // The last argument of compileArguments ia a nullptr, so remove 1 from the size.
     std::string compileCommandLine =
-                bcc::getCommandLine(compileArguments.size() - 1, compileArguments.data());
+                getCommandLine(compileArguments.size() - 1, compileArguments.data());
 
     if (!is_force_recompile() && !useRSDebugContext) {
         mScriptSO = SharedLibraryUtils::loadSharedLibrary(cacheDir, resName);
