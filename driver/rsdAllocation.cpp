@@ -1154,6 +1154,32 @@ void rsdAllocationElementData2D(const Context *rsc, const Allocation *alloc,
     drv->uploadDeferred = true;
 }
 
+void rsdAllocationElementRead1D(const Context *rsc, const Allocation *alloc,
+                                uint32_t x,
+                                void *data, uint32_t cIdx, size_t sizeBytes) {
+    size_t eSize = alloc->mHal.state.elementSizeBytes;
+    const uint8_t * ptr = GetOffsetPtr(alloc, x, 0, 0, 0, RS_ALLOCATION_CUBEMAP_FACE_POSITIVE_X);
+
+    const Element * e = alloc->mHal.state.type->getElement()->getField(cIdx);
+    ptr += alloc->mHal.state.type->getElement()->getFieldOffsetBytes(cIdx);
+
+    memcpy(data, ptr, sizeBytes);
+}
+
+void rsdAllocationElementRead2D(const Context *rsc, const Allocation *alloc,
+                                uint32_t x, uint32_t y,
+                                void *data, uint32_t cIdx, size_t sizeBytes) {
+    DrvAllocation *drv = (DrvAllocation *)alloc->mHal.drv;
+    //FIXME: eSize is not used for all the ElementData and ElementRead functions. bug?
+    size_t eSize = alloc->mHal.state.elementSizeBytes;
+    uint8_t * ptr = GetOffsetPtr(alloc, x, y, 0, 0, RS_ALLOCATION_CUBEMAP_FACE_POSITIVE_X);
+
+    const Element * e = alloc->mHal.state.type->getElement()->getField(cIdx);
+    ptr += alloc->mHal.state.type->getElement()->getFieldOffsetBytes(cIdx);
+
+    memcpy(data, ptr, sizeBytes);
+}
+
 static void mip565(const Allocation *alloc, int lod, RsAllocationCubemapFace face) {
     uint32_t w = alloc->mHal.drvState.lod[lod + 1].dimX;
     uint32_t h = alloc->mHal.drvState.lod[lod + 1].dimY;

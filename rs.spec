@@ -174,6 +174,15 @@ Allocation1DElementData {
     param size_t comp_offset
     }
 
+Allocation2DElementData {
+    param RsAllocation va
+    param uint32_t x
+    param uint32_t y
+    param uint32_t lod
+    param const void *data
+    param size_t comp_offset
+    }
+
 Allocation2DData {
     param RsAllocation va
     param uint32_t xoff
@@ -216,6 +225,23 @@ Allocation1DRead {
     param void *data
     }
 
+Allocation1DElementRead {
+    param RsAllocation va
+    param uint32_t x
+    param uint32_t lod
+    param void *data
+    param size_t comp_offset
+    }
+
+Allocation2DElementRead {
+    param RsAllocation va
+    param uint32_t x
+    param uint32_t y
+    param uint32_t lod
+    param void *data
+    param size_t comp_offset
+    }
+
 Allocation2DRead {
     param RsAllocation va
     param uint32_t xoff
@@ -228,6 +254,18 @@ Allocation2DRead {
     param size_t stride
 }
 
+Allocation3DRead {
+    param RsAllocation va
+    param uint32_t xoff
+    param uint32_t yoff
+    param uint32_t zoff
+    param uint32_t lod
+    param uint32_t w
+    param uint32_t h
+    param uint32_t d
+    param void *data
+    param size_t stride
+    }
 
 AllocationSyncAll {
     param RsAllocation va

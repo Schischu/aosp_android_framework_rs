@@ -143,6 +143,11 @@ public:
     void elementData(Context *rsc, uint32_t x, uint32_t y,
                      const void *data, uint32_t elementOff, size_t sizeBytes);
 
+    void elementRead(Context *rsc, uint32_t x,
+                     void *data, uint32_t elementOff, size_t sizeBytes);
+    void elementRead(Context *rsc, uint32_t x, uint32_t y,
+                     void *data, uint32_t elementOff, size_t sizeBytes);
+
     void addProgramToDirty(const Program *);
     void removeProgramToDirty(const Program *);
 
