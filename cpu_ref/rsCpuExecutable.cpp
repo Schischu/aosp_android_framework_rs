@@ -328,9 +328,12 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
 
     void** fieldAddress = nullptr;
     bool* fieldIsObject = nullptr;
+    char** fieldName = nullptr;
     InvokeFunc_t* invokeFunctions = nullptr;
+    char** invokeName = nullptr;
     ForEachFunc_t* forEachFunctions = nullptr;
     uint32_t* forEachSignatures = nullptr;
+    char** forEachName = nullptr;
     const char ** pragmaKeys = nullptr;
     const char ** pragmaValues = nullptr;
 
@@ -354,6 +357,11 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         goto error;
     }
 
+    fieldName = new char*[varCount];
+    if (fieldName == nullptr) {
+        goto error;
+    }
+
     for (size_t i = 0; i < varCount; ++i) {
         if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
             goto error;
@@ -370,6 +378,10 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         }
         fieldAddress[i] = addr;
         fieldIsObject[i] = false;
+        fieldName[i] = strndup(line, strlen(line));
+        if (fieldName[i] == nullptr) {
+            goto error;
+        }
     }
 
     if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
@@ -382,6 +394,11 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
 
     invokeFunctions = new InvokeFunc_t[funcCount];
     if (invokeFunctions == nullptr) {
+        goto error;
+    }
+
+    invokeName = new char*[funcCount];
+    if (invokeName == nullptr) {
         goto error;
     }
 
@@ -398,6 +415,10 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         if (invokeFunctions[i] == nullptr) {
             ALOGE("Failed to get function address for %s(): %s",
                   line, dlerror());
+            goto error;
+        }
+        invokeName[i] = strndup(line, strlen(line));
+        if (invokeName[i] == nullptr) {
             goto error;
         }
     }
@@ -420,6 +441,11 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         goto error;
     }
 
+    forEachName = new char*[forEachCount];
+    if (forEachName == nullptr) {
+        goto error;
+    }
+
     for (size_t i = 0; i < forEachCount; ++i) {
         unsigned int tmpSig = 0;
         char tmpName[MAXLINE];
@@ -438,11 +464,17 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         forEachSignatures[i] = tmpSig;
         forEachFunctions[i] =
             (ForEachFunc_t) dlsym(sharedObj, tmpName);
-        if (i != 0 && forEachFunctions[i] == nullptr) {
+        if (i != 0 && forEachFunctions[i] == nullptr &&
+            strcmp(tmpName, "root.expand")) {
             // Ignore missing root.expand functions.
             // root() is always specified at location 0.
             ALOGE("Failed to find forEach function address for %s: %s",
                   tmpName, dlerror());
+            goto error;
+        }
+
+        forEachName[i] = strndup(tmpName, strlen(tmpName));
+        if (forEachName[i] == nullptr) {
             goto error;
         }
     }
@@ -547,9 +579,9 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
 #endif  // RS_COMPATIBILITY_LIB
 
     return new ScriptExecutable(
-        RSContext, fieldAddress, fieldIsObject, varCount,
-        invokeFunctions, funcCount,
-        forEachFunctions, forEachSignatures, forEachCount,
+        RSContext, fieldAddress, fieldIsObject, fieldName, varCount,
+        invokeFunctions, invokeName, funcCount,
+        forEachFunctions, forEachSignatures, forEachName, forEachCount,
         pragmaKeys, pragmaValues, pragmaCount,
         isThreadable);
 
@@ -567,10 +599,34 @@ error:
 
     delete[] forEachSignatures;
     delete[] forEachFunctions;
+    for (size_t i = 0; i < forEachCount; i++) {
+        free(forEachName[i]);
+    }
+    delete[] forEachName;
+
     delete[] invokeFunctions;
+    for (size_t i = 0; i < funcCount; i++) {
+        free(invokeName[i]);
+    }
+    delete[] invokeName;
+
+    for (size_t i = 0; i < varCount; i++) {
+        free(fieldName[i]);
+    }
+    delete[] fieldName;
     delete[] fieldIsObject;
     delete[] fieldAddress;
 
+    return nullptr;
+}
+
+void* ScriptExecutable::getFieldAddress(const char* name) const {
+    // TODO: improve this by using a hash map.
+    for (size_t i = 0; i < mExportedVarCount; i++) {
+        if (strcmp(name, mFieldName[i]) == 0) {
+            return mFieldAddress[i];
+        }
+    }
     return nullptr;
 }
 
