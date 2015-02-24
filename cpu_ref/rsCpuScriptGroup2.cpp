@@ -1,6 +1,9 @@
 #include "rsCpuScriptGroup2.h"
 
 #include <dlfcn.h>
+#include <limits.h>
+#include <string.h>
+#include <unistd.h>
 
 #include <string>
 #include <vector>
@@ -288,9 +291,25 @@ void Batch::tryToCreateFusedKernel(const char *cacheDir) {
         slots.push_back(kernelID->mSlot);
     }
 
-    string outputPath(tempnam(cacheDir, "fused"));
-    string outputFileName = getFileName(outputPath);
-    string objFilePath(outputPath);
+    char tempPath[PATH_MAX];
+    if (cacheDir != NULL) {
+      size_t len = strlen(cacheDir);
+      if (len == 0 || cacheDir[len - 1] == '/') {
+        snprintf(tempPath, sizeof(tempPath), "%sfusedXXXXXX", cacheDir);
+      } else {
+        snprintf(tempPath, sizeof(tempPath), "%s/fusedXXXXXX", cacheDir);
+      }
+    } else {
+      snprintf(tempPath, sizeof(tempPath), "fusedXXXXXX");
+    }
+    int tempfd = mkstemp(tempPath);
+    if (tempfd == -1) {
+      return;
+    }
+    TEMP_FAILURE_RETRY(close(tempfd));
+
+    string outputFileName = getFileName(tempPath);
+    string objFilePath(tempPath);
     objFilePath.append(".o");
     string rsLibPath(SYSLIBPATH"/libclcore.bc");
     vector<const char*> arguments;
@@ -300,6 +319,7 @@ void Batch::tryToCreateFusedKernel(const char *cacheDir) {
             convertListToString(arguments.size() - 1, arguments.data());
 
     if (!fuseAndCompile(arguments.data(), commandLine)) {
+        unlink(tempPath);
         return;
     }
 
@@ -311,12 +331,14 @@ void Batch::tryToCreateFusedKernel(const char *cacheDir) {
 
     if (!SharedLibraryUtils::createSharedLibrary(cacheDir, resName)) {
         ALOGE("Failed to link object file '%s'", resName);
+        unlink(tempPath);
         return;
     }
 
     void* mSharedObj = SharedLibraryUtils::loadSharedLibrary(cacheDir, resName);
     if (mSharedObj == nullptr) {
         ALOGE("Unable to load '%s'", resName);
+        unlink(tempPath);
         return;
     }
 
