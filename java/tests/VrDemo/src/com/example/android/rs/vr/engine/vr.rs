@@ -274,7 +274,7 @@ uchar4 __attribute__ ((kernel)) draw_z_buffer(float2 in, uint32_t x, uint32_t y)
                     float diffuse = mat.z  * (1/255.f);// diffuse
                     float lop = (ambient + diffuse * dot_prod + specular * pow(spec, 10)) * light * opf;
                     light -= opf;
-                    total_color += fcolor * lop;
+                    total_color += fabs(fcolor * lop);
 
                     zb = zstart + k;
                     if (light <= 0) {
