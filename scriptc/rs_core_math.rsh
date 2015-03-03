@@ -7848,7 +7848,7 @@ extern float3 __attribute__((const, overloadable))max(float3 a, float3 b);
 extern float4 __attribute__((const, overloadable))max(float4 a, float4 b);
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7859,7 +7859,7 @@ static char __attribute__((const, overloadable))max(char a, char b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7870,7 +7870,7 @@ static uchar __attribute__((const, overloadable))max(uchar a, uchar b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7881,7 +7881,7 @@ static short __attribute__((const, overloadable))max(short a, short b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7892,7 +7892,7 @@ static ushort __attribute__((const, overloadable))max(ushort a, ushort b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7903,7 +7903,7 @@ static int __attribute__((const, overloadable))max(int a, int b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7914,7 +7914,7 @@ static uint __attribute__((const, overloadable))max(uint a, uint b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7928,7 +7928,7 @@ static char2 __attribute__((const, overloadable))max(char2 a, char2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7942,7 +7942,7 @@ static uchar2 __attribute__((const, overloadable))max(uchar2 a, uchar2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7956,7 +7956,7 @@ static short2 __attribute__((const, overloadable))max(short2 a, short2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7970,7 +7970,7 @@ static ushort2 __attribute__((const, overloadable))max(ushort2 a, ushort2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7984,7 +7984,7 @@ static int2 __attribute__((const, overloadable))max(int2 a, int2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -7998,7 +7998,7 @@ static uint2 __attribute__((const, overloadable))max(uint2 a, uint2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8013,7 +8013,7 @@ static char3 __attribute__((const, overloadable))max(char3 a, char3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8028,7 +8028,7 @@ static uchar3 __attribute__((const, overloadable))max(uchar3 a, uchar3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8043,7 +8043,7 @@ static short3 __attribute__((const, overloadable))max(short3 a, short3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8058,7 +8058,7 @@ static ushort3 __attribute__((const, overloadable))max(ushort3 a, ushort3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8073,7 +8073,7 @@ static int3 __attribute__((const, overloadable))max(int3 a, int3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8088,7 +8088,7 @@ static uint3 __attribute__((const, overloadable))max(uint3 a, uint3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8104,7 +8104,7 @@ static char4 __attribute__((const, overloadable))max(char4 a, char4 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8120,7 +8120,7 @@ static uchar4 __attribute__((const, overloadable))max(uchar4 a, uchar4 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8136,7 +8136,7 @@ static short4 __attribute__((const, overloadable))max(short4 a, short4 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8152,7 +8152,7 @@ static ushort4 __attribute__((const, overloadable))max(ushort4 a, ushort4 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8168,7 +8168,7 @@ static int4 __attribute__((const, overloadable))max(int4 a, int4 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the maximum value of two arguments.
  *
@@ -8508,7 +8508,7 @@ extern float3 __attribute__((const, overloadable))min(float3 a, float3 b);
 extern float4 __attribute__((const, overloadable))min(float4 a, float4 b);
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8519,7 +8519,7 @@ static char __attribute__((const, overloadable))min(char a, char b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8530,7 +8530,7 @@ static uchar __attribute__((const, overloadable))min(uchar a, uchar b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8541,7 +8541,7 @@ static short __attribute__((const, overloadable))min(short a, short b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8552,7 +8552,7 @@ static ushort __attribute__((const, overloadable))min(ushort a, ushort b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8563,7 +8563,7 @@ static int __attribute__((const, overloadable))min(int a, int b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8574,7 +8574,7 @@ static uint __attribute__((const, overloadable))min(uint a, uint b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8588,7 +8588,7 @@ static char2 __attribute__((const, overloadable))min(char2 a, char2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8602,7 +8602,7 @@ static uchar2 __attribute__((const, overloadable))min(uchar2 a, uchar2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8616,7 +8616,7 @@ static short2 __attribute__((const, overloadable))min(short2 a, short2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8630,7 +8630,7 @@ static ushort2 __attribute__((const, overloadable))min(ushort2 a, ushort2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8644,7 +8644,7 @@ static int2 __attribute__((const, overloadable))min(int2 a, int2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8658,7 +8658,7 @@ static uint2 __attribute__((const, overloadable))min(uint2 a, uint2 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8673,7 +8673,7 @@ static char3 __attribute__((const, overloadable))min(char3 a, char3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8688,7 +8688,7 @@ static uchar3 __attribute__((const, overloadable))min(uchar3 a, uchar3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8703,7 +8703,7 @@ static short3 __attribute__((const, overloadable))min(short3 a, short3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8718,7 +8718,7 @@ static ushort3 __attribute__((const, overloadable))min(ushort3 a, ushort3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8733,7 +8733,7 @@ static int3 __attribute__((const, overloadable))min(int3 a, int3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8748,7 +8748,7 @@ static uint3 __attribute__((const, overloadable))min(uint3 a, uint3 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8764,7 +8764,7 @@ static char4 __attribute__((const, overloadable))min(char4 a, char4 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8780,7 +8780,7 @@ static uchar4 __attribute__((const, overloadable))min(uchar4 a, uchar4 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8796,7 +8796,7 @@ static short4 __attribute__((const, overloadable))min(short4 a, short4 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8812,7 +8812,7 @@ static ushort4 __attribute__((const, overloadable))min(ushort4 a, ushort4 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
@@ -8828,7 +8828,7 @@ static int4 __attribute__((const, overloadable))min(int4 a, int4 b) {
 }
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 19))
+#if (defined(RS_VERSION) && (RS_VERSION >= 9) && (RS_VERSION <= 20))
 /**
  * Returns the minimum value of two arguments.
  *
