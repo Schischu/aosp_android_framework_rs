@@ -18,7 +18,7 @@ package com.android.rs.imagejb;
 
 import java.lang.Math;
 
-import android.renderscript.Matrix3f;
+import android.renderscript.*;
 import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -148,6 +148,17 @@ public class LevelsV4 extends TestBase {
     }
 
     public void runTest() {
+        Type t = Type.createXY(mRS, mInPixelsAllocation.getType().getElement(), 300, 300);
+
+        AllocationAdapter aain = AllocationAdapter.createTyped(mRS, mInPixelsAllocation, t);
+        AllocationAdapter aaout = AllocationAdapter.createTyped(mRS, mOutPixelsAllocation, t);
+
+        aaout.setX(0);
+        aaout.setY(0);
+
+        aain.setX(500);
+        aain.setY(500);
+
         if (mUseFull) {
             if (mUseV4) {
                 mScriptF.forEach_root4(mInPixelsAllocation, mOutPixelsAllocation);
@@ -156,9 +167,9 @@ public class LevelsV4 extends TestBase {
             }
         } else {
             if (mUseV4) {
-                mScriptR.forEach_root4(mInPixelsAllocation, mOutPixelsAllocation);
+                mScriptR.forEach_root4(aain, aaout);
             } else {
-                mScriptR.forEach_root(mInPixelsAllocation, mOutPixelsAllocation);
+                mScriptR.forEach_root(aain, aaout);
             }
         }
     }
