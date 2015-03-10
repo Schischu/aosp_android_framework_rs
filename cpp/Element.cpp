@@ -188,7 +188,7 @@ Element::Element(void *id, android::RSC::sp<RS> rs,
 }
 
 
-static uint32_t GetSizeInBytesForType(RsDataType dt) {
+uint32_t GetSizeInBytesForType(RsDataType dt) {
     switch(dt) {
     case RS_TYPE_NONE:
         return 0;
