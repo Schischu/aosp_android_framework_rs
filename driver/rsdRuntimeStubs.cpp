@@ -24,7 +24,6 @@
 #include "rsdCore.h"
 #include "rsdBcc.h"
 
-#include "rsdPath.h"
 #include "rsdAllocation.h"
 #include "rsdShaderCache.h"
 #include "rsdVertexArray.h"
@@ -466,8 +465,7 @@ static void SC_DrawRect(float x1, float y1, float x2, float y2, float z) {
 }
 
 static void SC_DrawPath(Path *p) {
-    Context *rsc = RsdCpuReference::getTlsContext();
-    rsdPathDraw(rsc, p);
+    // This never shipped in a working version
 }
 
 static void SC_DrawMesh(Mesh *m) {
@@ -1695,7 +1693,7 @@ void  rsgMeshComputeBoundingBox(::rs_mesh mesh,
 }
 
 void rsgDrawPath(::rs_path p) {
-    return SC_DrawPath((Path *) p.p);
+    // Never shipped in a working state
 }
 
 void rsgClearColor(float r, float g, float b, float a) {

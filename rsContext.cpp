@@ -244,6 +244,7 @@ void Context::displayDebugStats() {
 #endif
 }
 
+#if 0
 bool Context::loadRuntime(const char* filename, Context* rsc) {
 
     // TODO: store the driverSO somewhere so we can dlclose later
@@ -284,6 +285,7 @@ bool Context::loadRuntime(const char* filename, Context* rsc) {
 
     return true;
 }
+#endif
 
 extern "C" bool rsdHalInit(RsContext c, uint32_t version_major, uint32_t version_minor);
 
@@ -306,7 +308,21 @@ void * Context::threadProc(void *vrsc) {
     if (getProp("debug.rs.debug") != 0) {
         ALOGD("Forcing debug context due to debug.rs.debug.");
         rsc->mContextType = RS_CONTEXT_TYPE_DEBUG;
+        rsc->mForceCpu = true;
     }
+
+    bool forceCpu = getProp("debug.rs.default-CPU-driver") != 0;
+    if (forceCpu) {
+        ALOGD("Skipping hardware driver and loading default CPU driver");
+        rsc->mForceCpu = true;
+    }
+
+    rsc->mForceCpu |= rsc->mIsGraphicsContext;
+
+    #if 1
+    rsc->loadDriver(rsc->mForceCpu);
+
+    #else
 
     bool loadDefault = true;
 
@@ -351,6 +367,7 @@ void * Context::threadProc(void *vrsc) {
     if (rsdHalInit(rsc, 0, 0) != true) {
         return nullptr;
     }
+#endif
 #endif
 
     if (!rsc->isSynchronous()) {
