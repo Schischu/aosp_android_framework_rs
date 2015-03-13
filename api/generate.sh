@@ -16,9 +16,12 @@
 #
 
 set -e
-g++ gen_runtime.cpp -std=c++11 -Wall -o gen_runtime
-./gen_runtime -v 21 rs_core_math.spec
-mv Test*.java ../../../cts/tests/tests/renderscript/src/android/renderscript/cts/
-mv Test*.rs ../../../cts/tests/tests/renderscript/src/android/renderscript/cts/
-mv rs_core_math.rsh ../scriptc/
-rm ./gen_runtime
+g++ Generator.cpp Specification.cpp GenerateHtmlDocumentation.cpp GenerateHeaderFiles.cpp GenerateTestFiles.cpp Scanner.cpp Utilities.cpp -g -std=c++11 -Wall -o generator
+
+./generator rs_allocation.spec rs_atomic.spec rs_core_math.spec rs_core.spec rs_debug.spec rs_element.spec rs_graphics.spec rs_math.spec rs_matrix.spec rs_mesh.spec rs_object.spec rs_program.spec rs_quaternion.spec rs_sampler.spec rs_time.spec rs_types.spec
+
+mv Test*.* ../../../cts/tests/tests/renderscript/src/android/renderscript/cts/
+mv *.rsh ../scriptc
+
+rm *.html # TODO handle the documentation files.
+rm generator
