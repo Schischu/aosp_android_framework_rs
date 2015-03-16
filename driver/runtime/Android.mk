@@ -140,8 +140,6 @@ endif
 
 # Build the ARM version of the library
 include $(CLEAR_VARS)
-
-# FIXME for 64-bit
 LOCAL_32_BIT_ONLY := true
 
 BCC_RS_TRIPLE := armv7-none-linux-gnueabi
@@ -168,8 +166,6 @@ include $(LOCAL_PATH)/build_bc_lib.mk
 
 # Build the x86 version of the library
 include $(CLEAR_VARS)
-
-# FIXME for 64-bit
 LOCAL_32_BIT_ONLY := true
 
 BCC_RS_TRIPLE := armv7-none-linux-gnueabi
@@ -180,6 +176,7 @@ LOCAL_CFLAGS += $(clcore_includes)
 LOCAL_SRC_FILES := $(clcore_x86_files) $(clcore_base_files_32)
 include $(LOCAL_PATH)/build_bc_lib.mk
 
+# Build the ARM 64bit version of the library
 include $(CLEAR_VARS)
 
 BCC_RS_TRIPLE := aarch64-linux-android
@@ -188,4 +185,15 @@ LOCAL_MODULE := librsrt_arm64.bc
 LOCAL_IS_HOST_MODULE := true
 LOCAL_CFLAGS += $(clcore_includes)
 LOCAL_SRC_FILES := $(clcore_files) $(clcore_files_64)
+include $(LOCAL_PATH)/build_bc_lib.mk
+
+# Build the x86 64bit version of the library
+include $(CLEAR_VARS)
+
+BCC_RS_TRIPLE := aarch64-linux-android
+RS_TRIPLE_CFLAGS := -D__x86_64__
+LOCAL_MODULE := librsrt_x86_64.bc
+LOCAL_IS_HOST_MODULE := true
+LOCAL_CFLAGS += $(clcore_includes)
+LOCAL_SRC_FILES := $(clcore_x86_files) $(clcore_base_files_64)
 include $(LOCAL_PATH)/build_bc_lib.mk
