@@ -24,6 +24,7 @@
 #include <string>
 #include <pthread.h>
 
+
 /**
  * Every row in an RS allocation is guaranteed to be aligned by this amount, and
  * every row in a user-backed allocation must be aligned by this amount.
@@ -33,6 +34,7 @@
 struct dispatchTable;
 
 namespace android {
+class Surface;
 namespace RSC {
 
 
@@ -347,6 +349,8 @@ public:
      * @param[in] srcLocation source location with changes to propagate elsewhere
      */
     void syncAll(RsAllocationUsageType srcLocation);
+    sp<Surface> getSurface();
+    void setSurface(sp<Surface> s);
     void ioSendOutput();
     void ioGetInput();
 
