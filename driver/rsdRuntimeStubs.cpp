@@ -1844,10 +1844,15 @@ void __attribute__((overloadable)) rsAllocationCopy2DRange(
         ::rs_allocation srcAlloc,
         uint32_t srcXoff, uint32_t srcYoff,
         uint32_t srcMip, rs_allocation_cubemap_face srcFace) {
-    SC_AllocationCopy2DRange(RS_CAST(dstAlloc), dstXoff, dstYoff,
+
+    Context *rsc = RsdCpuReference::getTlsContext();
+    if (failIfInKernel(rsc, "rsAllocationCopy2DRange"))
+        return;
+
+    rsrAllocationCopy2DRange(rsc, (Allocation *) dstAlloc.p, dstXoff, dstYoff,
                              dstMip, dstFace, width, height,
-                             RS_CAST(srcAlloc), srcXoff, srcYoff,
-                             srcMip, srcFace);
+                             (Allocation *) srcAlloc.p,
+                             srcXoff, srcYoff, srcMip, srcFace);
 }
 
 void __attribute__((overloadable)) rsForEach(::rs_script script,
