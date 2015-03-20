@@ -64,10 +64,10 @@ public:
     virtual ~RsdCpuScriptIntrinsic();
     RsdCpuScriptIntrinsic(RsdCpuReferenceImpl * ctx, const Script * s,
                           const Element * e, RsScriptIntrinsicID iid);
+    outer_foreach_t mRootPtr;
 
 protected:
     RsScriptIntrinsicID mID;
-    outer_foreach_t mRootPtr;
     ObjectBaseRef<const Element> mElement;
 
 };

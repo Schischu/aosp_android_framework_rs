@@ -26,6 +26,8 @@ import android.renderscript.Matrix3f;
 import android.renderscript.Matrix4f;
 import android.renderscript.ScriptGroup;
 import android.renderscript.ScriptGroup2;
+import android.renderscript.ScriptIntrinsicBlur;
+import android.renderscript.ScriptIntrinsicBlur;
 import android.util.Log;
 
 import java.lang.reflect.Constructor;
@@ -55,7 +57,7 @@ public class Filters extends TestBase {
 
     Template for a subclass that implements Filter.
 
-  class Filter implements Filter {
+  class Filter extends FilterBase {
     Filter(RenderScript RS) { s = new ScriptC_(RS); }
 
     void init() {}
@@ -67,6 +69,31 @@ public class Filters extends TestBase {
     private ScriptC_ s;
   }
   */
+
+  class BlurFilter extends FilterBase {
+    public BlurFilter(RenderScript RS) {
+        s = ScriptIntrinsicBlur.create(RS, Element.U8_4(mRS));
+    }
+
+    public void init() { s.setRadius(25); }
+
+    public ScriptGroup2.Closure prepInit(ScriptGroup2.Builder b) { /* TODO */ return null; }
+
+    public Script.KernelID getKernelID() { return s.getKernelID(); }
+
+    public ScriptGroup2.Closure asyncLaunch(ScriptGroup2.Builder builder,
+                                            Object in, Type outputType) {
+        return builder.addKernel(getKernelID(), outputType,
+                                 new ScriptGroup2.Binding(s.getFieldID_Input(), in));
+    }
+
+    public void forEach(Allocation in, Allocation out) {
+        s.setInput(in);
+        s.forEach(out);
+    }
+
+    private ScriptIntrinsicBlur s;
+  }
 
   class ColorMatrixFilter extends FilterBase {
     public ColorMatrixFilter(RenderScript RS) { s_mat = new ScriptC_colormatrix_f(RS); }
@@ -293,6 +320,7 @@ public class Filters extends TestBase {
   }
 
   public final static Class[] mFilterClasses = {
+      BlurFilter.class,
     ColorMatrixFilter.class,
     ContrastFilter.class,
     ExposureFilter.class,
@@ -367,8 +395,14 @@ public class Filters extends TestBase {
     tb.setY(mHeight);
     Type connect = tb.create();
 
+    Type.Builder tb1 = new Type.Builder(mRS, Element.U8_4(mRS));
+    tb1.setX(mWidth);
+    tb1.setY(mHeight);
+    Type connect1 = tb1.create();
+
     switch (mMode) {
       case NATIVE1:
+/*
           ScriptGroup.Builder b = new ScriptGroup.Builder(mRS);
           b.addKernel(s_uc2f.getKernelID_uc4tof4());
           b.addKernel(mFilters[0].getKernelID());
@@ -387,9 +421,12 @@ public class Filters extends TestBase {
 
           mGroup = b.create();
           break;
+*/
+      case EMULATED:
       case NATIVE2: {
         ScriptGroup2.Builder b2 = new ScriptGroup2.Builder(mRS);
 
+/*
         for (int i = 0; i < mIndices.length; i++) {
           mFilters[i].prepInit(b2);
         }
@@ -399,8 +436,7 @@ public class Filters extends TestBase {
         HashMap<Script.FieldID, Object> emptyMap =
             new HashMap<Script.FieldID, Object>();
 
-        ScriptGroup2.Closure c = b2.addKernel(s_uc2f.getKernelID_uc4tof4(),
-            connect, new Object[]{ in }, emptyMap);
+        Object tmp = in;
 
         for (int i = 0; i < mIndices.length; i++) {
 //          c = b2.addKernel(mFilters[i].getKernelID(), connect,
@@ -408,17 +444,60 @@ public class Filters extends TestBase {
             c = mFilters[i].asyncLaunch(b2, c.getReturn(), connect);
         }
 
-        c = b2.addKernel(s_f2uc.getKernelID_f4touc4(),
-            mOutPixelsAllocation.getType(),
-            new Object[]{ c.getReturn() }, emptyMap);
+        if (i < mIndices.length) {
+            c = b2.addKernel(s_uc2f.getKernelID_uc4tof4(),
+                             connect, tmp);
+            tmp = c.getReturn();
 
+            for (; i < mIndices.length; i++) {
+                if (!(mFilters[i] instanceof BlurFilter)) {
+                    c = mFilters[i].asyncLaunch(b2, c.getReturn(), connect);
+                    tmp = c.getReturn();
+                }
+            }
+
+            c = b2.addKernel(s_f2uc.getKernelID_f4touc4(),
+                             mOutPixelsAllocation.getType(),
+                             tmp);
+            tmp = c.getReturn();
+
+        }
+
+        for (; i < mIndices.length; i++) {
+            if (mFilters[i] instanceof BlurFilter) {
+                c = mFilters[i].asyncLaunch(b2, tmp, connect);
+                tmp = c.getReturn();
+            }
+        }
+        mGroup2 = b2.create((ScriptGroup2.Future)tmp);
+*/
+        ScriptGroup2.UnboundValue in = b2.addInput();
+/*
+        final Type outTy = mOutPixelsAllocation.getType();
+        ScriptGroup2.Closure c = mFilters[0].asyncLaunch(b2, in, outTy);
+*/
+        ScriptIntrinsicBlur s = ScriptIntrinsicBlur.create(mRS, Element.U8_4(mRS));
+        s.setRadius(25);
+        ScriptGroup2.Closure c =
+                b2.addKernel(s.getKernelID(),
+                             mOutPixelsAllocation.getType(),
+                             new ScriptGroup2.Binding(s.getFieldID_Input(), in));
+/*
+        ScriptC_greyscale s = new ScriptC_greyscale(mRS);
+        ScriptGroup2.Closure c =
+                b2.addKernel(s.getKernelID_greyscale(),
+                             mOutPixelsAllocation.getType(), in);
+*/
+        // c = mFilters[1].asyncLaunch(b2, c.getReturn(), outTy);
         mGroup2 = b2.create(c.getReturn());
-      }
         break;
+      }
+/*
       case EMULATED:
         mScratchPixelsAllocation[0] = Allocation.createTyped(mRS, connect);
         mScratchPixelsAllocation[1] = Allocation.createTyped(mRS, connect);
         break;
+*/
     }
   }
 
@@ -431,18 +510,42 @@ public class Filters extends TestBase {
             mGroup.setOutput(s_f2uc.getKernelID_f4touc4(), mOutPixelsAllocation);
             mGroup.execute();
             break;
+          case EMULATED:
           case NATIVE2:
             mOutPixelsAllocation = (Allocation)mGroup2.execute(mInPixelsAllocation)[0];
             break;
-          case EMULATED:
-            s_uc2f.forEach_uc4tof4(mInPixelsAllocation, mScratchPixelsAllocation[0]);
-            for (int i = 0; i < mIndices.length; i++) {
-              mFilters[i].forEach(mScratchPixelsAllocation[i % 2],
-                  mScratchPixelsAllocation[(i+1) % 2]);
+/*
+          case EMULATED: {
+              int j=0;
+              int i;
+            for (i = 0; i < mIndices.length; i++) {
+                if (mFilters[i] instanceof BlurFilter) {
+                    mFilters[i].forEach(j==0 ? mInPixelsAllocation :
+                                        mScratchPixelsAllocation[j++ % 2],
+                                        mScratchPixelsAllocation[j++ % 2]);
+                }
             }
-            s_f2uc.forEach_f4touc4(mScratchPixelsAllocation[mIndices.length % 2],
-                mOutPixelsAllocation);
+
+            if (i < mIndices.length) {
+                s_uc2f.forEach_uc4tof4(mInPixelsAllocation, mScratchPixelsAllocation[j++ % 2]);
+                for (i = 0; i < mIndices.length; i++) {
+                    if (!(mFilters[i] instanceof BlurFilter)) {
+                        mFilters[i].forEach(mScratchPixelsAllocation[j % 2],
+                                            mScratchPixelsAllocation[++j % 2]);
+                    }
+                }
+                s_f2uc.forEach_f4touc4(mScratchPixelsAllocation[j++ % 2],
+                                       mOutPixelsAllocation);
+            }
+            for (i = 0; i < mIndices.length; i++) {
+                if (mFilters[i] instanceof BlurFilter) {
+                    mFilters[i].forEach(mScratchPixelsAllocation[i % 2],
+                                        mScratchPixelsAllocation[(i+1) % 2]);
+                }
+            }
             break;
+          }
+*/
         }
     }
 

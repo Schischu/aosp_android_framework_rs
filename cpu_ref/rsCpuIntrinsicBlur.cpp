@@ -102,6 +102,7 @@ void RsdCpuScriptIntrinsicBlur::ComputeGaussianWeights() {
 
 void RsdCpuScriptIntrinsicBlur::setGlobalObj(uint32_t slot, ObjectBase *data) {
     rsAssert(slot == 1);
+    ALOGV("input allocation set to %p", data);
     mAlloc.set(static_cast<Allocation *>(data));
 }
 
@@ -285,6 +286,7 @@ void RsdCpuScriptIntrinsicBlur::kernelU4(const RsExpandKernelDriverInfo *info,
     float4 stackbuf[2048];
     float4 *buf = &stackbuf[0];
     RsdCpuScriptIntrinsicBlur *cp = (RsdCpuScriptIntrinsicBlur *)info->usr;
+    // ALOGI("cp = %p", cp);
     if (!cp->mAlloc.get()) {
         ALOGE("Blur executed without input, skipping");
         return;

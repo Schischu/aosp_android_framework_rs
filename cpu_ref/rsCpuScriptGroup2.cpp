@@ -15,11 +15,12 @@
 #include <sys/wait.h>
 #endif
 
-#include "cpu_ref/rsCpuCore.h"
+#include "rsCpuCore.h"
 #include "rsClosure.h"
 #include "rsContext.h"
 #include "rsCpuCore.h"
 #include "rsCpuExecutable.h"
+#include "rsCpuIntrinsic.h"
 #include "rsCpuScript.h"
 #include "rsScript.h"
 #include "rsScriptGroup2.h"
@@ -44,6 +45,9 @@ void groupRoot(const RsExpandKernelDriverInfo *kinfo, uint32_t xstart,
 
     decltype(mutable_kinfo->inStride) oldInStride;
     memcpy(&oldInStride, &mutable_kinfo->inStride, sizeof(oldInStride));
+
+    const void* oldUsrPtr = kinfo->usr;
+    const int oldSlot = kinfo->slot;
 
     for (CPUClosure* cpuClosure : closures) {
         const Closure* closure = cpuClosure->mClosure;
@@ -76,11 +80,17 @@ void groupRoot(const RsExpandKernelDriverInfo *kinfo, uint32_t xstart,
         rsAssert(kinfo->outLen <= 1);
         mutable_kinfo->outPtr[0] = const_cast<uint8_t*>(ptr);
 
+        mutable_kinfo->usr = cpuClosure->mUsrPtr;
+        //mutable_kinfo->slot = cpuClosure->mSlot;
+        mutable_kinfo->slot = closure->mFunctionID->mSlot;
+
         cpuClosure->mFunc(kinfo, xstart, xend, ostep);
     }
 
     mutable_kinfo->inLen = oldInLen;
     memcpy(&mutable_kinfo->inStride, &oldInStride, sizeof(oldInStride));
+    mutable_kinfo->usr = oldUsrPtr;
+    mutable_kinfo->slot = oldSlot;
 }
 
 }  // namespace
@@ -143,12 +153,21 @@ CpuScriptGroup2Impl::CpuScriptGroup2Impl(RsdCpuReferenceImpl *cpuRefImpl,
     for (Closure* closure: mGroup->mClosures) {
         CPUClosure* cc;
         const IDBase* funcID = closure->mFunctionID.get();
+        Script* script = funcID->mScript;
         RsdCpuScriptImpl* si =
                 (RsdCpuScriptImpl *)mCpuRefImpl->lookupScript(funcID->mScript);
         if (closure->mIsKernel) {
             MTLaunchStruct mtls;
-            si->forEachKernelSetup(funcID->mSlot, &mtls);
-            cc = new CPUClosure(closure, si, (ExpandFuncTy)mtls.kernel);
+            if (script->isIntrinsic()) {
+                ALOGV("***************** Creating CPU closure for intrinsic %p *****************",
+                      script);
+                cc = new CPUClosure(closure, si,
+                                    (ExpandFuncTy)((RsdCpuScriptIntrinsic*)script)->mRootPtr,
+                                    (const void*)script);
+            } else {
+                si->forEachKernelSetup(funcID->mSlot, &mtls);
+                cc = new CPUClosure(closure, si, (ExpandFuncTy)mtls.kernel);
+            }
         } else {
             cc = new CPUClosure(closure, si);
         }
@@ -442,8 +461,8 @@ void Batch::setGlobalsForBatch() {
                 continue;
             }
             rsAssert(p.first != nullptr);
-            ALOGV("Evaluating closure %p, setting field %p (Script %p, slot: %d)",
-                  closure, p.first, p.first->mScript, p.first->mSlot);
+            ALOGV("Evaluating closure %p, setting field %p (Script %p, slot: %d) to value %p",
+                  closure, p.first, p.first->mScript, p.first->mSlot, value);
             Script* script = p.first->mScript;
             const RsdCpuScriptImpl *cpuScript =
                     (const RsdCpuScriptImpl*)script->mHal.drv;

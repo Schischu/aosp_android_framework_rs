@@ -144,7 +144,7 @@ public class ScriptGroupTestActivity extends Activity
   void setupTests() {
     String[] names = getFilterNames();
     mModeSpinner.setAdapter(new ArrayAdapter<String>(
-        this, R.layout.spinner_layout, new String[] {"emulated", "native"}));
+        this, R.layout.spinner_layout, new String[] {/*"emulated", */"native"}));
     mTestSpinner1.setAdapter(new ArrayAdapter<String>(
         this, R.layout.spinner_layout, names));
     mTestSpinner2.setAdapter(new ArrayAdapter<String>(
@@ -280,7 +280,7 @@ public class ScriptGroupTestActivity extends Activity
             final int n = Filters.mFilterClasses.length;
             for (int i = 0; i < n; i++) {
               for (int j = 0; j < n; j++) {
-                for (int k = 0; k < 2; k++) {
+                for (int k = 1; k < 2; k++) {
                   changeTest(i, j, k);
                 float t = getBenchmark();
                 String tn = getFilterName(i) + "-" + getFilterName(j);

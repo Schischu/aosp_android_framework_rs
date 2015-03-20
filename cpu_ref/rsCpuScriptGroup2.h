@@ -24,6 +24,10 @@ public:
     CPUClosure(const Closure* closure, RsdCpuScriptImpl* si, ExpandFuncTy func) :
         mClosure(closure), mSi(si), mFunc(func) {}
 
+    CPUClosure(const Closure* closure, RsdCpuScriptImpl* si, ExpandFuncTy func,
+               const void* usr) :
+        mClosure(closure), mSi(si), mFunc(func), mUsrPtr(usr) {}
+
     CPUClosure(const Closure* closure, RsdCpuScriptImpl* si) :
         mClosure(closure), mSi(si), mFunc(nullptr) {}
 
@@ -32,6 +36,7 @@ public:
     const Closure* mClosure;
     RsdCpuScriptImpl* mSi;
     const ExpandFuncTy mFunc;
+    const void* mUsrPtr;  // Used by intrinsics
 };
 
 class CpuScriptGroup2Impl;
