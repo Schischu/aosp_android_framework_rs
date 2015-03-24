@@ -12,7 +12,7 @@ RsClosure rsi_ClosureCreate(Context* context, RsScriptKernelID kernelID,
                             RsAllocation returnValue,
                             RsScriptFieldID* fieldIDs, size_t fieldIDs_length,
                             uintptr_t* values, size_t values_length,
-                            size_t* sizes, size_t sizes_length,
+                            int* sizes, size_t sizes_length,
                             RsClosure* depClosures, size_t depClosures_length,
                             RsScriptFieldID* depFieldIDs,
                             size_t depFieldIDs_length) {
@@ -20,23 +20,27 @@ RsClosure rsi_ClosureCreate(Context* context, RsScriptKernelID kernelID,
              sizes_length == depClosures_length &&
              depClosures_length == depFieldIDs_length);
 
-    return (RsClosure)(new Closure(
+    Closure* c = new Closure(
         context, (const ScriptKernelID*)kernelID, (Allocation*)returnValue,
         fieldIDs_length, (const ScriptFieldID**)fieldIDs, (const void**)values,
         sizes, (const Closure**)depClosures,
-        (const ScriptFieldID**)depFieldIDs));
+        (const ScriptFieldID**)depFieldIDs);
+    c->incUserRef();
+    return static_cast<RsClosure>(c);
 }
 
 RsClosure rsi_InvokeClosureCreate(Context* context, RsScriptInvokeID invokeID,
                                   const void* params, const size_t paramLength,
                                   const RsScriptFieldID* fieldIDs, const size_t fieldIDs_length,
                                   const uintptr_t* values, const size_t values_length,
-                                  const size_t* sizes, const size_t sizes_length) {
+                                  const int* sizes, const size_t sizes_length) {
     rsAssert(fieldIDs_length == values_length && values_length == sizes_length);
-    return (RsClosure)(new Closure(
+    Closure* c = new Closure(
         context, (const ScriptInvokeID*)invokeID, params, paramLength,
         fieldIDs_length, (const ScriptFieldID**)fieldIDs, (const void**)values,
-        sizes));
+        sizes);
+    c->incUserRef();
+    return static_cast<RsClosure>(c);
 }
 
 #if 0
@@ -63,7 +67,7 @@ Closure::Closure(Context* context,
                  const int numValues,
                  const ScriptFieldID** fieldIDs,
                  const void** values,
-                 const size_t* sizes,
+                 const int* sizes,
                  const Closure** depClosures,
                  const ScriptFieldID** depFieldIDs) :
     ObjectBase(context), mContext(context), mFunctionID((IDBase*)kernelID),
@@ -79,6 +83,7 @@ Closure::Closure(Context* context,
 
     for (; i < (size_t)numValues; i++) {
         rsAssert(fieldIDs[i] != nullptr);
+        fieldIDs[i]->incUserRef();
         mGlobals[fieldIDs[i]] = make_pair(values[i], sizes[i]);
         ALOGV("Creating closure %p, binding field %p (Script %p, slot: %d)",
               this, fieldIDs[i], fieldIDs[i]->mScript, fieldIDs[i]->mSlot);
@@ -125,7 +130,7 @@ Closure::Closure(Context* context,
 Closure::Closure(Context* context, const ScriptInvokeID* invokeID,
                  const void* params, const size_t paramLength,
                  const size_t numValues, const ScriptFieldID** fieldIDs,
-                 const void** values, const size_t* sizes) :
+                 const void** values, const int* sizes) :
     ObjectBase(context), mContext(context), mFunctionID((IDBase*)invokeID), mIsKernel(false),
     mReturnValue(nullptr), mParams(params), mParamLength(paramLength) {
     for (size_t i = 0; i < numValues; i++) {
@@ -134,6 +139,10 @@ Closure::Closure(Context* context, const ScriptInvokeID* invokeID,
 }
 
 Closure::~Closure() {
+    for (const auto& p : mGlobals) {
+        p.first->decUserRef();
+    }
+
     for (const auto& p : mArgDeps) {
         auto map = p.second;
         for (const auto& p1 : *map) {
@@ -159,7 +168,7 @@ void Closure::setArg(const uint32_t index, const void* value, const size_t size)
 }
 
 void Closure::setGlobal(const ScriptFieldID* fieldID, const void* value,
-                        const size_t size) {
+                        const int size) {
     mGlobals[fieldID] = make_pair(value, size);
 }
 
