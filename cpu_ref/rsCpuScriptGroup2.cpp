@@ -12,7 +12,6 @@
 
 #ifndef RS_COMPATIBILITY_LIB
 #include "bcc/Config/Config.h"
-#include <sys/wait.h>
 #endif
 
 #include "cpu_ref/rsCpuCore.h"
@@ -234,7 +233,7 @@ string getFileName(string path) {
 void setupCompileArguments(
         const vector<string>& inputs, const vector<string>& kernelBatches,
         const vector<string>& invokeBatches,
-        const string& output_dir, const string& output_filename,
+        const char *output_dir, const string& output_filename,
         const string& coreLibPath, const string& coreLibRelaxedPath,
         vector<const char*>* args) {
     args->push_back(RsdCpuScriptImpl::BCC_EXE_PATH);
@@ -258,44 +257,10 @@ void setupCompileArguments(
         args->push_back(batch.c_str());
     }
     args->push_back("-output_path");
-    args->push_back(output_dir.c_str());
+    args->push_back(output_dir);
     args->push_back("-o");
     args->push_back(output_filename.c_str());
     args->push_back(nullptr);
-}
-
-bool fuseAndCompile(const char** arguments,
-                    const string& commandLine) {
-    const pid_t pid = fork();
-
-    if (pid == -1) {
-        ALOGE("Couldn't fork for bcc execution");
-        return false;
-    }
-
-    if (pid == 0) {
-        // Child process
-        ALOGV("Invoking BCC with: %s", commandLine.c_str());
-        execv(RsdCpuScriptImpl::BCC_EXE_PATH, (char* const*)arguments);
-
-        ALOGE("execv() failed: %s", strerror(errno));
-        abort();
-        return false;
-    }
-
-    // Parent process
-    int status = 0;
-    const pid_t w = waitpid(pid, &status, 0);
-    if (w == -1) {
-        return false;
-    }
-
-    if (!WIFEXITED(status) || WEXITSTATUS(status) != 0 ) {
-        ALOGE("bcc terminated unexpectedly");
-        return false;
-    }
-
-    return true;
 }
 
 void generateSourceSlot(const Closure& closure,
@@ -386,11 +351,11 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
     vector<const char*> arguments;
     setupCompileArguments(inputs, kernelBatches, invokeBatches, cacheDir,
                           outputFileName, coreLibPath, coreLibRelaxedPath, &arguments);
-    std::unique_ptr<const char> joined(
-        rsuJoinStrings(arguments.size() - 1, arguments.data()));
-    string commandLine (joined.get());
 
-    if (!fuseAndCompile(arguments.data(), commandLine)) {
+    bool compiled = rsuExecuteCommand(RsdCpuScriptImpl::BCC_EXE_PATH,
+                                     arguments.size()-1,
+                                     arguments.data());
+    if (!compiled) {
         unlink(objFilePath.c_str());
         return;
     }
