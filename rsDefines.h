@@ -418,7 +418,10 @@ enum RsBlasFunction {
     RsBlas_cher2k,
     RsBlas_zhemm,
     RsBlas_zherk,
-    RsBlas_zher2k
+    RsBlas_zher2k,
+
+    // BLAS extensions start here
+    RsBlas_bgemm
 };
 
 // custom complex types because of NDK support
@@ -432,7 +435,7 @@ typedef struct {
     double i;
 } RsDoubleComplex;
 
-typedef union { 
+typedef union {
     float f;
     RsFloatComplex c;
     double d;
@@ -455,8 +458,12 @@ typedef struct {
     int incY;
     int KL;
     int KU;
+    uint8_t a_offset;
+    uint8_t b_offset;
+    uint32_t c_offset;
+    uint32_t c_mult_int;
 } RsBlasCall;
-          
+
 #ifdef __cplusplus
 };
 #endif
