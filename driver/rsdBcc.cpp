@@ -55,7 +55,7 @@ bool rsdScriptInit(const Context *rsc,
 }
 
 bool rsdInitIntrinsic(const Context *rsc, Script *s, RsScriptIntrinsicID iid,
-                      Element *e) {
+                      Element *e, char const *cacheDir) {
     RsdHal *dc = (RsdHal *)rsc->mHal.drv;
     RsdCpuReference::CpuScript * cs = dc->mCpuRef->createIntrinsic(s, iid, e);
     if (cs == nullptr) {
