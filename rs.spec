@@ -1,4 +1,3 @@
-
 ContextDestroy {
     direct
 }
@@ -456,6 +455,13 @@ ScriptCCreate {
 
 ScriptIntrinsicCreate {
     param uint32_t id
+    param RsElement eid
+    ret RsScript
+    }
+
+ScriptIntrinsicCreate2 {
+    param uint32_t id
+    param const char * cacheDir
     param RsElement eid
     ret RsScript
     }
