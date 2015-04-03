@@ -225,11 +225,6 @@ string getCoreLibPath(Context* context, string* coreLibRelaxedPath) {
 #endif
 }
 
-string getFileName(string path) {
-    unsigned found = path.find_last_of("/\\");
-    return path.substr(found + 1);
-}
-
 void setupCompileArguments(
         const vector<string>& inputs, const vector<string>& kernelBatches,
         const vector<string>& invokeBatches,
@@ -336,15 +331,11 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
 
     rsAssert(cacheDir != nullptr);
     string objFilePath(cacheDir);
-    objFilePath.append("/fusedXXXXXX.o");
-    // Find unique object file name, to make following file names unique.
-    int tempfd = mkstemps(&objFilePath[0], 2);
-    if (tempfd == -1) {
-      return;
-    }
-    TEMP_FAILURE_RETRY(close(tempfd));
+    objFilePath.append("/");
+    objFilePath.append(mGroup->mName);
+    objFilePath.append(".o");
 
-    string outputFileName = getFileName(objFilePath.substr(0, objFilePath.size() - 2));
+    string outputFileName(mGroup->mName);
     string coreLibRelaxedPath;
     const string& coreLibPath = getCoreLibPath(getCpuRefImpl()->getContext(),
                                                &coreLibRelaxedPath);
@@ -357,7 +348,6 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
                                      arguments.size()-1,
                                      arguments.data());
     if (!compiled) {
-        unlink(objFilePath.c_str());
         return;
     }
 
@@ -369,8 +359,11 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
 
     if (!SharedLibraryUtils::createSharedLibrary(cacheDir, resName)) {
         ALOGE("Failed to link object file '%s'", resName);
+        unlink(objFilePath.c_str());
         return;
     }
+
+    unlink(objFilePath.c_str());
 
     mScriptObj = SharedLibraryUtils::loadSharedLibrary(cacheDir, resName);
     if (mScriptObj == nullptr) {
