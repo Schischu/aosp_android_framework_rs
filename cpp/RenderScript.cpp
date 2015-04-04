@@ -74,7 +74,7 @@ RS::~RS() {
     }
 }
 
-bool RS::init(std::string name, uint32_t flags) {
+bool RS::init(const char * name, uint32_t flags) {
     return RS::init(name, RS_VERSION, flags);
 }
 
@@ -139,7 +139,7 @@ bool RS::initDispatch(int targetApi) {
     return false;
 }
 
-bool RS::init(std::string &name, int targetApi, uint32_t flags) {
+bool RS::init(const char * name, int targetApi, uint32_t flags) {
     if (mInit) {
         return true;
     }
@@ -149,7 +149,10 @@ bool RS::init(std::string &name, int targetApi, uint32_t flags) {
         return false;
     }
 
-    mCacheDir = name;
+    uint32_t nameLen = strlen(name);
+    memcpy(mCacheDir, name, nameLen);
+    mCacheDir[nameLen] = 0; //add the null character even if the user does not.
+    mCacheDirLen = nameLen + 1;
 
     mDev = RS::dispatch->DeviceCreate();
     if (mDev == 0) {
