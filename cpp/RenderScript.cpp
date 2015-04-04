@@ -74,8 +74,8 @@ RS::~RS() {
     }
 }
 
-bool RS::init(std::string name, uint32_t flags) {
-    return RS::init(name, RS_VERSION, flags);
+bool RS::init(const char * name, uint32_t nameLen, uint32_t flags) {
+    return RS::init(name, nameLen, RS_VERSION, flags);
 }
 
 // this will only open API 19+ libRS
@@ -139,7 +139,7 @@ bool RS::initDispatch(int targetApi) {
     return false;
 }
 
-bool RS::init(std::string &name, int targetApi, uint32_t flags) {
+bool RS::init(const char * name, uint32_t nameLen, int targetApi, uint32_t flags) {
     if (mInit) {
         return true;
     }
@@ -149,7 +149,8 @@ bool RS::init(std::string &name, int targetApi, uint32_t flags) {
         return false;
     }
 
-    mCacheDir = name;
+    memcpy(mCacheDir, name, nameLen);
+    mCacheDirLen = nameLen;
 
     mDev = RS::dispatch->DeviceCreate();
     if (mDev == 0) {
