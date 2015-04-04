@@ -81,7 +81,7 @@ LOCAL_SRC_FILES += ../rsCompatibilityLib.cpp
 
 LOCAL_WHOLE_STATIC_LIBRARIES := \
 	libutils \
-	libstlport_static \
+	libc++_static \
 	libRSDispatch
 
 LOCAL_MODULE:= libRScpp_static
@@ -92,6 +92,6 @@ LOCAL_C_INCLUDES += frameworks/rs
 LOCAL_C_INCLUDES += $(intermediates)
 
 LOCAL_LDFLAGS := -llog -lz -ldl
-LOCAL_NDK_STL_VARIANT := stlport_static
+LOCAL_NDK_STL_VARIANT := c++_static
 
 include $(BUILD_STATIC_LIBRARY)
