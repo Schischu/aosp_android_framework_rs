@@ -22,7 +22,8 @@ int main(int argc, char** argv)
 
     sp<RS> rs = new RS();
 
-    bool r = rs->init("/system/bin");
+    const char *path = "/system/bin";
+    bool r = rs->init(path, strlen(path));
 
     sp<const Element> e = Element::U32(rs);
 

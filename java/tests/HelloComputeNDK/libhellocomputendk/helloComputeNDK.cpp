@@ -34,8 +34,10 @@ Java_com_example_android_rs_hellocomputendk_HelloComputeNDK_nativeMono(JNIEnv * 
     AndroidBitmap_lockPixels(env, jbitmapOut, &outputPtr);
 
     const char * path = env->GetStringUTFChars(pathObj, nullptr);
+    uint32_t pathLen = env->GetStringUTFLength(pathObj);
+
     sp<RS> rs = new RS();
-    rs->init(path);
+    rs->init(path, pathLen);
     env->ReleaseStringUTFChars(pathObj, path);
 
     sp<const Element> e = Element::RGBA_8888(rs);
