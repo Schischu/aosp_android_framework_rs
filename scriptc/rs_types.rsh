@@ -876,4 +876,9 @@ typedef enum {
 } rs_sampler_value;
 #endif
 
+typedef __fp16 half;
+typedef half half2 __attribute__((ext_vector_type(2)));
+typedef half half3 __attribute__((ext_vector_type(3)));
+typedef half half4 __attribute__((ext_vector_type(4)));
+
 #endif // RENDERSCRIPT_RS_TYPES_RSH

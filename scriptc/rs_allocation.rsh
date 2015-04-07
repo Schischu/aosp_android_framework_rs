@@ -3216,4 +3216,10 @@ extern void __attribute__((overloadable))
     rsSetElementAt_ulong4(rs_allocation a, ulong4 val, uint32_t x, uint32_t y, uint32_t z);
 #endif
 
+
+extern half __attribute__((overloadable))
+    rsGetElementAt_half(rs_allocation a, uint32_t x, uint32_t y);
+extern half4 __attribute__((overloadable))
+    rsGetElementAt_half4(rs_allocation a, uint32_t x, uint32_t y);
+
 #endif // RENDERSCRIPT_RS_ALLOCATION_RSH

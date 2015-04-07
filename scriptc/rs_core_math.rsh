@@ -5430,4 +5430,26 @@ extern float3 __attribute__((const, overloadable))
 extern float4 __attribute__((const, overloadable))
     trunc(float4 v);
 
+extern half __attribute__((const, overloadable))pow(half base, half exponent);
+extern half2 __attribute__((const, overloadable))pow(half2 base, half2 exponent);
+extern half3 __attribute__((const, overloadable))pow(half3 base, half3 exponent);
+extern half4 __attribute__((const, overloadable))pow(half4 base, half4 exponent);
+
+extern half __attribute__((const, overloadable))clamp(half value, half min_value, half max_value);
+extern half2 __attribute__((const, overloadable))clamp(half2 value, half2 min_value, half2 max_value);
+extern half3 __attribute__((const, overloadable))clamp(half3 value, half3 min_value, half3 max_value);
+extern half4 __attribute__((const, overloadable))clamp(half4 value, half4 min_value, half4 max_value);
+
+extern uchar2 __attribute__((const, overloadable))convert_uchar2(half2 v);
+extern uchar3 __attribute__((const, overloadable))convert_uchar3(half3 v);
+extern uchar4 __attribute__((const, overloadable))convert_uchar4(half4 v);
+
+extern half2 __attribute__((const, overloadable))convert_half2(uchar2 v);
+extern half3 __attribute__((const, overloadable))convert_half3(uchar3 v);
+extern half4 __attribute__((const, overloadable))convert_half4(uchar4 v);
+
+extern float3 __attribute__((const, overloadable))convert_float3(half3 v);
+extern float4 __attribute__((const, overloadable))convert_float4(half4 v);
+extern half4 __attribute__((const, overloadable))convert_half4(float4 v);
+
 #endif // RENDERSCRIPT_RS_CORE_MATH_RSH
