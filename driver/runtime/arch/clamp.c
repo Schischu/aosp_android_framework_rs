@@ -36,6 +36,7 @@ S_CLAMP(int);
 S_CLAMP(uint);
 S_CLAMP(long);
 S_CLAMP(ulong);
+S_CLAMP(half);
 
 #undef S_CLAMP
 
@@ -91,6 +92,7 @@ extern T##4 __attribute__((overloadable)) clamp(T##4 amount, T low, T high) {   
 }
 
 //V_CLAMP(float);  implemented in .ll
+V_CLAMP(half);
 V_CLAMP(double);
 V_CLAMP(char);
 V_CLAMP(uchar);
