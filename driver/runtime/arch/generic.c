@@ -82,6 +82,7 @@ extern T##4 __attribute__((overloadable)) clamp(T##4 amount, T low, T high) {   
 #if !defined(__i386__) && !defined(__x86_64__)
 
 _CLAMP(float);
+_CLAMP(half);
 
 #else
 
