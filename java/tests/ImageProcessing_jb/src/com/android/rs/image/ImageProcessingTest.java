@@ -351,11 +351,13 @@ public class ImageProcessingTest extends ActivityInstrumentationTestCase2<ImageP
     }
 
     // Test case 32: Shadows
+    /*
     @LargeTest
     public void testShadows() {
         TestAction ta = new TestAction(TestName.SHADOWS);
         runTest(ta, TestName.SHADOWS.name());
     }
+    */
 
     // Test case 33: Contrast
     @LargeTest

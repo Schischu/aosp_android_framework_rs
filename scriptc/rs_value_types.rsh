@@ -36,6 +36,7 @@
  * - 64 bit: ulong, uint64_t
  *
  * Floating point:
+ * - 16 bit: half
  * - 32 bit: float
  * - 64 bit: double
  *
@@ -98,6 +99,45 @@
 
 #ifndef RENDERSCRIPT_RS_VALUE_TYPES_RSH
 #define RENDERSCRIPT_RS_VALUE_TYPES_RSH
+
+/*
+ * half: 16 bit floating point value
+ *
+ * A 16 bit floating point value.
+ */
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+typedef __fp16 half;
+#endif
+
+/*
+ * half2: Two 16 bit floats
+ *
+ * Vector version of the half float type. Provides two half fields packed
+ * into a single 32 bit field with 32 bit alignment.
+ */
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+typedef half __attribute__((ext_vector_type(2))) half2;
+#endif
+
+/*
+ * half3: Three 16 bit floats
+ *
+ * Vector version of the half float type. Provides three half fields packed
+ * into a single 64 bit field with 64 bit alignment.
+ */
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+typedef half __attribute__((ext_vector_type(3))) half3;
+#endif
+
+/*
+ * half4: Four 16 bit floats
+ *
+ * Vector version of the half float type. Provides four half fields packed
+ * into a single 64 bit field with 64 bit alignment.
+ */
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+typedef half __attribute__((ext_vector_type(4))) half4;
+#endif
 
 /*
  * int8_t: 8 bit signed integer

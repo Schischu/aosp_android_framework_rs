@@ -116,3 +116,148 @@ float4 RS_KERNEL horz(uint32_t x, uint32_t y) {
     return blurredPixel;
 }
 
+// Store our coefficients in Half Precision here
+static half gaussian_half[MAX_RADIUS * 2 + 1];
+
+void setRadius_half(int rad) {
+    radius = rad;
+    // Compute gaussian weights for the blur
+    // e is the euler's number
+    half e = (__fp16) 2.718281828459045f;
+    half pi = (__fp16) 3.1415926535897932f;
+    // g(x) = ( 1 / sqrt( 2 * pi ) * sigma) * e ^ ( -x^2 / 2 * sigma^2 )
+    // x is of the form [-radius .. 0 .. radius]
+    // and sigma varies with radius.
+    // Based on some experimental radius values and sigma's
+    // we approximately fit sigma = f(radius) as
+    // sigma = radius * 0.4  + 0.6
+    // The larger the radius gets, the more our gaussian blur
+    // will resemble a box blur since with large sigma
+    // the gaussian curve begins to lose its shape
+    half sigma = (__fp16) 0.4f * (half)radius + (__fp16) 0.6f;
+
+    // Now compute the coefficints
+    // We will store some redundant values to save some math during
+    // the blur calculations
+    // precompute some values
+    half coeff1 = (__fp16) 1.0f / (sqrt( 2.0f * pi ) * sigma);
+    half coeff2 = (__fp16) - 1.0f / ((__fp16) 2.0f * sigma * sigma);
+
+    half normalizeFactor = 0.0f;
+    half halfR = 0.0f;
+    for (int r = -radius; r <= radius; r ++) {
+        halfR = (half)r;
+        // TODO Remove cast to float once we have the half variants for math added
+        gaussian_half[r + radius] = coeff1 * pow((float) e, (float) (halfR * halfR * coeff2));
+        normalizeFactor += gaussian_half[r + radius];
+    }
+
+    //Now we need to normalize the weights because all our coefficients need to add up to one
+    normalizeFactor = (half) 1.0f / normalizeFactor;
+    for (int r = -radius; r <= radius; r ++) {
+        halfR = (half)r;
+        gaussian_half[r + radius] *= normalizeFactor;
+    }
+}
+
+half4 RS_KERNEL copyIn_half(uchar4 in) {
+    return convert_half4(in);
+}
+
+uchar4 RS_KERNEL vert_half(uint32_t x, uint32_t y) {
+    half3 blurredPixel = 0;
+    int gi = 0;
+    uchar4 out;
+    if ((y > radius) && (y < (height - radius))) {
+        for (int r = -radius; r <= radius; r ++) {
+            half4 i = rsGetElementAt_half4(ScratchPixel2, x, y + r);
+            blurredPixel += i.xyz * gaussian_half[gi++];
+        }
+    } else {
+        for (int r = -radius; r <= radius; r ++) {
+            int validH = rsClamp((int)y + r, (int)0, (int)(height - 1));
+            half4 i = rsGetElementAt_half4(ScratchPixel2, x, validH);
+            blurredPixel += i.xyz * gaussian_half[gi++];
+        }
+    }
+
+    // half3 clamped;
+    // clamped.x = blurredPixel.x < 0.f ? 0.f : (blurredPixel.x > 255.f ? 255.f : blurredPixel.x);
+    // clamped.y = blurredPixel.y < 0.f ? 0.f : (blurredPixel.y > 255.f ? 255.f : blurredPixel.y); clamped.z = blurredPixel.z < 0.f ? 0.f : (blurredPixel.z > 255.f ? 255.f : blurredPixel.z);
+    // out.xyz = convert_uchar3(clamped);
+
+    out.xyz = convert_uchar3(clamp(convert_float3(blurredPixel), 0.f, 255.f));
+    // out.xyz = convert_uchar3(clamp(blurredPixel, 0.f, 255.f));
+    out.w = 0xff;
+    return out;
+}
+
+half4 RS_KERNEL horz_half(uint32_t x, uint32_t y) {
+    half4 blurredPixel = 0;
+    int gi = 0;
+    if ((x > radius) && (x < (width - radius))) {
+        for (int r = -radius; r <= radius; r ++) {
+            half4 i = rsGetElementAt_half4(ScratchPixel1, x + r, y);
+            blurredPixel += i * gaussian_half[gi++];
+        }
+    } else {
+        for (int r = -radius; r <= radius; r ++) {
+            // Stepping left and right away from the pixel
+            int validX = rsClamp((int)x + r, (int)0, (int)(width - 1));
+            half4 i = rsGetElementAt_half4(ScratchPixel1, validX, y);
+            blurredPixel += i * gaussian_half[gi++];
+        }
+    }
+
+    return blurredPixel;
+}
+
+/*
+// A variant that stores the gaussian vector in half, but uses float's to store
+// intermediate values inside the kernel.  This has slightly begger performance
+// than the above version since the FP operations (adds etc). are now
+// vectorized.
+
+uchar4 RS_KERNEL vert_half(uint32_t x, uint32_t y) {
+    float3 blurredPixel = 0;
+    int gi = 0;
+    uchar4 out;
+    if ((y > radius) && (y < (height - radius))) {
+        for (int r = -radius; r <= radius; r ++) {
+            half4 i = rsGetElementAt_half4(ScratchPixel2, x, y + r);
+            blurredPixel += convert_float4(i).xyz * gaussian_half[gi++];
+        }
+    } else {
+        for (int r = -radius; r <= radius; r ++) {
+            int validH = rsClamp((int)y + r, (int)0, (int)(height - 1));
+            half4 i = rsGetElementAt_half4(ScratchPixel2, x, validH);
+            blurredPixel += convert_float4(i).xyz * gaussian_half[gi++];
+        }
+    }
+
+    out.xyz = convert_uchar3(clamp(blurredPixel, 0.f, 255.f));
+    out.w = 0xff;
+    return out;
+}
+
+half4 RS_KERNEL horz_half(uint32_t x, uint32_t y) {
+    float4 blurredPixel = 0;
+    int gi = 0;
+    if ((x > radius) && (x < (width - radius))) {
+        for (int r = -radius; r <= radius; r ++) {
+            half4 i = rsGetElementAt_half4(ScratchPixel1, x + r, y);
+            blurredPixel += convert_float4(i * gaussian_half[gi++]);
+        }
+    } else {
+        for (int r = -radius; r <= radius; r ++) {
+            // Stepping left and right away from the pixel
+            int validX = rsClamp((int)x + r, (int)0, (int)(width - 1));
+            half4 i = rsGetElementAt_half4(ScratchPixel1, validX, y);
+            blurredPixel += convert_float4(i * gaussian_half[gi++]);
+        }
+    }
+
+    return convert_half4(blurredPixel);
+    // return convert_half4(blurredPixel);
+}
+*/

@@ -96,7 +96,7 @@ static void skipPrefix(ostringstream* stream, string* input, const string& prefi
 }
 
 // Merge b into a.  Returns true if successful
-static bool mergeVersionInfo(VersionInfo* a, const VersionInfo& b) {
+static bool mergeVersionInfo(const string& definition, VersionInfo* a, const VersionInfo& b) {
     if (a->intSize != b.intSize) {
         cerr << "Error.  We don't currently support versions that differ based on int size\n";
         return false;
@@ -106,9 +106,9 @@ static bool mergeVersionInfo(VersionInfo* a, const VersionInfo& b) {
     } else if (b.maxVersion != 0 && a->minVersion == b.maxVersion + 1) {
         a->minVersion = b.minVersion;
     } else {
-        cerr << "Error.  This code currently assume that all versions are contiguous.  Don't know "
-                "how to merge versions (" << a->minVersion << " - " << a->maxVersion << ") and ("
-             << b.minVersion << " - " << b.maxVersion << ")\n";
+        cerr << "Error.  This code currently assume that all versions are contiguous.  For "
+             << definition << ", don't know how to merge versions (" << a->minVersion << " - "
+             << a->maxVersion << ") and (" << b.minVersion << " - " << b.maxVersion << ")\n";
         return false;
     }
     return true;
@@ -182,7 +182,7 @@ static bool getUnifiedFunctionPrototypes(Function* function,
             if (i == entries->end()) {
                 entries->insert(pair<string, DetailedFunctionEntry>(s, entry));
             } else {
-                if (!mergeVersionInfo(&i->second.info, entry.info)) {
+                if (!mergeVersionInfo(s, &i->second.info, entry.info)) {
                     return false;
                 }
             }

@@ -775,6 +775,41 @@ extern ulong4 __attribute__((const, overloadable))
     clamp(ulong4 value, ulong min_value, ulong max_value);
 #endif
 
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+extern half __attribute__((const, overloadable))
+    clamp(half value, half min_value, half max_value);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+extern half2 __attribute__((const, overloadable))
+    clamp(half2 value, half2 min_value, half2 max_value);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+extern half3 __attribute__((const, overloadable))
+    clamp(half3 value, half3 min_value, half3 max_value);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+extern half4 __attribute__((const, overloadable))
+    clamp(half4 value, half4 min_value, half4 max_value);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+extern half2 __attribute__((const, overloadable))
+    clamp(half2 value, half min_value, half max_value);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+extern half3 __attribute__((const, overloadable))
+    clamp(half3 value, half min_value, half max_value);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+extern half4 __attribute__((const, overloadable))
+    clamp(half4 value, half min_value, half max_value);
+#endif
+
 /*
  * clz: Number of leading 0 bits
  *
@@ -3602,6 +3637,26 @@ extern float3 __attribute__((const, overloadable))
 
 extern float4 __attribute__((const, overloadable))
     pow(float4 base, float4 exponent);
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+extern half __attribute__((const, overloadable))
+    pow(half base, half exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+extern half2 __attribute__((const, overloadable))
+    pow(half2 base, half2 exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+extern half3 __attribute__((const, overloadable))
+    pow(half3 base, half3 exponent);
+#endif
+
+#if (defined(RS_VERSION) && (RS_VERSION >= 23))
+extern half4 __attribute__((const, overloadable))
+    pow(half4 base, half4 exponent);
+#endif
 
 /*
  * pown: Base raised to an integer exponent
