@@ -29,6 +29,7 @@ import android.widget.TextView;
 
 public class Blur25 extends TestBase {
     private boolean mUseIntrinsic = false;
+    private boolean mUseHalfPrecision = false;
     private ScriptIntrinsicBlur mIntrinsic;
 
     private int MAX_RADIUS = 25;
@@ -39,8 +40,9 @@ public class Blur25 extends TestBase {
     private Allocation mScratchPixelsAllocation2;
 
 
-    public Blur25(boolean useIntrinsic) {
+    public Blur25(boolean useIntrinsic, boolean useHalfPrecision) {
         mUseIntrinsic = useIntrinsic;
+        mUseHalfPrecision = useHalfPrecision;
     }
 
     public boolean onBar1Setup(SeekBar b, TextView t) {
@@ -57,6 +59,8 @@ public class Blur25 extends TestBase {
         }
         if (mUseIntrinsic) {
             mIntrinsic.setRadius(mRadius);
+        } else if (mUseHalfPrecision) {
+            mScript.invoke_setRadius_half((int)mRadius);
         } else {
             mScript.invoke_setRadius((int)mRadius);
         }
@@ -73,7 +77,11 @@ public class Blur25 extends TestBase {
             mIntrinsic.setInput(mInPixelsAllocation);
         } else {
 
-            Type.Builder tb = new Type.Builder(mRS, Element.F32_4(mRS));
+            Type.Builder tb;
+            if (mUseHalfPrecision)
+                tb = new Type.Builder(mRS, Element.F16_4(mRS));
+            else
+                tb = new Type.Builder(mRS, Element.F32_4(mRS));
             tb.setX(width);
             tb.setY(height);
             mScratchPixelsAllocation1 = Allocation.createTyped(mRS, tb.create());
@@ -82,7 +90,11 @@ public class Blur25 extends TestBase {
             mScript = new ScriptC_threshold(mRS);
             mScript.set_width(width);
             mScript.set_height(height);
-            mScript.invoke_setRadius(MAX_RADIUS);
+
+            if (mUseHalfPrecision)
+                mScript.invoke_setRadius_half(MAX_RADIUS);
+            else
+                mScript.invoke_setRadius(MAX_RADIUS);
 
             mScript.set_InPixel(mInPixelsAllocation);
             mScript.set_ScratchPixel1(mScratchPixelsAllocation1);
@@ -93,7 +105,13 @@ public class Blur25 extends TestBase {
     public void runTest() {
         if (mUseIntrinsic) {
             mIntrinsic.forEach(mOutPixelsAllocation);
-        } else {
+        }
+        else if (mUseHalfPrecision) {
+            mScript.forEach_copyIn_half(mInPixelsAllocation, mScratchPixelsAllocation1);
+            mScript.forEach_horz_half(mScratchPixelsAllocation2);
+            mScript.forEach_vert_half(mOutPixelsAllocation);
+        }
+        else {
             mScript.forEach_copyIn(mInPixelsAllocation, mScratchPixelsAllocation1);
             mScript.forEach_horz(mScratchPixelsAllocation2);
             mScript.forEach_vert(mOutPixelsAllocation);
