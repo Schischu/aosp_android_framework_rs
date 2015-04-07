@@ -263,6 +263,14 @@ public:
     }
 #endif
 
+    void setCacheDir(const char * cacheDir_arg, uint32_t length) {
+        memcpy(mCacheDir, cacheDir_arg, length);
+    }
+    const char * getCacheDir() {
+        return mCacheDir;
+    }
+
+
 protected:
 
     uint32_t mTargetSdkVersion;
@@ -331,6 +339,7 @@ private:
 #ifdef RS_COMPATIBILITY_LIB
     char nativeLibDir[PATH_MAX+1];
 #endif
+    char mCacheDir[PATH_MAX+1];
 };
 
 void LF_ObjDestroy_handcode(const Context *rsc, RsAsyncVoidPtr objPtr);
