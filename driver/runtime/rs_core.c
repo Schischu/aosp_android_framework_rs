@@ -15,6 +15,9 @@ extern float4 rsUnpackColor8888(uchar4 c)
 }
 
 
+extern half __attribute__((overloadable)) rsClamp(half v, half l, half h) {
+    return clamp(v, l, h);
+}
 extern float __attribute__((overloadable)) rsClamp(float v, float l, float h) {
     return clamp(v, l, h);
 }

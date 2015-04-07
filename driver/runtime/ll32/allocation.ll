@@ -585,6 +585,20 @@ define <4 x float> @rsGetElementAtImpl_float4([1 x i32] %a.coerce, i32 %x, i32 %
   ret <4 x float> %3
 }
 
+define half @rsGetElementAtImpl_half([1 x i32] %a.coerce, i32 %x, i32 %y, i32 %z) #0 {
+  %1 = tail call i8* @rsOffset([1 x i32] %a.coerce, i32 2, i32 %x, i32 %y, i32 %z) #2
+  %2 = bitcast i8* %1 to half*
+  %3 = load half* %2, align 4, !tbaa !53
+  ret half %3
+}
+
+define <4 x half> @rsGetElementAtImpl_half4([1 x i32] %a.coerce, i32 %x, i32 %y, i32 %z) #0 {
+  %1 = tail call i8* @rsOffset([1 x i32] %a.coerce, i32 8, i32 %x, i32 %y, i32 %z) #2
+  %2 = bitcast i8* %1 to <4 x half>*
+  %3 = load <4 x half>* %2, align 16, !tbaa !56
+  ret <4 x half> %3
+}
+
 !57 = !{!"double", !15}
 define void @rsSetElementAtImpl_double([1 x i32] %a.coerce, double %val, i32 %x, i32 %y, i32 %z) #1 {
   %1 = tail call i8* @rsOffset([1 x i32] %a.coerce, i32 8, i32 %x, i32 %y, i32 %z) #2
