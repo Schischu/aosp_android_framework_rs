@@ -11,6 +11,8 @@
 #include <vector>
 
 #ifndef RS_COMPATIBILITY_LIB
+#include <zlib.h>
+
 #include "bcc/Config/Config.h"
 #endif
 
@@ -225,12 +227,41 @@ string getCoreLibPath(Context* context, string* coreLibRelaxedPath) {
 #endif
 }
 
+bool getChecksum(const std::vector<string>& inputBitcodeFilenames,
+                 const string& coreLibPath, const string& coreLibRelaxedPath,
+                 const char* commandLine,
+                 char* checksumStr) {
+    uint32_t checksum = adler32(0L, Z_NULL, 0);
+
+    for (const auto& bcFilename : inputBitcodeFilenames) {
+        if (!android::renderscript::addFileToChecksum(bcFilename.c_str(), checksum)) {
+            return false;
+        }
+    }
+
+    if (!android::renderscript::addFileToChecksum(coreLibPath.c_str(), checksum)) {
+        return false;
+    }
+
+    if (!android::renderscript::addFileToChecksum(coreLibRelaxedPath.c_str(), checksum)) {
+        return false;
+    }
+
+    // include checksum of command line arguments
+    checksum = adler32(checksum, (const unsigned char *) commandLine,
+                       strlen(commandLine));
+
+    sprintf(checksumStr, "%08x", checksum);
+
+    return true;
+}
+
 void setupCompileArguments(
         const vector<string>& inputs, const vector<string>& kernelBatches,
         const vector<string>& invokeBatches,
         const string& output_dir, const string& output_filename,
         const string& coreLibPath, const string& coreLibRelaxedPath,
-        vector<const char*>* args) {
+        const char* checksumStr, vector<const char*>* args) {
     args->push_back(RsdCpuScriptImpl::BCC_EXE_PATH);
     args->push_back("-fPIC");
     args->push_back("-embedRSInfo");
@@ -251,6 +282,8 @@ void setupCompileArguments(
         args->push_back("-invoke");
         args->push_back(batch.c_str());
     }
+    args->push_back("-build-checksum");
+    args->push_back(checksumStr);
     args->push_back("-output_path");
     args->push_back(output_dir.c_str());
     args->push_back("-o");
@@ -339,14 +372,38 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
     string coreLibRelaxedPath;
     const string& coreLibPath = getCoreLibPath(getCpuRefImpl()->getContext(),
                                                &coreLibRelaxedPath);
+
     vector<const char*> arguments;
     string output_dir(cacheDir);
     setupCompileArguments(inputs, kernelBatches, invokeBatches, output_dir,
-                          outputFileName, coreLibPath, coreLibRelaxedPath, &arguments);
+                          outputFileName, coreLibPath, coreLibRelaxedPath,
+                          mChecksum, &arguments);
+
+    std::unique_ptr<const char> cmdLine(rsuJoinStrings(arguments.size() - 1,
+                                                  arguments.data()));
+
+    if (!getChecksum(inputs, coreLibPath, coreLibRelaxedPath, cmdLine.get(),
+                     mChecksum)) {
+        return;
+    }
+
+    const char* resName = outputFileName.c_str();
+
+    mScriptObj = SharedLibraryUtils::loadSharedLibrary(cacheDir, resName);
+    if (mScriptObj != nullptr) {
+        mExecutable = ScriptExecutable::createFromSharedObject(
+            getCpuRefImpl()->getContext(), mScriptObj);
+        if (mExecutable != nullptr) {
+            if (mExecutable->isChecksumValid(mChecksum)) {
+                return;
+            }
+            mExecutable = nullptr;
+        }
+    }
 
     bool compiled = rsuExecuteCommand(RsdCpuScriptImpl::BCC_EXE_PATH,
-                                     arguments.size()-1,
-                                     arguments.data());
+                                      arguments.size()-1,
+                                      arguments.data());
     if (!compiled) {
         return;
     }
@@ -354,8 +411,6 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
     //===--------------------------------------------------------------------===//
     // Create and load the shared lib
     //===--------------------------------------------------------------------===//
-
-    const char* resName = outputFileName.c_str();
 
     if (!SharedLibraryUtils::createSharedLibrary(cacheDir, resName)) {
         ALOGE("Failed to link object file '%s'", resName);
