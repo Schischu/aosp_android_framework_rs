@@ -49,6 +49,7 @@ bc_cflags := -MD \
              $(bc_translated_clang_cc1_cflags) \
              $(LOCAL_CFLAGS_$(my_32_64_bit_suffix))
 
+bc_clang := out/host/linux-x86/bin/clang
 ifeq ($(rs_debug_runtime),1)
     bc_cflags += -DRS_DEBUG_RUNTIME
 endif
@@ -70,10 +71,10 @@ $(c_bc_files): PRIVATE_INCLUDES := \
     external/clang/lib/Headers
 $(c_bc_files): PRIVATE_CFLAGS := $(bc_cflags)
 
-$(c_bc_files): $(intermediates)/%.bc: $(LOCAL_PATH)/%.c  $(CLANG)
+$(c_bc_files): $(intermediates)/%.bc: $(LOCAL_PATH)/%.c  $(bc_clang)
 	@echo "bc: $(PRIVATE_MODULE) <= $<"
 	@mkdir -p $(dir $@)
-	$(hide) $(CLANG) $(addprefix -I, $(PRIVATE_INCLUDES)) $(PRIVATE_CFLAGS) $< -o $@
+	$(hide) $(bc_clang) $(addprefix -I, $(PRIVATE_INCLUDES)) $(PRIVATE_CFLAGS) $< -o $@
 	$(call transform-d-to-p-args,$(@:%.bc=%.d),$(@:%.bc=%.P))
 
 $(ll_bc_files): $(intermediates)/%.bc: $(LOCAL_PATH)/%.ll $(LLVM_AS)
