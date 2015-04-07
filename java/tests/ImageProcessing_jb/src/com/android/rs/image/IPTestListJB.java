@@ -37,6 +37,7 @@ public class IPTestListJB {
         LEVELS_VEC3_FULL ("Levels Vec3 Full", FULL_FP, 61.9f),
         LEVELS_VEC4_FULL ("Levels Vec4 Full", FULL_FP, 73.f),
         BLUR_RADIUS_25 ("Blur radius 25", RELAXED_FP, 1103.f),
+        BLUR_RADIUS_25_HALF ("Blur radius 25 Half Precision", RELAXED_FP, 1103.f),
         INTRINSIC_BLUR_RADIUS_25 ("Intrinsic Blur radius 25", INTRINSIC, 176.f),
         GREYSCALE ("Greyscale", RELAXED_FP, 43.7f),
         GRAIN ("Grain", RELAXED_FP, 147.4f),
@@ -65,7 +66,7 @@ public class IPTestListJB {
         INTRINSICS_BLUR_25G ("Intrinsics Blur 25 uchar", INTRINSIC, 37.8f),
         VIBRANCE ("Vibrance", RELAXED_FP, 103.f),
         BW_FILTER ("BW Filter", RELAXED_FP, 86.f),
-        SHADOWS ("Shadows", RELAXED_FP, 130.f),
+        // SHADOWS ("Shadows", RELAXED_FP, 130.f),
         CONTRAST ("Contrast", RELAXED_FP, 45.4f),
         EXPOSURE ("Exposure", RELAXED_FP, 73.4f),
         WHITE_BALANCE ("White Balance", RELAXED_FP, 138.2f),
@@ -110,9 +111,11 @@ public class IPTestListJB {
         case LEVELS_VEC4_FULL:
             return new LevelsV4(true, true);
         case BLUR_RADIUS_25:
-            return new Blur25(false);
+            return new Blur25(false, false);
+        case BLUR_RADIUS_25_HALF:
+            return new Blur25(false, true);
         case INTRINSIC_BLUR_RADIUS_25:
-            return new Blur25(true);
+            return new Blur25(true, false);
         case GREYSCALE:
             return new Greyscale();
         case GRAIN:
@@ -167,8 +170,10 @@ public class IPTestListJB {
             return new Vibrance();
         case BW_FILTER:
             return new BWFilter();
+            /*
         case SHADOWS:
             return new Shadows();
+            */
         case CONTRAST:
             return new Contrast();
         case EXPOSURE:
