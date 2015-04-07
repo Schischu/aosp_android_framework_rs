@@ -42,6 +42,7 @@ description:
  Converting numbers too large to fit the destination type yields undefined results.
  For example, converting a float that contains 1.0e18 to a short is undefined.
  Use @clamp() to avoid this.
+cpuimpl: core
 end:
 
 function: convert_#3#1
@@ -52,6 +53,7 @@ t: u64, i64, f64
 t: u64, i64, f64
 ret: #3#1
 arg: #2#1 v, compatible(#3)
+cpuimpl: core
 end:
 
 function: convert_#3#1
@@ -62,6 +64,7 @@ t: u64, i64, f64
 t: u8, u16, u32, i8, i16, i32, f32
 ret: #3#1
 arg: #2#1 v, compatible(#3)
+cpuimpl: core
 end:
 
 function: convert_#3#1
@@ -72,6 +75,7 @@ t: u8, u16, u32, i8, i16, i32, f32
 t: u64, i64, f64
 ret: #3#1
 arg: #2#1 v, compatible(#3)
+cpuimpl: core
 end:
 
 function: rsPackColorTo8888
@@ -89,6 +93,7 @@ description:
 
  If the alpha component is not specified, it is assumed to be 1.0, i.e. the
  result will have an alpha set to 255.
+cpuimpl: core
 test: none
 end:
 
@@ -99,6 +104,7 @@ arg: float r
 arg: float g
 arg: float b
 arg: float a, "Alpha component."
+cpuimpl: core
 test: none
 end:
 
@@ -106,6 +112,7 @@ function: rsPackColorTo8888
 attrib: const
 ret: uchar4
 arg: float3 color, "Vector of 3 or 4 floats containing the R, G, B, and A values."
+cpuimpl: core
 test: none
 end:
 
@@ -113,6 +120,7 @@ function: rsPackColorTo8888
 attrib: const
 ret: uchar4
 arg: float4 color
+cpuimpl: core
 test: none
 end:
 
@@ -127,6 +135,7 @@ summary: Create a float4 RGBA from uchar4
 description:
  Unpacks a uchar4 color to float4.  The resulting floats will be between 0.0 and
  1.0 inclusive.
+cpuimpl: core
 test: none
 end:
 
@@ -143,5 +152,6 @@ description:
  Converts a color from a YUV representation to RGBA.
 
  We currently don't provide a function to do the reverse conversion.
+cpuimpl: core
 test: none
 end:

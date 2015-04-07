@@ -41,10 +41,11 @@ enum NumberKind { SIGNED_INTEGER, UNSIGNED_INTEGER, FLOATING_POINT };
 
 // Table of type equivalences.
 struct NumericalType {
-    const char* specType;    // Name found in the .spec file
-    const char* rsDataType;  // RS data type
-    const char* cType;       // Type in a C file
-    const char* javaType;    // Type in a Java file
+    const char* specType;       // Name found in the .spec file
+    const char* rsDataType;     // RS data type
+    const char* cType;          // Type in a C file
+    const char* javaType;       // Type in a Java file
+    const char cSignatureType;  // Character to use for function signature
     NumberKind kind;
     /* For integers, number of bits of the number, excluding the sign bit.
      * For floats, number of implied bits of the mantissa.
@@ -310,6 +311,14 @@ class FunctionSpecification : public Specification {
 private:
     Function* mFunction;  // Not owned
 
+    /* For the cpu driver, where the implementation is found.  This will affect the
+     * genereation of the exit point white list.  One of:
+     * "": implemented in librsdrive, should be in the white list.  This is the default.
+     * "core": implemented in librscore, should not be in the white list.
+     * "vectorcore": the vector permutations (i.e. floatN where N is > 1) is in librscore.
+     */
+    std::string mCpuImplementation;
+
     /* How to test.  One of:
      * "scalar": Generate test code that checks entries of each vector indepently.  E.g. for
      *           sin(float3), the test code will call the CoreMathVerfier.computeSin 3 times.
@@ -366,6 +375,7 @@ public:
 
     Function* getFunction() { return mFunction; }
     std::string getAttribute() const { return mAttribute; }
+    std::string getCpuImplementation() const { return mCpuImplementation; }
     std::string getTest() const { return mTest; }
     std::string getPrecisionLimit() const { return mPrecisionLimit; }
 
@@ -380,11 +390,24 @@ public:
     void getInlines(int replacementIndexes[MAX_REPLACEABLES],
                     std::vector<std::string>* inlines) const;
 
+    // Parse the cpuimpl: line.
+    void parseCpuImplementation(Scanner* scanner);
+
     // Parse the "test:" line.
     void parseTest(Scanner* scanner);
 
     // Return true if we need to generate tests for this function.
     bool hasTests(int versionOfTestFiles) const;
+
+    bool hasInline() const { return mInline.size() > 0; }
+
+    /* Return true if this function can be overloaded.  This is added by default to all
+     * specifications, so except for the very few exceptions that start the attributes
+     * with an '=' to avoid this, we'll return true.
+     */
+    bool isOverloadable() const {
+        return mAttribute.empty() || mAttribute[0] != '=';
+    }
 
     // Parse a function specification and add it to specFile.
     static void scanFunctionSpecification(Scanner* scanner, SpecFile* specFile);

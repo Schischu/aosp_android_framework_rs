@@ -35,17 +35,17 @@ using namespace std;
 const int MIN_API_LEVEL = 9;
 
 const NumericalType TYPES[] = {
-            {"f16", "FLOAT_16", "half", "half", FLOATING_POINT, 11, 5},
-            {"f32", "FLOAT_32", "float", "float", FLOATING_POINT, 24, 8},
-            {"f64", "FLOAT_64", "double", "double", FLOATING_POINT, 53, 11},
-            {"i8", "SIGNED_8", "char", "byte", SIGNED_INTEGER, 7, 0},
-            {"u8", "UNSIGNED_8", "uchar", "byte", UNSIGNED_INTEGER, 8, 0},
-            {"i16", "SIGNED_16", "short", "short", SIGNED_INTEGER, 15, 0},
-            {"u16", "UNSIGNED_16", "ushort", "short", UNSIGNED_INTEGER, 16, 0},
-            {"i32", "SIGNED_32", "int", "int", SIGNED_INTEGER, 31, 0},
-            {"u32", "UNSIGNED_32", "uint", "int", UNSIGNED_INTEGER, 32, 0},
-            {"i64", "SIGNED_64", "long", "long", SIGNED_INTEGER, 63, 0},
-            {"u64", "UNSIGNED_64", "ulong", "long", UNSIGNED_INTEGER, 64, 0},
+            {"f16", "FLOAT_16", "half", "half", '?', FLOATING_POINT, 11, 5},
+            {"f32", "FLOAT_32", "float", "float", 'f', FLOATING_POINT, 24, 8},
+            {"f64", "FLOAT_64", "double", "double", 'd', FLOATING_POINT, 53, 11},
+            {"i8", "SIGNED_8", "char", "byte", '?', SIGNED_INTEGER, 7, 0},
+            {"u8", "UNSIGNED_8", "uchar", "byte", '?', UNSIGNED_INTEGER, 8, 0},
+            {"i16", "SIGNED_16", "short", "short", '?', SIGNED_INTEGER, 15, 0},
+            {"u16", "UNSIGNED_16", "ushort", "short", '?', UNSIGNED_INTEGER, 16, 0},
+            {"i32", "SIGNED_32", "int", "int", 'i', SIGNED_INTEGER, 31, 0},
+            {"u32", "UNSIGNED_32", "uint", "int", 'j', UNSIGNED_INTEGER, 32, 0},
+            {"i64", "SIGNED_64", "long", "long", '?', SIGNED_INTEGER, 63, 0},
+            {"u64", "UNSIGNED_64", "ulong", "long", '?', UNSIGNED_INTEGER, 64, 0},
 };
 
 const int NUM_TYPES = sizeof(TYPES) / sizeof(TYPES[0]);
@@ -462,6 +462,18 @@ void FunctionSpecification::getInlines(int replacementIndexes[MAX_REPLACEABLES],
     expandStringVector(mInline, replacementIndexes, inlines);
 }
 
+void FunctionSpecification::parseCpuImplementation(Scanner* scanner) {
+    const string value = scanner->getValue();
+    if (value != "" && value != "core" && value != "vectorcore") {
+        scanner->error() << "Unrecognized cpuimpl option: \"" << value << "\"\n";
+    } else if (mInline.size() > 0) {
+        scanner->error() << "Should not specify cpuimpl if it's inline\n";
+    }
+    else {
+        mCpuImplementation = value;
+    }
+}
+
 void FunctionSpecification::parseTest(Scanner* scanner) {
     const string value = scanner->getValue();
     if (value == "scalar" || value == "vector" || value == "noverify" || value == "custom" ||
@@ -559,6 +571,9 @@ void FunctionSpecification::scanFunctionSpecification(Scanner* scanner, SpecFile
         while (scanner->findOptionalTag("")) {
             spec->mInline.push_back(scanner->getValue());
         }
+    }
+    if (scanner->findOptionalTag("cpuimpl:")) {
+        spec->parseCpuImplementation(scanner);
     }
     if (scanner->findOptionalTag("test:")) {
         spec->parseTest(scanner);
@@ -771,7 +786,7 @@ bool SystemSpecification::readSpecFile(const string& fileName) {
 
 bool SystemSpecification::generateFiles(int versionOfTestFiles) const {
     bool success = generateHeaderFiles("scriptc") && generateHtmlDocumentation("html") &&
-                   generateTestFiles("test", versionOfTestFiles);
+                   generateTestFiles("test", versionOfTestFiles) && generateStubsWhiteList();
     if (success) {
         cout << "Successfully processed " << mTypes.size() << " types, " << mConstants.size()
              << " constants, and " << mFunctions.size() << " functions.\n";

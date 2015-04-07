@@ -682,6 +682,7 @@ summary: Return an allocation containing index data
 description:
  Returns an allocation containing index data or a null
  allocation if only the primitive is specified
+cpuimpl: core
 test: none
 end:
 
@@ -696,6 +697,7 @@ summary: Return the primitive
 description:
  Returns the primitive describing how a part of the mesh is
  rendered
+cpuimpl: core
 test: none
 end:
 
@@ -709,6 +711,7 @@ summary: Return the number of index sets
 description:
  Meshes could have multiple index sets, this function returns
  the number.
+cpuimpl: core
 test: none
 end:
 
@@ -723,6 +726,7 @@ summary: Return a vertex allocation
 description:
  Returns an allocation that is part of the mesh and contains
  vertex data, e.g. positions, normals, texcoords
+cpuimpl: core
 test: none
 end:
 
@@ -736,6 +740,7 @@ summary: Return the number of vertex allocations
 description:
  Returns the number of allocations in the mesh that contain
  vertex data
+cpuimpl: core
 test: none
 end:
 
@@ -815,6 +820,7 @@ deprecated:
 summary: Get program raster cull mode
 description:
  Get program raster cull mode
+cpuimpl: core
 test: none
 end:
 
@@ -827,6 +833,7 @@ deprecated:
 summary: Get program raster point sprite state
 description:
  Get program raster point sprite state
+cpuimpl: core
 test: none
 end:
 
@@ -839,6 +846,7 @@ deprecated:
 summary: Get program store blend destination function
 description:
  Get program store blend destination function
+cpuimpl: core
 test: none
 end:
 
@@ -851,6 +859,7 @@ deprecated:
 summary: Get program store blend source function
 description:
  Get program store blend source function
+cpuimpl: core
 test: none
 end:
 
@@ -863,6 +872,7 @@ deprecated:
 summary: Get program store depth function
 description:
  Get program store depth function
+cpuimpl: core
 test: none
 end:
 
@@ -875,6 +885,7 @@ deprecated:
 summary: Get program store alpha component color mask
 description:
  Get program store alpha component color mask
+cpuimpl: core
 test: none
 end:
 
@@ -887,6 +898,7 @@ deprecated:
 summary: Get program store blur component color mask
 description:
  Get program store blur component color mask
+cpuimpl: core
 test: none
 end:
 
@@ -899,6 +911,7 @@ deprecated:
 summary: Get program store green component color mask
 description:
  Get program store green component color mask
+cpuimpl: core
 test: none
 end:
 
@@ -911,6 +924,7 @@ deprecated:
 summary: Get program store red component color mask
 description:
  Get program store red component color mask
+cpuimpl: core
 test: none
 end:
 
@@ -923,6 +937,7 @@ deprecated:
 summary: Get program store depth mask
 description:
  Get program store depth mask
+cpuimpl: core
 test: none
 end:
 
@@ -935,5 +950,6 @@ deprecated:
 summary: Get program store dither state
 description:
  Get program store dither state
+cpuimpl: core
 test: none
 end:

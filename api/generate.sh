@@ -16,7 +16,7 @@
 #
 
 set -e
-g++ Generator.cpp Specification.cpp GenerateHtmlDocumentation.cpp GenerateHeaderFiles.cpp GenerateTestFiles.cpp Scanner.cpp Utilities.cpp -g -std=c++11 -Wall -o generator
+g++ Generator.cpp Specification.cpp GenerateHtmlDocumentation.cpp GenerateHeaderFiles.cpp GenerateTestFiles.cpp GenerateStubsWhiteList.cpp Scanner.cpp Utilities.cpp -g -std=c++11 -Wall -o generator
 
 mkdir -p test
 mkdir -p scriptc
@@ -34,7 +34,7 @@ mv scriptc/*.rsh ../scriptc
 rmdir scriptc
 
 # TODO handle the documentation files.
-rm html/*
-rmdir html
+#rm html/*
+#rmdir html
 
 rm generator

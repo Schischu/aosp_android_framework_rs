@@ -158,6 +158,7 @@ description:
  Returns the absolute value of an integer.
 
  For floats, use @fabs().
+cpuimpl: core
 end:
 
 function: acos
@@ -172,6 +173,7 @@ description:
  Returns the inverse cosine, in radians.
 
  See also @native_acos().
+cpuimpl: vectorcore
 end:
 
 function: acosh
@@ -186,6 +188,7 @@ description:
  Returns the inverse hyperbolic cosine, in radians.
 
  See also @native_acosh().
+cpuimpl: vectorcore
 end:
 
 function: acospi
@@ -202,6 +205,7 @@ description:
  To get an inverse cosine measured in degrees, use <code>acospi(a) * 180.f</code>.
 
  See also @native_acospi().
+cpuimpl: core
 end:
 
 function: asin
@@ -216,6 +220,7 @@ description:
  Returns the inverse sine, in radians.
 
  See also @native_asin().
+cpuimpl: vectorcore
 end:
 
 function: asinh
@@ -230,6 +235,7 @@ description:
  Returns the inverse hyperbolic sine, in radians.
 
  See also @native_asinh().
+cpuimpl: vectorcore
 end:
 
 function: asinpi
@@ -246,6 +252,7 @@ description:
  To get an inverse sine measured in degrees, use <code>asinpi(a) * 180.f</code>.
 
  See also @native_asinpi().
+cpuimpl: core
 end:
 
 function: atan
@@ -260,6 +267,7 @@ description:
  Returns the inverse tangent, in radians.
 
  See also @native_atan().
+cpuimpl: vectorcore
 end:
 
 function: atan2
@@ -275,6 +283,7 @@ description:
  Returns the inverse tangent of <code>(numerator / denominator)</code>, in radians.
 
  See also @native_atan2().
+cpuimpl: vectorcore
 end:
 
 function: atan2pi
@@ -292,6 +301,7 @@ description:
  To get an inverse tangent measured in degrees, use <code>atan2pi(n, d) * 180.f</code>.
 
  See also @native_atan2pi().
+cpuimpl: core
 end:
 
 function: atanh
@@ -306,6 +316,7 @@ description:
  Returns the inverse hyperbolic tangent, in radians.
 
  See also @native_atanh().
+cpuimpl: vectorcore
 end:
 
 function: atanpi
@@ -322,6 +333,7 @@ description:
  To get an inverse tangent measured in degrees, use <code>atanpi(a) * 180.f</code>.
 
  See also @native_atanpi().
+cpuimpl: core
 end:
 
 function: cbrt
@@ -336,6 +348,7 @@ description:
  Returns the cube root.
 
  See also @native_cbrt().
+cpuimpl: vectorcore
 end:
 
 function: ceil
@@ -352,6 +365,7 @@ description:
  For example, <code>ceil(1.2f)</code> returns 2.f, and <code>ceil(-1.2f)</code> returns -1.f.
 
  See also @floor().
+cpuimpl: vectorcore
 end:
 
 function: clamp
@@ -372,6 +386,7 @@ description:
  to all entries of the value, the other where the min and max are also vectors.
 
  If min_value is greater than max_value, the results are undefined.
+cpuimpl: core
 end:
 
 function: clamp
@@ -383,6 +398,7 @@ ret: #2#1
 arg: #2#1 value
 arg: #2 min_value
 arg: #2 max_value, above(min_value)
+cpuimpl: core
 end:
 
 function: clamp
@@ -394,6 +410,7 @@ ret: #2#1
 arg: #2#1 value
 arg: #2#1 min_value
 arg: #2#1 max_value, above(min_value)
+cpuimpl: core
 end:
 
 function: clamp
@@ -405,6 +422,7 @@ ret: #2#1
 arg: #2#1 value
 arg: #2 min_value
 arg: #2 max_value, above(min_value)
+cpuimpl: core
 end:
 
 function: clz
@@ -419,6 +437,7 @@ description:
  Returns the number of leading 0-bits in a value.
 
  For example, <code>clz((char)0x03)</code> returns 6.
+cpuimpl: core
 end:
 
 function: copysign
@@ -436,6 +455,7 @@ description:
  The value returned is either magnitude_value or -magnitude_value.
 
  For example, <code>copysign(4.0f, -2.7f)</code> returns -4.0f and <code>copysign(-4.0f, 2.7f)</code> returns 4.0f.
+cpuimpl: vectorcore
 end:
 
 function: cos
@@ -450,6 +470,7 @@ description:
  Returns the cosine of an angle measured in radians.
 
  See also @native_cos().
+cpuimpl: vectorcore
 end:
 
 function: cosh
@@ -464,6 +485,7 @@ description:
  Returns the hypebolic cosine of v, where v is measured in radians.
 
  See also @native_cosh().
+cpuimpl: vectorcore
 end:
 
 function: cospi
@@ -480,6 +502,7 @@ description:
  To get the cosine of a value measured in degrees, call <code>cospi(v / 180.f)</code>.
 
  See also @native_cospi().
+cpuimpl: core
 end:
 
 function: degrees
@@ -492,6 +515,7 @@ arg: #2#1 v
 summary: Converts radians into degrees
 description:
  Converts from radians to degrees.
+cpuimpl: core
 end:
 
 function: erf
@@ -504,6 +528,7 @@ arg: #2#1 v
 summary: Mathematical error function
 description:
  Returns the error function.
+cpuimpl: vectorcore
 end:
 
 function: erfc
@@ -516,6 +541,7 @@ arg: #2#1 v
 summary: Mathematical complementary error function
 description:
  Returns the complementary error function.
+cpuimpl: vectorcore
 end:
 
 function: exp
@@ -530,6 +556,7 @@ description:
  Returns e raised to v, i.e. e ^ v.
 
  See also @native_exp().
+cpuimpl: vectorcore
 end:
 
 function: exp10
@@ -544,6 +571,7 @@ description:
  Returns 10 raised to v, i.e. 10.f ^ v.
 
  See also @native_exp10().
+cpuimpl: core
 end:
 
 function: exp2
@@ -558,6 +586,7 @@ description:
  Returns 2 raised to v, i.e. 2.f ^ v.
 
  See also @native_exp2().
+cpuimpl: vectorcore
 end:
 
 function: expm1
@@ -572,6 +601,7 @@ description:
  Returns e raised to v minus 1, i.e. (e ^ v) - 1.
 
  See also @native_expm1().
+cpuimpl: vectorcore
 end:
 
 function: fabs
@@ -586,6 +616,7 @@ description:
  Returns the absolute value of the float v.
 
  For integers, use @abs().
+cpuimpl: core
 end:
 
 function: fdim
@@ -601,6 +632,7 @@ description:
  Returns the positive difference between two values.
 
  If a &gt; b, returns (a - b) otherwise returns 0f.
+cpuimpl: vectorcore
 end:
 
 function: floor
@@ -617,6 +649,7 @@ description:
  For example, <code>floor(1.2f)</code> returns 1.f, and <code>floor(-1.2f)</code> returns -2.f.
 
  See also @ceil().
+cpuimpl: vectorcore
 end:
 
 function: fma
@@ -636,6 +669,7 @@ description:
  multiplied result and rounds only after the addition.  @mad() rounds after the
  multiplication and the addition.  This extra precision is not guaranteed in
  rs_fp_relaxed mode.
+cpuimpl: vectorcore
 end:
 
 function: fmax
@@ -651,6 +685,7 @@ description:
  Returns the maximum of a and b, i.e. <code>(a &lt; b ? b : a)</code>.
 
  The @max() function returns identical results but can be applied to more data types.
+cpuimpl: vectorcore
 end:
 
 function: fmax
@@ -661,6 +696,7 @@ t: f32
 ret: #2#1
 arg: #2#1 a
 arg: #2 b
+cpuimpl: vectorcore
 end:
 
 function: fmin
@@ -676,6 +712,7 @@ description:
  Returns the minimum of a and b, i.e. <code>(a &gt; b ? b : a)</code>.
 
  The @min() function returns identical results but can be applied to more data types.
+cpuimpl: vectorcore
 end:
 
 function: fmin
@@ -686,6 +723,7 @@ t: f32
 ret: #2#1
 arg: #2#1 a
 arg: #2 b
+cpuimpl: vectorcore
 end:
 
 function: fmod
@@ -703,6 +741,7 @@ description:
  The function @remainder() is similar but rounds toward the closest interger.
  For example, <code>fmod(-3.8f, 2.f)</code> returns -1.8f (-3.8f - -1.f * 2.f)
  while <code>@remainder(-3.8f, 2.f)</code> returns 0.2f (-3.8f - -2.f * 2.f).
+cpuimpl: vectorcore
 end:
 
 function: fract
@@ -718,6 +757,7 @@ description:
 
  For example, <code>fract(1.3f, &val)</code> returns 0.3f and sets val to 1.f.
  <code>fract(-1.3f, &val)</code> returns 0.7f and sets val to -2.f.
+cpuimpl: core
 end:
 
 function: fract
@@ -746,6 +786,7 @@ description:
  The mantissa is always between 0.5 (inclusive) and 1.0 (exclusive).
 
  See @ldexp() for the reverse operation.  See also @logb() and @ilogb().
+cpuimpl: vectorcore
 end:
 
 function: half_recip
@@ -762,6 +803,7 @@ description:
  The precision is that of a 16 bit floating point value.
 
  See also @native_recip().
+cpuimpl: core
 end:
 
 function: half_rsqrt
@@ -778,6 +820,7 @@ description:
  The precision is that of a 16 bit floating point value.
 
  See also @rsqrt(), @native_rsqrt().
+cpuimpl: core
 end:
 
 function: half_sqrt
@@ -794,6 +837,7 @@ description:
  The precision is that of a 16 bit floating point value.
 
  See also @sqrt(), @native_sqrt().
+cpuimpl: core
 end:
 
 function: hypot
@@ -809,6 +853,7 @@ description:
  Returns the hypotenuse, i.e. <code>sqrt(a * a + b * b)</code>.
 
  See also @native_hypot().
+cpuimpl: vectorcore
 end:
 
 function: ilogb
@@ -829,6 +874,7 @@ description:
  is returned by @frexp().
 
  @logb() is similar but returns a float.
+cpuimpl: vectorcore
 test: custom
 end:
 
@@ -845,6 +891,7 @@ description:
  i.e. (mantissa * 2 ^ exponent).
 
  See @frexp() for the reverse operation.
+cpuimpl: vectorcore
 end:
 
 function: ldexp
@@ -854,6 +901,7 @@ w: 2, 3, 4
 ret: float#1
 arg: float#1 mantissa
 arg: int exponent
+cpuimpl: vectorcore
 end:
 
 function: lgamma
@@ -869,6 +917,7 @@ description:
  i.e. <code>@log(@fabs(@tgamma(v)))</code>.
 
  See also @tgamma().
+cpuimpl: vectorcore
 end:
 
 function: lgamma
@@ -878,6 +927,7 @@ t: f32
 ret: #2#1
 arg: #2#1 v
 arg: int#1* sign_of_gamma, "If sign_of_gamma is not null, *sign_of_gamma will be set to -1.f if the gamma of v is negative, otherwise to 1.f."
+cpuimpl: vectorcore
 test: custom
 #TODO Temporary until bionic & associated drivers are fixed
 end:
@@ -894,6 +944,7 @@ description:
  Returns the natural logarithm.
 
  See also @native_log().
+cpuimpl: vectorcore
 end:
 
 function: log10
@@ -908,6 +959,7 @@ description:
  Returns the base 10 logarithm.
 
  See also @native_log10().
+cpuimpl: vectorcore
 end:
 
 function: log1p
@@ -922,6 +974,7 @@ description:
  Returns the natural logarithm of <code>(v + 1.f)</code>.
 
  See also @native_log1p().
+cpuimpl: vectorcore
 end:
 
 function: log2
@@ -936,6 +989,7 @@ description:
  Returns the base 2 logarithm.
 
  See also @native_log2().
+cpuimpl: core
 end:
 
 function: logb
@@ -956,6 +1010,7 @@ description:
  is returned by frexp().
 
  @ilogb() is similar but returns an integer.
+cpuimpl: vectorcore
 end:
 
 function: mad
@@ -975,6 +1030,7 @@ description:
  multiplied result and rounds only after the addition.  mad() rounds after the
  multiplication and the addition.  In rs_fp_relaxed mode, mad() may not do the
  rounding after multiplicaiton.
+cpuimpl: core
 end:
 
 function: max
@@ -988,6 +1044,7 @@ arg: #2#1 b
 summary: Maximum
 description:
  Returns the maximum value of two arguments.
+cpuimpl: core
 end:
 
 function: max
@@ -1058,6 +1115,7 @@ t: i8, i16, i32, i64, u8, u16, u32, u64
 ret: #2#1
 arg: #2#1 a
 arg: #2#1 b
+cpuimpl: core
 end:
 
 function: min
@@ -1071,6 +1129,7 @@ arg: #2#1 b
 summary: Minimum
 description:
  Returns the minimum value of two arguments.
+cpuimpl: core
 end:
 
 function: min
@@ -1141,6 +1200,7 @@ t: i8, i16, i32, i64, u8, u16, u32, u64
 ret: #2#1
 arg: #2#1 a
 arg: #2#1 b
+cpuimpl: core
 end:
 
 function: mix
@@ -1157,6 +1217,7 @@ description:
  Returns start + ((stop - start) * fraction).
 
  This can be useful for mixing two values.  For example, to create a new color that is 40% color1 and 60% color2, use <code>mix(color1, color2, 0.6f)</code>.
+cpuimpl: core
 end:
 
 function: mix
@@ -1168,6 +1229,7 @@ ret: #2#1
 arg: #2#1 start
 arg: #2#1 stop
 arg: #2 fraction
+cpuimpl: core
 end:
 
 function: modf
@@ -1182,6 +1244,7 @@ description:
  Returns the integral and fractional components of a number.
 
  Both components will have the same sign as x.  For example, for an input of -3.72f, iret will be set to -3.f and .72f will be returned.
+cpuimpl: vectorcore
 end:
 
 function: nan
@@ -1196,6 +1259,7 @@ arg: uint#1 v, "Not used."
 summary: Not a Number
 description:
  Returns a NaN value (Not a Number).
+cpuimpl: vectorcore
 end:
 
 function: native_acos
@@ -1214,6 +1278,7 @@ description:
 
  See also @acos().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1230,6 +1295,7 @@ description:
 
  See also @acosh().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1251,6 +1317,7 @@ description:
 
  See also @acospi().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1270,6 +1337,7 @@ description:
 
  See also @asin().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1286,6 +1354,7 @@ description:
 
  See also @asinh().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1307,6 +1376,7 @@ description:
 
  See also @asinpi().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1323,6 +1393,7 @@ description:
 
  See also @atan().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1340,6 +1411,7 @@ description:
 
  See also @atan2().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1359,6 +1431,7 @@ description:
 
  See also @atan2pi().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1375,6 +1448,7 @@ description:
 
  See also @atanh().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1393,6 +1467,7 @@ description:
 
  See also @atanpi().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1408,6 +1483,7 @@ description:
  Returns the approximate cubic root.
 
  See also @cbrt().
+cpuimpl: core
 end:
 
 function: native_cos
@@ -1422,6 +1498,7 @@ description:
  Returns the approximate cosine of an angle measured in radians.
 
  See also @cos().
+cpuimpl: core
 end:
 
 function: native_cosh
@@ -1436,6 +1513,7 @@ description:
  Returns the approximate hypebolic cosine.
 
  See also @cosh().
+cpuimpl: core
 end:
 
 function: native_cospi
@@ -1452,6 +1530,7 @@ description:
  To get the cosine of a value measured in degrees, call <code>cospi(v / 180.f)</code>.
 
  See also @cospi().
+cpuimpl: core
 end:
 
 function: native_divide
@@ -1465,6 +1544,7 @@ arg: #2#1 right_vector
 summary: Approximate division
 description:
  Computes the approximate division of two values.
+cpuimpl: core
 end:
 
 function: native_exp
@@ -1481,6 +1561,7 @@ description:
  It is valid for inputs from -86.f to 86.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
 
  See also @exp().
+cpuimpl: core
 test: limited
 end:
 
@@ -1498,6 +1579,7 @@ description:
  It is valid for inputs from -37.f to 37.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
 
  See also @exp10().
+cpuimpl: core
 test: limited
 end:
 
@@ -1515,6 +1597,7 @@ description:
  It is valid for inputs from -125.f to 125.f.  The precision is no worse than what would be expected from using 16 bit floating point values.
 
  See also @exp2().
+cpuimpl: core
 test: limited
 end:
 
@@ -1530,6 +1613,7 @@ description:
  Returns the approximate (e ^ v) - 1.
 
  See also @expm1().
+cpuimpl: core
 end:
 
 function: native_hypot
@@ -1545,6 +1629,7 @@ description:
  Returns the approximate native_sqrt(a * a + b * b)
 
  See also @hypot().
+cpuimpl: core
 end:
 
 function: native_log
@@ -1561,6 +1646,7 @@ description:
  It is not accurate for values very close to zero.
 
  See also @log().
+cpuimpl: core
 test: limited
 end:
 
@@ -1578,6 +1664,7 @@ description:
  It is not accurate for values very close to zero.
 
  See also @log10().
+cpuimpl: core
 test: limited
 end:
 
@@ -1593,6 +1680,7 @@ description:
  Returns the approximate natural logarithm of (v + 1.0f)
 
  See also @log1p().
+cpuimpl: core
 end:
 
 function: native_log2
@@ -1609,6 +1697,7 @@ description:
  It is not accurate for values very close to zero.
 
  See also @log2().
+cpuimpl: core
 test: limited
 end:
 
@@ -1625,6 +1714,7 @@ description:
  Fast approximate (base ^ exponent).
 
  See also @powr().
+cpuimpl: core
 test: limited
 end:
 
@@ -1640,6 +1730,7 @@ description:
  Returns the approximate approximate reciprocal of a value.
 
  See also @half_recip().
+cpuimpl: core
 end:
 
 function: native_rootn
@@ -1655,6 +1746,7 @@ description:
  Compute the approximate Nth root of a value.
 
  See also @rootn().
+cpuimpl: core
 end:
 
 function: native_rsqrt
@@ -1669,6 +1761,7 @@ description:
  Returns approximate (1 / sqrt(v)).
 
  See also @rsqrt(), @half_rsqrt().
+cpuimpl: core
 end:
 
 function: native_sin
@@ -1683,6 +1776,7 @@ description:
  Returns the approximate sine of an angle measured in radians.
 
  See also @sin().
+cpuimpl: core
 end:
 
 function: native_sincos
@@ -1698,6 +1792,7 @@ description:
 
  See also @sincos().
 # TODO Temporary
+cpuimpl: core
 test: limited(0.0005)
 end:
 
@@ -1713,6 +1808,7 @@ description:
  Returns the approximate hyperbolic sine of a value specified in radians.
 
  See also @sinh().
+cpuimpl: core
 end:
 
 function: native_sinpi
@@ -1729,6 +1825,7 @@ description:
  To get the sine of a value measured in degrees, call <code>sinpi(v / 180.f)</code>.
 
  See also @sinpi().
+cpuimpl: core
 end:
 
 function: native_sqrt
@@ -1743,6 +1840,7 @@ description:
  Returns the approximate sqrt(v).
 
  See also @sqrt(), @half_sqrt().
+cpuimpl: core
 end:
 
 function: native_tan
@@ -1755,6 +1853,7 @@ arg: #2#1 v
 summary: Approximate tangent
 description:
  Returns the approximate tangent of an angle measured in radians.
+cpuimpl: core
 end:
 
 function: native_tanh
@@ -1769,6 +1868,7 @@ description:
  Returns the approximate hyperbolic tangent of a value.
 
  See also @tanh().
+cpuimpl: core
 end:
 
 function: native_tanpi
@@ -1785,6 +1885,7 @@ description:
  To get the tangent of a value measured in degrees, call <code>tanpi(v / 180.f)</code>.
 
  See also @tanpi().
+cpuimpl: core
 end:
 
 function: nextafter
@@ -1802,6 +1903,7 @@ description:
  In rs_fp_relaxed mode, a denormalized input value may not yield the next
  denormalized  value, as support of denormalized values is optional in
  relaxed mode.
+cpuimpl: vectorcore
 end:
 
 function: pow
@@ -1817,6 +1919,7 @@ description:
  Returns base raised to the power exponent, i.e. base ^ exponent.
 
  @pown() and @powr() are similar.  @pown() takes an integer exponent. @powr() assumes the base to be non-negative.
+cpuimpl: vectorcore
 end:
 
 function: pown
@@ -1832,6 +1935,7 @@ description:
  Returns base raised to the power exponent, i.e. base ^ exponent.
 
  @pow() and @powr() are similar.  The both take a float exponent. @powr() also assumes the base to be non-negative.
+cpuimpl: core
 end:
 
 function: powr
@@ -1849,6 +1953,7 @@ description:
  @pow() and @pown() are similar.  They both make no assumptions about the base.  @pow() takes a float exponent while @pown() take an integer.
 
  See also @native_powr().
+cpuimpl: core
 end:
 
 function: radians
@@ -1861,6 +1966,7 @@ arg: #2#1 v
 summary: Converts degrees into radians
 description:
  Converts from degrees to radians.
+cpuimpl: core
 end:
 
 function: remainder
@@ -1878,6 +1984,7 @@ description:
  The function @fmod() is similar but rounds toward the closest interger.
  For example, <code>@fmod(-3.8f, 2.f)</code> returns -1.8f (-3.8f - -1.f * 2.f)
  while <code>remainder(-3.8f, 2.f)</code> returns 0.2f (-3.8f - -2.f * 2.f).
+cpuimpl: vectorcore
 end:
 
 function: remquo
@@ -1897,6 +2004,7 @@ description:
  This function is useful for implementing periodic functions.  The low three bits of the quotient gives the quadrant and the remainder the distance within the quadrant.  For example, an implementation of @sin(x) could call <code>remquo(x, PI / 2.f, &quadrant)</code> to reduce very large value of x to something within a limited range.
 
  Example: <code>remquo(-23.5f, 8.f, &quot)</code> sets the lowest three bits of quot to 3 and the sign negative.  It returns 0.5f.
+cpuimpl: vectorcore
 test: custom
 end:
 
@@ -1914,6 +2022,7 @@ description:
  rint() rounds half values to even.  For example, <code>rint(0.5f)</code> returns 0.f and <code>rint(1.5f)</code> returns 2.f.  Similarly, <code>rint(-0.5f)</code> returns -0.f and <code>rint(-1.5f)</code> returns -2.f.
 
  @round() is similar but rounds away from zero.  @trunc() truncates the decimal fraction.
+cpuimpl: vectorcore
 end:
 
 function: rootn
@@ -1929,6 +2038,7 @@ description:
  Compute the Nth root of a value.
 
  See also @native_rootn().
+cpuimpl: core
 end:
 
 function: round
@@ -1945,6 +2055,7 @@ description:
  round() rounds half values away from zero.  For example, <code>round(0.5f)</code> returns 1.f and <code>round(1.5f)</code> returns 2.f.  Similarly, <code>round(-0.5f)</code> returns -1.f and <code>round(-1.5f)</code> returns -2.f.
 
  @rint() is similar but rounds half values toward even.  @trunc() truncates the decimal fraction.
+cpuimpl: vectorcore
 end:
 
 function: rsqrt
@@ -1959,6 +2070,7 @@ description:
  Returns (1 / sqrt(v)).
 
  See also @half_rsqrt(), @native_rsqrt().
+cpuimpl: core
 end:
 
 function: sign
@@ -1975,6 +2087,7 @@ description:
  if (v &lt; 0) return -1.f;
  else if (v &gt; 0) return 1.f;
  else return 0.f;
+cpuimpl: core
 end:
 
 function: sin
@@ -1989,6 +2102,7 @@ description:
  Returns the sine of an angle measured in radians.
 
  See also @native_sin().
+cpuimpl: vectorcore
 end:
 
 function: sincos
@@ -2003,6 +2117,7 @@ description:
  Returns the sine and cosine of a value.
 
  See also @native_sincos().
+cpuimpl: core
 end:
 
 function: sinh
@@ -2017,6 +2132,7 @@ description:
  Returns the hyperbolic sine of v, where v is measured in radians.
 
  See also @native_sinh().
+cpuimpl: vectorcore
 end:
 
 function: sinpi
@@ -2033,6 +2149,7 @@ description:
  To get the sine of a value measured in degrees, call <code>sinpi(v / 180.f)</code>.
 
  See also @native_sinpi().
+cpuimpl: core
 end:
 
 function: sqrt
@@ -2047,6 +2164,7 @@ description:
  Returns the square root of a value.
 
  See also @half_sqrt(), @native_sqrt().
+cpuimpl: vectorcore
 end:
 
 function: step
@@ -2062,6 +2180,7 @@ description:
  Returns 0.f if v &lt; edge, 1.f otherwise.
 
  This can be useful to create conditional computations without using loops and branching instructions.  For example, instead of computing <code>(a[i] &lt; b[i]) ? 0.f : @atan2(a[i], b[i])</code> for the corresponding elements of a vector, you could instead use <code>step(a, b) * @atan2(a, b)</code>.
+cpuimpl: core
 end:
 
 function: step
@@ -2072,6 +2191,7 @@ t: f32
 ret: #2#1
 arg: #2#1 edge
 arg: #2 v
+cpuimpl: core
 end:
 
 function: step
@@ -2082,6 +2202,7 @@ t: f32
 ret: #2#1
 arg: #2 edge
 arg: #2#1 v
+cpuimpl: core
 end:
 
 function: tan
@@ -2096,6 +2217,7 @@ description:
  Returns the tangent of an angle measured in radians.
 
  See also @native_tan().
+cpuimpl: vectorcore
 end:
 
 function: tanh
@@ -2110,6 +2232,7 @@ description:
  Returns the hyperbolic tangent of a value.
 
  See also @native_tanh().
+cpuimpl: vectorcore
 end:
 
 function: tanpi
@@ -2126,6 +2249,7 @@ description:
  To get the tangent of a value measured in degrees, call <code>tanpi(v / 180.f)</code>.
 
  See also @native_tanpi().
+cpuimpl: core
 end:
 
 function: tgamma
@@ -2140,6 +2264,7 @@ description:
  Returns the gamma function of a value.
 
  See also @lgamma().
+cpuimpl: vectorcore
 end:
 
 function: trunc
@@ -2156,6 +2281,7 @@ description:
  For example, <code>trunc(1.7f)</code> returns 1.f and <code>trunc(-1.7f)</code> returns -1.f.
 
  See @rint() and @round() for other rounding options.
+cpuimpl: vectorcore
 end:
 
 function: rsClamp
@@ -2170,6 +2296,7 @@ deprecated: Use @clamp() instead.
 summary: Restrain a value to a range
 description:
  Clamp a value between low and high.
+cpuimpl: core
 test: none
 end:
 
@@ -2181,6 +2308,7 @@ deprecated: Use @fract() instead.
 summary: Returns the fractional part of a float
 description:
  Returns the fractional part of a float
+cpuimpl: vectorcore
 test: none
 end:
 
@@ -2190,6 +2318,7 @@ arg: int max_value
 summary: Pseudo-random number
 description:
  Return a random value between 0 (or min_value) and max_malue.
+cpuimpl: core
 test: none
 end:
 
@@ -2197,12 +2326,14 @@ function: rsRand
 ret: int
 arg: int min_value
 arg: int max_value
+cpuimpl: core
 test: none
 end:
 
 function: rsRand
 ret: float
 arg: float max_value
+cpuimpl: core
 test: none
 end:
 

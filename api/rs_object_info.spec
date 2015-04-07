@@ -48,6 +48,7 @@ description:
  one face present.  In all other cases, it returns 0.
 
  Use @rsGetDimHasFaces() to get the dimension of a currently running kernel.
+cpuimpl: core
 test: none
 end:
 
@@ -60,6 +61,7 @@ description:
  This is useful for mipmaps.
 
  Use @rsGetDimLod() to get the dimension of a currently running kernel.
+cpuimpl: core
 test: none
 end:
 
@@ -71,6 +73,7 @@ description:
  Returns the size of the X dimension of the allocation.
 
  Use @rsGetDimX() to get the dimension of a currently running kernel.
+cpuimpl: core
 test: none
 end:
 
@@ -83,6 +86,7 @@ description:
  If the allocation has less than two dimensions, returns 0.
 
  Use @rsGetDimY() to get the dimension of a currently running kernel.
+cpuimpl: core
 test: none
 end:
 
@@ -95,6 +99,7 @@ description:
  If the allocation has less than three dimensions, returns 0.
 
  Use @rsGetDimZ() to get the dimension of a currently running kernel.
+cpuimpl: core
 test: none
 end:
 
@@ -104,6 +109,7 @@ arg: rs_allocation a, "allocation to get data from"
 summary:
 description:
  Get the element object describing the allocation's layout
+cpuimpl: core
 test: none
 end:
 
@@ -146,6 +152,7 @@ arg: rs_element e
 summary: Return the size of an element
 description:
  Returns the size in bytes that an instantiation of this element will occupy.
+cpuimpl: core
 test: none
 end:
 
@@ -158,6 +165,7 @@ description:
  Returns the element's data kind.  This is used to interpret pixel data.
 
  See @rs_data_kind.
+cpuimpl: core
 test: none
 end:
 
@@ -176,6 +184,7 @@ description:
  If the element describes a structure, RS_TYPE_NONE is returned.
 
  See @rs_data_type.
+cpuimpl: core
 test: none
 end:
 
@@ -191,6 +200,7 @@ description:
 
  If the element is not a structure or the index is greater or equal to the number
  of sub-elements, an invalid handle is returned.
+cpuimpl: core
 test: none
 end:
 
@@ -204,6 +214,7 @@ description:
  For complex elements, some sub-elements could be statically
  sized arrays. This function returns the array size of the
  sub-element at the index.
+cpuimpl: core
 test: none
 end:
 
@@ -217,6 +228,7 @@ description:
  structure with multiple sub-elements, such as a collection of
  floats, float2, float4.  This function returns zero for simple
  elements or the number of sub-elements otherwise.
+cpuimpl: core
 test: none
 end:
 
@@ -231,6 +243,7 @@ summary: Return the name of a sub-element
 description:
  For complex elements, this function returns the name of the sub-element
  at the specified index.
+cpuimpl: core
 test: none
 end:
 
@@ -243,6 +256,7 @@ summary: Return the length of the name of a sub-element
 description:
  For complex elements, this function will return the length of
  sub-element name at index
+cpuimpl: core
 test: none
 end:
 
@@ -255,6 +269,7 @@ summary:
 description:
  This function specifies the location of a sub-element within
  the element
+cpuimpl: core
 test: none
 end:
 
@@ -265,6 +280,7 @@ arg: rs_element e, "Element to get data from"
 summary:
 description:
  Returns the element's vector size
+cpuimpl: core
 test: none
 end:
 
@@ -287,6 +303,7 @@ arg: rs_sampler s, "sampler to query"
 summary:
 description:
   Get sampler anisotropy
+cpuimpl: core
 test: none
 end:
 
@@ -297,6 +314,7 @@ arg: rs_sampler s, "sampler to query"
 summary:
 description:
  Get sampler magnification value
+cpuimpl: core
 test: none
 end:
 
@@ -307,6 +325,7 @@ arg: rs_sampler s, "sampler to query"
 summary:
 description:
  Get sampler minification value
+cpuimpl: core
 test: none
 end:
 
@@ -317,6 +336,7 @@ arg: rs_sampler s, "sampler to query"
 summary:
 description:
  Get sampler wrap S value
+cpuimpl: core
 test: none
 end:
 
@@ -327,6 +347,7 @@ arg: rs_sampler s, "sampler to query"
 summary:
 description:
  Get sampler wrap T value
+cpuimpl: core
 test: none
 end:
 

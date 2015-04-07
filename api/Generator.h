@@ -26,4 +26,7 @@ bool generateTestFiles(const std::string& directory, int versionOfTestFiles);
 // Generates all HTML documentation files.  The implementation is in GenerateHtmlDocumentation.cpp.
 bool generateHtmlDocumentation(const std::string& director);
 
+// Generates the RSStubsWhiteList.cpp file.  The implementation is in GenerateStubsWhiteList.cpp.
+bool generateStubsWhiteList();
+
 #endif  // ANDROID_RS_API_GENERATOR_GENERATOR_H

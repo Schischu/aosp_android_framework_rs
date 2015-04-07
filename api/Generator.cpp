@@ -131,6 +131,7 @@
  *      and functions can be created by prefixing with a '@'.}
  * [inline:
  *     {Multiline code that implements this function inline.}]
+ * [cpuimpl: {Where the cpu implementation is found. See FunctionSpecification::mTest.}]
  * [test: {How to test this function.  See FunctionSpecification::mTest.}]
  * end:
  */

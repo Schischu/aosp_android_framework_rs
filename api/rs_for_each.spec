@@ -177,6 +177,7 @@ description:
  }<br/></code>
 
  This function returns 0 if the Array0 dimension is not present.
+cpuimpl: core
 test: none
 end:
 
@@ -191,6 +192,7 @@ description:
  of the context.
 
  Returns 0 if the Array1 dimension is not present.
+cpuimpl: core
 test: none
 end:
 
@@ -205,6 +207,7 @@ description:
  of the context.
 
  Returns 0 if the Array2 dimension is not present.
+cpuimpl: core
 test: none
 end:
 
@@ -219,6 +222,7 @@ description:
  of the context.
 
  Returns 0 if the Array3 dimension is not present.
+cpuimpl: core
 test: none
 end:
 
@@ -234,6 +238,7 @@ description:
  Returns 0 if the Array0 dimension is not present.
 #TODO Add an hyperlink to something that explains Array0/1/2/3
 # for the relevant functions.
+cpuimpl: core
 test: none
 end:
 
@@ -247,6 +252,7 @@ description:
  See @rsGetDimX() for an explanation of the context.
 
  Returns 0 if the Array1 dimension is not present.
+cpuimpl: core
 test: none
 end:
 
@@ -260,6 +266,7 @@ description:
  See @rsGetDimX() for an explanation of the context.
 
  Returns 0 if the Array2 dimension is not present.
+cpuimpl: core
 test: none
 end:
 
@@ -273,6 +280,7 @@ description:
  See @rsGetDimX() for an explanation of the context.
 
  Returns 0 if the Array3 dimension is not present.
+cpuimpl: core
 test: none
 end:
 
@@ -287,6 +295,7 @@ description:
  See @rsGetDimX() for an explanation of the context.
 
  @rsAllocationGetDimFaces() is similar but returns 0 or 1 instead of a bool.
+cpuimpl: core
 test: none
 end:
 
@@ -302,6 +311,7 @@ description:
 
  @rsAllocationGetDimLOD() is similar but returns 0 or 1 instead the actual
  number of levels.
+cpuimpl: core
 test: none
 end:
 
@@ -323,6 +333,7 @@ description:
  &nbsp;&nbsp;uint32_t size = rsGetDimX(context); //...<br/></code>
 
  To get the dimension of specific allocation, use @rsAllocationGetDimX().
+cpuimpl: core
 test: none
 end:
 
@@ -338,6 +349,7 @@ description:
  Returns 0 if the Y dimension is not present.
 
  To get the dimension of specific allocation, use @rsAllocationGetDimY().
+cpuimpl: core
 test: none
 end:
 
@@ -353,6 +365,7 @@ description:
  Returns 0 if the Z dimension is not present.
 
  To get the dimension of specific allocation, use @rsAllocationGetDimZ().
+cpuimpl: core
 test: none
 end:
 
@@ -367,6 +380,7 @@ description:
 
  Returns RS_ALLOCATION_CUBEMAP_FACE_POSITIVE_X if the face dimension is not
  present.
+cpuimpl: core
 test: none
 end:
 
@@ -381,5 +395,6 @@ description:
  an explanation of the context.
 
  Returns 0 if the Levels of Detail dimension is not present.
+cpuimpl: core
 test: none
 end:

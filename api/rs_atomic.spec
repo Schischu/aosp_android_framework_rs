@@ -39,6 +39,7 @@ arg: int32_t value, "Amount to add."
 summary: Thread-safe addition
 description:
  Atomicly adds a value to the value at addr, i.e. <code>*addr += value</code>.
+cpuimpl: core
 test: none
 end:
 
@@ -47,6 +48,7 @@ version: 20
 ret: int32_t
 arg: volatile uint32_t* addr
 arg: uint32_t value
+cpuimpl: core
 test: none
 end:
 
@@ -59,6 +61,7 @@ summary: Thread-safe bitwise and
 description:
  Atomicly performs a bitwise and of two values, storing the result back at addr,
  i.e. <code>*addr &= value</code>.
+cpuimpl: core
 test: none
 end:
 
@@ -67,6 +70,7 @@ version: 20
 ret: int32_t
 arg: volatile uint32_t* addr
 arg: uint32_t value
+cpuimpl: core
 test: none
 end:
 
@@ -83,6 +87,7 @@ description:
 
  You can check that the value was written by checking that the value returned
  by rsAtomicCas() is compareValue.
+cpuimpl: core
 test: none
 end:
 
@@ -92,6 +97,7 @@ ret: uint32_t
 arg: volatile uint32_t* addr
 arg: uint32_t compareValue
 arg: uint32_t newValue
+cpuimpl: core
 test: none
 end:
 
@@ -102,6 +108,7 @@ arg: volatile int32_t* addr, "Address of the value to decrement."
 summary: Thread-safe decrement
 description:
  Atomicly subtracts one from the value at addr.  This is equivalent to <code>@rsAtomicSub(addr, 1)</code>.
+cpuimpl: core
 test: none
 end:
 
@@ -109,6 +116,7 @@ function: rsAtomicDec
 version: 20
 ret: int32_t
 arg: volatile uint32_t* addr
+cpuimpl: core
 test: none
 end:
 
@@ -119,6 +127,7 @@ arg: volatile int32_t* addr, "Address of the value to increment."
 summary: Thread-safe increment
 description:
  Atomicly adds one to the value at addr.  This is equivalent to <code>@rsAtomicAdd(addr, 1)</code>.
+cpuimpl: core
 test: none
 end:
 
@@ -126,6 +135,7 @@ function: rsAtomicInc
 version: 20
 ret: int32_t
 arg: volatile uint32_t* addr
+cpuimpl: core
 test: none
 end:
 
@@ -138,6 +148,7 @@ summary: Thread-safe maximum
 description:
  Atomicly sets the value at addr to the maximum of *addr and value, i.e.
  <code>*addr = max(*addr, value)</code>.
+cpuimpl: core
 test: none
 end:
 
@@ -146,6 +157,7 @@ version: 14
 ret: int32_t
 arg: volatile int32_t* addr
 arg: int32_t value
+cpuimpl: core
 test: none
 end:
 
@@ -158,6 +170,7 @@ summary: Thread-safe minimum
 description:
  Atomicly sets the value at addr to the minimum of *addr and value, i.e.
  <code>*addr = min(*addr, value)</code>.
+cpuimpl: core
 test: none
 end:
 
@@ -166,6 +179,7 @@ version: 14
 ret: int32_t
 arg: volatile int32_t* addr
 arg: int32_t value
+cpuimpl: core
 test: none
 end:
 
@@ -178,6 +192,7 @@ summary: Thread-safe bitwise or
 description:
  Atomicly perform a bitwise or two values, storing the result at addr,
  i.e. <code>*addr |= value</code>.
+cpuimpl: core
 test: none
 end:
 
@@ -186,6 +201,7 @@ version: 20
 ret: int32_t
 arg: volatile uint32_t* addr
 arg: uint32_t value
+cpuimpl: core
 test: none
 end:
 
@@ -197,6 +213,7 @@ arg: int32_t value, "Amount to subtract."
 summary: Thread-safe subtraction
 description:
  Atomicly subtracts a value from the value at addr, i.e. <code>*addr -= value</code>.
+cpuimpl: core
 test: none
 end:
 
@@ -205,6 +222,7 @@ version: 20
 ret: int32_t
 arg: volatile uint32_t* addr
 arg: uint32_t value
+cpuimpl: core
 test: none
 end:
 
@@ -217,6 +235,7 @@ summary: Thread-safe bitwise exclusive or
 description:
  Atomicly performs a bitwise xor of two values, storing the result at addr,
  i.e. <code>*addr ^= value</code>.
+cpuimpl: core
 test: none
 end:
 
@@ -225,5 +244,6 @@ version: 20
 ret: int32_t
 arg: volatile uint32_t* addr
 arg: uint32_t value
+cpuimpl: core
 test: none
 end:

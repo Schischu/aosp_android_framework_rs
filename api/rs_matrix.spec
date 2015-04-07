@@ -159,6 +159,7 @@ description:
  Returns one element of a matrix.
 
  <b>Warning:</b> The order of the column and row parameters may be unexpected.
+cpuimpl: core
 test: none
 end:
 
@@ -203,6 +204,7 @@ description:
  <tr><td>0.0</td> <td>0.0</td> <td>1.0</td> <td>0.0</td></tr>
  <tr><td>0.0</td> <td>0.0</td> <td>0.0</td> <td>1.0</td></tr>
  </table>
+cpuimpl: core
 test: none
 end:
 
@@ -211,6 +213,7 @@ t: rs_matrix4x4, rs_matrix3x3, rs_matrix2x2
 ret: void
 arg: #1* destination
 arg: const #1* source, "The source matrix."
+cpuimpl: core
 test: none
 end:
 
@@ -219,6 +222,7 @@ t: rs_matrix3x3, rs_matrix2x2
 ret: void
 arg: rs_matrix4x4* destination
 arg: const #1* source
+cpuimpl: core
 test: none
 end:
 
@@ -249,6 +253,7 @@ arg: #1* m, "The matrix to set."
 summary: Load identity matrix
 description:
  Set the elements of a matrix to the identity matrix.
+cpuimpl: core
 test: none
 end:
 
@@ -271,6 +276,7 @@ description:
  will result in undefined behavior.  Use rsMatrixMulitply instead.   E.g. instead of doing
  rsMatrixLoadMultiply (&m2r, &m2r, &m2l), use rsMatrixMultiply (&m2r, &m2l).
  rsMatrixLoadMultiply (&m2l, &m2r, &m2l) works as expected.
+cpuimpl: core
 test: none
 end:
 
@@ -387,6 +393,7 @@ description:
  When multiplying a float2 to a @rs_matrix3x3, the vector is expanded with (0).
 
  Starting with API 14, this function takes a const matrix as the first argument.
+cpuimpl: core
 test: none
 end:
 
@@ -395,6 +402,7 @@ version: 9 13
 ret: float4
 arg: rs_matrix4x4* m
 arg: float4 in
+cpuimpl: core
 test: none
 end:
 
@@ -403,6 +411,7 @@ version: 9 13
 ret: float4
 arg: rs_matrix4x4* m
 arg: float3 in
+cpuimpl: core
 test: none
 end:
 
@@ -411,6 +420,7 @@ version: 9 13
 ret: float4
 arg: rs_matrix4x4* m
 arg: float2 in
+cpuimpl: core
 test: none
 end:
 
@@ -419,6 +429,7 @@ version: 9 13
 ret: float3
 arg: rs_matrix3x3* m
 arg: float3 in
+cpuimpl: core
 test: none
 end:
 
@@ -427,6 +438,7 @@ version: 9 13
 ret: float3
 arg: rs_matrix3x3* m
 arg: float2 in
+cpuimpl: core
 test: none
 end:
 
@@ -435,6 +447,7 @@ version: 9 13
 ret: float2
 arg: rs_matrix2x2* m
 arg: float2 in
+cpuimpl: core
 test: none
 end:
 
@@ -443,6 +456,7 @@ version: 14
 ret: float4
 arg: const rs_matrix4x4* m
 arg: float4 in
+cpuimpl: core
 test: none
 end:
 
@@ -451,6 +465,7 @@ version: 14
 ret: float4
 arg: const rs_matrix4x4* m
 arg: float3 in
+cpuimpl: core
 test: none
 end:
 
@@ -459,6 +474,7 @@ version: 14
 ret: float4
 arg: const rs_matrix4x4* m
 arg: float2 in
+cpuimpl: core
 test: none
 end:
 
@@ -467,6 +483,7 @@ version: 14
 ret: float3
 arg: const rs_matrix3x3* m
 arg: float3 in
+cpuimpl: core
 test: none
 end:
 
@@ -475,6 +492,7 @@ version: 14
 ret: float3
 arg: const rs_matrix3x3* m
 arg: float2 in
+cpuimpl: core
 test: none
 end:
 
@@ -483,6 +501,7 @@ version: 14
 ret: float2
 arg: const rs_matrix2x2* m
 arg: float2 in
+cpuimpl: core
 test: none
 end:
 
@@ -536,6 +555,7 @@ description:
  Set an element of a matrix.
 
  <b>Warning:</b> The order of the column and row parameters may be unexpected.
+cpuimpl: core
 test: none
 end:
 

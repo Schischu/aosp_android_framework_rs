@@ -42,6 +42,7 @@ arg: #2#1 right_vector
 summary: Cross product of two vectors
 description:
  Computes the cross product of two vectors.
+cpuimpl: core
 test: vector
 end:
 
@@ -58,6 +59,7 @@ description:
  Compute the distance between two points.
 
  See also @fast_distance(), @native_distance().
+cpuimpl: core
 test: vector
 end:
 
@@ -72,6 +74,7 @@ arg: #2#1 right_vector
 summary: Dot product of two vectors
 description:
  Computes the dot product of two vectors.
+cpuimpl: core
 test: vector
 end:
 
@@ -90,6 +93,7 @@ description:
  The precision is what would be expected from doing the computation using 16 bit floating point values.
 
  See also @distance(), @native_distance().
+cpuimpl: core
 test: vector
 end:
 
@@ -107,6 +111,7 @@ description:
  The precision is what would be expected from doing the computation using 16 bit floating point values.
 
  See also @length(), @native_length().
+cpuimpl: core
 test: vector
 end:
 
@@ -126,6 +131,7 @@ description:
  The precision is what would be expected from doing the computation using 16 bit floating point values.
 
  See also @normalize(), @native_normalize().
+cpuimpl: core
 test: vector
 end:
 
@@ -141,6 +147,7 @@ description:
  Computes the length of a vector.
 
  See also @fast_length(), @native_length().
+cpuimpl: core
 test: vector
 end:
 
@@ -157,6 +164,7 @@ description:
  Computes the approximate distance between two points.
 
  See also @distance(), @fast_distance().
+cpuimpl: core
 test: vector
 end:
 
@@ -172,6 +180,7 @@ description:
  Compute the approximate length of a vector.
 
  See also @length(), @fast_length().
+cpuimpl: core
 test: vector
 end:
 
@@ -187,6 +196,7 @@ description:
  Approximately normalizes a vector.
 
  See also @normalize(), @fast_normalize().
+cpuimpl: core
 test: vector
 end:
 
@@ -204,5 +214,6 @@ description:
  For vectors of size 1, returns -1.f for negative values, 0.f for null values, and 1.f for positive values.
 
  See also @fast_normalize(), @native_normalize().
+cpuimpl: core
 test: vector
 end:

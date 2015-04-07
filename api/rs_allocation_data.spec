@@ -116,6 +116,7 @@ description:
  incompatible with the dimensionality of the allocation yields undefined results.
 
  See also @rsAllocationVStoreX().
+cpuimpl: core
 test: none
 end:
 
@@ -127,6 +128,7 @@ ret: #2#1
 arg: rs_allocation a
 arg: uint32_t x
 arg: uint32_t y, "Y offset in the allocation of the first cell to be copied from."
+cpuimpl: core
 test: none
 end:
 
@@ -139,6 +141,7 @@ arg: rs_allocation a
 arg: uint32_t x
 arg: uint32_t y
 arg: uint32_t z, "Z offset in the allocation of the first cell to be copied from."
+cpuimpl: core
 test: none
 end:
 
@@ -172,6 +175,7 @@ description:
  incompatible with the dimensionality of the allocation yiels undefined results.
 
  See also @rsAllocationVLoadX().
+cpuimpl: core
 test: none
 end:
 
@@ -184,6 +188,7 @@ arg: rs_allocation a
 arg: #2#1 val
 arg: uint32_t x
 arg: uint32_t y, "Y offset in the allocation of the first cell to be copied into."
+cpuimpl: core
 test: none
 end:
 
@@ -197,6 +202,7 @@ arg: #2#1 val
 arg: uint32_t x
 arg: uint32_t y
 arg: uint32_t z, "Z offset in the allocation of the first cell to be copied into."
+cpuimpl: core
 test: none
 end:
 
@@ -323,6 +329,7 @@ description:
  dimensions of the Y plane.
 
  See @rsGetElementAtYuv_uchar_Y().
+cpuimpl: core
 test: none
 end:
 
@@ -341,6 +348,7 @@ description:
  dimensions of the Y plane.
 
  See @rsGetElementAtYuv_uchar_Y().
+cpuimpl: core
 test: none
 end:
 
@@ -359,6 +367,7 @@ description:
  dimensions of the Y plane.
 
  See @rsGetElementAtYuv_uchar_U() and @rsGetElementAtYuv_uchar_V().
+cpuimpl: core
 test: none
 end:
 
@@ -376,6 +385,7 @@ description:
  use the float2 variant.
 
  See <a href='http://developer.android.com/reference/android/renderscript/Sampler.html'>android.renderscript.Sampler</a> for more details.
+cpuimpl: core
 test: none
 end:
 
@@ -386,6 +396,7 @@ arg: rs_allocation a
 arg: rs_sampler s
 arg: float location
 arg: float lod, "Mip level to sample from, for fractional values mip levels will be interpolated if RS_SAMPLER_LINEAR_MIP_LINEAR is used."
+cpuimpl: core
 test: none
 end:
 
@@ -395,6 +406,7 @@ ret: float4
 arg: rs_allocation a
 arg: rs_sampler s
 arg: float2 location
+cpuimpl: core
 test: none
 end:
 
@@ -405,6 +417,7 @@ arg: rs_allocation a
 arg: rs_sampler s
 arg: float2 location
 arg: float lod
+cpuimpl: core
 test: none
 end:
 
