@@ -85,6 +85,7 @@ public:
                                       const Element *e, const uint32_t *dims, size_t dimLength) = 0;
         virtual void setGlobalBind(uint32_t slot, Allocation *data) = 0;
         virtual void setGlobalObj(uint32_t slot, ObjectBase *obj) = 0;
+        virtual uint32_t getApiNumber() = 0;
 
         virtual Allocation * getAllocationForPointer(const void *ptr) const = 0;
         virtual ~CpuScript() {}

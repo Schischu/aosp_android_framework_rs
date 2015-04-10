@@ -88,6 +88,7 @@ public:
     virtual void setGlobalObj(uint32_t slot, ObjectBase *data);
 
     const char* getFieldName(uint32_t slot) const;
+    virtual uint32_t getApiNumber();
 
     virtual ~RsdCpuScriptImpl();
     RsdCpuScriptImpl(RsdCpuReferenceImpl *ctx, const Script *s);
@@ -111,6 +112,7 @@ protected:
     RsdCpuReferenceImpl *mCtx;
     const Script *mScript;
     void *mScriptSO;
+    uint32_t mApiNumber;
 
 #ifndef RS_COMPATIBILITY_LIB
     // Returns the path to the core library we'll use.
