@@ -407,6 +407,28 @@ arg: #2 min_value
 arg: #2 max_value, above(min_value)
 end:
 
+function: clamp
+version: 23
+attrib: const
+w: 1, 2, 3, 4
+t: f16
+ret: #2#1
+arg: #2#1 value
+arg: #2#1 min_value
+arg: #2#1 max_value, above(min_value)
+end:
+
+function: clamp
+version: 23
+attrib: const
+w: 2, 3, 4
+t: f16
+ret: #2#1
+arg: #2#1 value
+arg: #2 min_value
+arg: #2 max_value, above(min_value)
+end:
+
 function: clz
 version: 9
 attrib: const
@@ -1817,6 +1839,16 @@ description:
  Returns base raised to the power exponent, i.e. base ^ exponent.
 
  @pown() and @powr() are similar.  @pown() takes an integer exponent. @powr() assumes the base to be non-negative.
+end:
+
+function: pow
+version: 23
+attrib: const
+w: 1, 2, 3, 4
+t: f16
+ret: #2#1
+arg: #2#1 base
+arg: #2#1 exponent
 end:
 
 function: pown

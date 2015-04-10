@@ -34,6 +34,7 @@ description:
  <li>64 bit: ulong, @uint64_t</li></ul>
 
  Floating point:<ul>
+ <li>16 bit: half</li>
  <li>32 bit: float</li>
  <li>64 bit: double</li></ul>
 
@@ -93,6 +94,42 @@ description:
 
  Quaternions are also supported via @rs_quaternion.  See <a href='rs_quaternion.html'>Quaterion Functions</a>. for the list of operations.
 end:
+
+type: half
+version: 23
+simple: __fp16
+summary: 16 bit floating point value
+description:
+ A 16 bit floating point value.
+end:
+
+type: half2
+version: 23
+simple: half __attribute__((ext_vector_type(2)))
+summary: Two 16 bit floats
+description:
+ Vector version of the half float type. Provides two half fields packed
+ into a single 32 bit field with 32 bit alignment.
+end:
+
+type: half3
+version: 23
+simple: half __attribute__((ext_vector_type(3)))
+summary: Three 16 bit floats
+description:
+ Vector version of the half float type. Provides three half fields packed
+ into a single 64 bit field with 64 bit alignment.
+end:
+
+type: half4
+version: 23
+simple: half __attribute__((ext_vector_type(4)))
+summary: Four 16 bit floats
+description:
+ Vector version of the half float type. Provides four half fields packed
+ into a single 64 bit field with 64 bit alignment.
+end:
+
 
 type: int8_t
 simple: char
