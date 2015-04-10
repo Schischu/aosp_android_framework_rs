@@ -50,6 +50,7 @@ bool rsdScriptInit(const Context *rsc,
         return false;
     }
     script->mHal.drv = cs;
+    script->mHal.info.mApiNumber = cs->getApiNumber();
     cs->populateScript(script);
     return true;
 }
