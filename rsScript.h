@@ -82,6 +82,7 @@ public:
         struct DriverInfo {
             int mVersionMajor;
             int mVersionMinor;
+            uint32_t mApiNumber;
 
             size_t exportedVariableCount;
             size_t exportedFunctionCount;

@@ -211,6 +211,7 @@ namespace renderscript {
 RsdCpuScriptImpl::RsdCpuScriptImpl(RsdCpuReferenceImpl *ctx, const Script *s) {
     mCtx = ctx;
     mScript = s;
+    mApiNumber = 0;
 
     mScriptSO = nullptr;
 
@@ -313,6 +314,8 @@ bool RsdCpuScriptImpl::init(char const *resName, char const *cacheDir,
         mCtx->unlockMutex();
         return false;
     }
+
+    mApiNumber = bitcodeMetadata.getTargetAPI();
 
     const char* core_lib = findCoreLib(bitcodeMetadata, (const char*)bitcode, bitcodeSize);
 
@@ -820,6 +823,10 @@ void RsdCpuScriptImpl::setGlobalObj(uint32_t slot, ObjectBase *data) {
     }
 
     rsrSetObject(mCtx->getContext(), (rs_object_base *)destPtr, data);
+}
+
+uint32_t RsdCpuScriptImpl::getApiNumber() {
+    return mApiNumber;
 }
 
 const char* RsdCpuScriptImpl::getFieldName(uint32_t slot) const {

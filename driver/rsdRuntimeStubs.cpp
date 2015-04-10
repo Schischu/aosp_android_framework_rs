@@ -633,19 +633,25 @@ static const android::renderscript::rs_allocation SC_GetAllocation(const void *p
 
 static void SC_ForEach_SAA(RS_TY_SCRIPT target, RS_TY_ALLOC in, RS_TY_ALLOC out) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out), nullptr, 0, nullptr);
+    const Script *sc = RsdCpuReference::getTlsScript();
+    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out),
+               nullptr, 0, nullptr, sc->mHal.info.mApiNumber);
 }
 
 static void SC_ForEach_SAAU(RS_TY_SCRIPT target, RS_TY_ALLOC in,
                             RS_TY_ALLOC out, const void *usr) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out), usr, 0, nullptr);
+    const Script *sc = RsdCpuReference::getTlsScript();
+    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out),
+               usr, 0, nullptr, sc->mHal.info.mApiNumber);
 }
 
 static void SC_ForEach_SAAUS(RS_TY_SCRIPT target, RS_TY_ALLOC in,
                              RS_TY_ALLOC out, const void *usr, const RsScriptCall *call) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out), usr, 0, call);
+    const Script *sc = RsdCpuReference::getTlsScript();
+    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out),
+               usr, 0, call, sc->mHal.info.mApiNumber);
 }
 
 // These functions are only supported in 32-bit.
@@ -653,13 +659,17 @@ static void SC_ForEach_SAAUS(RS_TY_SCRIPT target, RS_TY_ALLOC in,
 static void SC_ForEach_SAAUL(RS_TY_SCRIPT target, RS_TY_ALLOC in,
                              RS_TY_ALLOC out, const void *usr, uint32_t usrLen) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out), usr, usrLen, nullptr);
+    const Script *sc = RsdCpuReference::getTlsScript();
+    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out),
+               usr, usrLen, nullptr, sc->mHal.info.mApiNumber);
 }
 
 static void SC_ForEach_SAAULS(RS_TY_SCRIPT target, RS_TY_ALLOC in, RS_TY_ALLOC out,
                               const void *usr, uint32_t usrLen, const RsScriptCall *call) {
     Context *rsc = RsdCpuReference::getTlsContext();
-    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out), usr, usrLen, call);
+    const Script *sc = RsdCpuReference::getTlsScript();
+    rsrForEach(rsc, rsGetObjPtr(target), rsGetObjPtr(in), rsGetObjPtr(out),
+               usr, usrLen, call, sc->mHal.info.mApiNumber);
 }
 #endif
 
