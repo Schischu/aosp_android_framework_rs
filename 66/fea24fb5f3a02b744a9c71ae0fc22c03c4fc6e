@@ -1,0 +1,7 @@
+Code-Review+2: Jason Sams <jsams@google.com>
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Submitted-by: Jean-Luc Brouillet <jeanluc@google.com>
+Submitted-at: Fri, 10 Apr 2015 15:55:16 +0000
+Reviewed-on: https://android-review.googlesource.com/146228
+Project: platform/frameworks/rs
+Branch: refs/heads/master
