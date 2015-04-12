@@ -188,6 +188,12 @@ sp<const Type> Type::Builder::create() {
         }
     }
 
+    if (mYuvFormat) {
+        if (mDimZ || mDimFaces || mDimMipmaps) {
+            ALOGE("YUV only supports basic 2D.");
+        }
+    }
+
     uint32_t nativeYuv;
     switch(mYuvFormat) {
     case(RS_YUV_YV12):
@@ -201,7 +207,7 @@ sp<const Type> Type::Builder::create() {
     }
 
     void * id = RS::dispatch->TypeCreate(mRS->getContext(), mElement->getID(), mDimX, mDimY, mDimZ,
-                                         mDimMipmaps, mDimFaces, 0);
+                                         mDimMipmaps, mDimFaces, nativeYuv);
     Type *t = new Type(id, mRS);
     t->mElement = mElement;
     t->mDimX = mDimX;
@@ -209,6 +215,7 @@ sp<const Type> Type::Builder::create() {
     t->mDimZ = mDimZ;
     t->mDimMipmaps = mDimMipmaps;
     t->mDimFaces = mDimFaces;
+    t->mYuvFormat = mYuvFormat;
 
     t->calcElementCount();
     return t;
