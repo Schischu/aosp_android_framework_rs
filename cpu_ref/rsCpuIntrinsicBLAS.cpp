@@ -659,7 +659,7 @@ void RsdCpuScriptIntrinsicBLAS::kernelBGEMM(size_t m, size_t n, size_t k,
                                             uint8_t* c, uint32_t c_offset, size_t ldc,
                                             uint32_t c_mult_int) {
 
-    const int c_shift = 23;
+    const int c_shift = 21;
     size_t i = 0, j = 0, l = 0;
     for (j = 0; j < n; j++) {
         for (i = 0; i < m; i++) {
