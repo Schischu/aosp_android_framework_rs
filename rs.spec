@@ -464,6 +464,13 @@ ScriptIntrinsicCreate {
     ret RsScript
     }
 
+ScriptIntrinsicCreate2 {
+    param uint32_t id
+    param const char * cacheDir
+    param RsElement eid
+    ret RsScript
+    }
+
 ScriptKernelIDCreate {
     direct
     param RsScript sid

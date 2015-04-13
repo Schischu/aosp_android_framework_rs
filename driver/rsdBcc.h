@@ -26,7 +26,8 @@ bool rsdScriptInit(const android::renderscript::Context *, android::renderscript
 bool rsdInitIntrinsic(const android::renderscript::Context *rsc,
                       android::renderscript::Script *s,
                       RsScriptIntrinsicID iid,
-                      android::renderscript::Element *e);
+                      android::renderscript::Element *e,
+                      char const *cacheDir);
 
 void rsdScriptInvokeFunction(const android::renderscript::Context *dc,
                              android::renderscript::Script *script,

@@ -31,14 +31,18 @@ ScriptIntrinsic::~ScriptIntrinsic() {
     }
 }
 
-bool ScriptIntrinsic::init(Context *rsc, RsScriptIntrinsicID iid, Element *e) {
+bool ScriptIntrinsic::init(Context *rsc, RsScriptIntrinsicID iid, const char* cacheDir, Element *e) {
     mIntrinsicID = iid;
     mElement.set(e);
     mSlots = new ObjectBaseRef<Allocation>[2];
     mTypes = new ObjectBaseRef<const Type>[2];
 
-    rsc->mHal.funcs.script.initIntrinsic(rsc, this, iid, e);
-
+#ifndef RS_COMPATIBILITY_LIB
+    if (cacheDir && !ScriptC::createCacheDir(cacheDir)) {
+      return false;
+    }
+#endif
+    rsc->mHal.funcs.script.initIntrinsic(rsc, this, iid, e, cacheDir);
 
     return true;
 }
@@ -84,15 +88,29 @@ namespace android {
 namespace renderscript {
 
 
-RsScript rsi_ScriptIntrinsicCreate(Context *rsc, uint32_t id, RsElement ve) {
+RsScript rsi_ScriptIntrinsicCreate2(Context *rsc, uint32_t id,
+                                   const char *cacheDir, size_t cacheDir_length,
+                                   RsElement ve) {
     ScriptIntrinsic *si = new ScriptIntrinsic(rsc);
-    if (!si->init(rsc, (RsScriptIntrinsicID)id, (Element *)ve)) {
+    if (!si->init(rsc, (RsScriptIntrinsicID)id, cacheDir, (Element *)ve)) {
         delete si;
         return nullptr;
     }
     si->incUserRef();
     return si;
 }
+
+RsScript rsi_ScriptIntrinsicCreate(Context *rsc, uint32_t id,
+                                   RsElement ve) {
+    ScriptIntrinsic *si = new ScriptIntrinsic(rsc);
+    if (!si->init(rsc, (RsScriptIntrinsicID)id, nullptr, (Element *)ve)) {
+        delete si;
+        return nullptr;
+    }
+    si->incUserRef();
+    return si;
+}
+
 
 }
 }

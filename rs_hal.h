@@ -135,7 +135,8 @@ typedef struct {
                      uint32_t flags);
         bool (*initIntrinsic)(const Context *rsc, Script *s,
                               RsScriptIntrinsicID iid,
-                              Element *e);
+                              Element *e,
+                              char const *cacheDir);
 
         void (*invokeFunction)(const Context *rsc, Script *s,
                                uint32_t slot,
