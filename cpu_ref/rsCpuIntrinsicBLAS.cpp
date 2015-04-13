@@ -659,7 +659,11 @@ void RsdCpuScriptIntrinsicBLAS::kernelBGEMM(size_t m, size_t n, size_t k,
                                             uint8_t* c, uint32_t c_offset, size_t ldc,
                                             uint32_t c_mult_int) {
 
-    const int c_shift = 23;
+    // Calculations are done in 1.10.21 fixed-point format for the final output,
+    // just before there's a shift down to drop the fractional parts. The output
+    // values are gated to 0 to 255 to fit in a byte, but the 10-bit format
+    // gives some headroom to avoid wrapping around on small overflows.
+    const int c_shift = 21;
     size_t i = 0, j = 0, l = 0;
     for (j = 0; j < n; j++) {
         for (i = 0; i < m; i++) {

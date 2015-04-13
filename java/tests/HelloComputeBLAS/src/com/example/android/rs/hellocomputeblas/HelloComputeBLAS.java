@@ -77,7 +77,7 @@ public class HelloComputeBLAS extends Activity {
         int k = 1152;
         int a_offset = 0;
         int b_offset = 84;
-        int c_mult_int = 13604;
+        int c_mult_int = 3401;
         int c_offset = 74980;
 
         int a_count = (m * k);
