@@ -50,6 +50,8 @@ public class HelloComputeBLAS extends Activity {
         out.setImageBitmap(mBitmapOut);
 
         createScript();
+        testSmallMatrices();
+        testRealData();
     }
 
     static {
@@ -58,7 +60,12 @@ public class HelloComputeBLAS extends Activity {
 
     native void getData(byte[] a, byte[] b, byte[] c);
 
-    private void AddByteNoise(byte[] data, int count, float frequency, int maxDelta) {
+    // Adds pseudo-random errors to the byte array with the specified frequency.
+    // For example if the frequency is 0.1, then 10% of the values will be altered.
+    // The max_delta controls how large the biggest changes are. The exact
+    // frequency of changes is not guaranteed, since it's implemented as a
+    // probability of changing any individual value.
+    private void addByteNoise(byte[] data, int count, float frequency, int maxDelta) {
         Random rand = new Random();
         for (int n = 0; n < count; ++n) {
             if (rand.nextFloat() < frequency) {
@@ -80,6 +87,26 @@ public class HelloComputeBLAS extends Activity {
         }
     }
 
+    // In Java, the eight-bit 'byte' type is signed, but the API for the 8-bit
+    // matrix multiplication deals with unsigned bytes. This is a convenience
+    // function that converts arrays of unsigned ints to their equivalent
+    // representations as signed bytes. For example, the bit pattern 0xff is 255
+    // as an unsigned value, but -127 as a Java signed byte. So if you pass in an
+    // array of int[] {255} into this function, you'll get back byte[] {-127}.
+    private byte[] unsignedToSignedByte(int[] input) {
+      byte[] output = new byte[input.length];
+      for (int i = 0; i < input.length; ++i){
+        // We'll wrap around if the inputs are outside 0 to 255.
+        if (input[i] < 128) {
+          output[i] = (byte)(input[i]);
+        } else {
+          output[i] = (byte)(-(input[i] - 128));
+
+        }
+      }
+      return output;
+    }
+
     private void createScript() {
         mRS = RenderScript.create(this);
 
@@ -94,7 +121,73 @@ public class HelloComputeBLAS extends Activity {
 
         mScript.forEach_root(mInAllocation, mOutAllocation);
         mOutAllocation.copyTo(mBitmapOut);
+    }
 
+    // This test multiplies a couple of small 8-bit matrices, and compares the
+    // results with hand-calculated expectations.
+    private void testSmallMatrices() {
+        // The A matrix is:
+        // |   1 |   4 |
+        // |   2 |   5 |
+        // |   3 |   6 |
+        byte[] a_data = unsignedToSignedByte(new int[] {
+                1, 2, 3,
+                4, 5, 6,
+        });
+        final int a_rows = 3;
+        final int a_cols = 2;
+        final int a_offset = 0;
+        // The B matrix is:
+        // |  -1 |  -2 |  -3 |  -4 |
+        // |  -5 |  -6 |  -7 |  -8 |
+        // |  -9 | -10 | -11 | -12 |
+        byte[] b_data = unsignedToSignedByte(new int[] {
+                11, 7, 3,
+                10, 6, 2,
+                9, 5, 1,
+                8, 4, 0,
+        });
+        final int b_cols = 4;
+        final int b_offset = 12;
+        // EightBitGemm implements C = B.transposed() * A,
+        // so we expect to get these results:
+        // 1*-1 + 2*-5 + 3*-9 + 128 = 90
+        // 1*-2 + 2*-6 + 3*-10 + 128 = 84
+        // 1*-3 + 2*-7 + 3*-11 + 128 = 78
+        // 1*-4 + 2*-8 + 3*-12 + 128 = 72
+        // 4*-1 + 5*-5 + 6*-9 + 128 = 45
+        // 4*-2 + 5*-6 + 6*-10 + 128 = 30
+        // 4*-3 + 5*-7 + 6*-11 + 128 = 15
+        // 4*-4 + 5*-8 + 6*-12 + 128 = 0
+        // | 90 |  45 |
+        // | 84 |  30 |
+        // | 78 | 15 |
+        // | 72 | 0 |
+        final int c_offset = 128;
+        final int c_shift = 21;
+        final int c_mult_int = (1 << c_shift);
+        byte[] expected_data = unsignedToSignedByte(new int[] {
+              90, 84, 78, 72,
+              45, 30, 15, 0,
+        });
+        final int c_rows = 4;
+        final int c_cols = 2;
+        final int c_count = (c_rows * c_cols);
+
+        final int m = a_cols;
+        final int n = b_cols;
+        final int k = a_rows;
+
+        byte[] c_byte_output = runGemm(m, n, k, a_data, a_offset, b_data, b_offset,
+                c_offset, c_mult_int);
+        testWithTolerance(expected_data, c_byte_output, "small matrices");
+    }
+
+    // This test takes a large set of real data captured from a convolutional
+    // neural network solving a computer vision problem, and runs it through the
+    // eight-bit matrix multiply. We test the results to make sure they're close
+    // enough to be usable.
+    private void testRealData() {
         int m = 256;
         int n = 192;
         int k = 1152;
@@ -110,9 +203,16 @@ public class HelloComputeBLAS extends Activity {
         byte[] a_byte = new byte[a_count];
         byte[] b_byte = new byte[b_count];
         byte[] c_byte = new byte[c_count];
-        byte[] c_byte_output = new byte[c_count];
 
         getData(a_byte, b_byte, c_byte);
+        byte[] c_byte_output = runGemm(m, n, k, a_byte, a_offset, b_byte, b_offset,
+                c_offset, c_mult_int);
+        testWithTolerance(c_byte, c_byte_output, "real data");
+    }
+
+    // Calls the Renderscript eight-bit GEMM intrinsic.
+    private byte[] runGemm(int m, int n, int k, byte[] a_byte, int a_offset, byte[] b_byte,
+        int b_offset, int c_offset, int c_mult_int) {
 
         Allocation A, B, C;
         Type.Builder builder = new Type.Builder(mRS, Element.U8(mRS));
@@ -131,7 +231,15 @@ public class HelloComputeBLAS extends Activity {
         ScriptIntrinsicBLAS blas = ScriptIntrinsicBLAS.create(mRS);
         blas.BGEMM(A, a_offset, B, b_offset, C, c_offset, c_mult_int);
 
+        int c_count = (m * n);
+        byte[] c_byte_output = new byte[c_count];
         C.copyTo(c_byte_output);
+        return c_byte_output;
+    }
+
+    boolean testWithTolerance(byte[] c_byte, byte[] c_byte_output, String name) {
+        final boolean areSizesDifferent = (c_byte.length != c_byte_output.length);
+        final int c_count = Math.min(c_byte.length, c_byte_output.length);
 
         // The testing procedure here is a bit complex, but the aim is to mimic the
         // requirements we've empirically found running deep neural networks in real
@@ -146,9 +254,9 @@ public class HelloComputeBLAS extends Activity {
         // set of parameters that were captured from a real application.
         // For example, if you uncommented this function that adds random noise to the
         // results at a 3% specified frequency, the test should fail:
-        // AddByteNoise(c_byte_output, c_count, 0.03f, 1);
+        // addByteNoise(c_byte_output, c_count, 0.03f, 1);
 
-        android.util.Log.e("8BGEMM", "Beginning compare");
+        android.util.Log.e("8BGEMM", "Beginning " + name + " test compare.");
         int howManyDifferent = 0;
         boolean areAnyTooDifferent = false;
         for (int i = 0; i < c_count; i++) {
@@ -174,7 +282,11 @@ public class HelloComputeBLAS extends Activity {
         // what that means in absolute numbers.
         final int percentThreshold = 2;
         final int differenceThreshold = (percentThreshold * c_count) / 100;
-        final boolean areTooManyDifferent = (howManyDifferent >= differenceThreshold);
+        final boolean areTooManyDifferent = (howManyDifferent > differenceThreshold);
+        if (areSizesDifferent) {
+            android.util.Log.e("8BGEMM", "The number of values is different (" +
+                   c_byte.length + " versus " + c_byte_output.length + ").");
+        }
         if (areAnyTooDifferent) {
             android.util.Log.e("8BGEMM", "Some outputs were too different.");
         }
@@ -183,11 +295,13 @@ public class HelloComputeBLAS extends Activity {
                     " We can tolerate " + percentThreshold + "% (" +
                     differenceThreshold + "), but there were " + howManyDifferent);
         }
-        if (areAnyTooDifferent || areTooManyDifferent) {
-            android.util.Log.e("8BGEMM", "Testing failed!");
+        boolean didFail = (areSizesDifferent || areAnyTooDifferent || areTooManyDifferent);
+        if (didFail) {
+            android.util.Log.e("8BGEMM", name + " testing failed!");
         } else {
-            android.util.Log.e("8BGEMM", "Testing passed!");
+            android.util.Log.e("8BGEMM", name + " testing passed!");
         }
+        return !didFail;
     }
 
     private Bitmap loadBitmap(int resource) {
