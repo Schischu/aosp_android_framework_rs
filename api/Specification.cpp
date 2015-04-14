@@ -599,7 +599,6 @@ FunctionPermutation::FunctionPermutation(Function* func, FunctionSpecification* 
     mPrecisionLimit = spec->getPrecisionLimit();
     spec->getInlines(replacementIndexes, &mInline);
 
-    mHasFloatAnswers = false;
     for (size_t i = 0; i < spec->getNumberOfParams(); i++) {
         string type, name, testOption;
         int lineNumber = 0;
@@ -617,9 +616,6 @@ FunctionPermutation::FunctionPermutation(Function* func, FunctionSpecification* 
                         << "Could not find " << def->rsBaseType
                         << " while generating automated tests.  Use test: none if not needed.\n";
         }
-        if (def->isOutParameter && def->isFloatType) {
-            mHasFloatAnswers = true;
-        }
         mParams.push_back(def);
     }
 
@@ -629,9 +625,6 @@ FunctionPermutation::FunctionPermutation(Function* func, FunctionSpecification* 
     if (!retType.empty()) {
         mReturn = new ParameterDefinition();
         mReturn->parseParameterDefinition(retType, "", "", lineNumber, true, scanner);
-        if (mReturn->isFloatType) {
-            mHasFloatAnswers = true;
-        }
         mOutputCount++;
     }
 }

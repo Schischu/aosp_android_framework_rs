@@ -416,9 +416,6 @@ private:
     int mInputCount;
     int mOutputCount;
 
-    // Whether one of the output parameters is a float.
-    bool mHasFloatAnswers;
-
     // The inline code that implements this function.  Will be empty if not an inline.
     std::vector<std::string> mInline;
 
@@ -436,7 +433,6 @@ public:
     const ParameterDefinition* getReturn() const { return mReturn; }
     int getInputCount() const { return mInputCount; }
     int getOutputCount() const { return mOutputCount; }
-    bool hasFloatAnswers() const { return mHasFloatAnswers; }
 
     const std::vector<ParameterDefinition*> getParams() const { return mParams; }
 };

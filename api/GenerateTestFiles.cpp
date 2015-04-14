@@ -123,6 +123,12 @@ private:
      */
     void writeJavaVerifyScalarMethod(bool verifierValidates) const;
 
+    /* Generate code that peforms an assignment to an argument of the structure that's passed
+     * to the verifier.  If it's a float, it will be wrapped in a Target.Floaty.
+     */
+    void writeArgumentAssignment(const ParameterDefinition* p, const string& fieldName,
+                                 const string& value) const;
+
     /* Generate the code that verify the results for a RenderScript function where a vector
      * is a point in n-dimensional space.
      */
@@ -178,10 +184,6 @@ PermutationWriter::PermutationWriter(FunctionPermutation& permutation, Generated
       mJava(javaFile),
       mReturnParam(nullptr),
       mFirstInputParam(nullptr) {
-    mRsKernelName = "test" + capitalize(permutation.getName());
-
-    mJavaArgumentsClassName = "Arguments";
-    mJavaArgumentsNClassName = "Arguments";
     const string trunk = capitalize(permutation.getNameTrunk());
     mJavaCheckMethodName = "check" + trunk;
     mJavaVerifyMethodName = "verifyResults" + trunk;
@@ -197,6 +199,9 @@ PermutationWriter::PermutationWriter(FunctionPermutation& permutation, Generated
         mAllInputsAndOutputs.push_back(mReturnParam);
     }
 
+    mRsKernelName = "test" + capitalize(permutation.getName());
+    mJavaArgumentsClassName = "Arguments";
+    mJavaArgumentsNClassName = "Arguments";
     for (auto p : mAllInputsAndOutputs) {
         const string capitalizedRsType = capitalize(p->rsType);
         const string capitalizedBaseType = capitalize(p->rsBaseType);
@@ -249,7 +254,7 @@ void PermutationWriter::writeJavaArgumentClass(bool scalar,
 
         for (auto p : mAllInputsAndOutputs) {
             mJava->indent() << "public ";
-            if (p->isOutParameter && p->isFloatType && mPermutation.getTest() != "custom") {
+            if (p->isFloatType) {
                 *mJava << "Target.Floaty";
             } else {
                 *mJava << p->javaBaseType;
@@ -387,6 +392,8 @@ void PermutationWriter::writeJavaVerifyScalarMethod(bool verifierValidates) cons
     writeJavaVerifyMethodHeader();
     mJava->startBlock();
 
+    bool hasFloats = false;
+    bool hasOutputFloats = false;
     string vectorSize = "1";
     for (auto p : mAllInputsAndOutputs) {
         writeJavaArrayInitialization(*p);
@@ -397,6 +404,15 @@ void PermutationWriter::writeJavaVerifyScalarMethod(bool verifierValidates) cons
                 cerr << "Error.  Had vector " << vectorSize << " and " << p->mVectorSize << "\n";
             }
         }
+        if (p->isFloatType) {
+            hasFloats = true;
+            if (p->isOutParameter) {
+                hasOutputFloats = true;
+            }
+        }
+    }
+    if (hasFloats) {
+        mJava->indent() << "Target target = new Target(relaxed);\n";
     }
 
     mJava->indent() << "for (int i = 0; i < INPUTSIZE; i++)";
@@ -410,40 +426,34 @@ void PermutationWriter::writeJavaVerifyScalarMethod(bool verifierValidates) cons
                     << "();\n";
     for (auto p : mAllInputsAndOutputs) {
         if (!p->isOutParameter) {
-            mJava->indent() << "args." << p->variableName << " = " << p->javaArrayName << "[i";
+            string value = p->javaArrayName + "[i";
             if (p->vectorWidth != "1") {
-                *mJava << " * " << p->vectorWidth << " + j";
+                value += " * " + p->vectorWidth +" + j";
             }
-            *mJava << "];\n";
+            value += "]";
+            writeArgumentAssignment(p, p->variableName, value);
         }
     }
-    const bool hasFloat = mPermutation.hasFloatAnswers();
     if (verifierValidates) {
         mJava->indent() << "// Extract the outputs.\n";
         for (auto p : mAllInputsAndOutputs) {
             if (p->isOutParameter) {
-                mJava->indent() << "args." << p->variableName << " = " << p->javaArrayName
-                                << "[i * " << p->vectorWidth << " + j];\n";
+                writeArgumentAssignment(p, p->variableName,
+                                        p->javaArrayName + "[i * " + p->vectorWidth + " + j]");
             }
         }
         mJava->indent() << "// Ask the CoreMathVerifier to validate.\n";
-        if (hasFloat) {
-            mJava->indent() << "Target target = new Target(relaxed);\n";
-        }
         mJava->indent() << "String errorMessage = CoreMathVerifier."
                         << mJavaVerifierVerifyMethodName << "(args";
-        if (hasFloat) {
+        if (hasOutputFloats) {
             *mJava << ", target";
         }
         *mJava << ");\n";
         mJava->indent() << "boolean valid = errorMessage == null;\n";
     } else {
         mJava->indent() << "// Figure out what the outputs should have been.\n";
-        if (hasFloat) {
-            mJava->indent() << "Target target = new Target(relaxed);\n";
-        }
         mJava->indent() << "CoreMathVerifier." << mJavaVerifierComputeMethodName << "(args";
-        if (hasFloat) {
+        if (hasOutputFloats) {
             *mJava << ", target";
         }
         *mJava << ");\n";
@@ -483,6 +493,17 @@ void PermutationWriter::writeJavaVerifyScalarMethod(bool verifierValidates) cons
     *mJava << "\n";
 }
 
+void PermutationWriter::writeArgumentAssignment(const ParameterDefinition* p, const string& fieldName,
+                                                const string& value) const {
+    mJava->indent() << "args." << fieldName << " = ";
+    if (p->isFloatType) {
+        *mJava << "target.newFloaty(32, " << value << ")";
+    } else {
+        *mJava << value;
+    }
+    *mJava << ";\n";
+}
+
 void PermutationWriter::writeJavaVerifyVectorMethod() const {
     writeJavaVerifyMethodHeader();
     mJava->startBlock();
@@ -490,6 +511,9 @@ void PermutationWriter::writeJavaVerifyVectorMethod() const {
     for (auto p : mAllInputsAndOutputs) {
         writeJavaArrayInitialization(*p);
     }
+
+    mJava->indent() << "Target target = new Target(relaxed);\n";
+
     mJava->indent() << "for (int i = 0; i < INPUTSIZE; i++)";
     mJava->startBlock();
 
@@ -500,7 +524,7 @@ void PermutationWriter::writeJavaVerifyVectorMethod() const {
     for (auto p : mAllInputsAndOutputs) {
         if (p->mVectorSize != "1") {
             string type = p->javaBaseType;
-            if (p->isOutParameter && p->isFloatType) {
+            if (p->isFloatType) {
                 type = "Target.Floaty";
             }
             mJava->indent() << "args." << p->variableName << " = new " << type << "["
@@ -512,19 +536,16 @@ void PermutationWriter::writeJavaVerifyVectorMethod() const {
     for (auto p : mAllInputsAndOutputs) {
         if (!p->isOutParameter) {
             if (p->mVectorSize == "1") {
-                mJava->indent() << "args." << p->variableName << " = " << p->javaArrayName << "[i]"
-                                << ";\n";
+                writeArgumentAssignment(p, p->variableName, p->javaArrayName + "[i]");
             } else {
                 mJava->indent() << "for (int j = 0; j < " << p->mVectorSize << " ; j++)";
                 mJava->startBlock();
-                mJava->indent() << "args." << p->variableName << "[j] = "
-                                << p->javaArrayName << "[i * " << p->vectorWidth << " + j]"
-                                << ";\n";
+                writeArgumentAssignment(p, p->variableName + "[j]",
+                                        p->javaArrayName + "[i * " + p->vectorWidth + " + j]");
                 mJava->endBlock();
             }
         }
     }
-    mJava->indent() << "Target target = new Target(relaxed);\n";
     mJava->indent() << "CoreMathVerifier." << mJavaVerifierComputeMethodName
                     << "(args, target);\n\n";
 
