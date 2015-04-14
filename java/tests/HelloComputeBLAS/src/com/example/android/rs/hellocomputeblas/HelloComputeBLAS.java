@@ -23,6 +23,8 @@ import android.graphics.Bitmap;
 import android.renderscript.*;
 import android.widget.ImageView;
 
+import java.util.Random;
+
 public class HelloComputeBLAS extends Activity {
     private Bitmap mBitmapIn;
     private Bitmap mBitmapOut;
@@ -56,6 +58,27 @@ public class HelloComputeBLAS extends Activity {
 
     native void getData(byte[] a, byte[] b, byte[] c);
 
+    private void AddByteNoise(byte[] data, int count, float frequency, int maxDelta) {
+        Random rand = new Random();
+        for (int n = 0; n < count; ++n) {
+            if (rand.nextFloat() < frequency) {
+                final int originalValue = data[n];
+                final float direction = rand.nextFloat();
+                int delta = (int)(Math.ceil(rand.nextFloat() * maxDelta));
+                if (direction < 0.5f) {
+                    delta = -delta;
+                }
+                int newValue = (originalValue + delta);
+                if (newValue < -127) {
+                    newValue = -127;
+                }
+                if (newValue > 127) {
+                    newValue = 127;
+                }
+                data[n] = (byte)(newValue);
+            }
+        }
+    }
 
     private void createScript() {
         mRS = RenderScript.create(this);
@@ -109,49 +132,62 @@ public class HelloComputeBLAS extends Activity {
         blas.BGEMM(A, a_offset, B, b_offset, C, c_offset, c_mult_int);
 
         C.copyTo(c_byte_output);
+
+        // The testing procedure here is a bit complex, but the aim is to mimic the
+        // requirements we've empirically found running deep neural networks in real
+        // applications. We want to open the door to vendors using approximations that
+        // produce slightly different results for optimization's sake, but keep the
+        // precision loss within small enough bounds that we don't lose accuracy in
+        // the final result.
+        // After experimentation, we've found that we can tolerate around 5% of the
+        // output bytes being different by 1. Any larger differences are not tolerable
+        // and we can't get good results if the frequency of small differences is
+        // higher than 5%. This test tries to measure those properties on an example
+        // set of parameters that were captured from a real application.
+        // For example, if you uncommented this function that adds random noise to the
+        // results at a 3% specified frequency, the test should fail:
+        // AddByteNoise(c_byte_output, c_count, 0.03f, 1);
+
         android.util.Log.e("8BGEMM", "Beginning compare");
+        int howManyDifferent = 0;
+        boolean areAnyTooDifferent = false;
         for (int i = 0; i < c_count; i++) {
-            if (c_byte[i] != c_byte_output[i]) {
-                android.util.Log.e("8BGEMM", "Mismatch at " + i + ": expected " + c_byte[i] + ", got " + c_byte_output[i]);
-                //                break;
-            }
+          byte expectedValue = c_byte[i];
+          byte actualValue = c_byte_output[i];
+          int delta = (expectedValue - actualValue);
+          // First make sure that the difference is no more than one.
+          if ((delta < -1) || (delta > 1)) {
+              areAnyTooDifferent = true;
+          }
+          // If there is a difference, increment the counter to track it.
+          if (delta != 0) {
+              // Don't spam the logs if too many are different.
+              if (howManyDifferent < 50) {
+                  android.util.Log.e("8BGEMM", "Mismatch at " + i +
+                        ": expected " + expectedValue +
+                        ", got " + actualValue);
+              }
+              ++howManyDifferent;
+          }
         }
-        android.util.Log.e("8BGEMM", "Testing passed!");
-
-        // compare C to c_byte
-
-        /*
-          blashelper.invoke_dump(C);
-
-        Type.Builder builder2 = new Type.Builder(mRS, Element.F32(mRS));
-        Type matrixT = builder.setX(15).setY(10).create();
-        Type matrixT2 = builder.setX(42).setY(10).create();
-        Type matrixT3 = builder.setX(42).setY(15).create();
-
-        A = Allocation.createTyped(mRS, matrixT);
-        B = Allocation.createTyped(mRS, matrixT2);
-        C = Allocation.createTyped(mRS, matrixT3);
-
-        blashelper.set_a(A);
-        blashelper.set_b(B);
-        blashelper.set_c(C);
-
-        blashelper.invoke_setup();
-
-        blashelper.invoke_dump(A);
-        mRS.finish();
-        android.util.Log.e("HATS", "A done");
-        blashelper.invoke_dump(B);
-        mRS.finish();
-        android.util.Log.e("HATS", "B done");
-        blashelper.invoke_dump(C);
-        mRS.finish();
-        android.util.Log.e("HATS", "C done");
-
-        blas.SGEMM(ScriptIntrinsicBLAS.TRANSPOSE, ScriptIntrinsicBLAS.NO_TRANSPOSE, 1.f, A, B, 1.f, C);
-
-        blashelper.invoke_dump(C);
-        */
+        // We want no more than 2% of the values to show any differences, so work out
+        // what that means in absolute numbers.
+        final int percentThreshold = 2;
+        final int differenceThreshold = (percentThreshold * c_count) / 100;
+        final boolean areTooManyDifferent = (howManyDifferent >= differenceThreshold);
+        if (areAnyTooDifferent) {
+            android.util.Log.e("8BGEMM", "Some outputs were too different.");
+        }
+        if (areTooManyDifferent) {
+            android.util.Log.e("8BGEMM", "There were too many small differences." +
+                    " We can tolerate " + percentThreshold + "% (" +
+                    differenceThreshold + "), but there were " + howManyDifferent);
+        }
+        if (areAnyTooDifferent || areTooManyDifferent) {
+            android.util.Log.e("8BGEMM", "Testing failed!");
+        } else {
+            android.util.Log.e("8BGEMM", "Testing passed!");
+        }
     }
 
     private Bitmap loadBitmap(int resource) {
