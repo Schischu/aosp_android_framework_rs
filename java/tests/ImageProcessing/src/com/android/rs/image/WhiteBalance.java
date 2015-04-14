@@ -30,7 +30,7 @@ public class WhiteBalance extends TestBase {
     public void createTest(android.content.res.Resources res) {
         mScript = new ScriptC_wbalance(mRS);
         mHist = ScriptIntrinsicHistogram.create(mRS, Element.U8_4(mRS));
-        mSums = Allocation.createSized(mRS, Element.I32_3(mRS), 256);
+        mSums = Allocation.createSized(mRS, Element.I32_4(mRS), 256);
         mHist.setOutput(mSums);
         mScript.set_histogramValues(mSums);
     }
