@@ -51,6 +51,8 @@ public class HelloComputeBLAS extends Activity {
 
         createScript();
         testSmallMatrices();
+        testMediumMatrices1();
+        testMediumMatrices2();
         testRealData();
     }
 
@@ -94,17 +96,11 @@ public class HelloComputeBLAS extends Activity {
     // as an unsigned value, but -127 as a Java signed byte. So if you pass in an
     // array of int[] {255} into this function, you'll get back byte[] {-127}.
     private byte[] unsignedToSignedByte(int[] input) {
-      byte[] output = new byte[input.length];
-      for (int i = 0; i < input.length; ++i){
-        // We'll wrap around if the inputs are outside 0 to 255.
-        if (input[i] < 128) {
-          output[i] = (byte)(input[i]);
-        } else {
-          output[i] = (byte)(-(input[i] - 128));
-
+        byte[] output = new byte[input.length];
+        for (int i = 0; i < input.length; ++i) {
+            output[i] = (byte)(input[i]);
         }
-      }
-      return output;
+        return output;
     }
 
     private void createScript() {
@@ -170,9 +166,6 @@ public class HelloComputeBLAS extends Activity {
               90, 84, 78, 72,
               45, 30, 15, 0,
         });
-        final int c_rows = 4;
-        final int c_cols = 2;
-        final int c_count = (c_rows * c_cols);
 
         final int m = a_cols;
         final int n = b_cols;
@@ -181,6 +174,102 @@ public class HelloComputeBLAS extends Activity {
         byte[] c_byte_output = runGemm(m, n, k, a_data, a_offset, b_data, b_offset,
                 c_offset, c_mult_int);
         testWithTolerance(expected_data, c_byte_output, "small matrices");
+    }
+
+    // This test multiplies two medium-sized 8-bit matrices, and compares the
+    // results with the expected values. The data itself is fairly arbitrary.
+    private void testMediumMatrices1() {
+        byte[] a_data = unsignedToSignedByte(new int[] {
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+                12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+                23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
+                0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0,
+                23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,
+        });
+        final int a_rows = 11;
+        final int a_cols = 5;
+        final int a_offset = 0;
+        byte[] b_data = unsignedToSignedByte(new int[] {
+                0, 2, 4, 6, 8, 10, 1, 3, 5, 7, 9, 11,
+                10, 12, 14, 16, 18, 20, 11, 13, 15, 17, 19, 21,
+                20, 22, 24, 26, 28, 30, 21, 23, 25, 27, 29, 31,
+                30, 32, 34, 36, 38, 40, 31, 33, 35, 37, 39, 41,
+                40, 42, 44, 46, 48, 50, 41, 43, 45, 47, 49, 51,
+                50, 52, 54, 56, 58, 60, 51, 53, 55, 57, 59, 61,
+                60, 62, 64, 66, 68, 70, 61, 63, 65, 67, 69, 71,
+        });
+        final int b_cols = 7;
+        final int b_offset = 10;
+        final int c_offset = 16384;
+        final int c_shift = 21;
+        final int c_mult_int = (1 << (c_shift - 7));
+        byte[] expected_data = unsignedToSignedByte(new int[] {
+              126, 131, 135, 140, 146, 151, 155,
+              121, 135, 148, 162, 176, 190, 202,
+              116, 139, 161, 184, 206, 229, 249,
+              128, 128, 129, 129, 129, 130, 130,
+              118, 136, 155, 173, 191, 210, 226,
+        });
+
+        final int m = a_cols;
+        final int n = b_cols;
+        final int k = a_rows;
+
+        byte[] c_byte_output = runGemm(m, n, k, a_data, a_offset, b_data, b_offset,
+                c_offset, c_mult_int);
+        testWithTolerance(expected_data, c_byte_output, "medium matrices #1");
+    }
+
+    // This test multiplies another two medium 8-bit matrices, and compares the
+    // results with the expected values. The data here is arbitrary.
+    private void testMediumMatrices2() {
+        byte[] a_data = unsignedToSignedByte(new int[] {
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
+                23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
+                1, 23, 2, 22, 3, 21, 4, 20, 5, 19, 6, 18, 7, 17, 8, 16, 9, 15, 10, 14, 11, 13, 12,
+                23, 1, 22, 2, 21, 3, 20, 4, 19, 5, 18, 6, 17, 7, 16, 8, 15, 9, 14, 10, 13, 11, 12,
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12,
+                3, 1, 4, 1, 5, 8, 2, 3, 1, 14, 11, 15, 18, 12, 13, 11, 14, 11, 15, 18, 12, 13, 11,
+                8, 0, 5, 8, 1, 3, 7, 5, 7, 13, 10, 23, 13, 11, 17, 23, 12, 19, 17, 13, 14, 10, 19,
+        });
+        final int a_rows = 23;
+        final int a_cols = 7;
+        final int a_offset = 13;
+        byte[] b_data = unsignedToSignedByte(new int[] {
+                0, 2, 4, 6, 8, 10, 1, 3, 5, 7, 9, 11, 0, 2, 4, 6, 8, 10, 1, 3, 5, 7, 9,
+                0, 20, 40, 60, 80, 10, 11, 13, 15, 17, 19, 21, 10, 12, 14, 6, 8, 10, 1, 3, 5, 7, 9,
+                1, 21, 41, 61, 81, 11, 12, 14, 16, 18, 20, 22, 11, 13, 15, 7, 9, 11, 2, 4, 6, 8, 9,
+                0, 19, 39, 59, 79, 9, 10, 12, 14, 16, 18, 20, 9, 11, 13, 5, 7, 9, 0, 2, 4, 6, 8,
+                2, 22, 42, 62, 82, 12, 13, 15, 17, 19, 21, 23, 12, 14, 16, 8, 9, 12, 3, 5, 7, 9, 9,
+                0, 18, 38, 58, 78, 8, 9, 11, 13, 15, 17, 19, 8, 10, 12, 4, 6, 8, 0, 1, 3, 5, 7,
+                3, 23, 43, 63, 83, 13, 14, 16, 18, 20, 22, 24, 13, 15, 17, 9, 9, 13, 4, 6, 8, 9, 9,
+                0, 17, 37, 57, 77, 7, 8, 10, 12, 14, 16, 18, 7, 9, 11, 3, 5, 7, 0, 0, 2, 4, 6,
+                10, 20, 30, 40, 50, 1, 2, 3, 4, 5, 11, 12, 13, 14, 15, 21, 22, 23, 24, 25, 1, 2, 3,
+        });
+        final int b_cols = 9;
+        final int b_offset = 23;
+        final int c_offset = 2121;
+        final int c_shift = 21;
+        final int c_mult_int = 132359;
+        byte[] expected_data = unsignedToSignedByte(new int[] {
+              167, 53, 51, 54, 49, 55, 46,
+              56, 116, 153, 232, 232, 234, 231,
+              236, 232, 237, 174, 168, 131, 130,
+              132, 129, 133, 128, 133, 134, 151,
+              154, 152, 156, 151, 158, 150, 160,
+              156, 255, 113, 106, 120, 98, 127,
+              91, 134, 178, 231, 102, 97, 107,
+              92, 111, 87, 116, 164, 187, 76,
+              73, 78, 70, 81, 67, 83, 139,
+        });
+
+        final int m = a_cols;
+        final int n = b_cols;
+        final int k = a_rows;
+
+        byte[] c_byte_output = runGemm(m, n, k, a_data, a_offset, b_data, b_offset,
+                c_offset, c_mult_int);
+        testWithTolerance(expected_data, c_byte_output, "medium matrices #2");
     }
 
     // This test takes a large set of real data captured from a convolutional
@@ -272,8 +361,8 @@ public class HelloComputeBLAS extends Activity {
               // Don't spam the logs if too many are different.
               if (howManyDifferent < 50) {
                   android.util.Log.e("8BGEMM", "Mismatch at " + i +
-                        ": expected " + expectedValue +
-                        ", got " + actualValue);
+                          ": expected " + (expectedValue & 0xff) +
+                          ", got " + (actualValue & 0xff));
               }
               ++howManyDifferent;
           }
