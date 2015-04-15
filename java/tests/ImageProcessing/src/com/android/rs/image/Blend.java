@@ -53,7 +53,7 @@ public class Blend extends TestBase {
                     currentIntrinsic = pos;
                     if (mRS != null) {
                         runTest();
-                        act.updateDisplay();
+                        act.mProcessor.update();
                     }
                 }
 
@@ -90,7 +90,6 @@ public class Blend extends TestBase {
     public boolean onSpinner1Setup(Spinner s) {
         s.setAdapter(new ArrayAdapter<String>(
             act, R.layout.spinner_layout, mIntrinsicNames));
-        s.setSelection(0, false);
         s.setOnItemSelectedListener(mIntrinsicSpinnerListener);
         return true;
     }
@@ -122,10 +121,10 @@ public class Blend extends TestBase {
         image2.copy2DRangeFrom(0, 0, mInPixelsAllocation2.getType().getX(), mInPixelsAllocation2.getType().getY(), mInPixelsAllocation2, 0, 0);
 
         mBlendHelper.set_alpha(image1Alpha);
-        mBlendHelper.forEach_setImageAlpha(image1);
+        mBlendHelper.forEach_setImageAlpha(image1, image1);
 
         mBlendHelper.set_alpha(image2Alpha);
-        mBlendHelper.forEach_setImageAlpha(image2);
+        mBlendHelper.forEach_setImageAlpha(image2, image2);
 
         switch (currentIntrinsic) {
         case 0:

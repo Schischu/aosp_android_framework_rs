@@ -26,6 +26,12 @@ public class Histogram extends TestBase {
     private ScriptIntrinsicHistogram mHist;
     private Allocation mSum;
     private Allocation mSums;
+    private boolean mUseIntrinsic;
+
+    public Histogram(boolean useIntrisic) {
+        mUseIntrinsic = useIntrisic;
+    }
+
 
     public void createTest(android.content.res.Resources res) {
         mScript = new ScriptC_histogram(mRS);
@@ -59,15 +65,17 @@ public class Histogram extends TestBase {
 
     public void runTest() {
         Script.LaunchOptions lo = new Script.LaunchOptions();
-        lo.setX(0, 1);
-        //mScript.forEach_pass1(mSums, lo);
-        //mScript.forEach_pass2(mSum);
 
-        mHist.setOutput(mSum);
-        mHist.forEach_Dot(mInPixelsAllocation);
+        if (mUseIntrinsic) {
+            mHist.setOutput(mSum);
+            mHist.forEach_Dot(mInPixelsAllocation);
+        } else {
+            lo.setX(0, 1);
+            mScript.forEach_pass1(mSums, lo);
+            mScript.forEach_pass2(mSum);
+        }
 
         mScript.invoke_rescale();
-
         lo.setX(0, 1024);
         mScript.forEach_draw(mOutPixelsAllocation, lo);
     }

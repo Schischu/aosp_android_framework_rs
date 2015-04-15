@@ -16,9 +16,6 @@
 
 package com.android.rs.image;
 
-import java.lang.Math;
-
-import android.renderscript.Allocation;
 
 public class Shadows extends TestBase {
     private ScriptC_shadows mScript;

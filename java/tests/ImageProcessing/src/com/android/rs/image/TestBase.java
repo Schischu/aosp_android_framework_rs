@@ -18,22 +18,13 @@ package com.android.rs.image;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
-import android.graphics.Bitmap;
-import android.renderscript.ScriptC;
 import android.renderscript.RenderScript;
-import android.renderscript.Type;
 import android.renderscript.Allocation;
-import android.renderscript.Element;
-import android.renderscript.Script;
-import android.view.SurfaceView;
-import android.view.SurfaceHolder;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.view.View;
 import android.util.Log;
-import java.lang.Math;
 import android.widget.Spinner;
 
 public class TestBase  {
@@ -42,20 +33,8 @@ public class TestBase  {
     protected RenderScript mRS;
     protected Allocation mInPixelsAllocation;
     protected Allocation mInPixelsAllocation2;
-    protected Allocation mOutPixelsAllocation;
+    public Allocation mOutPixelsAllocation;
     protected ImageProcessingActivity act;
-
-    private class MessageProcessor extends RenderScript.RSMessageHandler {
-        ImageProcessingActivity mAct;
-
-        MessageProcessor(ImageProcessingActivity act) {
-            mAct = act;
-        }
-
-        public void run() {
-            mAct.updateDisplay();
-        }
-    }
 
     // Override to use UI elements
     public void onBar1Changed(int progress) {
@@ -97,6 +76,9 @@ public class TestBase  {
         return false;
     }
 
+    public void animateBars(float time) {
+    }
+
     public boolean onSpinner1Setup(Spinner s) {
         s.setVisibility(View.INVISIBLE);
         return false;
@@ -104,12 +86,11 @@ public class TestBase  {
 
     public final void createBaseTest(ImageProcessingActivity ipact) {
         act = ipact;
-        mRS = ipact.mRS;
-        mRS.setMessageHandler(new MessageProcessor(act));
+        mRS = ipact.mProcessor.mRS;
 
-        mInPixelsAllocation = ipact.mInPixelsAllocation;
-        mInPixelsAllocation2 = ipact.mInPixelsAllocation2;
-        mOutPixelsAllocation = ipact.mOutPixelsAllocation;
+        mInPixelsAllocation = ipact.mProcessor.mInPixelsAllocation;
+        mInPixelsAllocation2 = ipact.mProcessor.mInPixelsAllocation2;
+        mOutPixelsAllocation = ipact.mProcessor.mOutPixelsAllocation;
 
         createTest(act.getResources());
     }
@@ -122,28 +103,6 @@ public class TestBase  {
     public void runTest() {
     }
 
-    final public void runTestSendMessage() {
-        runTest();
-        mRS.sendMessage(0, null);
-    }
-
-    public void finish() {
-        mRS.finish();
-    }
-
     public void destroy() {
-        mRS.setMessageHandler(null);
-    }
-
-    public void updateBitmap(Bitmap b) {
-        mOutPixelsAllocation.copyTo(b);
-    }
-
-    // Override to configure specific benchmark config.
-    public void setupBenchmark() {
-    }
-
-    // Override to reset after benchmark.
-    public void exitBenchmark() {
     }
 }
