@@ -227,41 +227,11 @@ string getCoreLibPath(Context* context, string* coreLibRelaxedPath) {
 #endif
 }
 
-bool getChecksum(const std::vector<string>& inputBitcodeFilenames,
-                 const string& coreLibPath, const string& coreLibRelaxedPath,
-                 const char* commandLine,
-                 char* checksumStr) {
-    uint32_t checksum = adler32(0L, Z_NULL, 0);
-
-    for (const auto& bcFilename : inputBitcodeFilenames) {
-        if (!android::renderscript::addFileToChecksum(bcFilename.c_str(), checksum)) {
-            return false;
-        }
-    }
-
-    if (!android::renderscript::addFileToChecksum(coreLibPath.c_str(), checksum)) {
-        return false;
-    }
-
-    if (!coreLibRelaxedPath.empty() &&
-        !android::renderscript::addFileToChecksum(coreLibRelaxedPath.c_str(), checksum)) {
-        return false;
-    }
-
-    // include checksum of command line arguments
-    checksum = adler32(checksum, (const unsigned char *) commandLine,
-                       strlen(commandLine));
-
-    sprintf(checksumStr, "%08x", checksum);
-
-    return true;
-}
-
 void setupCompileArguments(
-        const vector<string>& inputs, const vector<string>& kernelBatches,
-        const vector<string>& invokeBatches,
-        const string& output_dir, const string& output_filename,
-        const string& coreLibPath, const string& coreLibRelaxedPath,
+        const vector<const char*>& inputs, const vector<const char*>& kernelBatches,
+        const vector<const char*>& invokeBatches,
+        const char* outputDir, const char* outputFileName,
+        const char* coreLibPath, const char* coreLibRelaxedPath,
         vector<const char*>* args) {
     args->push_back(RsdCpuScriptImpl::BCC_EXE_PATH);
     args->push_back("-fPIC");
@@ -269,28 +239,28 @@ void setupCompileArguments(
     args->push_back("-mtriple");
     args->push_back(DEFAULT_TARGET_TRIPLE_STRING);
     args->push_back("-bclib");
-    args->push_back(coreLibPath.c_str());
+    args->push_back(coreLibPath);
     args->push_back("-bclib_relaxed");
-    args->push_back(coreLibRelaxedPath.c_str());
-    for (const string& input : inputs) {
-        args->push_back(input.c_str());
+    args->push_back(coreLibRelaxedPath);
+    for (const char* input : inputs) {
+        args->push_back(input);
     }
-    for (const string& batch : kernelBatches) {
+    for (const char* batch : kernelBatches) {
         args->push_back("-merge");
-        args->push_back(batch.c_str());
+        args->push_back(batch);
     }
-    for (const string& batch : invokeBatches) {
+    for (const char* batch : invokeBatches) {
         args->push_back("-invoke");
-        args->push_back(batch.c_str());
+        args->push_back(batch);
     }
     args->push_back("-output_path");
-    args->push_back(output_dir.c_str());
+    args->push_back(outputDir);
     args->push_back("-o");
-    args->push_back(output_filename.c_str());
+    args->push_back(outputFileName);
 }
 
 void generateSourceSlot(const Closure& closure,
-                        const std::vector<std::string>& inputs,
+                        const std::vector<const char*>& inputs,
                         std::stringstream& ss) {
     const IDBase* funcID = (const IDBase*)closure.mFunctionID.get();
     const Script* script = funcID->mScript;
@@ -317,7 +287,11 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
         return;
     }
 
-    std::set<string> inputSet;
+    auto comparator = [](const char* str1, const char* str2) -> bool {
+        return strcmp(str1, str2) < 0;
+    };
+    std::set<const char*, decltype(comparator)> inputSet(comparator);
+
     for (Closure* closure : mGroup->mClosures) {
         const Script* script = closure->mFunctionID.get()->mScript;
 
@@ -328,14 +302,14 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
 
         const RsdCpuScriptImpl *cpuScript =
                 (const RsdCpuScriptImpl*)script->mHal.drv;
-        const string& bitcodeFilename = cpuScript->getBitcodeFilePath();
+        const char* bitcodeFilename = cpuScript->getBitcodeFilePath();
         inputSet.insert(bitcodeFilename);
     }
 
-    std::vector<string> inputs(inputSet.begin(), inputSet.end());
+    std::vector<const char*> inputs(inputSet.begin(), inputSet.end());
 
-    std::vector<string> kernelBatches;
-    std::vector<string> invokeBatches;
+    std::vector<const char*> kernelBatches;
+    std::vector<const char*> invokeBatches;
 
     int i = 0;
     for (const auto& batch : mBatches) {
@@ -347,12 +321,12 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
         if (!batch->mClosures.front()->mClosure->mIsKernel) {
             rsAssert(batch->size() == 1);
             generateSourceSlot(*batch->mClosures.front()->mClosure, inputs, ss);
-            invokeBatches.push_back(ss.str());
+            invokeBatches.push_back(ss.str().c_str());
         } else {
             for (const auto& cpuClosure : batch->mClosures) {
                 generateSourceSlot(*cpuClosure->mClosure, inputs, ss);
             }
-            kernelBatches.push_back(ss.str());
+            kernelBatches.push_back(ss.str().c_str());
         }
     }
 
@@ -362,26 +336,31 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
     objFilePath.append(mGroup->mName);
     objFilePath.append(".o");
 
-    string outputFileName(mGroup->mName);
+    const char* resName = mGroup->mName;
     string coreLibRelaxedPath;
     const string& coreLibPath = getCoreLibPath(getCpuRefImpl()->getContext(),
                                                &coreLibRelaxedPath);
 
     vector<const char*> arguments;
-    string output_dir(cacheDir);
-    setupCompileArguments(inputs, kernelBatches, invokeBatches, output_dir,
-                          outputFileName, coreLibPath, coreLibRelaxedPath,
+    setupCompileArguments(inputs, kernelBatches, invokeBatches, cacheDir,
+                          resName, coreLibPath.c_str(), coreLibRelaxedPath.c_str(),
                           &arguments);
 
     std::unique_ptr<const char> cmdLine(rsuJoinStrings(arguments.size() - 1,
-                                                  arguments.data()));
+                                                       arguments.data()));
 
-    if (!getChecksum(inputs, coreLibPath, coreLibRelaxedPath, cmdLine.get(),
-                     mChecksum)) {
+    inputs.push_back(coreLibPath.c_str());
+    inputs.push_back(coreLibRelaxedPath.c_str());
+
+    uint32_t checksum = constructBuildChecksum(nullptr, 0, cmdLine.get(), inputs);
+
+    if (checksum == 0) {
         return;
     }
 
-    const char* resName = outputFileName.c_str();
+    std::stringstream ss;
+    ss << std::hex << checksum;
+    const char* checksumStr = ss.str().c_str();
 
     //===--------------------------------------------------------------------===//
     // Try to load a shared lib from code cache matching filename and checksum
@@ -392,11 +371,11 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
         mExecutable = ScriptExecutable::createFromSharedObject(
             getCpuRefImpl()->getContext(), mScriptObj);
         if (mExecutable != nullptr) {
-            if (mExecutable->isChecksumValid(mChecksum)) {
+            if (mExecutable->isChecksumValid(checksum)) {
                 return;
             } else {
-                ALOGE("Invalid checksum from cached so: %s (expected: %s)",
-                      mExecutable->getBuildChecksum(), mChecksum);
+                ALOGE("Invalid checksum from cached so: %08x (expected: %s)",
+                      mExecutable->getBuildChecksum(), checksumStr);
             }
             delete mExecutable;
             mExecutable = nullptr;
@@ -412,7 +391,7 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
     //===--------------------------------------------------------------------===//
 
     arguments.push_back("-build-checksum");
-    arguments.push_back(mChecksum);
+    arguments.push_back(checksumStr);
     arguments.push_back(nullptr);
 
     bool compiled = rsuExecuteCommand(RsdCpuScriptImpl::BCC_EXE_PATH,
