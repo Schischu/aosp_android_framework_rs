@@ -70,8 +70,9 @@ public class Histogram extends TestBase {
             mHist.setOutput(mSum);
             mHist.forEach_Dot(mInPixelsAllocation);
         } else {
-            lo.setX(0, 1);
-            mScript.forEach_pass1(mSums, lo);
+            lo.setX(0, mSums.getType().getY());
+            mScript.forEach_pass1(lo);
+            mRS.finish();
             mScript.forEach_pass2(mSum);
         }
 
