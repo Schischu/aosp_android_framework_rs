@@ -1,4 +1,3 @@
-
 #include "spec.h"
 #include <stdio.h>
 #include <string.h>
@@ -444,7 +443,6 @@ void printApiCpp(FILE *f) {
         fprintf(f, ");\n");
         fprintf(f, "}\n\n");
     }
-
 }
 
 void printPlaybackCpp(FILE *f) {
@@ -643,74 +641,92 @@ void printPlaybackCpp(FILE *f) {
     fprintf(f, "};\n");
 }
 
+void printApiStructs(FILE *f) {
+    fprintf(f, "\n");
+    fprintf(f, "#include \"rsContext.h\"\n");
+    fprintf(f, "#include \"rsFifo.h\"\n");
+    fprintf(f, "\n");
+    fprintf(f, "namespace android {\n");
+    fprintf(f, "namespace renderscript {\n");
+    printStructures(f);
+    printFuncDecls(f, "rsi_", 1, 0);
+    printPlaybackFuncs(f, "rsp_");
+    fprintf(f, "\n\ntypedef struct RsPlaybackRemoteHeaderRec {\n");
+    fprintf(f, "    uint32_t command;\n");
+    fprintf(f, "    size_t size;\n");
+    fprintf(f, "} RsPlaybackRemoteHeader;\n\n");
+    fprintf(f, "typedef void (*RsPlaybackLocalFunc)(Context *, const void *, size_t sizeBytes);\n");
+    fprintf(f, "typedef void (*RsPlaybackRemoteFunc)(Context *, ThreadIO *);\n");
+    fprintf(f, "extern RsPlaybackLocalFunc gPlaybackFuncs[%i];\n", apiCount + 1);
+    fprintf(f, "extern RsPlaybackRemoteFunc gPlaybackRemoteFuncs[%i];\n", apiCount + 1);
+
+    fprintf(f, "}\n");
+    fprintf(f, "}\n");
+}
+
+enum Choice {
+    kPrintApiStructs,
+    kPrintApiFuncDecl,
+    kPrintApiCpp,
+    kPrintApiReplay,
+};
+
+const char *getFileName(const char *path) {
+    const char *delim = strrchr(path, '/');
+    if (delim) {
+        return delim + 1;
+    }
+    delim = strrchr(path, '\\');
+    if (delim) {
+        return delim + 1;
+    }
+    return path;
+}
+
 void yylex();
 
 int main(int argc, char **argv) {
-    if (argc != 3) {
-        fprintf(stderr, "usage: %s commandFile outFile\n", argv[0]);
+    // Check the arguments.
+    if (argc != 2) {
+        fprintf(stderr, "usage: %s outFile\n", argv[0]);
         return 1;
     }
-    const char* rsgFile = argv[1];
-    const char* outFile = argv[2];
-    FILE* input = fopen(rsgFile, "r");
+    const char *outFile = argv[1];
 
-    char choice = fgetc(input);
-    fclose(input);
-
-    if (choice < '0' || choice > '3') {
-        fprintf(stderr, "Uknown command: \'%c\'\n", choice);
+    // Derive the choice from the output file name.
+    enum Choice choice;
+    const char *outFileName = getFileName(outFile);
+    if (strcmp(outFileName, "rsgApiStructs.h") == 0) {
+        choice = kPrintApiStructs;
+    } else if (strcmp(outFileName, "rsgApiFuncDecl.h") == 0) {
+        choice = kPrintApiFuncDecl;
+    } else if (strcmp(outFileName, "rsgApi.cpp") == 0) {
+        choice = kPrintApiCpp;
+    } else if (strcmp(outFileName, "rsgApiReplay.cpp") == 0) {
+        choice = kPrintApiReplay;
+    } else {
+        fprintf(stderr, "error: no rules for \'%s\'\n", outFileName);
         return -2;
     }
 
     yylex();
-    // printf("# of lines = %d\n", num_lines);
 
     FILE *f = fopen(outFile, "w");
 
     printFileHeader(f);
     switch (choice) {
-        case '0': // rsgApiStructs.h
-        {
-            fprintf(f, "\n");
-            fprintf(f, "#include \"rsContext.h\"\n");
-            fprintf(f, "#include \"rsFifo.h\"\n");
-            fprintf(f, "\n");
-            fprintf(f, "namespace android {\n");
-            fprintf(f, "namespace renderscript {\n");
-            printStructures(f);
-            printFuncDecls(f, "rsi_", 1, 0);
-            printPlaybackFuncs(f, "rsp_");
-            fprintf(f, "\n\ntypedef struct RsPlaybackRemoteHeaderRec {\n");
-            fprintf(f, "    uint32_t command;\n");
-            fprintf(f, "    size_t size;\n");
-            fprintf(f, "} RsPlaybackRemoteHeader;\n\n");
-            fprintf(f, "typedef void (*RsPlaybackLocalFunc)(Context *, const void *, size_t sizeBytes);\n");
-            fprintf(f, "typedef void (*RsPlaybackRemoteFunc)(Context *, ThreadIO *);\n");
-            fprintf(f, "extern RsPlaybackLocalFunc gPlaybackFuncs[%i];\n", apiCount + 1);
-            fprintf(f, "extern RsPlaybackRemoteFunc gPlaybackRemoteFuncs[%i];\n", apiCount + 1);
-
-            fprintf(f, "}\n");
-            fprintf(f, "}\n");
-        }
+    case kPrintApiStructs:  // rsgApiStructs.h
+        printApiStructs(f);
         break;
-
-        case '1': // rsgApiFuncDecl.h
-        {
-            printFuncDecls(f, "rs", 0, 1);
-        }
+    case kPrintApiFuncDecl:  // rsgApiFuncDecl.h
+        printFuncDecls(f, "rs", 0, 1);
         break;
-
-        case '2': // rsgApi.cpp
-        {
-            printApiCpp(f);
-        }
+    case kPrintApiCpp:  // rsgApi.cpp
+        printApiCpp(f);
         break;
-
-        case '3': // rsgApiReplay.cpp
-        {
-            printFileHeader(f);
-            printPlaybackCpp(f);
-        }
+    case kPrintApiReplay:  // rsgApiReplay.cpp
+        printFileHeader(f);
+        printPlaybackCpp(f);
         break;
     }
     fclose(f);
