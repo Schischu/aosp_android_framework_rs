@@ -46,9 +46,9 @@ uchar4 RS_KERNEL vibranceKernel(uchar4 in) {
     float Bc = R * Rt + G * Gt + B * (Bt + S);
 
     uchar4 o;
-    o.r = rsClamp(Rc, 0, 255);
-    o.g = rsClamp(Gc, 0, 255);
-    o.b = rsClamp(Bc, 0, 255);
+    o.r = clamp(Rc, 0.f, 255.f);
+    o.g = clamp(Gc, 0.f, 255.f);
+    o.b = clamp(Bc, 0.f, 255.f);
     o.a = 0xff;
     return o;
 }

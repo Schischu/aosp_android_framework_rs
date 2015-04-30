@@ -291,7 +291,7 @@ static void bench_int_math() {
     BENCH_IN_FUNC_IN(clz);
     BENCH_IN_FUNC_IN_IN(min);
     BENCH_IN_FUNC_IN_IN(max);
-    BENCH_I_FUNC_I_I_I(rsClamp);
+    BENCH_I_FUNC_I_I_I(clamp);
 }
 
 static void bench_fp_math() {
@@ -404,4 +404,3 @@ void bench() {
     bench_fp_math();
     bench_approx_math();
 }
-
