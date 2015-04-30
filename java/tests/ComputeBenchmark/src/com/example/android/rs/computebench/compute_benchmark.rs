@@ -62,9 +62,13 @@ static volatile ulong2 prefix##_ul_2 = 1;   \
 static volatile ulong3 prefix##_ul_3 = 1;   \
 static volatile ulong4 prefix##_ul_4 = 1;
 
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Wunused"
 DECL_VAR_SET(res)
 DECL_VAR_SET(src1)
 DECL_VAR_SET(src2)
+//DECL_VAR_SET(src3)
+//#pragma clang diagnostic pop
 
 static volatile float src3_f_1 = 1;     \
 static volatile float2 src3_f_2 = 1;    \
