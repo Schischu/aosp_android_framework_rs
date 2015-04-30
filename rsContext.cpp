@@ -36,6 +36,8 @@
 #include <inttypes.h>
 #include <unistd.h>
 
+#include <cutils/threads.h>
+
 #if !defined(RS_SERVER) && !defined(RS_COMPATIBILITY_LIB) && \
         defined(HAVE_ANDROID_OS)
 #include <cutils/properties.h>
@@ -43,13 +45,6 @@
 
 #ifdef RS_COMPATIBILITY_LIB
 #include "rsCompatibilityLib.h"
-#endif
-
-#ifdef RS_SERVER
-// Android exposes gettid(), standard Linux does not
-static pid_t gettid() {
-    return syscall(SYS_gettid);
-}
 #endif
 
 using namespace android;
