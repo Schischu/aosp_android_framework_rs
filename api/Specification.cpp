@@ -224,7 +224,8 @@ bool VersionInfo::scan(Scanner* scanner, int maxApiLevel) {
     return minVersion == 0 || minVersion <= maxApiLevel;
 }
 
-Definition::Definition(const std::string& name) : mName(name), mDeprecated(false), mHidden(false) {
+Definition::Definition(const std::string& name)
+    : mName(name), mDeprecatedApiLevel(0), mHidden(false) {
 }
 
 void Definition::scanDocumentationTags(Scanner* scanner, bool firstOccurence,
@@ -234,8 +235,16 @@ void Definition::scanDocumentationTags(Scanner* scanner, bool firstOccurence,
         mHidden = true;
     }
     if (scanner->findOptionalTag("deprecated:")) {
-        mDeprecated = true;
-        mDeprecatedMessage = scanner->getValue();
+        string value = scanner->getValue();
+        size_t pComma = value.find(", ");
+        if (pComma != string::npos) {
+            mDeprecatedMessage = value.substr(pComma + 2);
+            value.erase(pComma);
+        }
+        sscanf(value.c_str(), "%i", &mDeprecatedApiLevel);
+        if (mDeprecatedApiLevel <= 0) {
+            scanner->error() << "deprecated entries should have a level > 0\n";
+        }
     }
     if (firstOccurence) {
         if (scanner->findTag("summary:")) {
@@ -365,9 +374,6 @@ void TypeSpecification::scanTypeSpecification(Scanner* scanner, SpecFile* specFi
             spec->mFields.push_back(s);
             spec->mFieldComments.push_back(comment);
         }
-        if (scanner->findOptionalTag("attrib:")) {
-            spec->mAttrib = scanner->getValue();
-        }
     }
     if (scanner->findOptionalTag("enum:")) {
         spec->mKind = ENUM;
@@ -379,6 +385,9 @@ void TypeSpecification::scanTypeSpecification(Scanner* scanner, SpecFile* specFi
             spec->mValues.push_back(s);
             spec->mValueComments.push_back(comment);
         }
+    }
+    if (scanner->findOptionalTag("attrib:")) {
+        spec->mAttribute = scanner->getValue();
     }
     type->scanDocumentationTags(scanner, created, specFile);
 
