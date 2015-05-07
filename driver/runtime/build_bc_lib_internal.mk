@@ -84,7 +84,6 @@ $(c_bc_files): $(intermediates)/%.bc: $(LOCAL_PATH)/%.c $(bc_clang)
 $(ll_bc_files): $(intermediates)/%.bc: $(LOCAL_PATH)/%.ll $(LLVM_AS)
 	@mkdir -p $(dir $@)
 	$(hide) $(LLVM_AS) $< -o $@
-	$(call transform-d-to-p-args,$(@:%.bc=%.d),$(@:%.bc=%.P))
 
 -include $(c_bc_files:%.bc=%.P)
 -include $(ll_bc_files:%.bc=%.P)
