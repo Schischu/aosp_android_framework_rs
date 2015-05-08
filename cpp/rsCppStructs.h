@@ -80,7 +80,8 @@ class Sampler;
  enum RSInitFlags {
      RS_INIT_SYNCHRONOUS = 1, ///< All RenderScript calls will be synchronous. May reduce latency.
      RS_INIT_LOW_LATENCY = 2, ///< Prefer low latency devices over potentially higher throughput devices.
-     RS_INIT_MAX = 4
+     RS_INIT_MAX = 4,
+     RS_WAIT_FOR_ATTACH = 8
  };
 
  /**

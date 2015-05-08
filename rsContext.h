@@ -45,6 +45,7 @@
 
 #endif
 
+extern "C" int gDebuggerPresent;
 
 // ---------------------------------------------------------------------------
 namespace android {
@@ -326,7 +327,7 @@ protected:
 private:
     Context();
     bool initContext(Device *, const RsSurfaceConfig *sc);
-
+    void waitForDebugger();
     bool mSynchronous;
     bool initGLThread();
     void deinitEGL();
