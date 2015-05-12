@@ -1630,49 +1630,49 @@ extern float3 __attribute__((const, overloadable))
 extern float4 __attribute__((const, overloadable))
     max(float4 a, float4 b);
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline char __attribute__((const, overloadable))
     max(char a, char b) {
     return (a > b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uchar __attribute__((const, overloadable))
     max(uchar a, uchar b) {
     return (a > b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline short __attribute__((const, overloadable))
     max(short a, short b) {
     return (a > b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline ushort __attribute__((const, overloadable))
     max(ushort a, ushort b) {
     return (a > b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline int __attribute__((const, overloadable))
     max(int a, int b) {
     return (a > b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uint __attribute__((const, overloadable))
     max(uint a, uint b) {
     return (a > b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline char2 __attribute__((const, overloadable))
     max(char2 a, char2 b) {
     char2 tmp;
@@ -1682,7 +1682,7 @@ static inline char2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uchar2 __attribute__((const, overloadable))
     max(uchar2 a, uchar2 b) {
     uchar2 tmp;
@@ -1692,7 +1692,7 @@ static inline uchar2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline short2 __attribute__((const, overloadable))
     max(short2 a, short2 b) {
     short2 tmp;
@@ -1702,7 +1702,7 @@ static inline short2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline ushort2 __attribute__((const, overloadable))
     max(ushort2 a, ushort2 b) {
     ushort2 tmp;
@@ -1712,7 +1712,7 @@ static inline ushort2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline int2 __attribute__((const, overloadable))
     max(int2 a, int2 b) {
     int2 tmp;
@@ -1722,7 +1722,7 @@ static inline int2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uint2 __attribute__((const, overloadable))
     max(uint2 a, uint2 b) {
     uint2 tmp;
@@ -1732,7 +1732,7 @@ static inline uint2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline char3 __attribute__((const, overloadable))
     max(char3 a, char3 b) {
     char3 tmp;
@@ -1743,7 +1743,7 @@ static inline char3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uchar3 __attribute__((const, overloadable))
     max(uchar3 a, uchar3 b) {
     uchar3 tmp;
@@ -1754,7 +1754,7 @@ static inline uchar3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline short3 __attribute__((const, overloadable))
     max(short3 a, short3 b) {
     short3 tmp;
@@ -1765,7 +1765,7 @@ static inline short3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline ushort3 __attribute__((const, overloadable))
     max(ushort3 a, ushort3 b) {
     ushort3 tmp;
@@ -1776,7 +1776,7 @@ static inline ushort3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline int3 __attribute__((const, overloadable))
     max(int3 a, int3 b) {
     int3 tmp;
@@ -1787,7 +1787,7 @@ static inline int3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uint3 __attribute__((const, overloadable))
     max(uint3 a, uint3 b) {
     uint3 tmp;
@@ -1798,7 +1798,7 @@ static inline uint3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline char4 __attribute__((const, overloadable))
     max(char4 a, char4 b) {
     char4 tmp;
@@ -1810,7 +1810,7 @@ static inline char4 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uchar4 __attribute__((const, overloadable))
     max(uchar4 a, uchar4 b) {
     uchar4 tmp;
@@ -1822,7 +1822,7 @@ static inline uchar4 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline short4 __attribute__((const, overloadable))
     max(short4 a, short4 b) {
     short4 tmp;
@@ -1834,7 +1834,7 @@ static inline short4 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline ushort4 __attribute__((const, overloadable))
     max(ushort4 a, ushort4 b) {
     ushort4 tmp;
@@ -1846,7 +1846,7 @@ static inline ushort4 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline int4 __attribute__((const, overloadable))
     max(int4 a, int4 b) {
     int4 tmp;
@@ -1858,7 +1858,7 @@ static inline int4 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uint4 __attribute__((const, overloadable))
     max(uint4 a, uint4 b) {
     uint4 tmp;
@@ -2047,49 +2047,49 @@ extern float3 __attribute__((const, overloadable))
 extern float4 __attribute__((const, overloadable))
     min(float4 a, float4 b);
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline char __attribute__((const, overloadable))
     min(char a, char b) {
     return (a < b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uchar __attribute__((const, overloadable))
     min(uchar a, uchar b) {
     return (a < b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline short __attribute__((const, overloadable))
     min(short a, short b) {
     return (a < b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline ushort __attribute__((const, overloadable))
     min(ushort a, ushort b) {
     return (a < b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline int __attribute__((const, overloadable))
     min(int a, int b) {
     return (a < b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uint __attribute__((const, overloadable))
     min(uint a, uint b) {
     return (a < b ? a : b);
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline char2 __attribute__((const, overloadable))
     min(char2 a, char2 b) {
     char2 tmp;
@@ -2099,7 +2099,7 @@ static inline char2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uchar2 __attribute__((const, overloadable))
     min(uchar2 a, uchar2 b) {
     uchar2 tmp;
@@ -2109,7 +2109,7 @@ static inline uchar2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline short2 __attribute__((const, overloadable))
     min(short2 a, short2 b) {
     short2 tmp;
@@ -2119,7 +2119,7 @@ static inline short2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline ushort2 __attribute__((const, overloadable))
     min(ushort2 a, ushort2 b) {
     ushort2 tmp;
@@ -2129,7 +2129,7 @@ static inline ushort2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline int2 __attribute__((const, overloadable))
     min(int2 a, int2 b) {
     int2 tmp;
@@ -2139,7 +2139,7 @@ static inline int2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uint2 __attribute__((const, overloadable))
     min(uint2 a, uint2 b) {
     uint2 tmp;
@@ -2149,7 +2149,7 @@ static inline uint2 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline char3 __attribute__((const, overloadable))
     min(char3 a, char3 b) {
     char3 tmp;
@@ -2160,7 +2160,7 @@ static inline char3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uchar3 __attribute__((const, overloadable))
     min(uchar3 a, uchar3 b) {
     uchar3 tmp;
@@ -2171,7 +2171,7 @@ static inline uchar3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline short3 __attribute__((const, overloadable))
     min(short3 a, short3 b) {
     short3 tmp;
@@ -2182,7 +2182,7 @@ static inline short3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline ushort3 __attribute__((const, overloadable))
     min(ushort3 a, ushort3 b) {
     ushort3 tmp;
@@ -2193,7 +2193,7 @@ static inline ushort3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline int3 __attribute__((const, overloadable))
     min(int3 a, int3 b) {
     int3 tmp;
@@ -2204,7 +2204,7 @@ static inline int3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uint3 __attribute__((const, overloadable))
     min(uint3 a, uint3 b) {
     uint3 tmp;
@@ -2215,7 +2215,7 @@ static inline uint3 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline char4 __attribute__((const, overloadable))
     min(char4 a, char4 b) {
     char4 tmp;
@@ -2227,7 +2227,7 @@ static inline char4 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uchar4 __attribute__((const, overloadable))
     min(uchar4 a, uchar4 b) {
     uchar4 tmp;
@@ -2239,7 +2239,7 @@ static inline uchar4 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline short4 __attribute__((const, overloadable))
     min(short4 a, short4 b) {
     short4 tmp;
@@ -2251,7 +2251,7 @@ static inline short4 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline ushort4 __attribute__((const, overloadable))
     min(ushort4 a, ushort4 b) {
     ushort4 tmp;
@@ -2263,7 +2263,7 @@ static inline ushort4 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline int4 __attribute__((const, overloadable))
     min(int4 a, int4 b) {
     int4 tmp;
@@ -2275,7 +2275,7 @@ static inline int4 __attribute__((const, overloadable))
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 static inline uint4 __attribute__((const, overloadable))
     min(uint4 a, uint4 b) {
     uint4 tmp;

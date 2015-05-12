@@ -1084,840 +1084,840 @@ extern const void* __attribute__((overloadable))
 extern const void* __attribute__((overloadable))
     rsGetElementAt(rs_allocation a, uint32_t x, uint32_t y, uint32_t z);
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float __attribute__((overloadable))
     rsGetElementAt_float(rs_allocation a, uint32_t x) {
     return ((float *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float2 __attribute__((overloadable))
     rsGetElementAt_float2(rs_allocation a, uint32_t x) {
     return ((float2 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float3 __attribute__((overloadable))
     rsGetElementAt_float3(rs_allocation a, uint32_t x) {
     return ((float3 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float4 __attribute__((overloadable))
     rsGetElementAt_float4(rs_allocation a, uint32_t x) {
     return ((float4 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double __attribute__((overloadable))
     rsGetElementAt_double(rs_allocation a, uint32_t x) {
     return ((double *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double2 __attribute__((overloadable))
     rsGetElementAt_double2(rs_allocation a, uint32_t x) {
     return ((double2 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double3 __attribute__((overloadable))
     rsGetElementAt_double3(rs_allocation a, uint32_t x) {
     return ((double3 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double4 __attribute__((overloadable))
     rsGetElementAt_double4(rs_allocation a, uint32_t x) {
     return ((double4 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char __attribute__((overloadable))
     rsGetElementAt_char(rs_allocation a, uint32_t x) {
     return ((char *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char2 __attribute__((overloadable))
     rsGetElementAt_char2(rs_allocation a, uint32_t x) {
     return ((char2 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char3 __attribute__((overloadable))
     rsGetElementAt_char3(rs_allocation a, uint32_t x) {
     return ((char3 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char4 __attribute__((overloadable))
     rsGetElementAt_char4(rs_allocation a, uint32_t x) {
     return ((char4 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar __attribute__((overloadable))
     rsGetElementAt_uchar(rs_allocation a, uint32_t x) {
     return ((uchar *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar2 __attribute__((overloadable))
     rsGetElementAt_uchar2(rs_allocation a, uint32_t x) {
     return ((uchar2 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar3 __attribute__((overloadable))
     rsGetElementAt_uchar3(rs_allocation a, uint32_t x) {
     return ((uchar3 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar4 __attribute__((overloadable))
     rsGetElementAt_uchar4(rs_allocation a, uint32_t x) {
     return ((uchar4 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short __attribute__((overloadable))
     rsGetElementAt_short(rs_allocation a, uint32_t x) {
     return ((short *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short2 __attribute__((overloadable))
     rsGetElementAt_short2(rs_allocation a, uint32_t x) {
     return ((short2 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short3 __attribute__((overloadable))
     rsGetElementAt_short3(rs_allocation a, uint32_t x) {
     return ((short3 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short4 __attribute__((overloadable))
     rsGetElementAt_short4(rs_allocation a, uint32_t x) {
     return ((short4 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort __attribute__((overloadable))
     rsGetElementAt_ushort(rs_allocation a, uint32_t x) {
     return ((ushort *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort2 __attribute__((overloadable))
     rsGetElementAt_ushort2(rs_allocation a, uint32_t x) {
     return ((ushort2 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort3 __attribute__((overloadable))
     rsGetElementAt_ushort3(rs_allocation a, uint32_t x) {
     return ((ushort3 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort4 __attribute__((overloadable))
     rsGetElementAt_ushort4(rs_allocation a, uint32_t x) {
     return ((ushort4 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int __attribute__((overloadable))
     rsGetElementAt_int(rs_allocation a, uint32_t x) {
     return ((int *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int2 __attribute__((overloadable))
     rsGetElementAt_int2(rs_allocation a, uint32_t x) {
     return ((int2 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int3 __attribute__((overloadable))
     rsGetElementAt_int3(rs_allocation a, uint32_t x) {
     return ((int3 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int4 __attribute__((overloadable))
     rsGetElementAt_int4(rs_allocation a, uint32_t x) {
     return ((int4 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint __attribute__((overloadable))
     rsGetElementAt_uint(rs_allocation a, uint32_t x) {
     return ((uint *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint2 __attribute__((overloadable))
     rsGetElementAt_uint2(rs_allocation a, uint32_t x) {
     return ((uint2 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint3 __attribute__((overloadable))
     rsGetElementAt_uint3(rs_allocation a, uint32_t x) {
     return ((uint3 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint4 __attribute__((overloadable))
     rsGetElementAt_uint4(rs_allocation a, uint32_t x) {
     return ((uint4 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long __attribute__((overloadable))
     rsGetElementAt_long(rs_allocation a, uint32_t x) {
     return ((long *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long2 __attribute__((overloadable))
     rsGetElementAt_long2(rs_allocation a, uint32_t x) {
     return ((long2 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long3 __attribute__((overloadable))
     rsGetElementAt_long3(rs_allocation a, uint32_t x) {
     return ((long3 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long4 __attribute__((overloadable))
     rsGetElementAt_long4(rs_allocation a, uint32_t x) {
     return ((long4 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong __attribute__((overloadable))
     rsGetElementAt_ulong(rs_allocation a, uint32_t x) {
     return ((ulong *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong2 __attribute__((overloadable))
     rsGetElementAt_ulong2(rs_allocation a, uint32_t x) {
     return ((ulong2 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong3 __attribute__((overloadable))
     rsGetElementAt_ulong3(rs_allocation a, uint32_t x) {
     return ((ulong3 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong4 __attribute__((overloadable))
     rsGetElementAt_ulong4(rs_allocation a, uint32_t x) {
     return ((ulong4 *)rsGetElementAt(a, x))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float __attribute__((overloadable))
     rsGetElementAt_float(rs_allocation a, uint32_t x, uint32_t y) {
     return ((float *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float2 __attribute__((overloadable))
     rsGetElementAt_float2(rs_allocation a, uint32_t x, uint32_t y) {
     return ((float2 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float3 __attribute__((overloadable))
     rsGetElementAt_float3(rs_allocation a, uint32_t x, uint32_t y) {
     return ((float3 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float4 __attribute__((overloadable))
     rsGetElementAt_float4(rs_allocation a, uint32_t x, uint32_t y) {
     return ((float4 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double __attribute__((overloadable))
     rsGetElementAt_double(rs_allocation a, uint32_t x, uint32_t y) {
     return ((double *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double2 __attribute__((overloadable))
     rsGetElementAt_double2(rs_allocation a, uint32_t x, uint32_t y) {
     return ((double2 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double3 __attribute__((overloadable))
     rsGetElementAt_double3(rs_allocation a, uint32_t x, uint32_t y) {
     return ((double3 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double4 __attribute__((overloadable))
     rsGetElementAt_double4(rs_allocation a, uint32_t x, uint32_t y) {
     return ((double4 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char __attribute__((overloadable))
     rsGetElementAt_char(rs_allocation a, uint32_t x, uint32_t y) {
     return ((char *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char2 __attribute__((overloadable))
     rsGetElementAt_char2(rs_allocation a, uint32_t x, uint32_t y) {
     return ((char2 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char3 __attribute__((overloadable))
     rsGetElementAt_char3(rs_allocation a, uint32_t x, uint32_t y) {
     return ((char3 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char4 __attribute__((overloadable))
     rsGetElementAt_char4(rs_allocation a, uint32_t x, uint32_t y) {
     return ((char4 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar __attribute__((overloadable))
     rsGetElementAt_uchar(rs_allocation a, uint32_t x, uint32_t y) {
     return ((uchar *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar2 __attribute__((overloadable))
     rsGetElementAt_uchar2(rs_allocation a, uint32_t x, uint32_t y) {
     return ((uchar2 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar3 __attribute__((overloadable))
     rsGetElementAt_uchar3(rs_allocation a, uint32_t x, uint32_t y) {
     return ((uchar3 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar4 __attribute__((overloadable))
     rsGetElementAt_uchar4(rs_allocation a, uint32_t x, uint32_t y) {
     return ((uchar4 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short __attribute__((overloadable))
     rsGetElementAt_short(rs_allocation a, uint32_t x, uint32_t y) {
     return ((short *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short2 __attribute__((overloadable))
     rsGetElementAt_short2(rs_allocation a, uint32_t x, uint32_t y) {
     return ((short2 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short3 __attribute__((overloadable))
     rsGetElementAt_short3(rs_allocation a, uint32_t x, uint32_t y) {
     return ((short3 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short4 __attribute__((overloadable))
     rsGetElementAt_short4(rs_allocation a, uint32_t x, uint32_t y) {
     return ((short4 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort __attribute__((overloadable))
     rsGetElementAt_ushort(rs_allocation a, uint32_t x, uint32_t y) {
     return ((ushort *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort2 __attribute__((overloadable))
     rsGetElementAt_ushort2(rs_allocation a, uint32_t x, uint32_t y) {
     return ((ushort2 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort3 __attribute__((overloadable))
     rsGetElementAt_ushort3(rs_allocation a, uint32_t x, uint32_t y) {
     return ((ushort3 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort4 __attribute__((overloadable))
     rsGetElementAt_ushort4(rs_allocation a, uint32_t x, uint32_t y) {
     return ((ushort4 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int __attribute__((overloadable))
     rsGetElementAt_int(rs_allocation a, uint32_t x, uint32_t y) {
     return ((int *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int2 __attribute__((overloadable))
     rsGetElementAt_int2(rs_allocation a, uint32_t x, uint32_t y) {
     return ((int2 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int3 __attribute__((overloadable))
     rsGetElementAt_int3(rs_allocation a, uint32_t x, uint32_t y) {
     return ((int3 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int4 __attribute__((overloadable))
     rsGetElementAt_int4(rs_allocation a, uint32_t x, uint32_t y) {
     return ((int4 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint __attribute__((overloadable))
     rsGetElementAt_uint(rs_allocation a, uint32_t x, uint32_t y) {
     return ((uint *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint2 __attribute__((overloadable))
     rsGetElementAt_uint2(rs_allocation a, uint32_t x, uint32_t y) {
     return ((uint2 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint3 __attribute__((overloadable))
     rsGetElementAt_uint3(rs_allocation a, uint32_t x, uint32_t y) {
     return ((uint3 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint4 __attribute__((overloadable))
     rsGetElementAt_uint4(rs_allocation a, uint32_t x, uint32_t y) {
     return ((uint4 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long __attribute__((overloadable))
     rsGetElementAt_long(rs_allocation a, uint32_t x, uint32_t y) {
     return ((long *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long2 __attribute__((overloadable))
     rsGetElementAt_long2(rs_allocation a, uint32_t x, uint32_t y) {
     return ((long2 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long3 __attribute__((overloadable))
     rsGetElementAt_long3(rs_allocation a, uint32_t x, uint32_t y) {
     return ((long3 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long4 __attribute__((overloadable))
     rsGetElementAt_long4(rs_allocation a, uint32_t x, uint32_t y) {
     return ((long4 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong __attribute__((overloadable))
     rsGetElementAt_ulong(rs_allocation a, uint32_t x, uint32_t y) {
     return ((ulong *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong2 __attribute__((overloadable))
     rsGetElementAt_ulong2(rs_allocation a, uint32_t x, uint32_t y) {
     return ((ulong2 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong3 __attribute__((overloadable))
     rsGetElementAt_ulong3(rs_allocation a, uint32_t x, uint32_t y) {
     return ((ulong3 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong4 __attribute__((overloadable))
     rsGetElementAt_ulong4(rs_allocation a, uint32_t x, uint32_t y) {
     return ((ulong4 *)rsGetElementAt(a, x, y))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float __attribute__((overloadable))
     rsGetElementAt_float(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((float *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float2 __attribute__((overloadable))
     rsGetElementAt_float2(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((float2 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float3 __attribute__((overloadable))
     rsGetElementAt_float3(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((float3 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline float4 __attribute__((overloadable))
     rsGetElementAt_float4(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((float4 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double __attribute__((overloadable))
     rsGetElementAt_double(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((double *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double2 __attribute__((overloadable))
     rsGetElementAt_double2(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((double2 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double3 __attribute__((overloadable))
     rsGetElementAt_double3(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((double3 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline double4 __attribute__((overloadable))
     rsGetElementAt_double4(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((double4 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char __attribute__((overloadable))
     rsGetElementAt_char(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((char *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char2 __attribute__((overloadable))
     rsGetElementAt_char2(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((char2 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char3 __attribute__((overloadable))
     rsGetElementAt_char3(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((char3 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline char4 __attribute__((overloadable))
     rsGetElementAt_char4(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((char4 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar __attribute__((overloadable))
     rsGetElementAt_uchar(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((uchar *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar2 __attribute__((overloadable))
     rsGetElementAt_uchar2(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((uchar2 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar3 __attribute__((overloadable))
     rsGetElementAt_uchar3(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((uchar3 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uchar4 __attribute__((overloadable))
     rsGetElementAt_uchar4(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((uchar4 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short __attribute__((overloadable))
     rsGetElementAt_short(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((short *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short2 __attribute__((overloadable))
     rsGetElementAt_short2(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((short2 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short3 __attribute__((overloadable))
     rsGetElementAt_short3(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((short3 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline short4 __attribute__((overloadable))
     rsGetElementAt_short4(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((short4 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort __attribute__((overloadable))
     rsGetElementAt_ushort(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((ushort *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort2 __attribute__((overloadable))
     rsGetElementAt_ushort2(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((ushort2 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort3 __attribute__((overloadable))
     rsGetElementAt_ushort3(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((ushort3 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ushort4 __attribute__((overloadable))
     rsGetElementAt_ushort4(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((ushort4 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int __attribute__((overloadable))
     rsGetElementAt_int(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((int *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int2 __attribute__((overloadable))
     rsGetElementAt_int2(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((int2 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int3 __attribute__((overloadable))
     rsGetElementAt_int3(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((int3 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline int4 __attribute__((overloadable))
     rsGetElementAt_int4(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((int4 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint __attribute__((overloadable))
     rsGetElementAt_uint(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((uint *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint2 __attribute__((overloadable))
     rsGetElementAt_uint2(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((uint2 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint3 __attribute__((overloadable))
     rsGetElementAt_uint3(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((uint3 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline uint4 __attribute__((overloadable))
     rsGetElementAt_uint4(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((uint4 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long __attribute__((overloadable))
     rsGetElementAt_long(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((long *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long2 __attribute__((overloadable))
     rsGetElementAt_long2(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((long2 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long3 __attribute__((overloadable))
     rsGetElementAt_long3(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((long3 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline long4 __attribute__((overloadable))
     rsGetElementAt_long4(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((long4 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong __attribute__((overloadable))
     rsGetElementAt_ulong(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((ulong *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong2 __attribute__((overloadable))
     rsGetElementAt_ulong2(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((ulong2 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong3 __attribute__((overloadable))
     rsGetElementAt_ulong3(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((ulong3 *)rsGetElementAt(a, x, y, z))[0];
 }
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 17)
+#if !defined(RS_VERSION) || RS_VERSION <= 17
 static inline ulong4 __attribute__((overloadable))
     rsGetElementAt_ulong4(rs_allocation a, uint32_t x, uint32_t y, uint32_t z) {
     return ((ulong4 *)rsGetElementAt(a, x, y, z))[0];

@@ -117,7 +117,7 @@ typedef int int32_t;
  *
  * A 64 bit signed integer type.
  */
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 typedef long long int64_t;
 #endif
 
@@ -151,7 +151,7 @@ typedef unsigned int uint32_t;
  *
  * A 64 bit unsigned integer type.
  */
-#if !defined(RS_VERSION) || (RS_VERSION <= 20)
+#if !defined(RS_VERSION) || RS_VERSION <= 20
 typedef unsigned long long uint64_t;
 #endif
 

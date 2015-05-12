@@ -433,32 +433,32 @@ extern void __attribute__((overloadable))
 extern void __attribute__((overloadable))
     rsMatrixMultiply(rs_matrix2x2* m, const rs_matrix2x2* rhs);
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 13)
+#if !defined(RS_VERSION) || RS_VERSION <= 13
 extern float4 __attribute__((overloadable))
     rsMatrixMultiply(rs_matrix4x4* m, float4 in);
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 13)
+#if !defined(RS_VERSION) || RS_VERSION <= 13
 extern float4 __attribute__((overloadable))
     rsMatrixMultiply(rs_matrix4x4* m, float3 in);
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 13)
+#if !defined(RS_VERSION) || RS_VERSION <= 13
 extern float4 __attribute__((overloadable))
     rsMatrixMultiply(rs_matrix4x4* m, float2 in);
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 13)
+#if !defined(RS_VERSION) || RS_VERSION <= 13
 extern float3 __attribute__((overloadable))
     rsMatrixMultiply(rs_matrix3x3* m, float3 in);
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 13)
+#if !defined(RS_VERSION) || RS_VERSION <= 13
 extern float3 __attribute__((overloadable))
     rsMatrixMultiply(rs_matrix3x3* m, float2 in);
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 13)
+#if !defined(RS_VERSION) || RS_VERSION <= 13
 extern float2 __attribute__((overloadable))
     rsMatrixMultiply(rs_matrix2x2* m, float2 in);
 #endif

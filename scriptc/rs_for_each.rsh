@@ -123,24 +123,24 @@ typedef struct rs_script_call {
  *   sc: Extra control information used to select a sub-region of the allocation to be processed or suggest a walking strategy.  May be NULL.
  *   usrDataLen: Size of the userData structure.  This will be used to perform a shallow copy of the data if necessary.
  */
-#if !defined(RS_VERSION) || (RS_VERSION <= 13)
+#if !defined(RS_VERSION) || RS_VERSION <= 13
 extern void __attribute__((overloadable))
     rsForEach(rs_script script, rs_allocation input, rs_allocation output, const void* usrData,
               const rs_script_call_t* sc);
 #endif
 
-#if !defined(RS_VERSION) || (RS_VERSION <= 13)
+#if !defined(RS_VERSION) || RS_VERSION <= 13
 extern void __attribute__((overloadable))
     rsForEach(rs_script script, rs_allocation input, rs_allocation output, const void* usrData);
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 14) && (RS_VERSION <= 20))
+#if (defined(RS_VERSION) && (RS_VERSION >= 14) && RS_VERSION <= 20)
 extern void __attribute__((overloadable))
     rsForEach(rs_script script, rs_allocation input, rs_allocation output, const void* usrData,
               size_t usrDataLen, const rs_script_call_t* sc);
 #endif
 
-#if (defined(RS_VERSION) && (RS_VERSION >= 14) && (RS_VERSION <= 20))
+#if (defined(RS_VERSION) && (RS_VERSION >= 14) && RS_VERSION <= 20)
 extern void __attribute__((overloadable))
     rsForEach(rs_script script, rs_allocation input, rs_allocation output, const void* usrData,
               size_t usrDataLen);
