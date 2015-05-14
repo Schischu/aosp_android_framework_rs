@@ -112,14 +112,14 @@ public:
     public:
         virtual void setInput(const ScriptKernelID *kid, Allocation *) = 0;
         virtual void setOutput(const ScriptKernelID *kid, Allocation *) = 0;
-        virtual void execute() = 0;
-        virtual ~CpuScriptGroup() {};
+        void execute() override = 0;
+        ~CpuScriptGroup() override {};
     };
 
     class CpuScriptGroup2 : public CpuScriptGroupBase {
      public:
-      virtual void execute() = 0;
-      virtual ~CpuScriptGroup2() {}
+      void execute() override = 0;
+      ~CpuScriptGroup2() override {}
     };
 
     static Context * getTlsContext();
