@@ -47,6 +47,7 @@ int root() {
                             rsAllocationGetDimY(gGrid) };
 
     rs_allocation aNull;  // Empty rs_allocation, since we don't have an input.
+    rsClearObject(&aNull);
     rs_allocation aout = rsGetAllocation(balls);
     int32_t dimX = rsAllocationGetDimX(aout);
 
