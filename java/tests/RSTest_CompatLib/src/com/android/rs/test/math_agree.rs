@@ -336,20 +336,19 @@ TEST_UL2_UL2(func)              \
 TEST_UL3_UL3(func)              \
 TEST_UL4_UL4(func)
 
-#define TEST_VEC_VEC_ALL(func)  \
-TEST_FN_FN_ALL(func)            \
-TEST_SC_SC_ALL(func)            \
-TEST_UC_UC_ALL(func)            \
-TEST_SS_SS_ALL(func)            \
-TEST_US_US_ALL(func)            \
-TEST_SI_SI_ALL(func)            \
+#define TEST_VEC_VEC_ALL_BUT_L(func) \
+TEST_FN_FN_ALL(func)                 \
+TEST_SC_SC_ALL(func)                 \
+TEST_UC_UC_ALL(func)                 \
+TEST_SS_SS_ALL(func)                 \
+TEST_US_US_ALL(func)                 \
+TEST_SI_SI_ALL(func)                 \
 TEST_UI_UI_ALL(func)
 
-// TODO:  add long types to ALL macro
-#if 0
+#define TEST_VEC_VEC_ALL(func)  \
+TEST_VEC_VEC_ALL_BUT_L(func)    \
 TEST_SL_SL_ALL(func)            \
 TEST_UL_UL_ALL(func)
-#endif
 
 #define DECLARE_TEMP_SET(type, abbrev)  \
 volatile type    temp_##abbrev##1;               \
@@ -364,10 +363,11 @@ DECLARE_TEMP_SET(uchar, uc);    \
 DECLARE_TEMP_SET(short, ss);    \
 DECLARE_TEMP_SET(ushort, us);   \
 DECLARE_TEMP_SET(int, si);      \
-DECLARE_TEMP_SET(uint, ui);     \
+DECLARE_TEMP_SET(uint, ui);
+/*
 DECLARE_TEMP_SET(long, sl);     \
 DECLARE_TEMP_SET(ulong, ul);
-
+*/
 static bool test_math_agree() {
     bool failed = false;
 
@@ -378,8 +378,8 @@ static bool test_math_agree() {
     TEST_BASIC_FLOAT_OP(*, mul);
     TEST_BASIC_FLOAT_OP(/, div);
 
-    TEST_VEC_VEC_ALL(min);
-    TEST_VEC_VEC_ALL(max);
+    TEST_VEC_VEC_ALL_BUT_L(min);
+    TEST_VEC_VEC_ALL_BUT_L(max);
     TEST_FN_FN_ALL(fmin);
     TEST_FN_F_ALL(fmin);
     TEST_FN_FN_ALL(fmax);
@@ -406,4 +406,3 @@ void math_agree_test() {
         rsSendToClientBlocking(RS_MSG_TEST_PASSED);
     }
 }
-
