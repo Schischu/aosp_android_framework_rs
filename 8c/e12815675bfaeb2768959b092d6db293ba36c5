@@ -1,0 +1,7 @@
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Code-Review+2: Stephen Hines <srhines@google.com>
+Submitted-by: Jason Sams <jsams@google.com>
+Submitted-at: Wed, 20 May 2015 18:20:32 +0000
+Reviewed-on: https://android-review.googlesource.com/151092
+Project: platform/frameworks/rs
+Branch: refs/heads/master
