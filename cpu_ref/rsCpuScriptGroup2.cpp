@@ -252,7 +252,7 @@ void setupCompileArguments(
         const char* outputDir, const char* outputFileName,
         const char* coreLibPath, const char* coreLibRelaxedPath,
         const bool emitGlobalInfo, const bool emitGlobalInfoSkipConstant,
-        vector<const char*>* args) {
+        int optLevel, vector<const char*>* args) {
     args->push_back(RsdCpuScriptImpl::BCC_EXE_PATH);
     args->push_back("-fPIC");
     args->push_back("-embedRSInfo");
@@ -286,6 +286,8 @@ void setupCompileArguments(
     // replace with a different name.
     args->push_back("-o");
     args->push_back(outputFileName);
+    args->push_back("-O");
+    args->push_back(std::to_string(optLevel).c_str());
 }
 
 void generateSourceSlot(RsdCpuReferenceImpl* ctxt,
@@ -372,13 +374,15 @@ void CpuScriptGroup2Impl::compile(const char* cacheDir) {
     const string& coreLibPath = getCoreLibPath(getCpuRefImpl()->getContext(),
                                                &coreLibRelaxedPath);
 
+    int optLevel = getCpuRefImpl()->getContext()->getOptLevel();
+
     vector<const char*> arguments;
     bool emitGlobalInfo = getCpuRefImpl()->getEmbedGlobalInfo();
     bool emitGlobalInfoSkipConstant = getCpuRefImpl()->getEmbedGlobalInfoSkipConstant();
     setupCompileArguments(inputs, kernelBatches, invokeBatches, cacheDir,
                           resName, coreLibPath.c_str(), coreLibRelaxedPath.c_str(),
                           emitGlobalInfo, emitGlobalInfoSkipConstant,
-                          &arguments);
+                          optLevel, &arguments);
 
     std::unique_ptr<const char> cmdLine(rsuJoinStrings(arguments.size() - 1,
                                                        arguments.data()));
