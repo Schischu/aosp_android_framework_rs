@@ -27,7 +27,6 @@ class Module;
 
 namespace bcc {
 
-class RSCompilerDriver;
 class RSScript;
 typedef llvm::Module* (*RSLinkRuntimeCallback)
         (bcc::RSScript *, llvm::Module *, llvm::Module *);
@@ -35,8 +34,6 @@ typedef llvm::Module* (*RSLinkRuntimeCallback)
 }  // end namespace bcc;
 
 typedef const char* (*RSSelectRTCallback) (const char*, size_t);
-
-typedef void (*RSSetupCompilerCallback) (bcc::RSCompilerDriver *);
 
 namespace android {
 namespace renderscript {
@@ -141,12 +138,6 @@ public:
     virtual CpuScript * createIntrinsic(const Script *s, RsScriptIntrinsicID iid, Element *e) = 0;
     virtual void* createScriptGroup(const ScriptGroupBase *sg) = 0;
     virtual bool getInForEach() = 0;
-
-#ifndef RS_COMPATIBILITY_LIB
-    virtual void setSetupCompilerCallback(
-            RSSetupCompilerCallback pSetupCompilerCallback) = 0;
-    virtual RSSetupCompilerCallback getSetupCompilerCallback() const = 0;
-#endif
 
     // Set to true if we should embed global variable information in the code.
     virtual void setEmbedGlobalInfo(bool v) = 0;

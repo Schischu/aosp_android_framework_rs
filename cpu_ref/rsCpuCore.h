@@ -27,7 +27,6 @@
 
 namespace bcc {
     class BCCContext;
-    class RSCompilerDriver;
     class RSExecutable;
 }
 
@@ -116,15 +115,6 @@ public:
         return mSelectRTCallback;
     }
 
-#ifndef RS_COMPATIBILITY_LIB
-    void setSetupCompilerCallback(RSSetupCompilerCallback pSetupCompilerCallback) override {
-        mSetupCompilerCallback = pSetupCompilerCallback;
-    }
-    RSSetupCompilerCallback getSetupCompilerCallback() const override {
-        return mSetupCompilerCallback;
-    }
-#endif
-
     virtual void setBccPluginName(const char *name) {
         mBccPluginName.setTo(name);
     }
@@ -182,7 +172,6 @@ protected:
 
     bcc::RSLinkRuntimeCallback mLinkRuntimeCallback;
     RSSelectRTCallback mSelectRTCallback;
-    RSSetupCompilerCallback mSetupCompilerCallback;
     String8 mBccPluginName;
 
     // Specifies whether we should embed global variable information in the

@@ -114,7 +114,6 @@ RsdCpuReferenceImpl::RsdCpuReferenceImpl(Context *rsc) {
     mExit = false;
     mLinkRuntimeCallback = nullptr;
     mSelectRTCallback = nullptr;
-    mSetupCompilerCallback = nullptr;
     mEmbedGlobalInfo = true;
     mEmbedGlobalInfoSkipConstant = true;
 }
