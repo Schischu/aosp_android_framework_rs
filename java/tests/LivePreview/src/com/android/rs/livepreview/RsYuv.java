@@ -67,6 +67,7 @@ public class RsYuv implements TextureView.SurfaceTextureListener
 
     void reset(int width, int height) {
         if (mAllocationOut != null) {
+            mAllocationOut.setSurface(null);
             mAllocationOut.destroy();
         }
 

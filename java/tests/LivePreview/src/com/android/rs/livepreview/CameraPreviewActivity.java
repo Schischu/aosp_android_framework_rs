@@ -150,6 +150,7 @@ public class CameraPreviewActivity extends Activity
     }
 
     public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+        mPreviewTexture = null;
         return true;
     }
 
@@ -354,8 +355,8 @@ public class CameraPreviewActivity extends Activity
         if (expectedBytes != data.length) {
             Log.e(TAG, "Mismatched size of buffer! Expected ");
 
-            mState = STATE_NO_CALLBACKS;
-            mCamera.setPreviewCallbackWithBuffer(null);
+            //mState = STATE_NO_CALLBACKS;
+            //mCamera.setPreviewCallbackWithBuffer(null);
             return;
         }
 
