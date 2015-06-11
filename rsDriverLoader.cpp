@@ -206,8 +206,11 @@ bool Context::loadRuntime(const char* filename) {
         goto error;
     }
 
-    // Only map in the actual driver name if we successfully load the runtime.
-    mDriverName = filename;
+    // Only map in the actual driver name if we successfully load the
+    // runtime and it wasn't set via setDriverName.
+    if (!mDriverName) {
+        mDriverName = filename;
+    }
 
     return true;
 
