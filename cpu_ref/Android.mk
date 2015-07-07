@@ -38,6 +38,7 @@ LOCAL_SRC_FILES:= \
         rsCpuIntrinsicLUT.cpp \
         rsCpuIntrinsicYuvToRGB.cpp
 
+
 LOCAL_CFLAGS_arm64 += -DARCH_ARM_USE_INTRINSICS -DARCH_ARM64_USE_INTRINSICS -DARCH_ARM64_HAVE_NEON
 
 ifeq ($(RS_DISABLE_A53_WORKAROUND),true)
@@ -85,11 +86,12 @@ endif
 LOCAL_SHARED_LIBRARIES += libRS libcutils libutils liblog libsync libc++ libdl libz
 
 LOCAL_SHARED_LIBRARIES += libbcinfo libblas
-
+LOCAL_STATIC_LIBRARIES := libbnnmlowp
 
 LOCAL_C_INCLUDES += frameworks/compile/libbcc/include
 LOCAL_C_INCLUDES += frameworks/rs
 LOCAL_C_INCLUDES += external/cblas/include
+LOCAL_C_INCLUDES += external/gemmlowp/eight_bit_int_gemm
 LOCAL_C_INCLUDES += external/zlib
 
 include frameworks/compile/libbcc/libbcc-targets.mk
