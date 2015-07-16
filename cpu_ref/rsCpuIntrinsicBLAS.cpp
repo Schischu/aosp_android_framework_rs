@@ -674,7 +674,11 @@ void RsdCpuScriptIntrinsicBLAS::kernelBNNM(size_t m, size_t n, size_t k,
                                            int32_t c_mult_int) {
     const int c_shift = 21;
     // Using gemmlowp to calculate the low precision 8 bit GEMM.
-    gemmlowp::eight_bit_int_gemm::EightBitIntGemm(m, n, k, a, -a_offset, lda,
+    bool transpose_a = false;
+    bool transpose_b = true;
+    bool transpose_c = true;
+    gemmlowp::eight_bit_int_gemm::EightBitIntGemm(transpose_a, transpose_b, transpose_c,
+                                                  m, n, k, a, -a_offset, lda,
                                                   b, -b_offset, ldb, c, c_offset,
                                                   c_mult_int, c_shift, ldc);
 }
