@@ -111,6 +111,9 @@ public:
     static Allocation * createAllocation(Context *rsc, const Type *, uint32_t usages,
                                          RsAllocationMipmapControl mc = RS_ALLOCATION_MIPMAP_NONE,
                                          void *ptr = 0);
+    static Allocation * createAllocationStrided(Context *rsc, const Type *, uint32_t usages,
+                                                RsAllocationMipmapControl mc = RS_ALLOCATION_MIPMAP_NONE,
+                                                void *ptr = 0, size_t byteAligned = 16);
     static Allocation * createAdapter(Context *rsc, const Allocation *alloc, const Type *type);
 
 
