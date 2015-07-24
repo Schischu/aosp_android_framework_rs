@@ -302,16 +302,15 @@ static size_t DeriveYUVLayout(int yuv, Allocation::Hal::DrvState *state) {
     return uvSize;
 }
 
-
 static size_t AllocationBuildPointerTable(const Context *rsc, const Allocation *alloc,
-        const Type *type, uint8_t *ptr) {
+                                          const Type *type, uint8_t *ptr, size_t bytesAligned) {
     alloc->mHal.drvState.lod[0].dimX = type->getDimX();
     alloc->mHal.drvState.lod[0].dimY = type->getDimY();
     alloc->mHal.drvState.lod[0].dimZ = type->getDimZ();
     alloc->mHal.drvState.lod[0].mallocPtr = 0;
     // Stride needs to be 16-byte aligned too!
     size_t stride = alloc->mHal.drvState.lod[0].dimX * type->getElementSizeBytes();
-    alloc->mHal.drvState.lod[0].stride = rsRound(stride, 16);
+    alloc->mHal.drvState.lod[0].stride = rsRound(stride, bytesAligned);
     alloc->mHal.drvState.lodCount = type->getLODCount();
     alloc->mHal.drvState.faceCount = type->getDimFaces();
 
@@ -335,7 +334,7 @@ static size_t AllocationBuildPointerTable(const Context *rsc, const Allocation *
             alloc->mHal.drvState.lod[lod].dimY = ty;
             alloc->mHal.drvState.lod[lod].dimZ = tz;
             alloc->mHal.drvState.lod[lod].stride =
-                    rsRound(tx * type->getElementSizeBytes(), 16);
+                    rsRound(tx * type->getElementSizeBytes(), bytesAligned);
             offsets[lod] = o;
             o += alloc->mHal.drvState.lod[lod].stride * rsMax(ty, 1u) * rsMax(tz, 1u);
             if (tx > 1) tx >>= 1;
@@ -359,9 +358,14 @@ static size_t AllocationBuildPointerTable(const Context *rsc, const Allocation *
     return allocSize;
 }
 
-static uint8_t* allocAlignedMemory(size_t allocSize, bool forceZero) {
+static size_t AllocationBuildPointerTable(const Context *rsc, const Allocation *alloc,
+                                          const Type *type, uint8_t *ptr) {
+    return AllocationBuildPointerTable(rsc, alloc, type, ptr, 16);
+}
+
+static uint8_t* allocAlignedMemory(size_t allocSize, bool forceZero, size_t bytesAligned) {
     // We align all allocations to a 16-byte boundary.
-    uint8_t* ptr = (uint8_t *)memalign(16, allocSize);
+    uint8_t* ptr = (uint8_t *)memalign(bytesAligned, allocSize);
     if (!ptr) {
         return nullptr;
     }
@@ -371,7 +375,7 @@ static uint8_t* allocAlignedMemory(size_t allocSize, bool forceZero) {
     return ptr;
 }
 
-bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
+bool rsdAllocationInitStrided(const Context *rsc, Allocation *alloc, bool forceZero, size_t byteAligned) {
     DrvAllocation *drv = (DrvAllocation *)calloc(1, sizeof(DrvAllocation));
     if (!drv) {
         return false;
@@ -379,7 +383,7 @@ bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
     alloc->mHal.drv = drv;
 
     // Calculate the object size.
-    size_t allocSize = AllocationBuildPointerTable(rsc, alloc, alloc->getType(), nullptr);
+    size_t allocSize = AllocationBuildPointerTable(rsc, alloc, alloc->getType(), nullptr, byteAligned);
 
     uint8_t * ptr = nullptr;
     if (alloc->mHal.state.usageFlags & RS_ALLOCATION_USAGE_IO_OUTPUT) {
@@ -387,6 +391,20 @@ bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
     } else if (alloc->mHal.state.usageFlags & RS_ALLOCATION_USAGE_IO_INPUT) {
         // Allocation is allocated when the surface is created
         // in getSurface
+#ifdef RS_COMPATIBILITY_LIB
+    } else if (alloc->mHal.state.usageFlags == (RS_ALLOCATION_USAGE_INCREMENTAL_SUPPORT | RS_ALLOCATION_USAGE_SHARED)) {
+        if (alloc->mHal.state.userProvidedPtr == nullptr) {
+            ALOGE("User-backed buffer pointer cannot be null");
+            return false;
+        }
+        if (alloc->getType()->getDimLOD() || alloc->getType()->getDimFaces()) {
+            ALOGE("User-allocated buffers must not have multiple faces or LODs");
+            return false;
+        }
+
+        drv->useUserProvidedPtr = true;
+        ptr = (uint8_t*)alloc->mHal.state.userProvidedPtr;
+#endif
     } else if (alloc->mHal.state.userProvidedPtr != nullptr) {
         // user-provided allocation
         // limitations: no faces, no LOD, USAGE_SCRIPT or SCRIPT+TEXTURE only
@@ -402,11 +420,11 @@ bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
 
         // rows must be 16-byte aligned
         // validate that here, otherwise fall back to not use the user-backed allocation
-        if (((alloc->getType()->getDimX() * alloc->getType()->getElement()->getSizeBytes()) % 16) != 0) {
+        if (((alloc->getType()->getDimX() * alloc->getType()->getElement()->getSizeBytes()) % byteAligned) != 0) {
             ALOGV("User-backed allocation failed stride requirement, falling back to separate allocation");
             drv->useUserProvidedPtr = false;
 
-            ptr = allocAlignedMemory(allocSize, forceZero);
+            ptr = allocAlignedMemory(allocSize, forceZero, byteAligned);
             if (!ptr) {
                 alloc->mHal.drv = nullptr;
                 free(drv);
@@ -418,7 +436,7 @@ bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
             ptr = (uint8_t*)alloc->mHal.state.userProvidedPtr;
         }
     } else {
-        ptr = allocAlignedMemory(allocSize, forceZero);
+        ptr = allocAlignedMemory(allocSize, forceZero, byteAligned);
         if (!ptr) {
             alloc->mHal.drv = nullptr;
             free(drv);
@@ -426,7 +444,7 @@ bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
         }
     }
     // Build the pointer tables
-    size_t verifySize = AllocationBuildPointerTable(rsc, alloc, alloc->getType(), ptr);
+    size_t verifySize = AllocationBuildPointerTable(rsc, alloc, alloc->getType(), ptr, byteAligned);
     if(allocSize != verifySize) {
         rsAssert(!"Size mismatch");
     }
@@ -474,6 +492,10 @@ bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
 
 
     return true;
+}
+
+bool rsdAllocationInit(const Context *rsc, Allocation *alloc, bool forceZero) {
+    return rsdAllocationInitStrided(rsc, alloc, forceZero, 16);
 }
 
 void rsdAllocationAdapterOffset(const Context *rsc, const Allocation *alloc) {
