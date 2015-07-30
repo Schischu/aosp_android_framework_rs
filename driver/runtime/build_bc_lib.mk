@@ -14,10 +14,12 @@
 # limitations under the License.
 #
 
+BUILD_BC_LIB_LOCAL_PATH:=$(call my-dir)
+
 ifndef BCC_RS_TRIPLE
 ifdef TARGET_2ND_ARCH
 LOCAL_2ND_ARCH_VAR_PREFIX := $(TARGET_2ND_ARCH_VAR_PREFIX)
-include $(LOCAL_PATH)/build_bc_lib_internal.mk
+include $(BUILD_BC_LIB_LOCAL_PATH)/build_bc_lib_internal.mk
 endif
 endif
 
@@ -30,5 +32,5 @@ LOCAL_INSTALLED_MODULE_STEM :=
 LOCAL_INTERMEDIATE_TARGETS :=
 
 LOCAL_2ND_ARCH_VAR_PREFIX :=
-include $(LOCAL_PATH)/build_bc_lib_internal.mk
+include $(BUILD_BC_LIB_LOCAL_PATH)/build_bc_lib_internal.mk
 

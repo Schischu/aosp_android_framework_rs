@@ -1,4 +1,18 @@
 LOCAL_PATH:=$(call my-dir)
+RUNTIME_PATH:=$(LOCAL_PATH)/../driver/runtime
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE = libcldebuginfo.bc
+LOCAL_CFLAGS += -g -O0 \
+                -Iframeworks/rs/cpu_ref \
+                -Iframeworks/rs/scriptc \
+                -fsigned-char
+LOCAL_SRC_FILES := rsCpuABIDebugInfo.c
+
+include $(LOCAL_PATH)/../driver/runtime/build_bc_lib.mk
+
+include $(CLEAR_VARS)
 
 rs_base_CFLAGS := -Werror -Wall -Wextra -Wno-unused-parameter \
                   -Wno-unused-variable -fno-exceptions -std=c++11
