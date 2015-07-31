@@ -93,7 +93,7 @@ void RsdCpuScriptIntrinsic::invokeForEach(uint32_t slot,
                                           uint32_t usrLen,
                                           const RsScriptCall *sc) {
 
-    MTLaunchStruct mtls;
+    MTLaunchStructForEach mtls;
 
     preLaunch(slot, ains, inLen, aout, usr, usrLen, sc);
 
@@ -112,7 +112,7 @@ void RsdCpuScriptIntrinsic::invokeForEach(uint32_t slot,
     postLaunch(slot, ains, inLen, aout, usr, usrLen, sc);
 }
 
-void RsdCpuScriptIntrinsic::forEachKernelSetup(uint32_t slot, MTLaunchStruct *mtls) {
+void RsdCpuScriptIntrinsic::forEachKernelSetup(uint32_t slot, MTLaunchStructForEach *mtls) {
 
     mtls->script = this;
     mtls->fep.slot = slot;

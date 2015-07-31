@@ -165,7 +165,7 @@ CpuScriptGroup2Impl::CpuScriptGroup2Impl(RsdCpuReferenceImpl *cpuRefImpl,
         RsdCpuScriptImpl* si =
                 (RsdCpuScriptImpl *)mCpuRefImpl->lookupScript(funcID->mScript);
         if (closure->mIsKernel) {
-            MTLaunchStruct mtls;
+            MTLaunchStructForEach mtls;
             si->forEachKernelSetup(funcID->mSlot, &mtls);
             cc = new CPUClosure(closure, si, (ExpandFuncTy)mtls.kernel);
         } else {
@@ -568,7 +568,7 @@ void Batch::run() {
     }
 
     if (mFunc != nullptr) {
-        MTLaunchStruct mtls;
+        MTLaunchStructForEach mtls;
         const CPUClosure* firstCpuClosure = mClosures.front();
         const CPUClosure* lastCpuClosure = mClosures.back();
 
@@ -603,7 +603,7 @@ void Batch::run() {
 
     const CPUClosure* cpuClosure = mClosures.front();
     const Closure* closure = cpuClosure->mClosure;
-    MTLaunchStruct mtls;
+    MTLaunchStructForEach mtls;
 
     if (cpuClosure->mSi->forEachMtlsSetup((const Allocation**)closure->mArgs,
                                           closure->mNumArg,

@@ -31,8 +31,9 @@ namespace renderscript {
 // Whether the CPU we're running on supports SIMD instructions
 extern bool gArchUseSIMD;
 
-typedef void (* InvokeFunc_t)(void);
-typedef void (* ForEachFunc_t)(void);
+typedef void (*ReduceFunc_t)(void);
+typedef void (*ForEachFunc_t)(void);
+typedef void (*InvokeFunc_t)(void);
 typedef void (*WorkerCallback_t)(void *usr, uint32_t idx);
 
 class RsdCpuScriptImpl;
@@ -44,23 +45,34 @@ struct ScriptTLSStruct {
     RsdCpuScriptImpl *mImpl;
 };
 
-struct MTLaunchStruct {
-    RsExpandKernelDriverInfo fep;
-
-    RsdCpuReferenceImpl *rsc;
+// MTLaunchStruct passes information about a multithreaded kernel launch.
+struct MTLaunchStructCommon {
+    RsdCpuReferenceImpl *rs;
     RsdCpuScriptImpl *script;
-
-    ForEachFunc_t kernel;
-    uint32_t sig;
-    const Allocation * ains[RS_KERNEL_INPUT_LIMIT];
-    Allocation * aout[RS_KERNEL_INPUT_LIMIT];
 
     uint32_t mSliceSize;
     volatile int mSliceNum;
     bool isThreadable;
 
+    // Boundary information.
     RsLaunchDimensions start;
     RsLaunchDimensions end;
+    RsLaunchDimensions dim;
+};
+
+struct MTLaunchStructForEach : public MTLaunchStructCommon {
+    // Driver info structure
+    RsExpandKernelDriverInfo fep;
+
+    ForEachFunc_t kernel;
+    uint32_t sig;
+    const Allocation *ains[RS_KERNEL_INPUT_LIMIT];
+    Allocation *aout[RS_KERNEL_INPUT_LIMIT];
+};
+
+struct MTLaunchStructReduce : public MTLaunchStructCommon {
+    ReduceFunc_t kernel;
+    uint8_t *inBuf, *outBuf;
 };
 
 class RsdCpuReferenceImpl : public RsdCpuReference {
@@ -82,8 +94,13 @@ public:
         return mWorkers.mCount + 1;
     }
 
-    void launchThreads(const Allocation** ains, uint32_t inLen, Allocation* aout,
-                       const RsScriptCall* sc, MTLaunchStruct* mtls);
+    // Launch foreach kernel
+    void launchThreads(const Allocation **ains, uint32_t inLen, Allocation *aout,
+                       const RsScriptCall *sc, MTLaunchStructForEach *mtls);
+
+    // Launch a reduce kernel
+    void launchReduce(const Allocation *ain, Allocation *aout,
+                      MTLaunchStructReduce *mtls);
 
     CpuScript * createScript(const ScriptC *s, char const *resName, char const *cacheDir,
                              uint8_t const *bitcode, size_t bitcodeSize, uint32_t flags) override;
@@ -92,7 +109,7 @@ public:
 
     const RsdCpuReference::CpuSymbol *symLookup(const char *);
 
-    RsdCpuReference::CpuScript * lookupScript(const Script *s) {
+    RsdCpuReference::CpuScript *lookupScript(const Script *s) {
         return mScriptLookupFn(mRSC, s);
     }
 
@@ -170,6 +187,9 @@ protected:
     // when potentially embedding information about globals.
     // Defaults to true.
     bool mEmbedGlobalInfoSkipConstant;
+
+    // Temporary buffer used by reduce-style kernels.
+    uint8_t mReduceBuf[1024] __attribute__((aligned(16)));
 };
 
 

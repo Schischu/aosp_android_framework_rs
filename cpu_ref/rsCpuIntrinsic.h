@@ -39,7 +39,7 @@ public:
                        uint32_t usrLen,
                        const RsScriptCall *sc) override;
 
-    void forEachKernelSetup(uint32_t slot, MTLaunchStruct * mtls) override;
+    void forEachKernelSetup(uint32_t slot, MTLaunchStructForEach * mtls) override;
     void invokeInit() override;
     void invokeFreeChildren() override;
 

@@ -238,6 +238,19 @@ void ScriptC::runForEach(Context *rsc,
     }
 }
 
+void ScriptC::runReduce(Context *rsc, uint32_t slot, const Allocation *ain,
+                        Allocation *aout, const RsScriptCall *sc) {
+    ATRACE_CALL();
+
+    setupScript(rsc);
+
+    if (rsc->props.mLogScripts) {
+         // TODO(wala)
+    }
+
+    rsc->mHal.funcs.script.invokeReduce(rsc, this, slot, ain, aout, sc);
+}
+
 void ScriptC::Invoke(Context *rsc, uint32_t slot, const void *data, size_t len) {
     ATRACE_CALL();
 

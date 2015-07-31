@@ -203,7 +203,7 @@ void CpuScriptGroupImpl::execute() {
 
     }
 
-    MTLaunchStruct mtls;
+    MTLaunchStructForEach mtls;
 
     if (fieldDep) {
         for (size_t ct=0; ct < ins.size(); ct++) {

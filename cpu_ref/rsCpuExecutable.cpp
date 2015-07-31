@@ -267,6 +267,7 @@ void* SharedLibraryUtils::loadSOHelper(const char *origName, const char *cacheDi
 #define EXPORT_VAR_STR "exportVarCount: "
 #define EXPORT_FUNC_STR "exportFuncCount: "
 #define EXPORT_FOREACH_STR "exportForEachCount: "
+#define EXPORT_REDUCE_STR "exportReduceCount: "
 #define OBJECT_SLOT_STR "objectSlotCount: "
 #define PRAGMA_STR "pragmaCount: "
 #define THREADABLE_STR "isThreadable: "
@@ -304,6 +305,7 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
     size_t varCount = 0;
     size_t funcCount = 0;
     size_t forEachCount = 0;
+    size_t reduceCount = 0;
     size_t objectSlotCount = 0;
     size_t pragmaCount = 0;
     bool isThreadable = true;
@@ -314,6 +316,7 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
     InvokeFunc_t* invokeFunctions = nullptr;
     ForEachFunc_t* forEachFunctions = nullptr;
     uint32_t* forEachSignatures = nullptr;
+    ReduceFunc_t* reduceFunctions = nullptr;
     const char ** pragmaKeys = nullptr;
     const char ** pragmaValues = nullptr;
     uint32_t checksum = 0;
@@ -445,9 +448,49 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         }
     }
 
+    // TODO(wala): Remove this once libbcc gets support for embedding
+    // reduce kernel information.
+    // goto skip_reduce;
+
+    // Read reduce kernels
     if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
         goto error;
     }
+    if (sscanf(line, EXPORT_REDUCE_STR "%zu", &reduceCount) != 1) {
+        ALOGE("Invalid export reduce count!: %s", line);
+        goto error;
+    }
+
+    reduceFunctions = new ReduceFunc_t[reduceCount];
+    if (reduceFunctions == nullptr) {
+        goto error;
+    }
+
+    for (size_t i = 0; i < reduceCount; ++i) {
+        if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
+            goto error;
+        }
+        char *c = strrchr(line, '\n');
+        if (c) {
+            *c = '\0';
+        }
+
+        // Lookup the expanded reduce kernel.
+        strncat(line, ".expand", MAXLINE-1-strlen(line));
+
+        reduceFunctions[i] = \
+            reinterpret_cast<ReduceFunc_t>(dlsym(sharedObj, line));
+        if (reduceFunctions[i] == nullptr) {
+            ALOGE("Failed to get function address for %s(): %s",
+                  line, dlerror());
+            goto error;
+        }
+    }
+
+    if (strgets(line, MAXLINE, &rsInfo) == nullptr) {
+        goto error;
+    }
+    // skip_reduce:
     if (sscanf(line, OBJECT_SLOT_STR "%zu", &objectSlotCount) != 1) {
         ALOGE("Invalid object slot count!: %s", line);
         goto error;
@@ -577,6 +620,7 @@ ScriptExecutable* ScriptExecutable::createFromSharedObject(
         RSContext, fieldAddress, fieldIsObject, fieldName, varCount,
         invokeFunctions, funcCount,
         forEachFunctions, forEachSignatures, forEachCount,
+        reduceFunctions, reduceCount,
         pragmaKeys, pragmaValues, pragmaCount,
         rsGlobalNames, rsGlobalAddresses, rsGlobalSizes, rsGlobalProperties,
         numEntries, isThreadable, checksum);
@@ -593,6 +637,8 @@ error:
     delete[] pragmaValues;
     delete[] pragmaKeys;
 #endif  // RS_COMPATIBILITY_LIB
+
+    delete[] reduceFunctions;
 
     delete[] forEachSignatures;
     delete[] forEachFunctions;
