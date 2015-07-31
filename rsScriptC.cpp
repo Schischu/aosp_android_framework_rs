@@ -238,6 +238,24 @@ void ScriptC::runForEach(Context *rsc,
     }
 }
 
+void ScriptC::runReduce(Context *rsc, uint32_t slot, const Allocation *ain,
+                        Allocation *aout, const RsScriptCall *sc) {
+    ATRACE_CALL();
+
+    if (slot >= mHal.info.exportedReduceCount) {
+        rsc->setError(RS_ERROR_BAD_SCRIPT, "Calling reduce on bad script");
+        return;
+    }
+
+    setupScript(rsc);
+
+    if (rsc->props.mLogScripts) {
+        ALOGV("%p ScriptC::runReduce invoking slot %i, ptr %p", rsc, slot, this);
+    }
+
+    rsc->mHal.funcs.script.invokeReduce(rsc, this, slot, ain, aout, sc);
+}
+
 void ScriptC::Invoke(Context *rsc, uint32_t slot, const void *data, size_t len) {
     ATRACE_CALL();
 

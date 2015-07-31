@@ -153,13 +153,15 @@ void * RsdCpuReferenceImpl::helperThreadProc(void *vrsc) {
     return nullptr;
 }
 
+// Launch a kernel.
+// The execution of the kernel is controlled by the callback function.
 void RsdCpuReferenceImpl::launchThreads(WorkerCallback_t cbk, void *data) {
     mWorkers.mLaunchData = data;
     mWorkers.mLaunchCallback = cbk;
 
     // fast path for very small launches
-    MTLaunchStruct *mtls = (MTLaunchStruct *)data;
-    if (mtls && mtls->fep.dim.y <= 1 && mtls->end.x <= mtls->start.x + mtls->mSliceSize) {
+    MTLaunchStructCommon *mtls = (MTLaunchStructCommon *)data;
+    if (mtls && mtls->dim.y <= 1 && mtls->end.x <= mtls->start.x + mtls->mSliceSize) {
         if (mWorkers.mLaunchCallback) {
             mWorkers.mLaunchCallback(mWorkers.mLaunchData, 0);
         }
@@ -220,7 +222,6 @@ static void GetCpuInfo() {
 
 bool RsdCpuReferenceImpl::init(uint32_t version_major, uint32_t version_minor,
                                sym_lookup_t lfn, script_lookup_t slfn) {
-
     mSymLookupFn = lfn;
     mScriptLookupFn = slfn;
 
@@ -328,16 +329,19 @@ RsdCpuReferenceImpl::~RsdCpuReferenceImpl() {
 
 }
 
-static inline void FepPtrSetup(const MTLaunchStruct *mtls, RsExpandKernelDriverInfo *fep,
+// Set up the appropriate input and output pointers to the kernel driver info structure.
+// Inputs:
+//   mtls - The MTLaunchStruct holding information about the kernel lunch
+//   fep - The kernel driver info structure
+//   x, y, z, lod, face, a1, a2, a3, a4 - dimension offset information
+static inline void FepPtrSetup(const MTLaunchStructForEach *mtls, RsExpandKernelDriverInfo *fep,
                                uint32_t x, uint32_t y,
                                uint32_t z = 0, uint32_t lod = 0,
                                RsAllocationCubemapFace face = RS_ALLOCATION_CUBEMAP_FACE_POSITIVE_X,
                                uint32_t a1 = 0, uint32_t a2 = 0, uint32_t a3 = 0, uint32_t a4 = 0) {
-
     for (uint32_t i = 0; i < fep->inLen; i++) {
         fep->inPtr[i] = (const uint8_t *)mtls->ains[i]->getPointerUnchecked(x, y, z, lod, face, a1, a2, a3, a4);
     }
-
     if (mtls->aout[0] != nullptr) {
         fep->outPtr[0] = (uint8_t *)mtls->aout[0]->getPointerUnchecked(x, y, z, lod, face, a1, a2, a3, a4);
     }
@@ -356,7 +360,7 @@ static uint32_t sliceInt(uint32_t *p, uint32_t val, uint32_t start, uint32_t end
     return n;
 }
 
-static bool SelectOuterSlice(const MTLaunchStruct *mtls, RsExpandKernelDriverInfo* fep, uint32_t sliceNum) {
+static bool SelectOuterSlice(const MTLaunchStructForEach *mtls, RsExpandKernelDriverInfo* fep, uint32_t sliceNum) {
 
     uint32_t r = sliceNum;
     r = sliceInt(&fep->current.z, r, mtls->start.z, mtls->end.z);
@@ -371,7 +375,7 @@ static bool SelectOuterSlice(const MTLaunchStruct *mtls, RsExpandKernelDriverInf
 
 
 static void walk_general(void *usr, uint32_t idx) {
-    MTLaunchStruct *mtls = (MTLaunchStruct *)usr;
+    MTLaunchStructForEach *mtls = (MTLaunchStructForEach *)usr;
     RsExpandKernelDriverInfo fep = mtls->fep;
     fep.lid = idx;
     outer_foreach_t fn = (outer_foreach_t) mtls->kernel;
@@ -400,7 +404,7 @@ static void walk_general(void *usr, uint32_t idx) {
 }
 
 static void walk_2d(void *usr, uint32_t idx) {
-    MTLaunchStruct *mtls = (MTLaunchStruct *)usr;
+    MTLaunchStructForEach *mtls = (MTLaunchStructForEach *)usr;
     RsExpandKernelDriverInfo fep = mtls->fep;
     fep.lid = idx;
     outer_foreach_t fn = (outer_foreach_t) mtls->kernel;
@@ -425,7 +429,7 @@ static void walk_2d(void *usr, uint32_t idx) {
 }
 
 static void walk_1d(void *usr, uint32_t idx) {
-    MTLaunchStruct *mtls = (MTLaunchStruct *)usr;
+    MTLaunchStructForEach *mtls = (MTLaunchStructForEach *)usr;
     RsExpandKernelDriverInfo fep = mtls->fep;
     fep.lid = idx;
     outer_foreach_t fn = (outer_foreach_t) mtls->kernel;
@@ -447,11 +451,32 @@ static void walk_1d(void *usr, uint32_t idx) {
     }
 }
 
+// Launch a reduce-style kernel.
+// Inputs:
+//  ain:  The allocation that contains the input
+//  aout: The allocation
+//  mtls: Holds launch parameters
+void RsdCpuReferenceImpl::launchReduce(const Allocation *ain,
+                                       Allocation *aout,
+                                       MTLaunchStructReduce *mtls) {
+    const uint32_t xStart = mtls->start.x;
+    const uint32_t xEnd = mtls->end.x;
+
+    if (xStart >= xEnd) {
+      return;
+    }
+
+    using reduce_t = void (*)(uint8_t *, uint8_t *, uint32_t);
+    reduce_t kernel = reinterpret_cast<reduce_t>(mtls->kernel);
+
+    kernel(&mtls->inBuf[xStart], mtls->outBuf, xEnd - xStart);
+}
+
 void RsdCpuReferenceImpl::launchThreads(const Allocation ** ains,
                                         uint32_t inLen,
                                         Allocation* aout,
                                         const RsScriptCall* sc,
-                                        MTLaunchStruct* mtls) {
+                                        MTLaunchStructForEach* mtls) {
 
     //android::StopWatch kernel_time("kernel time");
 

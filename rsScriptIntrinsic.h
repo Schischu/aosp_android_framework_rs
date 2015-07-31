@@ -49,6 +49,9 @@ public:
                             size_t usrBytes,
                             const RsScriptCall* sc = nullptr);
 
+    virtual void runReduce(Context *rsc, uint32_t slot, const Allocation *ain,
+                           Allocation *aout, const RsScriptCall *sc);
+
     virtual void Invoke(Context *rsc, uint32_t slot, const void *data, size_t len);
     virtual void setupScript(Context *rsc);
     virtual uint32_t run(Context *);
