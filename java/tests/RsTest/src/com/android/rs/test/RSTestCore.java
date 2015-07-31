@@ -57,6 +57,7 @@ public class RSTestCore {
 
         unitTests = new ArrayList<UnitTest>();
 
+        unitTests.add(new UT_small(this, mRes, mCtx));
         unitTests.add(new UT_primitives(this, mRes, mCtx));
         unitTests.add(new UT_constant(this, mRes, mCtx));
         unitTests.add(new UT_vector(this, mRes, mCtx));
@@ -102,6 +103,7 @@ public class RSTestCore {
         unitTests.add(new UT_mesh(this, mRes, mCtx));*/
         unitTests.add(new UT_foreach_multi(this, mRes, mCtx));
         unitTests.add(new UT_fp_mad(this, mRes, mCtx));
+
 
         /*
         unitTests.add(new UnitTest(null, "<Pass>", 1));
