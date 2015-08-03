@@ -416,6 +416,11 @@ bool loadSymbols(void* handle, dispatchTable& dispatchTab, int device_api) {
             LOG_API("Couldn't initialize dispatchTab.ScriptForEachMulti");
             return false;
         }
+        dispatchTab.ScriptReduce = (ScriptReduceFnPtr)dlsym(handle, "rsScriptReduce");
+        if (dispatchTab.ScriptReduce == nullptr) {
+            LOG_API("Couldn't initialize dispatchTab.ScriptReduce");
+            return false;
+        }
     }
 
     return true;
