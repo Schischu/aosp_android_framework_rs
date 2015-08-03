@@ -417,6 +417,16 @@ bool loadSymbols(void* handle, dispatchTable& dispatchTab, int device_api) {
             return false;
         }
     }
+#if 0
+    // TODO: Update the API level when reduce is added.
+    if (device_api >= REDUCE_API_LEVEL) {
+        dispatchTab.ScriptReduce = (ScriptReduceFnPtr)dlsym(handle, "rsScriptReduce");
+        if (dispatchTab.ScriptReduce == nullptr) {
+            LOG_API("Couldn't initialize dispatchTab.ScriptReduce");
+            return false;
+        }
+    }
+#endif
 
     return true;
 
