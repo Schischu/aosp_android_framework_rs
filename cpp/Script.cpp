@@ -36,6 +36,15 @@ void Script::forEach(uint32_t slot, sp<const Allocation> ain, sp<const Allocatio
     tryDispatch(mRS, RS::dispatch->ScriptForEach(mRS->getContext(), getID(), slot, in_id, out_id, usr, usrLen, nullptr, 0));
 }
 
+void Script::reduce(uint32_t slot, sp<const Allocation> ain, sp<const Allocation> aout,
+                    const RsScriptCall *sc) const {
+    if (ain == nullptr || aout == nullptr) {
+        mRS->throwError(RS_ERROR_INVALID_PARAMETER, "Both ain and aout are required to be non-null.");
+    }
+    void *in_id = BaseObj::getObjID(ain);
+    void *out_id = BaseObj::getObjID(aout);
+    tryDispatch(mRS, RS::dispatch->ScriptReduce(mRS->getContext(), getID(), slot, in_id, out_id, sc, sizeof(*sc)));
+}
 
 Script::Script(void *id, sp<RS> rs) : BaseObj(id, rs) {
 }
