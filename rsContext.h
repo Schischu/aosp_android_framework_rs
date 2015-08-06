@@ -296,9 +296,7 @@ public:
     // Set a new driver name, should be called from within
     // rsdHalInit in order to alter default behaviour.
     void setDriverName(const char * name) {
-        if (!mDriverName) {
-            mDriverName = name;
-        }
+        mDriverName = name;
     }
 
 
