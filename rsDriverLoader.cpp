@@ -167,7 +167,6 @@ bool Context::loadRuntime(const char* filename) {
     HalInit fnInit = nullptr;
     HalAbort fnAbort = nullptr;
 
-
     // TODO: store the driverSO somewhere so we can dlclose later
     void *driverSO = nullptr;
 
@@ -186,6 +185,9 @@ bool Context::loadRuntime(const char* filename) {
     fnAbort = (HalAbort) dlsym(driverSO, "rsdHalAbort");
     uint32_t version_major = 0;
     uint32_t version_minor = 0;
+
+    // Set the driverName first just in case vendor drivers wants to change is during fnInit.
+    setDriverName(filename);
 
     if ((fnQueryVersion == nullptr) || (fnQueryHal == nullptr) ||
         (fnInit == nullptr) || (fnAbort == nullptr)) {
@@ -209,9 +211,6 @@ bool Context::loadRuntime(const char* filename) {
         goto error;
     }
 
-    // Only map in the actual driver name if we successfully load the runtime.
-    setDriverName(filename);
-
     return true;
 
 
@@ -220,6 +219,8 @@ error:
         fnAbort(this);
     }
     dlclose(driverSO);
+    // If we fail to load the runtime, set the driverName to null.
+    setDriverName(nullptr);
     return false;
 }
 
