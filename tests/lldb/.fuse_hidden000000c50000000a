@@ -1,0 +1,45 @@
+/media/verena/SSD/Google/aosp/out/host/linux-x86/bin/adb version
+Android Debug Bridge version 1.0.32
+Revision a5d0ca4f16a7-android
+
+
+adb found: Android Debug Bridge version 1.0.32
+Revision a5d0ca4f16a7-android
+
+/media/verena/SSD/Google/aosp/out/host/linux-x86/bin/adb devices
+List of devices attached
+emulator-5554	device
+
+
+
+Located ADB
+/media/verena/SSD/Google/aosp/out/host/linux-x86/bin/adb root
+adbd is already running as root
+
+
+/media/verena/SSD/Google/aosp/out/host/linux-x86/bin/adb wait-for-device
+
+
+/media/verena/SSD/Google/aosp/out/host/linux-x86/bin/adb shell "/data/lldb-server"
+Usage:
+  /data/lldb-server g[dbserver] [options]
+  /data/lldb-server p[latform] [options]
+Invoke subcommand for additional help
+
+
+/media/verena/SSD/Google/aosp/out/host/linux-x86/bin/adb forward tcp:1234 tcp:1234
+
+
+Pre run complete
+running test_write_global.py: 
+fail
+running: test_write_global.py
+Expected to find "([0] = 22, [1] = 4)" in the output.
+ Found: (char2) $10 = (22, 4)
+
+test test_write_global.py failed
+test_run() failed
+
+unctions hooked:\nrsdAllocationInit\nrsdAllocationRead2D\nrsdScriptInit\nrsdScriptInvokeForEach\nrsdScriptInvokeForEachMulti\nrsdScriptInvokeFunction\nrsdScriptSetGlobalVar\n\n', 'b -f simple.rs -l 116', 'Breakpoint 1: no locations (pending).\nWARNING:  Unable to resolve breakpoint to any actual locations.\n', 'process continue', "Process 1747 resuming\nProcess 1747 stopped\n* thread #11: tid = 1761, 0xa567a1a8 librs.simple.so`kernel(in=([0] = 0x00, [1] = 0x00, [2] = 0x00, [3] = 0x5b)) + 1640 at simple.rs:116, name = 'kernelvariables', stop reason = breakpoint 1.1\n    frame #0: 0xa567a1a8 librs.simple.so`kernel(in=([0] = 0x00, [1] = 0x00, [2] = 0x00, [3] = 0x5b)) + 1640 at simple.rs:116\n   113 \t    double double_combined = double_local + double2_local.x + double3_local.x +\n   114 \t        double4_local.x;\n   115 \t\n-> 116 \t    char_global = char_combined;\n   117 \t    short_global = short_combined;\n   118 \t    int_global = int_combined;\n   119 \t    float_global = float_combined;\n\n", 'expr char_global = -2', "(signed char) $0 = '\\xfe'\n", 'target variable char_global', "(signed char) char_global = '\\xfe'\n", 'expr uchar_global = 22', "(uchar) $1 = '\\x16'\n", 'target variable uchar_global', "(uchar) uchar_global = '\\x16'\n", 'expr short_global = -33', '(short) $2 = -33\n', 'target variable short_global', '(short) short_global = -33\n', 'expr ushort_global = 44', '(ushort) $3 = 44\n', 'target variable ushort_global', '(ushort) ushort_global = 44\n', 'expr int_global = -55', '(int) $4 = -55\n', 'target variable int_global', '(int) int_global = -55\n', 'expr uint_global = 66', '(uint) $5 = 66\n', 'target variable uint_global', '(uint) uint_global = 66\n', 'expr float_global = -7.5', '(float) $6 = -7.5\n', 'target variable float_global', '(float) float_global = -7.5\n', 'expr long_global = -888888', '(long long) $7 = -888888\n', 'target variable long_global', '(long long) long_global = -888888\n', 'expr ulong_global = 99999999', '(ulong) $8 = 99999999\n', 'target variable ulong_global', '(ulong) ulong_global = 99999999\n', 'expr double_global = -10101.5', '(double) $9 = -10101.5\n', 'target variable double_global', '(double) double_global = -10101.5\n', 'expr char2_global = {22, 4}', '(char2) $10 = (22, 4)\n']
+test test_write_global.py failed
+test_run() failed
