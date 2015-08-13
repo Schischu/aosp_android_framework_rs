@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/usr/local/google/home/noahp/android/AOSP/frameworks/rs/java/tests/RealTimeFaceDetect/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/usr/local/google/home/noahp/android/AOSP/frameworks/rs/java/tests/RealTimeFaceDetect/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-c4accb9da1f320c86ed7126f84282537c8381974.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/noahp/android/AOSP/frameworks/rs/java/tests/RealTimeFaceDetect/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/usr/local/google/home/noahp/android/AOSP/frameworks/rs/java/tests/RealTimeFaceDetect/app/build/intermediates/pre-dexed/debug/classes-49ba76e572cd65104f1f4eae173569b90e2c6fb0.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/noahp/android/internalNEW/vendor/google_experimental/users/noahp/RealTimeFaceDetect/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/usr/local/google/home/noahp/android/internalNEW/vendor/google_experimental/users/noahp/RealTimeFaceDetect/app/build/intermediates/pre-dexed/debug/classes-764192a21efc2c3279126394784907e12c55041c.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/noahp/android/internalNEW/vendor/google_experimental/users/noahp/RealTimeFaceDetect/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/usr/local/google/home/noahp/android/internalNEW/vendor/google_experimental/users/noahp/RealTimeFaceDetect/app/build/intermediates/pre-dexed/debug/classes-549cf2ffc6c4e6e65d6c906345bfe7d6273d59d5.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/noahp/android/AOSP/frameworks/rs/java/tests/RealTimeFaceDetect/app/build/intermediates/exploded-aar/RealTimeFaceDetect/openCVLibrary300rc1/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="03ff07119c919805a6027fd950dd2b5790576874">
+        <dex dex="/usr/local/google/home/noahp/android/AOSP/frameworks/rs/java/tests/RealTimeFaceDetect/app/build/intermediates/pre-dexed/debug/classes-e75c8fa784e053b14646fa4afb209f850604cad3.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/noahp/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/usr/local/google/home/noahp/android/internalNEW/vendor/google_experimental/users/noahp/RealTimeFaceDetect/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-d26803e4fd4aea857a0f6234818eb6e075db0710.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/noahp/android/AOSP/frameworks/rs/java/tests/RealTimeFaceDetect/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/usr/local/google/home/noahp/android/AOSP/frameworks/rs/java/tests/RealTimeFaceDetect/app/build/intermediates/pre-dexed/debug/classes-c943e09e3f8928197a56b2f6b0997370fcb01a1a.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/noahp/Android/Sdk/build-tools/22.0.1/renderscript/lib/renderscript-v8.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2b276904cd854be6d460f2bcec9cf2cddaf580c1">
+        <dex dex="/usr/local/google/home/noahp/android/internalNEW/vendor/google_experimental/users/noahp/RealTimeFaceDetect/app/build/intermediates/pre-dexed/debug/renderscript-v8-3d4d94622cddba7bcab5396771d13d9fad83b8f5.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/noahp/android/internalNEW/vendor/google_experimental/users/noahp/RealTimeFaceDetect/app/build/intermediates/exploded-aar/RealTimeFaceDetect/openCVLibrary300rc1/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d46343edc14a74906a09e78b457a32a7570c3515">
+        <dex dex="/usr/local/google/home/noahp/android/internalNEW/vendor/google_experimental/users/noahp/RealTimeFaceDetect/app/build/intermediates/pre-dexed/debug/classes-b06c4dfe9f8f3dbf4c0758a12b812036b1adb4f0.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/noahp/android/internalNEW/vendor/google_experimental/users/noahp/RealTimeFaceDetect/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/usr/local/google/home/noahp/android/internalNEW/vendor/google_experimental/users/noahp/RealTimeFaceDetect/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-e7a7081cdebed80480755d2fdc979c36b3553abd.jar" />
+    </item>
+
+</items>
