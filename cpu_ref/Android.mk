@@ -39,6 +39,9 @@ LOCAL_SRC_FILES:= \
         rsCpuIntrinsicYuvToRGB.cpp
 
 LOCAL_CFLAGS_arm64 += -DARCH_ARM_USE_INTRINSICS -DARCH_ARM64_USE_INTRINSICS -DARCH_ARM64_HAVE_NEON
+# Clang does not compile advsimd_3DLUT.S, advsimd_Resize.S and advsimd_Blend.S
+# Bug: 23217766
+LOCAL_CLANG_ASFLAGS_arm64 += -no-integrated-as
 
 ifeq ($(RS_DISABLE_A53_WORKAROUND),true)
 LOCAL_CFLAGS_arm64 += -DDISABLE_A53_WORKAROUND
@@ -50,11 +53,9 @@ LOCAL_SRC_FILES_arm64 += \
     rsCpuIntrinsics_advsimd_Blur.S \
     rsCpuIntrinsics_advsimd_ColorMatrix.S \
     rsCpuIntrinsics_advsimd_Resize.S \
-    rsCpuIntrinsics_advsimd_YuvToRGB.S
-#    rsCpuIntrinsics_advsimd_Blend.S \
+    rsCpuIntrinsics_advsimd_YuvToRGB.S \
+    rsCpuIntrinsics_advsimd_Blend.S
 
-# Clang does not compile rsCpuIntrinsics_advsimd_3DLUT.S.
-LOCAL_CLANG_ASFLAGS_arm64 += -no-integrated-as
 
 ifeq ($(ARCH_ARM_HAVE_NEON),true)
     LOCAL_CFLAGS_arm += -DARCH_ARM_HAVE_NEON
@@ -72,7 +73,8 @@ ifeq ($(ARCH_ARM_HAVE_VFP),true)
     rsCpuIntrinsics_neon_YuvToRGB.S \
 
     LOCAL_ASFLAGS_arm := -mfpu=neon
-    # Clang does not compile rsCpuIntrinsics_neon_3DLUT.S.
+    # Clang does not compile neon_3DLUT.S and neon_Resize.S
+    # Bug: 23217766
     LOCAL_CLANG_ASFLAGS_arm += -no-integrated-as
 endif
 
