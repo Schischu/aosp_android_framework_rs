@@ -1,0 +1,17 @@
+*.apk
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+local.properties
+Thumbs.db
+.DS_Store
+.classpath
+.project
+*.iml
+.idea
+.gradle
+build/
+openCVLibrary300rc1/
+app/src/main/jniLibs/
