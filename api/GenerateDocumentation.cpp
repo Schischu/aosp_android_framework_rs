@@ -352,6 +352,16 @@ static void writeDetailedTypeSpecification(GeneratedFile* file, const TypeSpecif
             *file << "</p>\n";
             break;
         }
+        case RS_OBJECT: {
+            Type* type = spec->getType();
+            *file << "<p>A typedef of: _RS_OBJECT_DECL"
+                  << makeAttributeTag(spec->getAttribute(), "", type->deprecated(),
+                                      type->getDeprecatedMessage())
+                  << "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            writeHtmlVersionTag(file, spec->getVersionInfo());
+            *file << "</p>\n";
+            break;
+        }
         case ENUM: {
             *file << "<p>An enum with the following values:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n";
             writeHtmlVersionTag(file, spec->getVersionInfo());
