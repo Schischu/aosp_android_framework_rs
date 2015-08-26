@@ -30,18 +30,18 @@
 
 // Opaque handle to a RenderScript object. Do not use this directly.
 #ifndef __LP64__
-#define _RS_HANDLE \
-struct {\
+#define _RS_OBJECT_DECL(T) \
+typedef struct T {\
   const int* const p;\
-} __attribute__((packed, aligned(4)))
+} __attribute__((packed, aligned(4))) T
 #else
-#define _RS_HANDLE \
-struct {\
+#define _RS_OBJECT_DECL(T) \
+struct T {\
   const long* const p;\
   const long* const r;\
   const long* const v1;\
   const long* const v2;\
-}
+} T
 #endif
 
 /*
@@ -51,7 +51,7 @@ struct {\
  *
  * See android.renderscript.Element.
  */
-typedef _RS_HANDLE rs_element;
+typedef _RS_OBJECT_DECL(rs_element);
 
 /*
  * rs_type: Handle to a Type
@@ -60,7 +60,7 @@ typedef _RS_HANDLE rs_element;
  *
  * See android.renderscript.Type.
  */
-typedef _RS_HANDLE rs_type;
+typedef _RS_OBJECT_DECL(rs_type);
 
 /*
  * rs_allocation: Handle to an allocation
@@ -69,7 +69,7 @@ typedef _RS_HANDLE rs_type;
  *
  * See android.renderscript.Allocation.
  */
-typedef _RS_HANDLE rs_allocation;
+typedef _RS_OBJECT_DECL(rs_allocation);
 
 /*
  * rs_sampler: Handle to a Sampler
@@ -78,7 +78,7 @@ typedef _RS_HANDLE rs_allocation;
  *
  * See android.renderscript.Sampler.
  */
-typedef _RS_HANDLE rs_sampler;
+typedef _RS_OBJECT_DECL(rs_sampler);
 
 /*
  * rs_script: Handle to a Script
@@ -87,7 +87,9 @@ typedef _RS_HANDLE rs_sampler;
  *
  * See android.renderscript.ScriptC.
  */
-typedef _RS_HANDLE rs_script;
+typedef _RS_OBJECT_DECL(rs_script);
+
+#undef _RS_OBJECT_DECL
 
 /*
  * rs_allocation_cubemap_face: Enum for selecting cube map faces
