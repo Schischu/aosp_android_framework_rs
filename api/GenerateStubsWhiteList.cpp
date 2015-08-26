@@ -70,13 +70,14 @@ static string findSubstitute(const string& typeName, int apiLevel, int intSize) 
             }
             switch (spec->getKind()) {
                 case SIMPLE: {
-                    /* For simple typedefs, replace it unless it's the special case of _RS_HANDLE
-                     * which is a macro of a struct.
-                     */
                     const string s = spec->getSimpleType();
-                    if (s != "_RS_HANDLE") {
+                    if (!s.empty()) {
                         return s;
                     }
+                    break;
+                }
+                case RSOBJECT: {
+                    // Do nothing for RS object types.
                     break;
                 }
                 case STRUCT: {

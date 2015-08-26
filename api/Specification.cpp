@@ -378,6 +378,10 @@ void TypeSpecification::scanTypeSpecification(Scanner* scanner, SpecFile* specFi
         spec->mKind = SIMPLE;
         spec->mSimpleType = scanner->getValue();
     }
+    if (scanner->findOptionalTag("rsobject:")) {
+        spec->mKind = RSOBJECT;
+        spec->mRsObjectType = scanner->getValue();
+    }
     if (scanner->findOptionalTag("struct:")) {
         spec->mKind = STRUCT;
         spec->mStructName = scanner->getValue();

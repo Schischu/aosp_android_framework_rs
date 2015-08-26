@@ -169,7 +169,7 @@ deprecated
  */
 #ifndef __LP64__
 #if !defined(RS_VERSION) || (defined(RS_DECLARE_EXPIRED_APIS) || RS_VERSION <= 22)
-typedef _RS_HANDLE __attribute__((
+typedef _RS_OBJECT_DECL(rs_font) __attribute__((
 #if (defined(RS_VERSION) && (RS_VERSION >= 22))
 deprecated
 #endif
@@ -187,7 +187,7 @@ deprecated
  */
 #ifndef __LP64__
 #if !defined(RS_VERSION) || (defined(RS_DECLARE_EXPIRED_APIS) || RS_VERSION <= 22)
-typedef _RS_HANDLE __attribute__((
+typedef _RS_OBJECT_DECL(rs_mesh) __attribute__((
 #if (defined(RS_VERSION) && (RS_VERSION >= 22))
 deprecated
 #endif
@@ -205,7 +205,7 @@ deprecated
  */
 #ifndef __LP64__
 #if !defined(RS_VERSION) || (defined(RS_DECLARE_EXPIRED_APIS) || RS_VERSION <= 22)
-typedef _RS_HANDLE __attribute__((
+typedef _RS_OBJECT_DECL(rs_program_fragment) __attribute__((
 #if (defined(RS_VERSION) && (RS_VERSION >= 22))
 deprecated
 #endif
@@ -223,7 +223,7 @@ deprecated
  */
 #ifndef __LP64__
 #if !defined(RS_VERSION) || (defined(RS_DECLARE_EXPIRED_APIS) || RS_VERSION <= 22)
-typedef _RS_HANDLE __attribute__((
+typedef _RS_OBJECT_DECL(rs_program_vertex) __attribute__((
 #if (defined(RS_VERSION) && (RS_VERSION >= 22))
 deprecated
 #endif
@@ -241,7 +241,7 @@ deprecated
  */
 #ifndef __LP64__
 #if !defined(RS_VERSION) || (defined(RS_DECLARE_EXPIRED_APIS) || RS_VERSION <= 22)
-typedef _RS_HANDLE __attribute__((
+typedef _RS_OBJECT_DECL(rs_program_raster) __attribute__((
 #if (defined(RS_VERSION) && (RS_VERSION >= 22))
 deprecated
 #endif
@@ -259,7 +259,7 @@ deprecated
  */
 #ifndef __LP64__
 #if !defined(RS_VERSION) || (defined(RS_DECLARE_EXPIRED_APIS) || RS_VERSION <= 22)
-typedef _RS_HANDLE __attribute__((
+typedef _RS_OBJECT_DECL(rs_program_store) __attribute__((
 #if (defined(RS_VERSION) && (RS_VERSION >= 22))
 deprecated
 #endif

@@ -271,6 +271,7 @@ public:
 
 enum TypeKind {
     SIMPLE,
+    RSOBJECT,
     STRUCT,
     ENUM,
 };
@@ -286,6 +287,9 @@ private:
 
     // If mKind is SIMPLE:
     std::string mSimpleType;  // The definition of the type
+
+    // If mKind is RSOBJECT:
+    std::string mRsObjectType;  // The definition of the RS object type
 
     // If mKind is STRUCT:
     std::string mStructName;                  // The name found after the struct keyword
@@ -303,6 +307,7 @@ public:
     Type* getType() const { return mType; }
     TypeKind getKind() const { return mKind; }
     std::string getSimpleType() const { return mSimpleType; }
+    std::string getRsObjectType() const { return mRsObjectType; }
     std::string getStructName() const { return mStructName; }
     const std::vector<std::string>& getFields() const { return mFields; }
     const std::vector<std::string>& getFieldComments() const { return mFieldComments; }
