@@ -559,6 +559,12 @@ void FunctionSpecification::scanFunctionSpecification(Scanner* scanner, SpecFile
     spec->mTest = "scalar";  // default
     spec->mVersionInfo = info;
 
+    if (scanner->findOptionalTag("internal:")) {
+        spec->mInternal = (scanner->getValue() == "true");
+    }
+    if (scanner->findOptionalTag("intrinsic:")) {
+        spec->mIntrinsic = (scanner->getValue() == "true");
+    }
     if (scanner->findOptionalTag("attrib:")) {
         spec->mAttribute = scanner->getValue();
     }
