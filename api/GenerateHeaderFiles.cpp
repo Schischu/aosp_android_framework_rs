@@ -215,7 +215,7 @@ static void writeFunctionPermutation(GeneratedFile* file, const FunctionSpecific
         *file << "void";
     }
 
-    *file << makeAttributeTag(spec.getAttribute(), "overloadable",
+    *file << makeAttributeTag(spec.getAttribute(), spec.isOverloadable() ? "overloadable" : "",
                               function->getDeprecatedApiLevel(), function->getDeprecatedMessage());
     *file << "\n";
 
@@ -361,6 +361,10 @@ static bool writeHeaderFile(const string& directory, const SpecFile& specFile) {
 
     set<Function*> documentedFunctions;
     for (auto spec : specFile.getFunctionSpecifications()) {
+        // Do not include internal APIs in the header files.
+        if (spec->isInternal()) {
+            continue;
+        }
         Function* function = spec->getFunction();
         if (documentedFunctions.find(function) == documentedFunctions.end()) {
             documentedFunctions.insert(function);

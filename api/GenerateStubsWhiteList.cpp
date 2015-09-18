@@ -374,6 +374,10 @@ static bool generateWhiteListFile(int lastApiLevel) {
     for (auto f : systemSpecification.getFunctions()) {
         const Function* function = f.second;
         for (auto spec : function->getSpecifications()) {
+            // Compiler intrinsics are not the runtime APIs. Do not include them in the whitelist
+            if (spec->isIntrinsic()) {
+                continue;
+            }
             if (!addManglingsForSpecification(*function, *spec, lastApiLevel, &allManglings)) {
                 success = false;  // We continue so we can generate all errors.
             }

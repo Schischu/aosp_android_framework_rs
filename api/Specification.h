@@ -342,6 +342,9 @@ private:
      * "": Don't test.  This is the default.
      */
     std::string mTest;
+    bool mInternal;               // Internal. Not visible to users. (Default: false)
+    bool mIntrinsic;              // Compiler intrinsic that is lowered to an internal API.
+                                  // (Default: false)
     std::string mAttribute;       // Function attributes.
     std::string mPrecisionLimit;  // Maximum precision required when checking output of this
                                   // function.
@@ -378,10 +381,13 @@ private:
     void createPermutations(Function* function, Scanner* scanner);
 
 public:
-    FunctionSpecification(Function* function) : mFunction(function), mReturn(nullptr) {}
+    FunctionSpecification(Function* function) : mFunction(function), mInternal(false),
+        mIntrinsic(false), mReturn(nullptr) {}
     ~FunctionSpecification();
 
     Function* getFunction() const { return mFunction; }
+    bool isInternal() const { return mInternal; }
+    bool isIntrinsic() const { return mIntrinsic; }
     std::string getAttribute() const { return mAttribute; }
     std::string getTest() const { return mTest; }
     std::string getPrecisionLimit() const { return mPrecisionLimit; }
