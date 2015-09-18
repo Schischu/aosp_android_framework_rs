@@ -367,6 +367,10 @@ static bool generateWhiteListFile(int lastApiLevel) {
     for (auto f : systemSpecification.getFunctions()) {
         const Function* function = f.second;
         for (auto spec : function->getSpecifications()) {
+            // Compiler intrinsics are not runtime APIs. Do not include them in the whitelist.
+            if (spec->isIntrinsic()) {
+                continue;
+            }
             if (!addManglingsForSpecification(*function, *spec, lastApiLevel, &allManglings)) {
                 success = false;  // We continue so we can generate all errors.
             }
@@ -470,6 +474,10 @@ static bool generateApiTesterFile(const string& slangTestDirectory, int apiLevel
     for (auto f : systemSpecification.getFunctions()) {
         const Function* function = f.second;
         for (auto spec : function->getSpecifications()) {
+            // Do not include internal APIs in the API tests.
+            if (spec->isInternal()) {
+                continue;
+            }
             VersionInfo info = spec->getVersionInfo();
             if (!info.includesVersion(apiLevel)) {
                 continue;
