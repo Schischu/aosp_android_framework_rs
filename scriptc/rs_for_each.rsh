@@ -73,7 +73,8 @@ typedef const struct rs_kernel_context_t * rs_kernel_context;
  * over cells 4, 5, 6, and 7 in the X dimension, set xStart to 4 and xEnd to 8.
  */
 typedef struct rs_script_call {
-    rs_for_each_strategy_t strategy; // Currently ignored.  In the future, will be suggested cell iteration strategy.
+    rs_for_each_strategy_t strategy; // Currently ignored.  In the future, will
+                                     // be suggested cell iteration strategy.
     uint32_t xStart; // Starting index in the X dimension.
     uint32_t xEnd; // Ending index (exclusive) in the X dimension.
     uint32_t yStart; // Starting index in the Y dimension.
@@ -117,8 +118,10 @@ typedef struct rs_script_call {
  *   input: Allocation to source data from.
  *   output: Allocation to write date into.
  *   usrData: User defined data to pass to the script.  May be NULL.
- *   sc: Extra control information used to select a sub-region of the allocation to be processed or suggest a walking strategy.  May be NULL.
- *   usrDataLen: Size of the userData structure.  This will be used to perform a shallow copy of the data if necessary.
+ *   sc: Extra control information used to select a sub-region of the allocation to be processed or
+ *   suggest a walking strategy.  May be NULL.
+ *   usrDataLen: Size of the userData structure.  This will be used to perform a shallow copy of the
+ *   data if necessary.
  */
 #if !defined(RS_VERSION) || (RS_VERSION <= 13)
 extern void __attribute__((overloadable))
@@ -147,6 +150,8 @@ extern void __attribute__((overloadable))
 extern void __attribute__((overloadable))
     rsForEach(rs_script script, rs_allocation input, rs_allocation output);
 #endif
+
+extern void rsParallelFor(void* kernel, ...);
 
 /*
  * rsGetArray0: Index in the Array0 dimension for the specified kernel context
