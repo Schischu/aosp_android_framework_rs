@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <climits>
 #include <iostream>
 #include <sstream>
 
@@ -64,7 +65,10 @@ static void writeVersionGuardStart(GeneratedFile* file, VersionInfo info, int fi
             *file << "#if !defined(RS_VERSION) || " << checkMaxVersion.str() << "\n";
         }
     } else {
-        *file << "#if (defined(RS_VERSION) && (RS_VERSION >= " << info.minVersion << ")";
+        // minVersion == INT_MAX indicates API under devlopement, for which
+        // slang assigns the special value UINT_MAX to RS_VERSION
+        *file << "#if (defined(RS_VERSION) && (RS_VERSION >= " <<
+                (info.minVersion == INT_MAX ? UINT_MAX : info.minVersion)  << ")";
         if (info.maxVersion > 0) {
             *file << " && " << checkMaxVersion.str();
         }
@@ -218,7 +222,7 @@ static void writeFunctionPermutation(GeneratedFile* file, const FunctionSpecific
         *file << "void";
     }
 
-    *file << makeAttributeTag(spec.getAttribute(), "overloadable",
+    *file << makeAttributeTag(spec.getAttribute(), spec.isOverloadable() ? "overloadable" : "",
                               function->getDeprecatedApiLevel(), function->getDeprecatedMessage());
     *file << "\n";
 
@@ -364,6 +368,10 @@ static bool writeHeaderFile(const string& directory, const SpecFile& specFile) {
 
     set<Function*> documentedFunctions;
     for (auto spec : specFile.getFunctionSpecifications()) {
+        // Do not include internal APIs in the header files.
+        if (spec->isInternal()) {
+            continue;
+        }
         Function* function = spec->getFunction();
         if (documentedFunctions.find(function) == documentedFunctions.end()) {
             documentedFunctions.insert(function);
