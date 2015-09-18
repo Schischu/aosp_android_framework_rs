@@ -138,6 +138,7 @@
 
 #include <stdio.h>
 #include <cctype>
+#include <climits>
 #include <cstdlib>
 #include <fstream>
 #include <functional>
@@ -189,7 +190,7 @@ static bool parseCommandLine(int argc, char* argv[], int* maxApiLevel, bool* for
 
 int main(int argc, char* argv[]) {
     // If there's no restriction, generated test files for the very highest version.
-    int maxApiLevel = 999999;
+    int maxApiLevel = INT_MAX;
     vector<string> specFileNames;
     bool forVerification = false;
     if (!parseCommandLine(argc, argv, &maxApiLevel, &forVerification, &specFileNames)) {
