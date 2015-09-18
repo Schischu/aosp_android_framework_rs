@@ -16,6 +16,7 @@
 
 #include <stdio.h>
 #include <cctype>
+#include <climits>
 #include <cstdlib>
 #include <fstream>
 #include <functional>
@@ -205,22 +206,29 @@ bool VersionInfo::scan(Scanner* scanner, int maxApiLevel) {
     if (scanner->findOptionalTag("version:")) {
         const string s = scanner->getValue();
         sscanf(s.c_str(), "%i %i", &minVersion, &maxVersion);
-        if (minVersion && minVersion < MIN_API_LEVEL) {
-            scanner->error() << "Minimum version must >= 9\n";
-        }
-        if (minVersion == MIN_API_LEVEL) {
-            minVersion = 0;
-        }
-        if (maxVersion && maxVersion < MIN_API_LEVEL) {
-            scanner->error() << "Maximum version must >= 9\n";
+        if (minVersion == -1 && maxVersion == 0) {
+            minVersion = INT_MAX;
+            maxVersion = 0;
+        } else {
+            if (minVersion && minVersion < MIN_API_LEVEL) {
+                scanner->error() << "Minimum version must >= 9\n";
+            }
+            if (minVersion == MIN_API_LEVEL) {
+                minVersion = 0;
+            }
+            if (maxVersion && maxVersion < MIN_API_LEVEL) {
+                scanner->error() << "Maximum version must >= 9\n";
+            }
         }
     }
     if (scanner->findOptionalTag("size:")) {
         sscanf(scanner->getValue().c_str(), "%i", &intSize);
     }
+
     if (maxVersion > maxApiLevel) {
         maxVersion = maxApiLevel;
     }
+
     return minVersion == 0 || minVersion <= maxApiLevel;
 }
 
@@ -562,6 +570,12 @@ void FunctionSpecification::scanFunctionSpecification(Scanner* scanner, SpecFile
     spec->mTest = "scalar";  // default
     spec->mVersionInfo = info;
 
+    if (scanner->findOptionalTag("internal:")) {
+        spec->mInternal = (scanner->getValue() == "true");
+    }
+    if (scanner->findOptionalTag("intrinsic:")) {
+        spec->mIntrinsic = (scanner->getValue() == "true");
+    }
     if (scanner->findOptionalTag("attrib:")) {
         spec->mAttribute = scanner->getValue();
     }
@@ -816,6 +830,10 @@ bool SystemSpecification::readSpecFile(const string& fileName, int maxApiLevel) 
 
 
 static void updateMaxApiLevel(const VersionInfo& info, int* maxApiLevel) {
+    if (info.minVersion == INT_MAX) {
+        // Ignore development API level in consideration of max API level.
+        return;
+    }
     *maxApiLevel = max(*maxApiLevel, max(info.minVersion, info.maxVersion));
 }
 
