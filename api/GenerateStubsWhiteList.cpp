@@ -15,6 +15,7 @@
  */
 
 #include <algorithm>
+#include <climits>
 #include <iostream>
 #include <iterator>
 #include <sstream>
@@ -329,15 +330,20 @@ static bool addManglingsForSpecification(const Function& function,
         return true;
     }
     const VersionInfo info = spec.getVersionInfo();
-    const int minApiLevel = info.minVersion ? info.minVersion : kMinimumApiLevelForTests;
-    const int maxApiLevel = info.maxVersion ? info.maxVersion : lastApiLevel;
+    int minApiLevel, maxApiLevel;
+    if (info.minVersion < INT_MAX) {
+        minApiLevel = info.minVersion ? info.minVersion : kMinimumApiLevelForTests;
+        maxApiLevel = info.maxVersion ? info.maxVersion : lastApiLevel;
+    } else {
+        minApiLevel = maxApiLevel = INT_MAX;
+    }
     const bool overloadable = spec.isOverloadable();
 
     /* We track success rather than aborting early in case of failure so that we
      * generate all the error messages.
      */
     bool success = true;
-    for (int apiLevel = minApiLevel; apiLevel <= maxApiLevel; ++apiLevel) {
+    for (uint apiLevel = minApiLevel; apiLevel <= maxApiLevel; ++apiLevel) {
         for (auto permutation : spec.getPermutations()) {
             if (info.intSize == 0 || info.intSize == 32) {
                 if (!addFunctionManglingToSet(function, *permutation, overloadable, apiLevel, 32,
@@ -367,6 +373,10 @@ static bool generateWhiteListFile(int lastApiLevel) {
     for (auto f : systemSpecification.getFunctions()) {
         const Function* function = f.second;
         for (auto spec : function->getSpecifications()) {
+            // Compiler intrinsics are not runtime APIs. Do not include them in the whitelist.
+            if (spec->isIntrinsic()) {
+                continue;
+            }
             if (!addManglingsForSpecification(*function, *spec, lastApiLevel, &allManglings)) {
                 success = false;  // We continue so we can generate all errors.
             }
@@ -470,6 +480,10 @@ static bool generateApiTesterFile(const string& slangTestDirectory, int apiLevel
     for (auto f : systemSpecification.getFunctions()) {
         const Function* function = f.second;
         for (auto spec : function->getSpecifications()) {
+            // Do not include internal APIs in the API tests.
+            if (spec->isInternal()) {
+                continue;
+            }
             VersionInfo info = spec->getVersionInfo();
             if (!info.includesVersion(apiLevel)) {
                 continue;
