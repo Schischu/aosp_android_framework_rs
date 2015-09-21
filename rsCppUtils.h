@@ -114,11 +114,11 @@ namespace android {
         }
 
         T* editArray() {
-            return (T*)(this->begin());
+            return (T*)&(*(this->begin()));
         }
 
         const T* array() {
-            return (const T*)(this->begin());
+            return (const T*)&(*(this->begin()));
         }
 
     };
