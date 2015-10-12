@@ -15,11 +15,13 @@
  */
 
 #include "rsContext.h"
+#include "rsElement.h"
 #include "rsScriptC.h"
 #include "rsMatrix4x4.h"
 #include "rsMatrix3x3.h"
 #include "rsMatrix2x2.h"
 #include "rsRuntime.h"
+#include "rsType.h"
 
 #include "rsdCore.h"
 #include "rsdBcc.h"
@@ -113,6 +115,14 @@ typedef struct {
     int tm_isdst;   ///< daylight savings time
 } rs_tm;
 
+typedef enum {
+  // Empty to avoid conflicts with RsDataKind
+} rs_data_kind;
+
+typedef enum {
+  // Empty to avoid conflicts with RsDataType
+} rs_data_type;
+
 // Some RS functions are not threadsafe but can be called from an invoke
 // function.  Instead of summarily marking scripts that call these functions as
 // not-threadable we detect calls to them in the driver and sends a fatal error
@@ -202,6 +212,59 @@ void __attribute__((overloadable)) rsAllocationCopy2DRange(
                              width, height, (Allocation *)srcAlloc.p,
                              srcXoff, srcYoff, srcMip, srcFace);
 }
+
+// rsCreateAllocationTyped driver entrypoint for creating Allocations inside a
+// script.
+// TODO Make this function fully functional (take a MipMapControl for instance)
+// even if we don't expose the full functionality to the Script.
+static Allocation * CreateAllocation(Context *rsc, RsDataType dt, RsDataKind dk,
+                                     uint32_t vecSize, uint32_t dimX,
+                                     uint32_t dimY, uint32_t dimZ) {
+
+    RsElement element = rsrElementCreate(rsc, (RsDataType) dt, (RsDataKind) dk,
+                                         false, vecSize);
+    RsType type = rsrTypeCreate(rsc, element, dimX, dimY, dimZ, false, false,
+                                false);
+
+    return (Allocation *) rsrAllocationCreateTyped(rsc, type,
+                                                   RS_ALLOCATION_MIPMAP_NONE,
+                                                   0, 0);
+}
+
+#if defined(__i386__) || (defined(__mips__) && __mips==32)
+// i386 and MIPS32 have different struct return passing to ARM; emulate with a
+// pointer
+Allocation *rsCreateAllocationTyped(rs_data_type dt, rs_data_kind dk,
+                                    uint32_t vecSize, uint32_t dimX,
+                                    uint32_t dimY, uint32_t dimZ) {
+
+    Context *rsc = RsdCpuReference::getTlsContext();
+    Allocation *alloc = CreateAllocation(rsc, (RsDataType) dt, (RsDataKind) dk,
+                                         vecSize, dimX, dimY, dimZ);
+    android::renderscript::rs_allocation obj = {0};
+    alloc->callUpdateCacheObject(rsc, &obj);
+    return (Allocation *)obj.p;
+}
+#else
+android::renderscript::rs_allocation rsCreateAllocationTyped(rs_data_type dt,
+                                                             rs_data_kind dk,
+                                                             uint32_t vecSize,
+                                                             uint32_t dimX,
+                                                             uint32_t dimY,
+                                                             uint32_t dimZ) {
+
+    Context *rsc = RsdCpuReference::getTlsContext();
+    Allocation *alloc = CreateAllocation(rsc, (RsDataType) dt, (RsDataKind) dk,
+                                         vecSize, dimX, dimY, dimZ);
+#ifndef __LP64__ // ARMv7
+    android::renderscript::rs_allocation obj = {0};
+#else // AArch64/x86_64/MIPS64
+    android::renderscript::rs_allocation obj = {0, 0, 0, 0};
+#endif
+    alloc->callUpdateCacheObject(rsc, &obj);
+    return obj;
+}
+#endif // defined(__i386__) || (defined(__mips__) && __mips==32)
 
 //////////////////////////////////////////////////////////////////////////////
 // Object routines
