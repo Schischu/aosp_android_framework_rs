@@ -399,3 +399,64 @@ VOP(double3)
 VOP(double4)
 
 #undef VOP
+
+extern rs_allocation __attribute__((overloadable))
+        rsCreateAllocationTyped(rs_data_type dt, rs_data_kind dk,
+                                uint32_t vecSize, uint32_t x, uint32_t y,
+                                uint32_t z);
+
+rs_allocation __attribute__((overloadable))
+        rsCreatePrimitiveAllocation(rs_data_type data_type, uint32_t x) {
+
+    return rsCreateAllocationTyped(data_type, RS_KIND_USER, 1, x, 0, 0);
+}
+
+rs_allocation __attribute__((overloadable))
+        rsCreatePrimitiveAllocation(rs_data_type data_type, uint32_t x,
+                                    uint32_t y) {
+
+    return rsCreateAllocationTyped(data_type, RS_KIND_USER, 1, x, y, 0);
+}
+
+rs_allocation __attribute__((overloadable))
+        rsCreatePrimitiveAllocation(rs_data_type data_type, uint32_t x,
+                                    uint32_t y, uint32_t z) {
+
+    return rsCreateAllocationTyped(data_type, RS_KIND_USER, 1, x, y, z);
+}
+
+#ifdef __LP64__
+static rs_allocation kInvalidAllocation = {0, 0, 0, 0};
+#else
+static rs_allocation kInvalidAllocation = {0};
+#endif
+
+rs_allocation __attribute__((overloadable))
+        rsCreateVectorAllocation(rs_data_type data_type, size_t vector_width,
+                                 uint32_t x) {
+
+    if (vector_width < 2 || vector_width > 4) {
+        return kInvalidAllocation;
+    }
+    return rsCreateAllocationTyped(data_type, RS_KIND_USER, vector_width, x, 0, 0);
+}
+
+rs_allocation __attribute__((overloadable))
+        rsCreateVectorAllocation(rs_data_type data_type, size_t vector_width,
+                                 uint32_t x, uint32_t y) {
+
+    if (vector_width < 2 || vector_width > 4) {
+        return kInvalidAllocation;
+    }
+    return rsCreateAllocationTyped(data_type, RS_KIND_USER, vector_width, x, y, 0);
+}
+
+rs_allocation __attribute__((overloadable))
+        rsCreateVectorAllocation(rs_data_type data_type, size_t vector_width,
+                                 uint32_t x, uint32_t y, uint32_t z) {
+
+    if (vector_width < 2 || vector_width > 4) {
+        return kInvalidAllocation;
+    }
+    return rsCreateAllocationTyped(data_type, RS_KIND_USER, vector_width, x, y, z);
+}
