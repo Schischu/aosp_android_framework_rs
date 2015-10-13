@@ -182,8 +182,20 @@ void __attribute__((overloadable)) rsAllocationCopy1DRange(
     Context *rsc = RsdCpuReference::getTlsContext();
     if (failIfInKernel(rsc, "rsAllocationCopy1DRange"))
         return;
-    rsrAllocationCopy1DRange(rsc, (Allocation *)dstAlloc.p, dstOff, dstMip,
-                             count, (Allocation *)srcAlloc.p, srcOff, srcMip);
+
+    Allocation *dstAllocPtr = (Allocation *)dstAlloc.p;
+    Allocation *srcAllocPtr = (Allocation *)srcAlloc.p;
+    if (dstAllocPtr == nullptr || srcAllocPtr == nullptr) {
+        return;
+    }
+    uint32_t dstDimX = dstAllocPtr->getType()->getDimX();
+    uint32_t srcDimX = srcAllocPtr->getType()->getDimY();
+    if (dstOff + count > dstDimX || srcOff + count > srcDimX) {
+        rsc->setError(RS_ERROR_FATAL_DEBUG, "Updated region larger than allocation");
+        return;
+    }
+    rsrAllocationCopy1DRange(rsc, dstAllocPtr, dstOff, dstMip,
+                             count, srcAllocPtr, srcOff, srcMip);
 }
 
 void __attribute__((overloadable)) rsAllocationCopy2DRange(
@@ -197,9 +209,25 @@ void __attribute__((overloadable)) rsAllocationCopy2DRange(
     Context *rsc = RsdCpuReference::getTlsContext();
     if (failIfInKernel(rsc, "rsAllocationCopy2DRange"))
         return;
-    rsrAllocationCopy2DRange(rsc, (Allocation *)dstAlloc.p,
+
+    Allocation *dstAllocPtr = (Allocation *)dstAlloc.p;
+    Allocation *srcAllocPtr = (Allocation *)srcAlloc.p;
+    if (dstAllocPtr == nullptr || srcAllocPtr == nullptr) {
+        return;
+    }
+    uint32_t dstDimX = dstAllocPtr->getType()->getDimX();
+    uint32_t srcDimX = srcAllocPtr->getType()->getDimX();
+    uint32_t dstDimY = dstAllocPtr->getType()->getDimY();
+    uint32_t srcDimY = srcAllocPtr->getType()->getDimY();
+
+    if (dstXoff + width > dstDimX || srcXoff + width > srcDimX ||
+        dstYoff + height > dstDimY || srcYoff + height > srcDimY) {
+        rsc->setError(RS_ERROR_FATAL_DEBUG, "Updated region larger than allocation");
+        return;
+    }
+    rsrAllocationCopy2DRange(rsc, dstAllocPtr,
                              dstXoff, dstYoff, dstMip, dstFace,
-                             width, height, (Allocation *)srcAlloc.p,
+                             width, height, srcAllocPtr,
                              srcXoff, srcYoff, srcMip, srcFace);
 }
 
