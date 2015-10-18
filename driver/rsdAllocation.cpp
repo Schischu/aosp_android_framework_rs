@@ -699,7 +699,7 @@ static bool IoGetBuffer(const Context *rsc, Allocation *alloc, ANativeWindow *nw
 
     void *dst = nullptr;
     mapper.lock(drv->wndBuffer->handle,
-            GRALLOC_USAGE_SW_READ_NEVER | GRALLOC_USAGE_SW_WRITE_OFTEN,
+            static_cast<int>(GRALLOC_USAGE_SW_READ_NEVER | GRALLOC_USAGE_SW_WRITE_OFTEN),
             bounds, &dst);
     alloc->mHal.drvState.lod[0].mallocPtr = dst;
     alloc->mHal.drvState.lod[0].stride = drv->wndBuffer->stride * alloc->mHal.state.elementSizeBytes;
